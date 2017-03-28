@@ -63,6 +63,12 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmDspClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDspClient.Designer.cs">
+      <DependentUpon>frmDspClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNewClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDspClient.resx">
+      <DependentUpon>frmDspClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewClient.resx">
+      <DependentUpon>frmNewClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNewContact.resx">
       <DependentUpon>frmNewContact.cs</DependentUpon>

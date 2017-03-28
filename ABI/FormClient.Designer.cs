@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Document");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Document");
             this.lblClientNumber = new System.Windows.Forms.Label();
             this.lblRaisonSocial = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
@@ -291,10 +291,10 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(481, 19);
             this.treeView1.Name = "treeView1";
-            treeNode3.Name = "nDocument";
-            treeNode3.Text = "Document";
+            treeNode1.Name = "nDocument";
+            treeNode1.Text = "Document";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode1});
             this.treeView1.Size = new System.Drawing.Size(206, 591);
             this.treeView1.TabIndex = 29;
             // 
@@ -451,19 +451,11 @@
         private System.Windows.Forms.Label lblClientNumber;
         private System.Windows.Forms.Label lblRaisonSocial;
         private System.Windows.Forms.Label lblType;
-        private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.ComboBox cbxType;
-        private System.Windows.Forms.TextBox txtRaisonSocial;
         private System.Windows.Forms.Label lblDomaine;
-        private System.Windows.Forms.ComboBox cbxActivity;
         private System.Windows.Forms.Label lblNature;
-        private System.Windows.Forms.ComboBox cbxNature;
         private System.Windows.Forms.Label lblChiffreAffaire;
-        private System.Windows.Forms.TextBox txtCA;
         private System.Windows.Forms.Label lblEffectif;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblCommentaire;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.GroupBox gpbClientInformation;
         private System.Windows.Forms.Label lblContacts;
         private System.Windows.Forms.DataGridView dgvContact;
@@ -473,11 +465,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tel;
         private System.Windows.Forms.Button btnDeleteContact;
         private System.Windows.Forms.Button btnAddContact;
-        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label lblTown;
-        private System.Windows.Forms.TextBox txtCodePostal;
         private System.Windows.Forms.Label lblCodePostal;
         private System.Windows.Forms.Button btnEditContact;
         private System.Windows.Forms.TreeView treeView1;
@@ -485,5 +474,16 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ToolTip toolTipAfficheTousDocuments;
+        protected System.Windows.Forms.TextBox txtNumero;
+        protected System.Windows.Forms.ComboBox cbxType;
+        protected System.Windows.Forms.TextBox txtRaisonSocial;
+        protected System.Windows.Forms.ComboBox cbxActivity;
+        protected System.Windows.Forms.ComboBox cbxNature;
+        protected System.Windows.Forms.TextBox txtCA;
+        protected System.Windows.Forms.TextBox textBox1;
+        protected System.Windows.Forms.TextBox textBox2;
+        protected System.Windows.Forms.TextBox txtAddress;
+        protected System.Windows.Forms.TextBox textBox3;
+        protected System.Windows.Forms.TextBox txtCodePostal;
     }
 }

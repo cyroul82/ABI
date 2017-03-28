@@ -35,5 +35,10 @@ namespace ABI
             
             
         }
+
+        private void displayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
