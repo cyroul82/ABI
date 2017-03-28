@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Document");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Document");
             this.lblClientNumber = new System.Windows.Forms.Label();
             this.lblRaisonSocial = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
@@ -66,8 +66,6 @@
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.toolTipAfficheTousDocuments = new System.Windows.Forms.ToolTip(this.components);
             this.gpbClientInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
@@ -293,10 +291,10 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(481, 19);
             this.treeView1.Name = "treeView1";
-            treeNode2.Name = "nDocument";
-            treeNode2.Text = "Document";
+            treeNode3.Name = "nDocument";
+            treeNode3.Text = "Document";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode3});
             this.treeView1.Size = new System.Drawing.Size(206, 591);
             this.treeView1.TabIndex = 29;
             // 
@@ -427,28 +425,6 @@
             this.tel.Name = "tel";
             this.tel.ReadOnly = true;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAdd.AutoSize = true;
-            this.btnAdd.Location = new System.Drawing.Point(312, 691);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(50, 23);
-            this.btnAdd.TabIndex = 22;
-            this.btnAdd.Text = "Ajouter";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCancel.AutoSize = true;
-            this.btnCancel.Location = new System.Drawing.Point(368, 691);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(53, 23);
-            this.btnCancel.TabIndex = 23;
-            this.btnCancel.Text = "Annuler";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // toolTipAfficheTousDocuments
             // 
             this.toolTipAfficheTousDocuments.Tag = "Afficher tous les documents";
@@ -458,9 +434,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 726);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnCancel);
+            this.ClientSize = new System.Drawing.Size(730, 696);
             this.Controls.Add(this.gpbClientInformation);
             this.MaximumSize = new System.Drawing.Size(746, 765);
             this.Name = "Client";
@@ -470,7 +444,6 @@
             this.gpbClientInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -500,8 +473,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tel;
         private System.Windows.Forms.Button btnDeleteContact;
         private System.Windows.Forms.Button btnAddContact;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label lblAddress;
         private System.Windows.Forms.TextBox textBox3;
