@@ -15,7 +15,7 @@ namespace ABI
         //Variable to avoid open twice the from AddClient
         Boolean isAddClientFormOpened = false;
         //Object FormClient
-        Client fc;
+        FormClient fc;
         public FormMain()
         {
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace ABI
                 fc.Activate();
             }else
             {
-                fc = new Client();
+                fc = new FormClient();
                 fc.MdiParent = this;
                 fc.Show();
             }

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    public partial class frmDspClient : ABI.Client
+    public partial class frmDspClient : ABI.FormClient
     {
         public frmDspClient()
         {

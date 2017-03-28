@@ -1,6 +1,6 @@
 ﻿namespace ABI
 {
-    partial class Client
+    partial class FormClient
     {
         /// <summary>
         /// Required designer variable.
@@ -386,7 +386,7 @@
             this.lblContacts.Name = "lblContacts";
             this.lblContacts.Size = new System.Drawing.Size(87, 13);
             this.lblContacts.TabIndex = 19;
-            this.lblContacts.Text = "Contacts Client : ";
+            this.lblContacts.Text = "Contacts FormClient : ";
             // 
             // dgvContact
             // 
@@ -430,16 +430,16 @@
             this.toolTipAfficheTousDocuments.Tag = "Afficher tous les documents";
             this.toolTipAfficheTousDocuments.ToolTipTitle = "Afficher tous les documents";
             // 
-            // Client
+            // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 696);
             this.Controls.Add(this.gpbClientInformation);
             this.MaximumSize = new System.Drawing.Size(746, 765);
-            this.Name = "Client";
+            this.Name = "FormClient";
             this.Padding = new System.Windows.Forms.Padding(20);
-            this.Text = "Client";
+            this.Text = "FormClient";
             this.gpbClientInformation.ResumeLayout(false);
             this.gpbClientInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();

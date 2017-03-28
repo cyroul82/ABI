@@ -308,7 +308,7 @@
             this.displayToolStripMenuItem});
             this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
             this.clientToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
-            this.clientToolStripMenuItem.Text = "Client";
+            this.clientToolStripMenuItem.Text = "FormClient";
             // 
             // ajouterToolStripMenuItem
             // 
