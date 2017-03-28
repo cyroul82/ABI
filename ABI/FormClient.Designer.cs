@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Document");
             this.lblClientNumber = new System.Windows.Forms.Label();
             this.lblRaisonSocial = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
@@ -45,10 +47,19 @@
             this.lblCommentaire = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.gpbClientInformation = new System.Windows.Forms.GroupBox();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.lblAddress = new System.Windows.Forms.Label();
+            this.btnAllDocument = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.btnEditContact = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lblTown = new System.Windows.Forms.Label();
+            this.txtCodePostal = new System.Windows.Forms.TextBox();
+            this.lblCodePostal = new System.Windows.Forms.Label();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.btnDeleteContact = new System.Windows.Forms.Button();
+            this.btnAddContact = new System.Windows.Forms.Button();
             this.lblContacts = new System.Windows.Forms.Label();
             this.dgvContact = new System.Windows.Forms.DataGridView();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,10 +68,7 @@
             this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.lblCodePostal = new System.Windows.Forms.Label();
-            this.txtCodePostal = new System.Windows.Forms.TextBox();
-            this.lblTown = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.toolTipAfficheTousDocuments = new System.Windows.Forms.ToolTip(this.components);
             this.gpbClientInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
             this.SuspendLayout();
@@ -210,14 +218,19 @@
             // 
             // gpbClientInformation
             // 
+            this.gpbClientInformation.Controls.Add(this.btnAllDocument);
+            this.gpbClientInformation.Controls.Add(this.button1);
+            this.gpbClientInformation.Controls.Add(this.button2);
+            this.gpbClientInformation.Controls.Add(this.treeView1);
+            this.gpbClientInformation.Controls.Add(this.btnEditContact);
             this.gpbClientInformation.Controls.Add(this.textBox3);
             this.gpbClientInformation.Controls.Add(this.lblTown);
             this.gpbClientInformation.Controls.Add(this.txtCodePostal);
             this.gpbClientInformation.Controls.Add(this.lblCodePostal);
             this.gpbClientInformation.Controls.Add(this.txtAddress);
             this.gpbClientInformation.Controls.Add(this.lblAddress);
-            this.gpbClientInformation.Controls.Add(this.button1);
-            this.gpbClientInformation.Controls.Add(this.button2);
+            this.gpbClientInformation.Controls.Add(this.btnDeleteContact);
+            this.gpbClientInformation.Controls.Add(this.btnAddContact);
             this.gpbClientInformation.Controls.Add(this.lblContacts);
             this.gpbClientInformation.Controls.Add(this.dgvContact);
             this.gpbClientInformation.Controls.Add(this.textBox2);
@@ -238,10 +251,97 @@
             this.gpbClientInformation.Controls.Add(this.lblClientNumber);
             this.gpbClientInformation.Location = new System.Drawing.Point(20, 20);
             this.gpbClientInformation.Name = "gpbClientInformation";
-            this.gpbClientInformation.Size = new System.Drawing.Size(498, 654);
+            this.gpbClientInformation.Size = new System.Drawing.Size(694, 654);
             this.gpbClientInformation.TabIndex = 0;
             this.gpbClientInformation.TabStop = false;
             this.gpbClientInformation.Text = "Information Société";
+            // 
+            // btnAllDocument
+            // 
+            this.btnAllDocument.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAllDocument.AutoSize = true;
+            this.btnAllDocument.Location = new System.Drawing.Point(17, 616);
+            this.btnAllDocument.Name = "btnAllDocument";
+            this.btnAllDocument.Size = new System.Drawing.Size(48, 23);
+            this.btnAllDocument.TabIndex = 32;
+            this.btnAllDocument.Text = "*";
+            this.btnAllDocument.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.AutoSize = true;
+            this.button1.Location = new System.Drawing.Point(639, 616);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(48, 23);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "-";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.AutoSize = true;
+            this.button2.Location = new System.Drawing.Point(585, 616);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(48, 23);
+            this.button2.TabIndex = 31;
+            this.button2.Text = "+";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(481, 19);
+            this.treeView1.Name = "treeView1";
+            treeNode2.Name = "nDocument";
+            treeNode2.Text = "Document";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode2});
+            this.treeView1.Size = new System.Drawing.Size(206, 591);
+            this.treeView1.TabIndex = 29;
+            // 
+            // btnEditContact
+            // 
+            this.btnEditContact.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEditContact.AutoSize = true;
+            this.btnEditContact.Location = new System.Drawing.Point(318, 616);
+            this.btnEditContact.Name = "btnEditContact";
+            this.btnEditContact.Size = new System.Drawing.Size(48, 23);
+            this.btnEditContact.TabIndex = 28;
+            this.btnEditContact.Text = "!";
+            this.btnEditContact.UseVisualStyleBackColor = true;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(344, 241);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(121, 20);
+            this.textBox3.TabIndex = 27;
+            // 
+            // lblTown
+            // 
+            this.lblTown.AutoSize = true;
+            this.lblTown.Location = new System.Drawing.Point(284, 244);
+            this.lblTown.Name = "lblTown";
+            this.lblTown.Size = new System.Drawing.Size(35, 13);
+            this.lblTown.TabIndex = 26;
+            this.lblTown.Text = "Ville : ";
+            // 
+            // txtCodePostal
+            // 
+            this.txtCodePostal.Location = new System.Drawing.Point(138, 237);
+            this.txtCodePostal.Name = "txtCodePostal";
+            this.txtCodePostal.Size = new System.Drawing.Size(94, 20);
+            this.txtCodePostal.TabIndex = 25;
+            // 
+            // lblCodePostal
+            // 
+            this.lblCodePostal.AutoSize = true;
+            this.lblCodePostal.Location = new System.Drawing.Point(11, 240);
+            this.lblCodePostal.Name = "lblCodePostal";
+            this.lblCodePostal.Size = new System.Drawing.Size(73, 13);
+            this.lblCodePostal.TabIndex = 24;
+            this.lblCodePostal.Text = "Code Postal : ";
             // 
             // txtAddress
             // 
@@ -259,27 +359,27 @@
             this.lblAddress.TabIndex = 22;
             this.lblAddress.Text = "Adresse : ";
             // 
-            // button1
+            // btnDeleteContact
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(426, 616);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(48, 23);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "-";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnDeleteContact.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteContact.AutoSize = true;
+            this.btnDeleteContact.Location = new System.Drawing.Point(426, 616);
+            this.btnDeleteContact.Name = "btnDeleteContact";
+            this.btnDeleteContact.Size = new System.Drawing.Size(48, 23);
+            this.btnDeleteContact.TabIndex = 20;
+            this.btnDeleteContact.Text = "-";
+            this.btnDeleteContact.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnAddContact
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.AutoSize = true;
-            this.button2.Location = new System.Drawing.Point(375, 616);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 23);
-            this.button2.TabIndex = 21;
-            this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddContact.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddContact.AutoSize = true;
+            this.btnAddContact.Location = new System.Drawing.Point(372, 616);
+            this.btnAddContact.Name = "btnAddContact";
+            this.btnAddContact.Size = new System.Drawing.Size(48, 23);
+            this.btnAddContact.TabIndex = 21;
+            this.btnAddContact.Text = "+";
+            this.btnAddContact.UseVisualStyleBackColor = true;
             // 
             // lblContacts
             // 
@@ -331,7 +431,7 @@
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAdd.AutoSize = true;
-            this.btnAdd.Location = new System.Drawing.Point(216, 691);
+            this.btnAdd.Location = new System.Drawing.Point(312, 691);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(50, 23);
             this.btnAdd.TabIndex = 22;
@@ -342,56 +442,30 @@
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCancel.AutoSize = true;
-            this.btnCancel.Location = new System.Drawing.Point(272, 691);
+            this.btnCancel.Location = new System.Drawing.Point(368, 691);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(53, 23);
             this.btnCancel.TabIndex = 23;
             this.btnCancel.Text = "Annuler";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // lblCodePostal
+            // toolTipAfficheTousDocuments
             // 
-            this.lblCodePostal.AutoSize = true;
-            this.lblCodePostal.Location = new System.Drawing.Point(11, 240);
-            this.lblCodePostal.Name = "lblCodePostal";
-            this.lblCodePostal.Size = new System.Drawing.Size(73, 13);
-            this.lblCodePostal.TabIndex = 24;
-            this.lblCodePostal.Text = "Code Postal : ";
-            // 
-            // txtCodePostal
-            // 
-            this.txtCodePostal.Location = new System.Drawing.Point(138, 237);
-            this.txtCodePostal.Name = "txtCodePostal";
-            this.txtCodePostal.Size = new System.Drawing.Size(94, 20);
-            this.txtCodePostal.TabIndex = 25;
-            // 
-            // lblTown
-            // 
-            this.lblTown.AutoSize = true;
-            this.lblTown.Location = new System.Drawing.Point(284, 244);
-            this.lblTown.Name = "lblTown";
-            this.lblTown.Size = new System.Drawing.Size(34, 13);
-            this.lblTown.TabIndex = 26;
-            this.lblTown.Text = "ville : ";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(344, 241);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 20);
-            this.textBox3.TabIndex = 27;
+            this.toolTipAfficheTousDocuments.Tag = "Afficher tous les documents";
+            this.toolTipAfficheTousDocuments.ToolTipTitle = "Afficher tous les documents";
             // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 726);
+            this.ClientSize = new System.Drawing.Size(730, 726);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gpbClientInformation);
+            this.MaximumSize = new System.Drawing.Size(746, 765);
             this.Name = "Client";
             this.Padding = new System.Windows.Forms.Padding(20);
-            this.Text = "FormClient";
+            this.Text = "Client";
             this.gpbClientInformation.ResumeLayout(false);
             this.gpbClientInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();
@@ -424,8 +498,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn tel;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDeleteContact;
+        private System.Windows.Forms.Button btnAddContact;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtAddress;
@@ -434,5 +508,11 @@
         private System.Windows.Forms.Label lblTown;
         private System.Windows.Forms.TextBox txtCodePostal;
         private System.Windows.Forms.Label lblCodePostal;
+        private System.Windows.Forms.Button btnEditContact;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.Button btnAllDocument;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolTip toolTipAfficheTousDocuments;
     }
 }
