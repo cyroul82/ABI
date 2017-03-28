@@ -28,44 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAddClient = new System.Windows.Forms.Button();
-            this.btnCancelClient = new System.Windows.Forms.Button();
+            this.gpbClientInformation.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnAddClient
+            // gpbClientInformation
             // 
-            this.btnAddClient.Location = new System.Drawing.Point(308, 685);
-            this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
-            this.btnAddClient.TabIndex = 1;
-            this.btnAddClient.Text = "Ajouter";
-            this.btnAddClient.UseVisualStyleBackColor = true;
+            this.gpbClientInformation.Size = new System.Drawing.Size(493, 432);
             // 
-            // btnCancelClient
+            // panel1
             // 
-            this.btnCancelClient.Location = new System.Drawing.Point(392, 685);
-            this.btnCancelClient.Name = "btnCancelClient";
-            this.btnCancelClient.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelClient.TabIndex = 2;
-            this.btnCancelClient.Text = "Annuler";
-            this.btnCancelClient.UseVisualStyleBackColor = true;
+            this.panel1.Location = new System.Drawing.Point(20, 452);
+            this.panel1.Size = new System.Drawing.Size(493, 58);
             // 
             // frmNewClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(730, 723);
-            this.Controls.Add(this.btnCancelClient);
-            this.Controls.Add(this.btnAddClient);
+            this.ClientSize = new System.Drawing.Size(533, 530);
             this.Name = "frmNewClient";
-            this.Controls.SetChildIndex(this.btnAddClient, 0);
-            this.Controls.SetChildIndex(this.btnCancelClient, 0);
+            this.gpbClientInformation.ResumeLayout(false);
+            this.gpbClientInformation.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnAddClient;
-        private System.Windows.Forms.Button btnCancelClient;
     }
 }

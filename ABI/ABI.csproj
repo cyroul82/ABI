@@ -57,6 +57,12 @@
     <Compile Include="FormClient\FormContact\FormContact.Designer.cs">
       <DependentUpon>FormContact.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormGrdClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGrdClient.Designer.cs">
+      <DependentUpon>FormGrdClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,10 +81,10 @@
     <Compile Include="FormClient\frmNewClient.Designer.cs">
       <DependentUpon>frmNewClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormClient\frmNewContact.cs">
+    <Compile Include="FormClient\FormContact\frmNewContact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormClient\frmNewContact.Designer.cs">
+    <Compile Include="FormClient\FormContact\frmNewContact.Designer.cs">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -89,6 +95,9 @@
     <EmbeddedResource Include="FormClient\FormContact\FormContact.resx">
       <DependentUpon>FormContact.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormGrdClient.resx">
+      <DependentUpon>FormGrdClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,7 +107,7 @@
     <EmbeddedResource Include="FormClient\frmNewClient.resx">
       <DependentUpon>frmNewClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormClient\frmNewContact.resx">
+    <EmbeddedResource Include="FormClient\FormContact\frmNewContact.resx">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

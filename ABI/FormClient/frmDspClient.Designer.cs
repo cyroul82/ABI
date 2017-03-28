@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            this.gpbClientInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbxType
@@ -70,11 +71,17 @@
             // 
             this.txtCodePostal.Enabled = false;
             // 
+            // gpbClientInformation
+            // 
+            this.gpbClientInformation.Size = new System.Drawing.Size(490, 441);
+            // 
             // frmDspClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(730, 696);
+            this.ClientSize = new System.Drawing.Size(530, 481);
             this.Name = "frmDspClient";
+            this.gpbClientInformation.ResumeLayout(false);
+            this.gpbClientInformation.PerformLayout();
             this.ResumeLayout(false);
 
 		}

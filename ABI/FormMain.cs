@@ -12,10 +12,6 @@ namespace ABI
 {
     public partial class FormMain : Form
     {
-        //Variable to avoid open twice the from AddClient
-        Boolean isAddClientFormOpened = false;
-        //Object FormClient
-        FormClient fc;
         public FormMain()
         {
             InitializeComponent();
@@ -23,16 +19,9 @@ namespace ABI
 
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (isAddClientFormOpened)
-            {
-                fc.Activate();
-            }else
-            {
-                fc = new FormClient();
-                fc.MdiParent = this;
-                fc.Show();
-            }
-            
+            FormGrdClient fgc = new FormGrdClient();
+            fgc.MdiParent = this;
+            fgc.Show();
             
         }
 
