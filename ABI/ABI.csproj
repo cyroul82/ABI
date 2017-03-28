@@ -45,16 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormClient.cs">
+    <Compile Include="FormClient\FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormClient.Designer.cs">
+    <Compile Include="FormClient\FormClient.Designer.cs">
       <DependentUpon>FormClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormContact.cs">
+    <Compile Include="FormClient\FormContact\FormContact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormContact.Designer.cs">
+    <Compile Include="FormClient\FormContact\FormContact.Designer.cs">
       <DependentUpon>FormContact.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
@@ -63,42 +63,42 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDspClient.cs">
+    <Compile Include="FormClient\frmDspClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDspClient.Designer.cs">
+    <Compile Include="FormClient\frmDspClient.Designer.cs">
       <DependentUpon>frmDspClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNewClient.cs">
+    <Compile Include="FormClient\frmNewClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewClient.Designer.cs">
+    <Compile Include="FormClient\frmNewClient.Designer.cs">
       <DependentUpon>frmNewClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmNewContact.cs">
+    <Compile Include="FormClient\frmNewContact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmNewContact.Designer.cs">
+    <Compile Include="FormClient\frmNewContact.Designer.cs">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormClient.resx">
+    <EmbeddedResource Include="FormClient\FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormContact.resx">
+    <EmbeddedResource Include="FormClient\FormContact\FormContact.resx">
       <DependentUpon>FormContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDspClient.resx">
+    <EmbeddedResource Include="FormClient\frmDspClient.resx">
       <DependentUpon>frmDspClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewClient.resx">
+    <EmbeddedResource Include="FormClient\frmNewClient.resx">
       <DependentUpon>frmNewClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmNewContact.resx">
+    <EmbeddedResource Include="FormClient\frmNewContact.resx">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
