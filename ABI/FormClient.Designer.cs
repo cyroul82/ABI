@@ -1,6 +1,6 @@
 ﻿namespace ABI
 {
-    partial class FormClient
+    partial class Client
     {
         /// <summary>
         /// Required designer variable.
@@ -28,41 +28,202 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gpbClientInformation = new System.Windows.Forms.GroupBox();
-            this.txtCA = new System.Windows.Forms.TextBox();
-            this.lblChiffreAffaire = new System.Windows.Forms.Label();
-            this.cbxNature = new System.Windows.Forms.ComboBox();
-            this.lblNature = new System.Windows.Forms.Label();
-            this.cbxActivity = new System.Windows.Forms.ComboBox();
-            this.lblDomaine = new System.Windows.Forms.Label();
-            this.txtRaisonSocial = new System.Windows.Forms.TextBox();
-            this.cbxType = new System.Windows.Forms.ComboBox();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.lblType = new System.Windows.Forms.Label();
-            this.lblRaisonSocial = new System.Windows.Forms.Label();
             this.lblClientNumber = new System.Windows.Forms.Label();
-            this.gpxContact = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.lblRaisonSocial = new System.Windows.Forms.Label();
+            this.lblType = new System.Windows.Forms.Label();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.cbxType = new System.Windows.Forms.ComboBox();
+            this.txtRaisonSocial = new System.Windows.Forms.TextBox();
+            this.lblDomaine = new System.Windows.Forms.Label();
+            this.cbxActivity = new System.Windows.Forms.ComboBox();
+            this.lblNature = new System.Windows.Forms.Label();
+            this.cbxNature = new System.Windows.Forms.ComboBox();
+            this.lblChiffreAffaire = new System.Windows.Forms.Label();
+            this.txtCA = new System.Windows.Forms.TextBox();
+            this.lblEffectif = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblCommentaire = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.gpbClientInformation = new System.Windows.Forms.GroupBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblContacts = new System.Windows.Forms.Label();
             this.dgvContact = new System.Windows.Forms.DataGridView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tel1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.lblCodePostal = new System.Windows.Forms.Label();
+            this.txtCodePostal = new System.Windows.Forms.TextBox();
+            this.lblTown = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.gpbClientInformation.SuspendLayout();
-            this.gpxContact.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // lblClientNumber
+            // 
+            this.lblClientNumber.AutoSize = true;
+            this.lblClientNumber.Location = new System.Drawing.Point(11, 30);
+            this.lblClientNumber.Name = "lblClientNumber";
+            this.lblClientNumber.Size = new System.Drawing.Size(78, 13);
+            this.lblClientNumber.TabIndex = 0;
+            this.lblClientNumber.Text = "Numéro client :";
+            // 
+            // lblRaisonSocial
+            // 
+            this.lblRaisonSocial.AutoSize = true;
+            this.lblRaisonSocial.Location = new System.Drawing.Point(12, 61);
+            this.lblRaisonSocial.Name = "lblRaisonSocial";
+            this.lblRaisonSocial.Size = new System.Drawing.Size(81, 13);
+            this.lblRaisonSocial.TabIndex = 1;
+            this.lblRaisonSocial.Text = "Raison Social : ";
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(284, 96);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(40, 13);
+            this.lblType.TabIndex = 2;
+            this.lblType.Text = "Type : ";
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Enabled = false;
+            this.txtNumero.Location = new System.Drawing.Point(138, 26);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.ReadOnly = true;
+            this.txtNumero.Size = new System.Drawing.Size(121, 20);
+            this.txtNumero.TabIndex = 3;
+            // 
+            // cbxType
+            // 
+            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxType.FormattingEnabled = true;
+            this.cbxType.Items.AddRange(new object[] {
+            "Public",
+            "Privé"});
+            this.cbxType.Location = new System.Drawing.Point(345, 92);
+            this.cbxType.Name = "cbxType";
+            this.cbxType.Size = new System.Drawing.Size(121, 21);
+            this.cbxType.TabIndex = 4;
+            // 
+            // txtRaisonSocial
+            // 
+            this.txtRaisonSocial.Location = new System.Drawing.Point(138, 57);
+            this.txtRaisonSocial.Name = "txtRaisonSocial";
+            this.txtRaisonSocial.Size = new System.Drawing.Size(328, 20);
+            this.txtRaisonSocial.TabIndex = 5;
+            // 
+            // lblDomaine
+            // 
+            this.lblDomaine.AutoSize = true;
+            this.lblDomaine.Location = new System.Drawing.Point(11, 96);
+            this.lblDomaine.Name = "lblDomaine";
+            this.lblDomaine.Size = new System.Drawing.Size(104, 13);
+            this.lblDomaine.TabIndex = 6;
+            this.lblDomaine.Text = "Domaine d\'Activité : ";
+            // 
+            // cbxActivity
+            // 
+            this.cbxActivity.FormattingEnabled = true;
+            this.cbxActivity.Location = new System.Drawing.Point(137, 92);
+            this.cbxActivity.Name = "cbxActivity";
+            this.cbxActivity.Size = new System.Drawing.Size(121, 21);
+            this.cbxActivity.TabIndex = 7;
+            // 
+            // lblNature
+            // 
+            this.lblNature.AutoSize = true;
+            this.lblNature.Location = new System.Drawing.Point(12, 132);
+            this.lblNature.Name = "lblNature";
+            this.lblNature.Size = new System.Drawing.Size(48, 13);
+            this.lblNature.TabIndex = 8;
+            this.lblNature.Text = "Nature : ";
+            // 
+            // cbxNature
+            // 
+            this.cbxNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxNature.FormattingEnabled = true;
+            this.cbxNature.Items.AddRange(new object[] {
+            "Principale",
+            "Secondaire",
+            "Ancienne"});
+            this.cbxNature.Location = new System.Drawing.Point(138, 128);
+            this.cbxNature.Name = "cbxNature";
+            this.cbxNature.Size = new System.Drawing.Size(121, 21);
+            this.cbxNature.TabIndex = 9;
+            // 
+            // lblChiffreAffaire
+            // 
+            this.lblChiffreAffaire.AutoSize = true;
+            this.lblChiffreAffaire.Location = new System.Drawing.Point(12, 171);
+            this.lblChiffreAffaire.Name = "lblChiffreAffaire";
+            this.lblChiffreAffaire.Size = new System.Drawing.Size(92, 13);
+            this.lblChiffreAffaire.TabIndex = 10;
+            this.lblChiffreAffaire.Text = "Chiffre d\'Affaires : ";
+            // 
+            // txtCA
+            // 
+            this.txtCA.Location = new System.Drawing.Point(137, 167);
+            this.txtCA.Name = "txtCA";
+            this.txtCA.Size = new System.Drawing.Size(121, 20);
+            this.txtCA.TabIndex = 11;
+            // 
+            // lblEffectif
+            // 
+            this.lblEffectif.AutoSize = true;
+            this.lblEffectif.Location = new System.Drawing.Point(284, 132);
+            this.lblEffectif.Name = "lblEffectif";
+            this.lblEffectif.Size = new System.Drawing.Size(54, 13);
+            this.lblEffectif.TabIndex = 14;
+            this.lblEffectif.Text = "Effectifs : ";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(345, 128);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(78, 20);
+            this.textBox1.TabIndex = 15;
+            // 
+            // lblCommentaire
+            // 
+            this.lblCommentaire.AutoSize = true;
+            this.lblCommentaire.Location = new System.Drawing.Point(12, 305);
+            this.lblCommentaire.Name = "lblCommentaire";
+            this.lblCommentaire.Size = new System.Drawing.Size(82, 13);
+            this.lblCommentaire.TabIndex = 16;
+            this.lblCommentaire.Text = "Commentaires : ";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(14, 321);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(460, 105);
+            this.textBox2.TabIndex = 17;
             // 
             // gpbClientInformation
             // 
-            this.gpbClientInformation.Controls.Add(this.btnCancel);
-            this.gpbClientInformation.Controls.Add(this.btnAdd);
+            this.gpbClientInformation.Controls.Add(this.textBox3);
+            this.gpbClientInformation.Controls.Add(this.lblTown);
+            this.gpbClientInformation.Controls.Add(this.txtCodePostal);
+            this.gpbClientInformation.Controls.Add(this.lblCodePostal);
+            this.gpbClientInformation.Controls.Add(this.txtAddress);
+            this.gpbClientInformation.Controls.Add(this.lblAddress);
+            this.gpbClientInformation.Controls.Add(this.button1);
+            this.gpbClientInformation.Controls.Add(this.button2);
+            this.gpbClientInformation.Controls.Add(this.lblContacts);
+            this.gpbClientInformation.Controls.Add(this.dgvContact);
+            this.gpbClientInformation.Controls.Add(this.textBox2);
+            this.gpbClientInformation.Controls.Add(this.lblCommentaire);
+            this.gpbClientInformation.Controls.Add(this.textBox1);
+            this.gpbClientInformation.Controls.Add(this.lblEffectif);
             this.gpbClientInformation.Controls.Add(this.txtCA);
             this.gpbClientInformation.Controls.Add(this.lblChiffreAffaire);
             this.gpbClientInformation.Controls.Add(this.cbxNature);
@@ -75,157 +236,59 @@
             this.gpbClientInformation.Controls.Add(this.lblType);
             this.gpbClientInformation.Controls.Add(this.lblRaisonSocial);
             this.gpbClientInformation.Controls.Add(this.lblClientNumber);
-            this.gpbClientInformation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gpbClientInformation.Location = new System.Drawing.Point(0, 0);
+            this.gpbClientInformation.Location = new System.Drawing.Point(20, 20);
             this.gpbClientInformation.Name = "gpbClientInformation";
-            this.gpbClientInformation.Size = new System.Drawing.Size(535, 365);
+            this.gpbClientInformation.Size = new System.Drawing.Size(498, 654);
             this.gpbClientInformation.TabIndex = 0;
             this.gpbClientInformation.TabStop = false;
-            this.gpbClientInformation.Text = "InformationClient";
+            this.gpbClientInformation.Text = "Information Société";
             // 
-            // txtCA
+            // txtAddress
             // 
-            this.txtCA.Location = new System.Drawing.Point(147, 184);
-            this.txtCA.Name = "txtCA";
-            this.txtCA.Size = new System.Drawing.Size(121, 20);
-            this.txtCA.TabIndex = 11;
+            this.txtAddress.Location = new System.Drawing.Point(137, 203);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(328, 20);
+            this.txtAddress.TabIndex = 23;
             // 
-            // lblChiffreAffaire
+            // lblAddress
             // 
-            this.lblChiffreAffaire.AutoSize = true;
-            this.lblChiffreAffaire.Location = new System.Drawing.Point(19, 188);
-            this.lblChiffreAffaire.Name = "lblChiffreAffaire";
-            this.lblChiffreAffaire.Size = new System.Drawing.Size(92, 13);
-            this.lblChiffreAffaire.TabIndex = 10;
-            this.lblChiffreAffaire.Text = "Chiffre d\'Affaires : ";
-            // 
-            // cbxNature
-            // 
-            this.cbxNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxNature.FormattingEnabled = true;
-            this.cbxNature.Items.AddRange(new object[] {
-            "Principale",
-            "Secondaire",
-            "Ancienne"});
-            this.cbxNature.Location = new System.Drawing.Point(147, 152);
-            this.cbxNature.Name = "cbxNature";
-            this.cbxNature.Size = new System.Drawing.Size(121, 21);
-            this.cbxNature.TabIndex = 9;
-            // 
-            // lblNature
-            // 
-            this.lblNature.AutoSize = true;
-            this.lblNature.Location = new System.Drawing.Point(63, 156);
-            this.lblNature.Name = "lblNature";
-            this.lblNature.Size = new System.Drawing.Size(48, 13);
-            this.lblNature.TabIndex = 8;
-            this.lblNature.Text = "Nature : ";
-            // 
-            // cbxActivity
-            // 
-            this.cbxActivity.FormattingEnabled = true;
-            this.cbxActivity.Location = new System.Drawing.Point(147, 120);
-            this.cbxActivity.Name = "cbxActivity";
-            this.cbxActivity.Size = new System.Drawing.Size(121, 21);
-            this.cbxActivity.TabIndex = 7;
-            // 
-            // lblDomaine
-            // 
-            this.lblDomaine.AutoSize = true;
-            this.lblDomaine.Location = new System.Drawing.Point(9, 124);
-            this.lblDomaine.Name = "lblDomaine";
-            this.lblDomaine.Size = new System.Drawing.Size(104, 13);
-            this.lblDomaine.TabIndex = 6;
-            this.lblDomaine.Text = "Domaine d\'Activité : ";
-            // 
-            // txtRaisonSocial
-            // 
-            this.txtRaisonSocial.Location = new System.Drawing.Point(147, 57);
-            this.txtRaisonSocial.Name = "txtRaisonSocial";
-            this.txtRaisonSocial.Size = new System.Drawing.Size(203, 20);
-            this.txtRaisonSocial.TabIndex = 5;
-            // 
-            // cbxType
-            // 
-            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxType.FormattingEnabled = true;
-            this.cbxType.Items.AddRange(new object[] {
-            "Public",
-            "Privé"});
-            this.cbxType.Location = new System.Drawing.Point(147, 88);
-            this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(121, 21);
-            this.cbxType.TabIndex = 4;
-            // 
-            // txtNumero
-            // 
-            this.txtNumero.Enabled = false;
-            this.txtNumero.Location = new System.Drawing.Point(147, 26);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.ReadOnly = true;
-            this.txtNumero.Size = new System.Drawing.Size(121, 20);
-            this.txtNumero.TabIndex = 3;
-            // 
-            // lblType
-            // 
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(73, 92);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(40, 13);
-            this.lblType.TabIndex = 2;
-            this.lblType.Text = "Type : ";
-            // 
-            // lblRaisonSocial
-            // 
-            this.lblRaisonSocial.AutoSize = true;
-            this.lblRaisonSocial.Location = new System.Drawing.Point(32, 61);
-            this.lblRaisonSocial.Name = "lblRaisonSocial";
-            this.lblRaisonSocial.Size = new System.Drawing.Size(81, 13);
-            this.lblRaisonSocial.TabIndex = 1;
-            this.lblRaisonSocial.Text = "Raison Social : ";
-            // 
-            // lblClientNumber
-            // 
-            this.lblClientNumber.AutoSize = true;
-            this.lblClientNumber.Location = new System.Drawing.Point(63, 30);
-            this.lblClientNumber.Name = "lblClientNumber";
-            this.lblClientNumber.Size = new System.Drawing.Size(78, 13);
-            this.lblClientNumber.TabIndex = 0;
-            this.lblClientNumber.Text = "Numéro client :";
-            // 
-            // gpxContact
-            // 
-            this.gpxContact.Controls.Add(this.dgvContact);
-            this.gpxContact.Controls.Add(this.flowLayoutPanel1);
-            this.gpxContact.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gpxContact.Location = new System.Drawing.Point(0, 365);
-            this.gpxContact.Name = "gpxContact";
-            this.gpxContact.Size = new System.Drawing.Size(535, 225);
-            this.gpxContact.TabIndex = 12;
-            this.gpxContact.TabStop = false;
-            this.gpxContact.Text = "Contacts";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.AutoSize = true;
-            this.button2.Location = new System.Drawing.Point(424, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = true;
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Location = new System.Drawing.Point(11, 207);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(54, 13);
+            this.lblAddress.TabIndex = 22;
+            this.lblAddress.Text = "Adresse : ";
             // 
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.AutoSize = true;
-            this.button1.Location = new System.Drawing.Point(478, 3);
+            this.button1.Location = new System.Drawing.Point(426, 616);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(48, 23);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 20;
             this.button1.Text = "-";
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button2.AutoSize = true;
+            this.button2.Location = new System.Drawing.Point(375, 616);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(48, 23);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "+";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // lblContacts
+            // 
+            this.lblContacts.AutoSize = true;
+            this.lblContacts.Location = new System.Drawing.Point(13, 451);
+            this.lblContacts.Name = "lblContacts";
+            this.lblContacts.Size = new System.Drawing.Size(87, 13);
+            this.lblContacts.TabIndex = 19;
+            this.lblContacts.Text = "Contacts Client : ";
             // 
             // dgvContact
             // 
@@ -234,25 +297,11 @@
             this.Nom,
             this.Type,
             this.Email,
-            this.tel1,
-            this.tel2});
-            this.dgvContact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvContact.Location = new System.Drawing.Point(3, 16);
+            this.tel});
+            this.dgvContact.Location = new System.Drawing.Point(16, 467);
             this.dgvContact.Name = "dgvContact";
-            this.dgvContact.Size = new System.Drawing.Size(529, 177);
-            this.dgvContact.TabIndex = 0;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.button1);
-            this.flowLayoutPanel1.Controls.Add(this.button2);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 193);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(529, 29);
-            this.flowLayoutPanel1.TabIndex = 3;
+            this.dgvContact.Size = new System.Drawing.Size(458, 143);
+            this.dgvContact.TabIndex = 18;
             // 
             // Nom
             // 
@@ -272,26 +321,20 @@
             this.Email.Name = "Email";
             this.Email.ReadOnly = true;
             // 
-            // tel1
+            // tel
             // 
-            this.tel1.HeaderText = "Téléphone 1";
-            this.tel1.Name = "tel1";
-            this.tel1.ReadOnly = true;
-            // 
-            // tel2
-            // 
-            this.tel2.HeaderText = "Téléphone 2";
-            this.tel2.Name = "tel2";
-            this.tel2.ReadOnly = true;
+            this.tel.HeaderText = "Téléphone";
+            this.tel.Name = "tel";
+            this.tel.ReadOnly = true;
             // 
             // btnAdd
             // 
             this.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAdd.AutoSize = true;
-            this.btnAdd.Location = new System.Drawing.Point(417, 336);
+            this.btnAdd.Location = new System.Drawing.Point(216, 691);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(50, 23);
-            this.btnAdd.TabIndex = 12;
+            this.btnAdd.TabIndex = 22;
             this.btnAdd.Text = "Ajouter";
             this.btnAdd.UseVisualStyleBackColor = true;
             // 
@@ -299,59 +342,97 @@
             // 
             this.btnCancel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCancel.AutoSize = true;
-            this.btnCancel.Location = new System.Drawing.Point(473, 336);
+            this.btnCancel.Location = new System.Drawing.Point(272, 691);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(50, 23);
-            this.btnCancel.TabIndex = 13;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Size = new System.Drawing.Size(53, 23);
+            this.btnCancel.TabIndex = 23;
+            this.btnCancel.Text = "Annuler";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // FormClient
+            // lblCodePostal
+            // 
+            this.lblCodePostal.AutoSize = true;
+            this.lblCodePostal.Location = new System.Drawing.Point(11, 240);
+            this.lblCodePostal.Name = "lblCodePostal";
+            this.lblCodePostal.Size = new System.Drawing.Size(73, 13);
+            this.lblCodePostal.TabIndex = 24;
+            this.lblCodePostal.Text = "Code Postal : ";
+            // 
+            // txtCodePostal
+            // 
+            this.txtCodePostal.Location = new System.Drawing.Point(138, 237);
+            this.txtCodePostal.Name = "txtCodePostal";
+            this.txtCodePostal.Size = new System.Drawing.Size(94, 20);
+            this.txtCodePostal.TabIndex = 25;
+            // 
+            // lblTown
+            // 
+            this.lblTown.AutoSize = true;
+            this.lblTown.Location = new System.Drawing.Point(284, 244);
+            this.lblTown.Name = "lblTown";
+            this.lblTown.Size = new System.Drawing.Size(34, 13);
+            this.lblTown.TabIndex = 26;
+            this.lblTown.Text = "ville : ";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(344, 241);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(121, 20);
+            this.textBox3.TabIndex = 27;
+            // 
+            // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(535, 590);
+            this.ClientSize = new System.Drawing.Size(538, 726);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.gpbClientInformation);
-            this.Controls.Add(this.gpxContact);
-            this.Name = "FormClient";
+            this.Name = "Client";
+            this.Padding = new System.Windows.Forms.Padding(20);
             this.Text = "FormClient";
             this.gpbClientInformation.ResumeLayout(false);
             this.gpbClientInformation.PerformLayout();
-            this.gpxContact.ResumeLayout(false);
-            this.gpxContact.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox gpbClientInformation;
         private System.Windows.Forms.Label lblClientNumber;
-        private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.Label lblRaisonSocial;
+        private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.TextBox txtNumero;
-        private System.Windows.Forms.Label lblDomaine;
-        private System.Windows.Forms.TextBox txtRaisonSocial;
         private System.Windows.Forms.ComboBox cbxType;
-        private System.Windows.Forms.TextBox txtCA;
-        private System.Windows.Forms.Label lblChiffreAffaire;
-        private System.Windows.Forms.ComboBox cbxNature;
-        private System.Windows.Forms.Label lblNature;
+        private System.Windows.Forms.TextBox txtRaisonSocial;
+        private System.Windows.Forms.Label lblDomaine;
         private System.Windows.Forms.ComboBox cbxActivity;
-        private System.Windows.Forms.GroupBox gpxContact;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblNature;
+        private System.Windows.Forms.ComboBox cbxNature;
+        private System.Windows.Forms.Label lblChiffreAffaire;
+        private System.Windows.Forms.TextBox txtCA;
+        private System.Windows.Forms.Label lblEffectif;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblCommentaire;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.GroupBox gpbClientInformation;
+        private System.Windows.Forms.Label lblContacts;
         private System.Windows.Forms.DataGridView dgvContact;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tel;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TextBox txtAddress;
+        private System.Windows.Forms.Label lblAddress;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label lblTown;
+        private System.Windows.Forms.TextBox txtCodePostal;
+        private System.Windows.Forms.Label lblCodePostal;
     }
 }

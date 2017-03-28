@@ -19,7 +19,7 @@ namespace ABI
 
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormClient fc = new FormClient();
+            Client fc = new Client();
             fc.MdiParent = this;
             fc.Show();
         }
