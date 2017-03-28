@@ -19,8 +19,15 @@ namespace ABI
 
         private void btnAddClient_Click(object sender, EventArgs e)
         {
+
             frmNewClient fnc = new frmNewClient();
             fnc.ShowDialog();
+
+        }
+
+        private void FormGrdClient_Load(object sender, EventArgs e)
+        {
+
         }
 
     }

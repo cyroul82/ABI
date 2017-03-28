@@ -34,11 +34,7 @@
             // gpbClientInformation
             // 
             this.gpbClientInformation.Size = new System.Drawing.Size(493, 432);
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(20, 452);
-            this.panel1.Size = new System.Drawing.Size(493, 58);
+
             // 
             // frmNewClient
             // 

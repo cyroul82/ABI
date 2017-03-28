@@ -22,7 +22,8 @@ namespace ABI
             FormGrdClient fgc = new FormGrdClient();
             fgc.MdiParent = this;
             fgc.Show();
-            
+
+
         }
 
         private void displayToolStripMenuItem_Click(object sender, EventArgs e)

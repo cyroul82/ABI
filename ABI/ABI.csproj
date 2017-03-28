@@ -87,6 +87,12 @@
     <Compile Include="FormClient\FormContact\frmNewContact.Designer.cs">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </Compile>
+    <Compile Include="GestionCommercial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionCommercial.Designer.cs">
+      <DependentUpon>GestionCommercial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormClient\FormClient.resx">
@@ -109,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormClient\FormContact\frmNewContact.resx">
       <DependentUpon>frmNewContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionCommercial.resx">
+      <DependentUpon>GestionCommercial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
