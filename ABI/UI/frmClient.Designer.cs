@@ -58,7 +58,7 @@
             this.panelListClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelListClient.Location = new System.Drawing.Point(0, 0);
             this.panelListClient.Name = "panelListClient";
-            this.panelListClient.Size = new System.Drawing.Size(580, 509);
+            this.panelListClient.Size = new System.Drawing.Size(576, 505);
             this.panelListClient.TabIndex = 0;
             // 
             // panelControlClient
@@ -70,7 +70,7 @@
             this.panelControlClient.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControlClient.Location = new System.Drawing.Point(0, 33);
             this.panelControlClient.Name = "panelControlClient";
-            this.panelControlClient.Size = new System.Drawing.Size(113, 476);
+            this.panelControlClient.Size = new System.Drawing.Size(113, 472);
             this.panelControlClient.TabIndex = 2;
             // 
             // btnAjouter
@@ -113,7 +113,7 @@
             this.flowLayoutPanelSearchClient.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelSearchClient.Name = "flowLayoutPanelSearchClient";
             this.flowLayoutPanelSearchClient.Padding = new System.Windows.Forms.Padding(113, 0, 0, 0);
-            this.flowLayoutPanelSearchClient.Size = new System.Drawing.Size(580, 33);
+            this.flowLayoutPanelSearchClient.Size = new System.Drawing.Size(576, 33);
             this.flowLayoutPanelSearchClient.TabIndex = 0;
             // 
             // btnSearchClient
@@ -154,7 +154,7 @@
             this.grdClient.Name = "grdClient";
             this.grdClient.ReadOnly = true;
             this.grdClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdClient.Size = new System.Drawing.Size(467, 476);
+            this.grdClient.Size = new System.Drawing.Size(463, 472);
             this.grdClient.TabIndex = 1;
             this.grdClient.SelectionChanged += new System.EventHandler(this.grdClient_SelectionChanged);
             // 
@@ -164,11 +164,12 @@
             this.tabControlClientDetail.Location = new System.Drawing.Point(0, 0);
             this.tabControlClientDetail.Name = "tabControlClientDetail";
             this.tabControlClientDetail.SelectedIndex = 0;
-            this.tabControlClientDetail.Size = new System.Drawing.Size(530, 509);
+            this.tabControlClientDetail.Size = new System.Drawing.Size(526, 505);
             this.tabControlClientDetail.TabIndex = 3;
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";

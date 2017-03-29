@@ -81,16 +81,16 @@ namespace ABI.UI
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
         {
-            Int32 index = grdClient.CurrentRow.Index;
-            if(index != -1)
-            {
-                DataGridViewRow row = grdClient.SelectedRows[index-1];
-                Client c = row.DataBoundItem as Client;
-                if (c != null)
-                {
-                    c = client;
-                }
-            }
+            //Int32 index = grdClient.CurrentRow.Index;
+            //if(index != -1)
+            //{
+            //    DataGridViewRow row = grdClient.SelectedRows[index-1];
+            //    Client c = row.DataBoundItem as Client;
+            //    if (c != null)
+            //    {
+            //        c = client;
+            //    }
+            //}
             
         }
     }
