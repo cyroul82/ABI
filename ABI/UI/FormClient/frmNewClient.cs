@@ -35,10 +35,11 @@ namespace ABI
             Int32 effectif = 0;
             Boolean isEffectifAnInt = Int32.TryParse(txtEffectif.Text, out effectif);
             
-            //R
+            //Create the address
             String ville = txtVille.Text;
             String codePostal = txtCodePostal.Text;
             String rue = txtRue.Text;
+            Adresse adresse = new Adresse(rue, ville, codePostal);
             
         
 

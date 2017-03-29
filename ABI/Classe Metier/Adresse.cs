@@ -12,5 +12,12 @@ namespace ABI
         public String Rue { get; set; }
         public String CodePostal { get; set; }
 
+        public Adresse(String rue, String codePostal, String ville)
+        {
+            Ville = ville;
+            Rue = rue;
+            CodePostal = codePostal;
+        }
+
     }
 }
