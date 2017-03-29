@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAjouterClient = new System.Windows.Forms.Button();
             this.btnFermerClient = new System.Windows.Forms.Button();
+            this.btnAjouterClient = new System.Windows.Forms.Button();
             this.gpbClientInformation.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,15 +49,6 @@
             this.panel1.Size = new System.Drawing.Size(493, 52);
             this.panel1.TabIndex = 1;
             // 
-            // btnAjouterClient
-            // 
-            this.btnAjouterClient.Location = new System.Drawing.Point(153, 18);
-            this.btnAjouterClient.Name = "btnAjouterClient";
-            this.btnAjouterClient.Size = new System.Drawing.Size(75, 23);
-            this.btnAjouterClient.TabIndex = 0;
-            this.btnAjouterClient.Text = "Ajouter";
-            this.btnAjouterClient.UseVisualStyleBackColor = true;
-            // 
             // btnFermerClient
             // 
             this.btnFermerClient.Location = new System.Drawing.Point(258, 17);
@@ -66,6 +57,16 @@
             this.btnFermerClient.TabIndex = 1;
             this.btnFermerClient.Text = "Fermer";
             this.btnFermerClient.UseVisualStyleBackColor = true;
+            // 
+            // btnAjouterClient
+            // 
+            this.btnAjouterClient.Location = new System.Drawing.Point(153, 18);
+            this.btnAjouterClient.Name = "btnAjouterClient";
+            this.btnAjouterClient.Size = new System.Drawing.Size(75, 23);
+            this.btnAjouterClient.TabIndex = 0;
+            this.btnAjouterClient.Text = "Ajouter";
+            this.btnAjouterClient.UseVisualStyleBackColor = true;
+            this.btnAjouterClient.Click += new System.EventHandler(this.btnAjouterClient_Click);
             // 
             // frmNewClient
             // 

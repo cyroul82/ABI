@@ -41,18 +41,18 @@
             this.lblChiffreAffaire = new System.Windows.Forms.Label();
             this.txtCA = new System.Windows.Forms.TextBox();
             this.lblEffectif = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEffectif = new System.Windows.Forms.TextBox();
             this.lblCommentaire = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.gpbClientInformation = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtTelephone = new System.Windows.Forms.TextBox();
+            this.lblTelephone = new System.Windows.Forms.Label();
+            this.txtVille = new System.Windows.Forms.TextBox();
             this.lblTown = new System.Windows.Forms.Label();
             this.txtCodePostal = new System.Windows.Forms.TextBox();
             this.lblCodePostal = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
+            this.txtRue = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.txtTelephone = new System.Windows.Forms.TextBox();
-            this.lblTelephone = new System.Windows.Forms.Label();
             this.gpbClientInformation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -175,12 +175,12 @@
             this.lblEffectif.TabIndex = 14;
             this.lblEffectif.Text = "Effectifs : ";
             // 
-            // textBox1
+            // txtEffectif
             // 
-            this.textBox1.Location = new System.Drawing.Point(345, 128);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(78, 20);
-            this.textBox1.TabIndex = 15;
+            this.txtEffectif.Location = new System.Drawing.Point(345, 128);
+            this.txtEffectif.Name = "txtEffectif";
+            this.txtEffectif.Size = new System.Drawing.Size(78, 20);
+            this.txtEffectif.TabIndex = 15;
             // 
             // lblCommentaire
             // 
@@ -203,15 +203,15 @@
             // 
             this.gpbClientInformation.Controls.Add(this.txtTelephone);
             this.gpbClientInformation.Controls.Add(this.lblTelephone);
-            this.gpbClientInformation.Controls.Add(this.textBox3);
+            this.gpbClientInformation.Controls.Add(this.txtVille);
             this.gpbClientInformation.Controls.Add(this.lblTown);
             this.gpbClientInformation.Controls.Add(this.txtCodePostal);
             this.gpbClientInformation.Controls.Add(this.lblCodePostal);
-            this.gpbClientInformation.Controls.Add(this.txtAddress);
+            this.gpbClientInformation.Controls.Add(this.txtRue);
             this.gpbClientInformation.Controls.Add(this.lblAddress);
             this.gpbClientInformation.Controls.Add(this.textBox2);
             this.gpbClientInformation.Controls.Add(this.lblCommentaire);
-            this.gpbClientInformation.Controls.Add(this.textBox1);
+            this.gpbClientInformation.Controls.Add(this.txtEffectif);
             this.gpbClientInformation.Controls.Add(this.lblEffectif);
             this.gpbClientInformation.Controls.Add(this.txtCA);
             this.gpbClientInformation.Controls.Add(this.lblChiffreAffaire);
@@ -233,12 +233,28 @@
             this.gpbClientInformation.TabStop = false;
             this.gpbClientInformation.Text = "Information Société";
             // 
-            // textBox3
+            // txtTelephone
             // 
-            this.textBox3.Location = new System.Drawing.Point(344, 273);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 20);
-            this.textBox3.TabIndex = 27;
+            this.txtTelephone.Location = new System.Drawing.Point(138, 201);
+            this.txtTelephone.Name = "txtTelephone";
+            this.txtTelephone.Size = new System.Drawing.Size(121, 20);
+            this.txtTelephone.TabIndex = 29;
+            // 
+            // lblTelephone
+            // 
+            this.lblTelephone.AutoSize = true;
+            this.lblTelephone.Location = new System.Drawing.Point(13, 205);
+            this.lblTelephone.Name = "lblTelephone";
+            this.lblTelephone.Size = new System.Drawing.Size(67, 13);
+            this.lblTelephone.TabIndex = 28;
+            this.lblTelephone.Text = "Téléphone : ";
+            // 
+            // txtVille
+            // 
+            this.txtVille.Location = new System.Drawing.Point(344, 273);
+            this.txtVille.Name = "txtVille";
+            this.txtVille.Size = new System.Drawing.Size(121, 20);
+            this.txtVille.TabIndex = 27;
             // 
             // lblTown
             // 
@@ -265,12 +281,12 @@
             this.lblCodePostal.TabIndex = 24;
             this.lblCodePostal.Text = "Code Postal : ";
             // 
-            // txtAddress
+            // txtRue
             // 
-            this.txtAddress.Location = new System.Drawing.Point(137, 235);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(328, 20);
-            this.txtAddress.TabIndex = 23;
+            this.txtRue.Location = new System.Drawing.Point(137, 235);
+            this.txtRue.Name = "txtRue";
+            this.txtRue.Size = new System.Drawing.Size(328, 20);
+            this.txtRue.TabIndex = 23;
             // 
             // lblAddress
             // 
@@ -280,22 +296,6 @@
             this.lblAddress.Size = new System.Drawing.Size(54, 13);
             this.lblAddress.TabIndex = 22;
             this.lblAddress.Text = "Adresse : ";
-            // 
-            // txtTelephone
-            // 
-            this.txtTelephone.Location = new System.Drawing.Point(138, 201);
-            this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(121, 20);
-            this.txtTelephone.TabIndex = 29;
-            // 
-            // lblTelephone
-            // 
-            this.lblTelephone.AutoSize = true;
-            this.lblTelephone.Location = new System.Drawing.Point(13, 205);
-            this.lblTelephone.Name = "lblTelephone";
-            this.lblTelephone.Size = new System.Drawing.Size(67, 13);
-            this.lblTelephone.TabIndex = 28;
-            this.lblTelephone.Text = "Téléphone : ";
             // 
             // FormClient
             // 
@@ -313,7 +313,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lblClientNumber;
         private System.Windows.Forms.Label lblRaisonSocial;
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.Label lblDomaine;
@@ -330,13 +329,14 @@
         protected System.Windows.Forms.ComboBox cbxActivity;
         protected System.Windows.Forms.ComboBox cbxNature;
         protected System.Windows.Forms.TextBox txtCA;
-        protected System.Windows.Forms.TextBox textBox1;
+        protected System.Windows.Forms.TextBox txtEffectif;
         protected System.Windows.Forms.TextBox textBox2;
-        protected System.Windows.Forms.TextBox txtAddress;
-        protected System.Windows.Forms.TextBox textBox3;
+        protected System.Windows.Forms.TextBox txtRue;
+        protected System.Windows.Forms.TextBox txtVille;
         protected System.Windows.Forms.TextBox txtCodePostal;
         protected System.Windows.Forms.GroupBox gpbClientInformation;
         protected System.Windows.Forms.TextBox txtTelephone;
         private System.Windows.Forms.Label lblTelephone;
+        protected System.Windows.Forms.Label lblClientNumber;
     }
 }

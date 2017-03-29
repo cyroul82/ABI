@@ -57,7 +57,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Enabled = false;
+            this.txtEffectif.Enabled = false;
             // 
             // textBox2
             // 
@@ -65,11 +65,11 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Enabled = false;
+            this.txtRue.Enabled = false;
             // 
             // textBox3
             // 
-            this.textBox3.Enabled = false;
+            this.txtVille.Enabled = false;
             // 
             // txtCodePostal
             // 

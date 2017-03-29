@@ -17,7 +17,6 @@ namespace ABI
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-
         }
 
         private void enregistreEvenementsGestionClient()

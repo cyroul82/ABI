@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Classe Metier\Adresse.cs" />
     <Compile Include="Classe Metier\Client.cs" />
+    <Compile Include="Donnees.cs" />
     <Compile Include="UI\FormClient\FormClient.cs">
       <SubType>Form</SubType>
     </Compile>

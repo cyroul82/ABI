@@ -24,5 +24,27 @@ namespace ABI
         {
 
         }
+
+        private void btnAjouterClient_Click(object sender, EventArgs e)
+        {
+            
+            String raisonSocial = txtRaisonSocial.Text;
+            String type = cbxType.SelectedItem.ToString();
+            String activity = cbxActivity.SelectedItem.ToString();
+            String nature = cbxNature.SelectedItem.ToString();
+            Int32 effectif = 0;
+            Boolean isEffectifAnInt = Int32.TryParse(txtEffectif.Text, out effectif);
+            
+            //R
+            String ville = txtVille.Text;
+            String codePostal = txtCodePostal.Text;
+            String rue = txtRue.Text;
+            
+        
+
+
+            //Client client = new ABI.Client(txtRaisonSocial.Text, cbxType.SelectedItem.ToString(), cbxActivity.SelectedItem.ToString(),
+            //                              cbxNature.SelectedItem.ToString(), txtEffectif.Text)
+        }
     }
 }
