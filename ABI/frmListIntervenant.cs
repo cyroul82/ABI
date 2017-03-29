@@ -10,25 +10,17 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    public partial class FormGrdClient : Form
+    public partial class frmListIntervenant : Form
     {
-        public FormGrdClient()
+        public frmListIntervenant()
         {
             InitializeComponent();
         }
 
-        private void btnAddClient_Click(object sender, EventArgs e)
+        private void btnDisplay_Click(object sender, EventArgs e)
         {
-
-            frmNewClient fnc = new frmNewClient();
-            fnc.ShowDialog();
-
+            frmDspClient fdc = new frmDspClient();
+            fdc.ShowDialog();
         }
-
-        private void FormGrdClient_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

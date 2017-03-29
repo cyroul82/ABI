@@ -28,24 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Client 1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Client 2");
             this.panel1 = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnAddClient = new System.Windows.Forms.Button();
-            this.btnDeleteClient = new System.Windows.Forms.Button();
-            this.btnEditClient = new System.Windows.Forms.Button();
+            this.tvClient = new System.Windows.Forms.TreeView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblSearchClient = new System.Windows.Forms.Label();
             this.txtSearchClient = new System.Windows.Forms.TextBox();
             this.btnSearchClient = new System.Windows.Forms.Button();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAddClient = new System.Windows.Forms.Button();
+            this.btnDeleteClient = new System.Windows.Forms.Button();
+            this.btnEditClient = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.treeView1);
+            this.panel1.Controls.Add(this.tvClient);
             this.panel1.Controls.Add(this.flowLayoutPanel1);
             this.panel1.Controls.Add(this.flowLayoutPanel3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -54,47 +56,21 @@
             this.panel1.Size = new System.Drawing.Size(331, 582);
             this.panel1.TabIndex = 1;
             // 
-            // flowLayoutPanel3
+            // tvClient
             // 
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.Controls.Add(this.btnAddClient);
-            this.flowLayoutPanel3.Controls.Add(this.btnDeleteClient);
-            this.flowLayoutPanel3.Controls.Add(this.btnEditClient);
-            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 553);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(331, 29);
-            this.flowLayoutPanel3.TabIndex = 5;
-            // 
-            // btnAddClient
-            // 
-            this.btnAddClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnAddClient.Location = new System.Drawing.Point(3, 3);
-            this.btnAddClient.Name = "btnAddClient";
-            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
-            this.btnAddClient.TabIndex = 0;
-            this.btnAddClient.Text = "Ajouter";
-            this.btnAddClient.UseVisualStyleBackColor = true;
-            // 
-            // btnDeleteClient
-            // 
-            this.btnDeleteClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnDeleteClient.Location = new System.Drawing.Point(84, 3);
-            this.btnDeleteClient.Name = "btnDeleteClient";
-            this.btnDeleteClient.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteClient.TabIndex = 1;
-            this.btnDeleteClient.Text = "Supprimer";
-            this.btnDeleteClient.UseVisualStyleBackColor = true;
-            // 
-            // btnEditClient
-            // 
-            this.btnEditClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEditClient.Location = new System.Drawing.Point(165, 3);
-            this.btnEditClient.Name = "btnEditClient";
-            this.btnEditClient.Size = new System.Drawing.Size(75, 23);
-            this.btnEditClient.TabIndex = 2;
-            this.btnEditClient.Text = "Editer";
-            this.btnEditClient.UseVisualStyleBackColor = true;
+            this.tvClient.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvClient.Location = new System.Drawing.Point(0, 29);
+            this.tvClient.Name = "tvClient";
+            treeNode1.Name = "Nœud0";
+            treeNode1.Text = "Client 1";
+            treeNode2.Name = "Nœud1";
+            treeNode2.Text = "Client 2";
+            this.tvClient.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
+            this.tvClient.Size = new System.Drawing.Size(331, 524);
+            this.tvClient.TabIndex = 7;
+            this.tvClient.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvClient_NodeMouseDoubleClick);
             // 
             // flowLayoutPanel1
             // 
@@ -135,13 +111,48 @@
             this.btnSearchClient.Text = "Ok";
             this.btnSearchClient.UseVisualStyleBackColor = true;
             // 
-            // treeView1
+            // flowLayoutPanel3
             // 
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Location = new System.Drawing.Point(0, 29);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(331, 524);
-            this.treeView1.TabIndex = 7;
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.Controls.Add(this.btnAddClient);
+            this.flowLayoutPanel3.Controls.Add(this.btnDeleteClient);
+            this.flowLayoutPanel3.Controls.Add(this.btnEditClient);
+            this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 553);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(331, 29);
+            this.flowLayoutPanel3.TabIndex = 5;
+            // 
+            // btnAddClient
+            // 
+            this.btnAddClient.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAddClient.Location = new System.Drawing.Point(3, 3);
+            this.btnAddClient.Name = "btnAddClient";
+            this.btnAddClient.Size = new System.Drawing.Size(75, 23);
+            this.btnAddClient.TabIndex = 0;
+            this.btnAddClient.Text = "Ajouter";
+            this.btnAddClient.UseVisualStyleBackColor = true;
+            this.btnAddClient.Click += new System.EventHandler(this.btnAddClient_Click);
+            // 
+            // btnDeleteClient
+            // 
+            this.btnDeleteClient.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnDeleteClient.Location = new System.Drawing.Point(84, 3);
+            this.btnDeleteClient.Name = "btnDeleteClient";
+            this.btnDeleteClient.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteClient.TabIndex = 1;
+            this.btnDeleteClient.Text = "Supprimer";
+            this.btnDeleteClient.UseVisualStyleBackColor = true;
+            // 
+            // btnEditClient
+            // 
+            this.btnEditClient.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnEditClient.Location = new System.Drawing.Point(165, 3);
+            this.btnEditClient.Name = "btnEditClient";
+            this.btnEditClient.Size = new System.Drawing.Size(75, 23);
+            this.btnEditClient.TabIndex = 2;
+            this.btnEditClient.Text = "Editer";
+            this.btnEditClient.UseVisualStyleBackColor = true;
             // 
             // GestionCommercial
             // 
@@ -149,13 +160,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(331, 582);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GestionCommercial";
             this.Text = "GestionCommercial";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -171,6 +183,6 @@
         private System.Windows.Forms.Label lblSearchClient;
         private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Button btnSearchClient;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tvClient;
     }
 }

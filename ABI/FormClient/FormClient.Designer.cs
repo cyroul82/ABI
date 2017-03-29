@@ -51,10 +51,7 @@
             this.lblCodePostal = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.tblControlClient = new System.Windows.Forms.TableLayoutPanel();
-            this.btnFermerClient = new System.Windows.Forms.Button();
             this.gpbClientInformation.SuspendLayout();
-            this.tblControlClient.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblClientNumber
@@ -202,7 +199,6 @@
             // 
             // gpbClientInformation
             // 
-            this.gpbClientInformation.Controls.Add(this.tblControlClient);
             this.gpbClientInformation.Controls.Add(this.textBox3);
             this.gpbClientInformation.Controls.Add(this.lblTown);
             this.gpbClientInformation.Controls.Add(this.txtCodePostal);
@@ -228,7 +224,7 @@
             this.gpbClientInformation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpbClientInformation.Location = new System.Drawing.Point(20, 20);
             this.gpbClientInformation.Name = "gpbClientInformation";
-            this.gpbClientInformation.Size = new System.Drawing.Size(488, 498);
+            this.gpbClientInformation.Size = new System.Drawing.Size(488, 445);
             this.gpbClientInformation.TabIndex = 0;
             this.gpbClientInformation.TabStop = false;
             this.gpbClientInformation.Text = "Information Société";
@@ -281,43 +277,17 @@
             this.lblAddress.TabIndex = 22;
             this.lblAddress.Text = "Adresse : ";
             // 
-            // tblControlClient
-            // 
-            this.tblControlClient.ColumnCount = 2;
-            this.tblControlClient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblControlClient.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblControlClient.Controls.Add(this.btnFermerClient, 1, 0);
-            this.tblControlClient.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tblControlClient.Location = new System.Drawing.Point(3, 432);
-            this.tblControlClient.Name = "tblControlClient";
-            this.tblControlClient.RowCount = 1;
-            this.tblControlClient.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblControlClient.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblControlClient.Size = new System.Drawing.Size(482, 63);
-            this.tblControlClient.TabIndex = 28;
-            // 
-            // btnFermerClient
-            // 
-            this.btnFermerClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnFermerClient.Location = new System.Drawing.Point(324, 20);
-            this.btnFermerClient.Name = "btnFermerClient";
-            this.btnFermerClient.Size = new System.Drawing.Size(75, 23);
-            this.btnFermerClient.TabIndex = 0;
-            this.btnFermerClient.Text = "Fermer";
-            this.btnFermerClient.UseVisualStyleBackColor = true;
-            // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 538);
+            this.ClientSize = new System.Drawing.Size(528, 485);
             this.Controls.Add(this.gpbClientInformation);
             this.Name = "FormClient";
             this.Padding = new System.Windows.Forms.Padding(20);
-            this.Text = "FormClient";
+            this.Text = "Client";
             this.gpbClientInformation.ResumeLayout(false);
             this.gpbClientInformation.PerformLayout();
-            this.tblControlClient.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -346,7 +316,5 @@
         protected System.Windows.Forms.TextBox textBox3;
         protected System.Windows.Forms.TextBox txtCodePostal;
         protected System.Windows.Forms.GroupBox gpbClientInformation;
-        protected System.Windows.Forms.TableLayoutPanel tblControlClient;
-        private System.Windows.Forms.Button btnFermerClient;
     }
 }

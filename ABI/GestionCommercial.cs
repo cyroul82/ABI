@@ -16,5 +16,25 @@ namespace ABI
         {
             InitializeComponent();
         }
+
+        private void btnAddClient_Click(object sender, EventArgs e)
+        {
+            frmNewClient fc = new ABI.frmNewClient();
+            fc.ShowDialog();
+        }
+
+        private void tvClient_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            frmListIntervenant fli = new frmListIntervenant();
+            FormMain fm = this.MdiParent as FormMain;
+            if(fm != null)
+            {
+                fli.MdiParent = fm;
+                //fli.Dock = DockStyle.Top;
+                
+                fli.Show();
+            }
+            
+        }
     }
 }
