@@ -14,5 +14,11 @@ namespace ABI
         {
             InitializeComponent();
         }
+
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            frmNewContact fnc = new frmNewContact();
+            fnc.ShowDialog();
+        }
     }
 }

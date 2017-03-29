@@ -31,36 +31,20 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAnnulerClient = new System.Windows.Forms.Button();
             this.btnAjouterClient = new System.Windows.Forms.Button();
-            this.btnAjouterContact = new System.Windows.Forms.Button();
             this.gpbClientInformation.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpbClientInformation
             // 
-            this.gpbClientInformation.Controls.Add(this.btnAjouterContact);
-            this.gpbClientInformation.Size = new System.Drawing.Size(493, 485);
-            this.gpbClientInformation.Controls.SetChildIndex(this.lblClientNumber, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtNumero, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.cbxType, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtRaisonSocial, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.cbxActivity, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.cbxNature, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtCA, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtEffectif, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.textBox2, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtRue, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtCodePostal, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtVille, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtTelephone, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.btnAjouterContact, 0);
+            this.gpbClientInformation.Size = new System.Drawing.Size(493, 441);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnAnnulerClient);
             this.panel1.Controls.Add(this.btnAjouterClient);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(20, 505);
+            this.panel1.Location = new System.Drawing.Point(20, 461);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(493, 52);
             this.panel1.TabIndex = 1;
@@ -84,20 +68,10 @@
             this.btnAjouterClient.UseVisualStyleBackColor = true;
             this.btnAjouterClient.Click += new System.EventHandler(this.btnAjouterClient_Click);
             // 
-            // btnAjouterContact
-            // 
-            this.btnAjouterContact.Location = new System.Drawing.Point(16, 432);
-            this.btnAjouterContact.Name = "btnAjouterContact";
-            this.btnAjouterContact.Size = new System.Drawing.Size(122, 23);
-            this.btnAjouterContact.TabIndex = 2;
-            this.btnAjouterContact.Text = "Ajouter Contact";
-            this.btnAjouterContact.UseVisualStyleBackColor = true;
-            this.btnAjouterContact.Click += new System.EventHandler(this.btnAjouterContact_Click);
-            // 
             // frmNewClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(533, 577);
+            this.ClientSize = new System.Drawing.Size(533, 533);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmNewClient";
@@ -116,6 +90,5 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnAnnulerClient;
         private System.Windows.Forms.Button btnAjouterClient;
-        private System.Windows.Forms.Button btnAjouterContact;
     }
 }

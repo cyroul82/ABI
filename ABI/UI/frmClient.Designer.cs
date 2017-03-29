@@ -92,6 +92,7 @@
             this.btnAfficher.TabIndex = 3;
             this.btnAfficher.Text = "Afficher";
             this.btnAfficher.UseVisualStyleBackColor = true;
+            this.btnAfficher.Click += new System.EventHandler(this.btnAfficher_Click);
             // 
             // panel2
             // 
