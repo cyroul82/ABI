@@ -47,5 +47,10 @@ namespace ABI
             //Client client = new ABI.Client(txtRaisonSocial.Text, cbxType.SelectedItem.ToString(), cbxActivity.SelectedItem.ToString(),
             //                              cbxNature.SelectedItem.ToString(), txtEffectif.Text)
         }
+
+        private void btnAjouterContact_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

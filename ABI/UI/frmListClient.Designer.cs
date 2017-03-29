@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Client 1");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Client 2");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Client 1");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Client 2");
             this.panel1 = new System.Windows.Forms.Panel();
             this.tvClient = new System.Windows.Forms.TreeView();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -61,13 +61,13 @@
             this.tvClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvClient.Location = new System.Drawing.Point(0, 29);
             this.tvClient.Name = "tvClient";
-            treeNode5.Name = "Nœud0";
-            treeNode5.Text = "Client 1";
-            treeNode6.Name = "Nœud1";
-            treeNode6.Text = "Client 2";
+            treeNode1.Name = "Nœud0";
+            treeNode1.Text = "Client 1";
+            treeNode2.Name = "Nœud1";
+            treeNode2.Text = "Client 2";
             this.tvClient.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6});
+            treeNode1,
+            treeNode2});
             this.tvClient.Size = new System.Drawing.Size(331, 524);
             this.tvClient.TabIndex = 7;
             this.tvClient.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvClient_NodeMouseDoubleClick);
@@ -154,14 +154,14 @@
             this.btnEditClient.Text = "Editer";
             this.btnEditClient.UseVisualStyleBackColor = true;
             // 
-            // GestionCommercial
+            // frmListClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(331, 582);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "GestionCommercial";
+            this.Name = "frmListClient";
             this.Text = "GestionCommercial";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

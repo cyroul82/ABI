@@ -12,7 +12,7 @@ namespace ABI
 {
     public partial class FormMain : Form
     {
-        frmListClient gestionCommercial;
+        ABI.UI.frmClient gestionCommercial;
         public FormMain()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace ABI
         {
             if (gestionCommercial == null)
             {
-                gestionCommercial = new frmListClient();
+                gestionCommercial = new ABI.UI.frmClient();
                 gestionCommercial.MdiParent = this;
                 gestionCommercial.Dock = DockStyle.Left;
                 gestionCommercial.Show();
