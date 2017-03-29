@@ -15,13 +15,18 @@ namespace ABI
         public FormMain()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormGrdClient fgc = new FormGrdClient();
-            fgc.MdiParent = this;
-            fgc.Show();
+            //FormGrdClient fgc = new FormGrdClient();
+            //fgc.MdiParent = this;
+            //fgc.Show();
+            GestionCommercial gc = new GestionCommercial();
+            gc.MdiParent = this;
+            gc.Dock = DockStyle.Left;
+            gc.Show();
 
 
         }

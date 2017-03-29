@@ -51,7 +51,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(331, 511);
+            this.panel1.Size = new System.Drawing.Size(331, 582);
             this.panel1.TabIndex = 1;
             // 
             // flowLayoutPanel3
@@ -61,7 +61,7 @@
             this.flowLayoutPanel3.Controls.Add(this.btnDeleteClient);
             this.flowLayoutPanel3.Controls.Add(this.btnEditClient);
             this.flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 482);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 553);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(331, 29);
             this.flowLayoutPanel3.TabIndex = 5;
@@ -140,16 +140,15 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 29);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(331, 453);
+            this.treeView1.Size = new System.Drawing.Size(331, 524);
             this.treeView1.TabIndex = 7;
             // 
             // GestionCommercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 511);
+            this.ClientSize = new System.Drawing.Size(331, 582);
             this.Controls.Add(this.panel1);
-            this.IsMdiContainer = true;
             this.Name = "GestionCommercial";
             this.Text = "GestionCommercial";
             this.panel1.ResumeLayout(false);
