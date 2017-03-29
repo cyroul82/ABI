@@ -21,5 +21,10 @@ namespace ABI
         {
 
         }
+
+        private void btnNewDoc_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialogDocument.ShowDialog();
+        }
     }
 }

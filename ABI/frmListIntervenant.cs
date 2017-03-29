@@ -33,7 +33,14 @@ namespace ABI
         private void btnNewIntervention_Click(object sender, EventArgs e)
         {
             frmIntervention fi = new frmIntervention();
-            fi.ShowDialog();
+            FormMain fm = this.MdiParent as FormMain;
+            if (fm != null)
+            {
+                fi.MdiParent = fm;
+                fi.Show();
+            }
+            
+
         }
     }
 }

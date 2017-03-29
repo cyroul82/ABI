@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Docs 1");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Documents", new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Docs 1");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Documents", new System.Windows.Forms.TreeNode[] {
+            treeNode5});
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnDelDoc = new System.Windows.Forms.Button();
+            this.btnNewDoc = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -40,6 +43,9 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtTotalHeure = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnDelIntervention = new System.Windows.Forms.Button();
+            this.btnNewInterventation = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRaison = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,22 +54,17 @@
             this.lblNom = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.btnDisplay = new System.Windows.Forms.Button();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnNewInterventation = new System.Windows.Forms.Button();
-            this.btnDelIntervention = new System.Windows.Forms.Button();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.folderBrowserDialogDocument = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel3.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,17 +86,48 @@
             this.panel2.Size = new System.Drawing.Size(200, 35);
             this.panel2.TabIndex = 3;
             // 
+            // flowLayoutPanel5
+            // 
+            this.flowLayoutPanel5.Controls.Add(this.btnDelDoc);
+            this.flowLayoutPanel5.Controls.Add(this.btnNewDoc);
+            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            this.flowLayoutPanel5.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.flowLayoutPanel5.Size = new System.Drawing.Size(200, 35);
+            this.flowLayoutPanel5.TabIndex = 9;
+            // 
+            // btnDelDoc
+            // 
+            this.btnDelDoc.Location = new System.Drawing.Point(112, 3);
+            this.btnDelDoc.Name = "btnDelDoc";
+            this.btnDelDoc.Size = new System.Drawing.Size(75, 23);
+            this.btnDelDoc.TabIndex = 1;
+            this.btnDelDoc.Text = "Supprimer";
+            this.btnDelDoc.UseVisualStyleBackColor = true;
+            // 
+            // btnNewDoc
+            // 
+            this.btnNewDoc.Location = new System.Drawing.Point(31, 3);
+            this.btnNewDoc.Name = "btnNewDoc";
+            this.btnNewDoc.Size = new System.Drawing.Size(75, 23);
+            this.btnNewDoc.TabIndex = 0;
+            this.btnNewDoc.Text = "Ajouter";
+            this.btnNewDoc.UseVisualStyleBackColor = true;
+            this.btnNewDoc.Click += new System.EventHandler(this.btnNewDoc_Click);
+            // 
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Nœud1";
-            treeNode1.Text = "Docs 1";
-            treeNode2.Name = "Nœud0";
-            treeNode2.Text = "Documents";
+            treeNode5.Name = "Nœud1";
+            treeNode5.Text = "Docs 1";
+            treeNode6.Name = "Nœud0";
+            treeNode6.Text = "Documents";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode2});
+            treeNode6});
             this.treeView1.Size = new System.Drawing.Size(200, 355);
             this.treeView1.TabIndex = 2;
             // 
@@ -138,6 +170,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.flowLayoutPanel2.Size = new System.Drawing.Size(524, 32);
             this.flowLayoutPanel2.TabIndex = 6;
             // 
@@ -145,7 +178,7 @@
             // 
             this.txtTotalHeure.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtTotalHeure.Enabled = false;
-            this.txtTotalHeure.Location = new System.Drawing.Point(421, 3);
+            this.txtTotalHeure.Location = new System.Drawing.Point(401, 3);
             this.txtTotalHeure.Name = "txtTotalHeure";
             this.txtTotalHeure.Size = new System.Drawing.Size(100, 20);
             this.txtTotalHeure.TabIndex = 1;
@@ -154,12 +187,42 @@
             // 
             this.lblTotal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(341, 6);
+            this.lblTotal.Location = new System.Drawing.Point(321, 6);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(74, 13);
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "Total Heures :";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.btnDelIntervention);
+            this.flowLayoutPanel4.Controls.Add(this.btnNewInterventation);
+            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 41);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(524, 27);
+            this.flowLayoutPanel4.TabIndex = 8;
+            // 
+            // btnDelIntervention
+            // 
+            this.btnDelIntervention.Location = new System.Drawing.Point(426, 3);
+            this.btnDelIntervention.Name = "btnDelIntervention";
+            this.btnDelIntervention.Size = new System.Drawing.Size(75, 23);
+            this.btnDelIntervention.TabIndex = 1;
+            this.btnDelIntervention.Text = "-";
+            this.btnDelIntervention.UseVisualStyleBackColor = true;
+            // 
+            // btnNewInterventation
+            // 
+            this.btnNewInterventation.Location = new System.Drawing.Point(345, 3);
+            this.btnNewInterventation.Name = "btnNewInterventation";
+            this.btnNewInterventation.Size = new System.Drawing.Size(75, 23);
+            this.btnNewInterventation.TabIndex = 0;
+            this.btnNewInterventation.Text = "+";
+            this.btnNewInterventation.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -231,64 +294,6 @@
             this.btnDisplay.Text = "Afficher";
             this.btnDisplay.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.btnDelIntervention);
-            this.flowLayoutPanel4.Controls.Add(this.btnNewInterventation);
-            this.flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(3, 41);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(524, 27);
-            this.flowLayoutPanel4.TabIndex = 8;
-            // 
-            // btnNewInterventation
-            // 
-            this.btnNewInterventation.Location = new System.Drawing.Point(365, 3);
-            this.btnNewInterventation.Name = "btnNewInterventation";
-            this.btnNewInterventation.Size = new System.Drawing.Size(75, 23);
-            this.btnNewInterventation.TabIndex = 0;
-            this.btnNewInterventation.Text = "Ajouter";
-            this.btnNewInterventation.UseVisualStyleBackColor = true;
-            // 
-            // btnDelIntervention
-            // 
-            this.btnDelIntervention.Location = new System.Drawing.Point(446, 3);
-            this.btnDelIntervention.Name = "btnDelIntervention";
-            this.btnDelIntervention.Size = new System.Drawing.Size(75, 23);
-            this.btnDelIntervention.TabIndex = 1;
-            this.btnDelIntervention.Text = "Supprimer";
-            this.btnDelIntervention.UseVisualStyleBackColor = true;
-            // 
-            // flowLayoutPanel5
-            // 
-            this.flowLayoutPanel5.Controls.Add(this.button1);
-            this.flowLayoutPanel5.Controls.Add(this.button2);
-            this.flowLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(200, 35);
-            this.flowLayoutPanel5.TabIndex = 9;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(122, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Supprimer";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(41, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Ajouter";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // frmIntervention
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,17 +306,17 @@
             this.Load += new System.EventHandler(this.frmIntervention_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.flowLayoutPanel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.flowLayoutPanel3.ResumeLayout(false);
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -336,10 +341,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colRaison;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDelDoc;
+        private System.Windows.Forms.Button btnNewDoc;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.Button btnDelIntervention;
         private System.Windows.Forms.Button btnNewInterventation;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogDocument;
     }
 }

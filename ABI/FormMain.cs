@@ -27,22 +27,13 @@ namespace ABI
             }
         }
 
-        private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void clientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //FormGrdClient fgc = new FormGrdClient();
-            //fgc.MdiParent = this;
-            //fgc.Show();
             gestionCommercial = new GestionCommercial();
             gestionCommercial.MdiParent = this;
             gestionCommercial.Dock = DockStyle.Left;
             gestionCommercial.Show();
-
-
-        }
-
-        private void displayToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
