@@ -81,6 +81,12 @@
     <Compile Include="FormClient\FormContact\frmNewContact.Designer.cs">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmIntervention.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIntervention.Designer.cs">
+      <DependentUpon>frmIntervention.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmListIntervenant.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormClient\FormContact\frmNewContact.resx">
       <DependentUpon>frmNewContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIntervention.resx">
+      <DependentUpon>frmIntervention.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListIntervenant.resx">
       <DependentUpon>frmListIntervenant.cs</DependentUpon>

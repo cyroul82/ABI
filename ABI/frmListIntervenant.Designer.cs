@@ -41,6 +41,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSupprimerInterveant = new System.Windows.Forms.Button();
             this.bntAddIntervenant = new System.Windows.Forms.Button();
+            this.btnNewIntervention = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.flowLayoutPanel2.SuspendLayout();
@@ -138,6 +139,7 @@
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Controls.Add(this.btnSupprimerInterveant);
             this.flowLayoutPanel2.Controls.Add(this.bntAddIntervenant);
+            this.flowLayoutPanel2.Controls.Add(this.btnNewIntervention);
             this.flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 359);
@@ -164,6 +166,17 @@
             this.bntAddIntervenant.TabIndex = 1;
             this.bntAddIntervenant.Text = "Ajouter";
             this.bntAddIntervenant.UseVisualStyleBackColor = true;
+            this.bntAddIntervenant.Click += new System.EventHandler(this.bntAddIntervenant_Click);
+            // 
+            // btnNewIntervention
+            // 
+            this.btnNewIntervention.Location = new System.Drawing.Point(553, 3);
+            this.btnNewIntervention.Name = "btnNewIntervention";
+            this.btnNewIntervention.Size = new System.Drawing.Size(75, 23);
+            this.btnNewIntervention.TabIndex = 2;
+            this.btnNewIntervention.Text = "Intervention";
+            this.btnNewIntervention.UseVisualStyleBackColor = true;
+            this.btnNewIntervention.Click += new System.EventHandler(this.btnNewIntervention_Click);
             // 
             // frmListIntervenant
             // 
@@ -199,5 +212,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button btnSupprimerInterveant;
         private System.Windows.Forms.Button bntAddIntervenant;
+        private System.Windows.Forms.Button btnNewIntervention;
     }
 }

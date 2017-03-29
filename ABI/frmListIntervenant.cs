@@ -22,5 +22,18 @@ namespace ABI
             frmDspClient fdc = new frmDspClient();
             fdc.ShowDialog();
         }
+
+        private void bntAddIntervenant_Click(object sender, EventArgs e)
+        {
+            frmNewContact fnc = new frmNewContact();
+            fnc.ShowDialog();
+
+        }
+
+        private void btnNewIntervention_Click(object sender, EventArgs e)
+        {
+            frmIntervention fi = new frmIntervention();
+            fi.ShowDialog();
+        }
     }
 }

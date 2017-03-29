@@ -29,19 +29,23 @@
         private void InitializeComponent()
         {
             this.gpxContactDetail = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblContactTelephone = new System.Windows.Forms.Label();
+            this.txtContactEmail = new System.Windows.Forms.TextBox();
             this.lblContactEmail = new System.Windows.Forms.Label();
             this.txtContactType = new System.Windows.Forms.TextBox();
             this.txtContactName = new System.Windows.Forms.TextBox();
             this.lblContactType = new System.Windows.Forms.Label();
             this.lblContactName = new System.Windows.Forms.Label();
-            this.txtContactEmail = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblContactTelephone = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblIdContact = new System.Windows.Forms.Label();
             this.gpxContactDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpxContactDetail
             // 
+            this.gpxContactDetail.Controls.Add(this.textBox2);
+            this.gpxContactDetail.Controls.Add(this.lblIdContact);
             this.gpxContactDetail.Controls.Add(this.textBox1);
             this.gpxContactDetail.Controls.Add(this.lblContactTelephone);
             this.gpxContactDetail.Controls.Add(this.txtContactEmail);
@@ -57,10 +61,33 @@
             this.gpxContactDetail.TabStop = false;
             this.gpxContactDetail.Text = "Detail";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(93, 121);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(181, 20);
+            this.textBox1.TabIndex = 21;
+            // 
+            // lblContactTelephone
+            // 
+            this.lblContactTelephone.AutoSize = true;
+            this.lblContactTelephone.Location = new System.Drawing.Point(23, 124);
+            this.lblContactTelephone.Name = "lblContactTelephone";
+            this.lblContactTelephone.Size = new System.Drawing.Size(64, 13);
+            this.lblContactTelephone.TabIndex = 20;
+            this.lblContactTelephone.Text = "Téléphone :";
+            // 
+            // txtContactEmail
+            // 
+            this.txtContactEmail.Location = new System.Drawing.Point(93, 95);
+            this.txtContactEmail.Name = "txtContactEmail";
+            this.txtContactEmail.Size = new System.Drawing.Size(181, 20);
+            this.txtContactEmail.TabIndex = 19;
+            // 
             // lblContactEmail
             // 
             this.lblContactEmail.AutoSize = true;
-            this.lblContactEmail.Location = new System.Drawing.Point(23, 91);
+            this.lblContactEmail.Location = new System.Drawing.Point(23, 99);
             this.lblContactEmail.Name = "lblContactEmail";
             this.lblContactEmail.Size = new System.Drawing.Size(41, 13);
             this.lblContactEmail.TabIndex = 18;
@@ -68,23 +95,22 @@
             // 
             // txtContactType
             // 
-            this.txtContactType.Location = new System.Drawing.Point(93, 61);
+            this.txtContactType.Location = new System.Drawing.Point(93, 69);
             this.txtContactType.Name = "txtContactType";
             this.txtContactType.Size = new System.Drawing.Size(120, 20);
             this.txtContactType.TabIndex = 17;
             // 
             // txtContactName
             // 
-            this.txtContactName.Location = new System.Drawing.Point(93, 35);
+            this.txtContactName.Location = new System.Drawing.Point(93, 43);
             this.txtContactName.Name = "txtContactName";
-            this.txtContactName.ReadOnly = true;
             this.txtContactName.Size = new System.Drawing.Size(121, 20);
             this.txtContactName.TabIndex = 16;
             // 
             // lblContactType
             // 
             this.lblContactType.AutoSize = true;
-            this.lblContactType.Location = new System.Drawing.Point(24, 65);
+            this.lblContactType.Location = new System.Drawing.Point(24, 73);
             this.lblContactType.Name = "lblContactType";
             this.lblContactType.Size = new System.Drawing.Size(40, 13);
             this.lblContactType.TabIndex = 15;
@@ -93,34 +119,28 @@
             // lblContactName
             // 
             this.lblContactName.AutoSize = true;
-            this.lblContactName.Location = new System.Drawing.Point(23, 39);
+            this.lblContactName.Location = new System.Drawing.Point(23, 47);
             this.lblContactName.Name = "lblContactName";
             this.lblContactName.Size = new System.Drawing.Size(35, 13);
             this.lblContactName.TabIndex = 14;
             this.lblContactName.Text = "Nom :";
             // 
-            // txtContactEmail
+            // textBox2
             // 
-            this.txtContactEmail.Location = new System.Drawing.Point(93, 87);
-            this.txtContactEmail.Name = "txtContactEmail";
-            this.txtContactEmail.Size = new System.Drawing.Size(181, 20);
-            this.txtContactEmail.TabIndex = 19;
+            this.textBox2.Location = new System.Drawing.Point(93, 17);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(121, 20);
+            this.textBox2.TabIndex = 23;
             // 
-            // textBox1
+            // lblIdContact
             // 
-            this.textBox1.Location = new System.Drawing.Point(93, 113);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 20);
-            this.textBox1.TabIndex = 21;
-            // 
-            // lblContactTelephone
-            // 
-            this.lblContactTelephone.AutoSize = true;
-            this.lblContactTelephone.Location = new System.Drawing.Point(23, 116);
-            this.lblContactTelephone.Name = "lblContactTelephone";
-            this.lblContactTelephone.Size = new System.Drawing.Size(64, 13);
-            this.lblContactTelephone.TabIndex = 20;
-            this.lblContactTelephone.Text = "Téléphone :";
+            this.lblIdContact.AutoSize = true;
+            this.lblIdContact.Location = new System.Drawing.Point(23, 21);
+            this.lblIdContact.Name = "lblIdContact";
+            this.lblIdContact.Size = new System.Drawing.Size(62, 13);
+            this.lblIdContact.TabIndex = 22;
+            this.lblIdContact.Text = "Identifiant : ";
             // 
             // FormContact
             // 
@@ -147,5 +167,7 @@
         private System.Windows.Forms.TextBox txtContactEmail;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblContactTelephone;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lblIdContact;
     }
 }

@@ -29,9 +29,7 @@ namespace ABI
             FormMain fm = this.MdiParent as FormMain;
             if(fm != null)
             {
-                fli.MdiParent = fm;
-                //fli.Dock = DockStyle.Top;
-                
+                fli.MdiParent = fm;             
                 fli.Show();
             }
             
