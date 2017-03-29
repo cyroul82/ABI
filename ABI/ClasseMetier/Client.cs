@@ -161,7 +161,22 @@ namespace ABI
             this.Effectifs = effectifs;
             this.chiffreAffaires = chiffreAffaires;
             this.CommentComm = commentComm;
-            this.adresse = adresse;
+            ListIntervenant = new List<Intervenant>();
+        }
+
+        public Client(Int32 idClient, String raisonSocial, String typeSociete, String activite,
+                        String nature, Int32 effectifs, Decimal chiffreAffaires, Adresse adresse, String commentComm)
+        {
+            this.idClient = idClient;
+            this.Adresse = adresse;
+            this.IdClient = idClient;
+            this.RaisonSocial = raisonSocial;
+            this.TypeSociete = typeSociete;
+            this.Activite = activite;
+            this.Nature = nature;
+            this.Effectifs = effectifs;
+            this.chiffreAffaires = chiffreAffaires;
+            this.CommentComm = commentComm;
             ListIntervenant = new List<Intervenant>();
         }
     }

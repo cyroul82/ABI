@@ -19,5 +19,10 @@ namespace ABI
             CodePostal = codePostal;
         }
 
+        public override string ToString()
+        {
+            return Rue + " " + CodePostal + " " + Ville;
+        }
+
     }
 }

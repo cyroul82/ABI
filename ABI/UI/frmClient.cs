@@ -16,6 +16,42 @@ namespace ABI.UI
         public frmClient()
         {
             InitializeComponent();
+            Client c = new Client("agmelec", "sarl", "elec", "ar", 3, 1000, new Adresse("rue", "83700", "Saint Raphael"), "comments");
+            Donnees.listClient.Add(c);
+            loadListClient();
+        }
+
+        private void loadListClient()
+        {
+            DataTable dt = new DataTable();
+            DataRow dr;
+
+            dt.Columns.Add(new DataColumn("id Client", typeof(System.Int32)));
+            dt.Columns.Add(new DataColumn("Raison Social", typeof(System.String)));
+            dt.Columns.Add(new DataColumn("Type", typeof(System.String)));
+            dt.Columns.Add(new DataColumn("Activite", typeof(System.String)));
+            dt.Columns.Add(new DataColumn("Nature", typeof(System.String)));
+            dt.Columns.Add(new DataColumn("Effectif", typeof(System.Int32)));
+            dt.Columns.Add(new DataColumn("CA", typeof(System.Decimal)));
+            dt.Columns.Add(new DataColumn("Adresse", typeof(Adresse)));
+            dt.Columns.Add(new DataColumn("Commentaire", typeof(System.String)));
+
+
+            for (Int32 i = 0; i < Donnees.listClient.Count; i++)
+            {
+                dr = dt.NewRow();
+                dr[0] = Donnees.listClient[i].IdClient;
+                dr[1] = Donnees.listClient[i].RaisonSocial;
+                dr[2] = Donnees.listClient[i].TypeSociete;
+                dr[3] = Donnees.listClient[i].Activite;
+                dr[4] = Donnees.listClient[i].Nature;
+                dr[5] = Donnees.listClient[i].Effectifs;
+                dr[6] = Donnees.listClient[i].ChiffreAffaires;
+                dr[7] = Donnees.listClient[i].Adresse;
+                dr[8] = Donnees.listClient[i].CommentComm;
+                dt.Rows.Add(dr);
+            }
+            grdClient.DataSource = dt;
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
@@ -45,12 +81,17 @@ namespace ABI.UI
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
         {
-            DataGridViewRow row = grdClient.SelectedRows[0];
-            Client c = row.DataBoundItem as Client;
-            if(c != null)
+            Int32 index = grdClient.CurrentRow.Index;
+            if(index != -1)
             {
-                c = client;
+                DataGridViewRow row = grdClient.SelectedRows[index-1];
+                Client c = row.DataBoundItem as Client;
+                if (c != null)
+                {
+                    c = client;
+                }
             }
+            
         }
     }
 }
