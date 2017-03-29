@@ -45,9 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classe Metier\Adresse.cs" />
-    <Compile Include="Classe Metier\Client.cs" />
+    <Compile Include="ClasseMetier\Adresse.cs" />
+    <Compile Include="ClasseMetier\Client.cs" />
     <Compile Include="Donnees.cs" />
+    <Compile Include="UI\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormClient\FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,9 +108,12 @@
     <Compile Include="UI\frmListIntervenant.Designer.cs">
       <DependentUpon>frmListIntervenant.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classe Metier\Intervenant.cs" />
+    <Compile Include="ClasseMetier\Intervenant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="UI\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormClient\FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
     </EmbeddedResource>

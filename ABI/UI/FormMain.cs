@@ -33,7 +33,7 @@ namespace ABI
             {
                 gestionCommercial = new ABI.UI.frmClient();
                 gestionCommercial.MdiParent = this;
-                gestionCommercial.Dock = DockStyle.Left;
+                gestionCommercial.Dock = DockStyle.Fill;
                 gestionCommercial.Show();
             }
             else gestionCommercial.Activate();

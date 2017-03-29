@@ -271,6 +271,7 @@
             this.ClientSize = new System.Drawing.Size(987, 563);
             this.Controls.Add(this.gpxContact);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDspClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Controls.SetChildIndex(this.panel1, 0);
