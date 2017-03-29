@@ -30,10 +30,14 @@ namespace ABI
 
         private void clientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gestionCommercial = new frmListClient();
-            gestionCommercial.MdiParent = this;
-            gestionCommercial.Dock = DockStyle.Left;
-            gestionCommercial.Show();
+            if (gestionCommercial == null)
+            {
+                gestionCommercial = new frmListClient();
+                gestionCommercial.MdiParent = this;
+                gestionCommercial.Dock = DockStyle.Left;
+                gestionCommercial.Show();
+            }
+            else gestionCommercial.Activate();
         }
     }
 }

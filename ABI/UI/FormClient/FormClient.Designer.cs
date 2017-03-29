@@ -51,6 +51,8 @@
             this.lblCodePostal = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
+            this.txtTelephone = new System.Windows.Forms.TextBox();
+            this.lblTelephone = new System.Windows.Forms.Label();
             this.gpbClientInformation.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -199,6 +201,8 @@
             // 
             // gpbClientInformation
             // 
+            this.gpbClientInformation.Controls.Add(this.txtTelephone);
+            this.gpbClientInformation.Controls.Add(this.lblTelephone);
             this.gpbClientInformation.Controls.Add(this.textBox3);
             this.gpbClientInformation.Controls.Add(this.lblTown);
             this.gpbClientInformation.Controls.Add(this.txtCodePostal);
@@ -231,7 +235,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(344, 241);
+            this.textBox3.Location = new System.Drawing.Point(344, 273);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(121, 20);
             this.textBox3.TabIndex = 27;
@@ -239,7 +243,7 @@
             // lblTown
             // 
             this.lblTown.AutoSize = true;
-            this.lblTown.Location = new System.Drawing.Point(284, 244);
+            this.lblTown.Location = new System.Drawing.Point(284, 276);
             this.lblTown.Name = "lblTown";
             this.lblTown.Size = new System.Drawing.Size(35, 13);
             this.lblTown.TabIndex = 26;
@@ -247,7 +251,7 @@
             // 
             // txtCodePostal
             // 
-            this.txtCodePostal.Location = new System.Drawing.Point(138, 237);
+            this.txtCodePostal.Location = new System.Drawing.Point(138, 269);
             this.txtCodePostal.Name = "txtCodePostal";
             this.txtCodePostal.Size = new System.Drawing.Size(94, 20);
             this.txtCodePostal.TabIndex = 25;
@@ -255,7 +259,7 @@
             // lblCodePostal
             // 
             this.lblCodePostal.AutoSize = true;
-            this.lblCodePostal.Location = new System.Drawing.Point(11, 240);
+            this.lblCodePostal.Location = new System.Drawing.Point(11, 272);
             this.lblCodePostal.Name = "lblCodePostal";
             this.lblCodePostal.Size = new System.Drawing.Size(73, 13);
             this.lblCodePostal.TabIndex = 24;
@@ -263,7 +267,7 @@
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(137, 203);
+            this.txtAddress.Location = new System.Drawing.Point(137, 235);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(328, 20);
             this.txtAddress.TabIndex = 23;
@@ -271,11 +275,27 @@
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(11, 207);
+            this.lblAddress.Location = new System.Drawing.Point(11, 239);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(54, 13);
             this.lblAddress.TabIndex = 22;
             this.lblAddress.Text = "Adresse : ";
+            // 
+            // txtTelephone
+            // 
+            this.txtTelephone.Location = new System.Drawing.Point(138, 201);
+            this.txtTelephone.Name = "txtTelephone";
+            this.txtTelephone.Size = new System.Drawing.Size(121, 20);
+            this.txtTelephone.TabIndex = 29;
+            // 
+            // lblTelephone
+            // 
+            this.lblTelephone.AutoSize = true;
+            this.lblTelephone.Location = new System.Drawing.Point(13, 205);
+            this.lblTelephone.Name = "lblTelephone";
+            this.lblTelephone.Size = new System.Drawing.Size(67, 13);
+            this.lblTelephone.TabIndex = 28;
+            this.lblTelephone.Text = "Téléphone : ";
             // 
             // FormClient
             // 
@@ -316,5 +336,7 @@
         protected System.Windows.Forms.TextBox textBox3;
         protected System.Windows.Forms.TextBox txtCodePostal;
         protected System.Windows.Forms.GroupBox gpbClientInformation;
+        protected System.Windows.Forms.TextBox txtTelephone;
+        private System.Windows.Forms.Label lblTelephone;
     }
 }
