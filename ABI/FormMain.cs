@@ -12,7 +12,7 @@ namespace ABI
 {
     public partial class FormMain : Form
     {
-        GestionCommercial gestionCommercial;
+        frmListClient gestionCommercial;
         public FormMain()
         {
             InitializeComponent();
@@ -30,7 +30,7 @@ namespace ABI
 
         private void clientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            gestionCommercial = new GestionCommercial();
+            gestionCommercial = new frmListClient();
             gestionCommercial.MdiParent = this;
             gestionCommercial.Dock = DockStyle.Left;
             gestionCommercial.Show();

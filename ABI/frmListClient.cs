@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    public partial class GestionCommercial : Form
+    public partial class frmListClient : Form
     {
-        public GestionCommercial()
+        public frmListClient()
         {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace ABI
             FormMain fm = this.MdiParent as FormMain;
             if(fm != null)
             {
-                fli.MdiParent = fm;             
+                fli.MdiParent = fm;
                 fli.Show();
             }
             
