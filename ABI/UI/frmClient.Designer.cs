@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnAjouter = new System.Windows.Forms.Button();
-            this.btnSupprimer = new System.Windows.Forms.Button();
-            this.btnAfficher = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnAjouter = new System.Windows.Forms.Button();
+            this.btnAfficher = new System.Windows.Forms.Button();
+            this.btnSupprimer = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.lblSearchClient = new System.Windows.Forms.Label();
-            this.txtSearchClient = new System.Windows.Forms.TextBox();
             this.btnSearchClient = new System.Windows.Forms.Button();
+            this.txtSearchClient = new System.Windows.Forms.TextBox();
+            this.lblSearchClient = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -55,15 +55,16 @@
             this.panel1.Size = new System.Drawing.Size(733, 509);
             this.panel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // panel2
             // 
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(733, 509);
-            this.dataGridView1.TabIndex = 1;
+            this.panel2.Controls.Add(this.btnAjouter);
+            this.panel2.Controls.Add(this.btnAfficher);
+            this.panel2.Controls.Add(this.btnSupprimer);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 29);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(113, 480);
+            this.panel2.TabIndex = 2;
             // 
             // btnAjouter
             // 
@@ -75,15 +76,6 @@
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
-            // btnSupprimer
-            // 
-            this.btnSupprimer.Location = new System.Drawing.Point(21, 41);
-            this.btnSupprimer.Name = "btnSupprimer";
-            this.btnSupprimer.Size = new System.Drawing.Size(75, 23);
-            this.btnSupprimer.TabIndex = 2;
-            this.btnSupprimer.Text = "Supprimer";
-            this.btnSupprimer.UseVisualStyleBackColor = true;
-            // 
             // btnAfficher
             // 
             this.btnAfficher.Location = new System.Drawing.Point(21, 70);
@@ -94,16 +86,14 @@
             this.btnAfficher.UseVisualStyleBackColor = true;
             this.btnAfficher.Click += new System.EventHandler(this.btnAfficher_Click);
             // 
-            // panel2
+            // btnSupprimer
             // 
-            this.panel2.Controls.Add(this.btnAjouter);
-            this.panel2.Controls.Add(this.btnAfficher);
-            this.panel2.Controls.Add(this.btnSupprimer);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 29);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(113, 480);
-            this.panel2.TabIndex = 2;
+            this.btnSupprimer.Location = new System.Drawing.Point(21, 41);
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.Size = new System.Drawing.Size(75, 23);
+            this.btnSupprimer.TabIndex = 2;
+            this.btnSupprimer.Text = "Supprimer";
+            this.btnSupprimer.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanel1
             // 
@@ -118,24 +108,6 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(733, 29);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
-            // lblSearchClient
-            // 
-            this.lblSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblSearchClient.AutoSize = true;
-            this.lblSearchClient.Location = new System.Drawing.Point(404, 8);
-            this.lblSearchClient.Name = "lblSearchClient";
-            this.lblSearchClient.Size = new System.Drawing.Size(69, 13);
-            this.lblSearchClient.TabIndex = 3;
-            this.lblSearchClient.Text = "Recherche : ";
-            // 
-            // txtSearchClient
-            // 
-            this.txtSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSearchClient.Location = new System.Drawing.Point(479, 4);
-            this.txtSearchClient.Name = "txtSearchClient";
-            this.txtSearchClient.Size = new System.Drawing.Size(170, 20);
-            this.txtSearchClient.TabIndex = 4;
-            // 
             // btnSearchClient
             // 
             this.btnSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -145,6 +117,34 @@
             this.btnSearchClient.TabIndex = 5;
             this.btnSearchClient.Text = "Ok";
             this.btnSearchClient.UseVisualStyleBackColor = true;
+            // 
+            // txtSearchClient
+            // 
+            this.txtSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtSearchClient.Location = new System.Drawing.Point(372, 4);
+            this.txtSearchClient.Name = "txtSearchClient";
+            this.txtSearchClient.Size = new System.Drawing.Size(277, 20);
+            this.txtSearchClient.TabIndex = 4;
+            // 
+            // lblSearchClient
+            // 
+            this.lblSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblSearchClient.AutoSize = true;
+            this.lblSearchClient.Location = new System.Drawing.Point(297, 8);
+            this.lblSearchClient.Name = "lblSearchClient";
+            this.lblSearchClient.Size = new System.Drawing.Size(69, 13);
+            this.lblSearchClient.TabIndex = 3;
+            this.lblSearchClient.Text = "Recherche : ";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(733, 509);
+            this.dataGridView1.TabIndex = 1;
             // 
             // frmClient
             // 
@@ -156,10 +156,10 @@
             this.Text = "Liste des Clients";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }

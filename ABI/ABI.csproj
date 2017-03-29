@@ -102,12 +102,6 @@
     <Compile Include="UI\frmListIntervenant.Designer.cs">
       <DependentUpon>frmListIntervenant.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\frmListClient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\frmListClient.Designer.cs">
-      <DependentUpon>frmListClient.cs</DependentUpon>
-    </Compile>
     <Compile Include="Classe Metier\Intervenant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,9 +131,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmListIntervenant.resx">
       <DependentUpon>frmListIntervenant.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmListClient.resx">
-      <DependentUpon>frmListClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
