@@ -18,6 +18,10 @@ namespace ABI.UI
         {
             InitializeComponent();
             Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
+            Donnees.listClient.Add(new Client(256, "Made in Mode", "Public", "Agro", "Principale", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
+            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
+            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
+            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
         }
 
 
@@ -52,8 +56,47 @@ namespace ABI.UI
                 dr[7] = Donnees.listClient[i].Telephone;
                 dr[8] = Donnees.listClient[i].Comment;
                 dt.Rows.Add(dr);
+                
             }
             grdClient.DataSource = dt.DefaultView;
+
+            grdClient.Columns[0].Visible = false;
+            // Set the row and column header styles.
+
+            grdClient.RowHeadersDefaultCellStyle.BackColor = Color.Black;
+            
+
+            // Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default
+            // value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+            grdClient.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
+
+
+
+            grdClient.RowsDefaultCellStyle.BackColor = Color.LightGray;
+            grdClient.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray;
+
+            DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
+            columnHeaderStyle.ForeColor = Color.White;
+            columnHeaderStyle.BackColor = Color.Black;
+            columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
+            columnHeaderStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grdClient.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
+
+            DataGridViewCellStyle defaultStyle = new DataGridViewCellStyle();
+            defaultStyle.SelectionBackColor = Color.White;
+            defaultStyle.SelectionForeColor = Color.Black;
+            grdClient.DefaultCellStyle = defaultStyle;
+
+            DataGridViewCellStyle raisonSocialStyle = new DataGridViewCellStyle();
+            raisonSocialStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
+            raisonSocialStyle.ForeColor = Color.DarkBlue;
+            grdClient.Columns["Raison Social"].DefaultCellStyle = raisonSocialStyle;
+
+            DataGridViewCellStyle idClient = new DataGridViewCellStyle();
+            idClient.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grdClient.Columns["id Client"].DefaultCellStyle = idClient;
+
+
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
@@ -111,20 +154,20 @@ namespace ABI.UI
             if (index != -1)
             {
 
-                Int32 o = (Int32)dt.Rows[index][0];
-                Console.WriteLine("int : " + o);
-
-                DataRowView drv = grdClient.CurrentRow.DataBoundItem as DataRowView;
-
-                if (drv != null)
+                Int32 id = (Int32)dt.Rows[index].Field<Int32>("id Client");
+                foreach(Client c in Donnees.listClient)
                 {
-                    DataRow dr = drv.Row;
-                    if (dr != null)
+                    if (c.IdClient == id)
                     {
-                        Client c = dr[index] as Client;
-                        TabPage tabPage1 = new TabPage(c.RaisonSocial);
-                        tabControlClientDetail.Controls.Add(tabPage1);
+                        client = c;
                     }
+                }
+
+                if (client != null)
+                {
+                    TabPage tabPage1 = new TabPage(client.RaisonSocial);
+                    tabControlClientDetail.Controls.Add(tabPage1);
+                    client = null;
                 }
             }
         }
