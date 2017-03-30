@@ -23,8 +23,6 @@ namespace ABI
             {
                 toolTipCodePostal.ToolTipTitle = "Erreur";
                 toolTipCodePostal.Show("Entrez seulement 5 chiffres", mTxtCodePostal, 1000);
-                
-
             }
             else
             {
@@ -52,9 +50,24 @@ namespace ABI
             }
         }
 
-        private bool isRaisonSocialValid()
+        protected Boolean isRaisonSocialValid()
         {
             return (txtRaisonSocial.Text.Length > 0);
+        }
+
+        protected Boolean isActiviteValid()
+        {
+                return cbxActivity.SelectedIndex == -1 ? false : true; 
+        }
+
+        protected Boolean isTypeValid()
+        {
+            return cbxType.SelectedIndex == -1 ? false : true;
+        }
+
+        protected Boolean isNatureValid()
+        {
+            return cbxType.SelectedIndex == -1 ? false : true;
         }
     }
 }

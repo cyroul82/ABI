@@ -32,6 +32,8 @@
             this.btnAnnulerClient = new System.Windows.Forms.Button();
             this.btnAjouterClient = new System.Windows.Forms.Button();
             this.gpbClientInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +62,6 @@
             // 
             // btnAjouterClient
             // 
-            this.btnAjouterClient.Enabled = false;
             this.btnAjouterClient.Location = new System.Drawing.Point(153, 18);
             this.btnAjouterClient.Name = "btnAjouterClient";
             this.btnAjouterClient.Size = new System.Drawing.Size(75, 23);
@@ -81,6 +82,8 @@
             this.Controls.SetChildIndex(this.gpbClientInformation, 0);
             this.gpbClientInformation.ResumeLayout(false);
             this.gpbClientInformation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

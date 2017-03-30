@@ -46,6 +46,7 @@
             this.lblCommentaire = new System.Windows.Forms.Label();
             this.txtComment = new System.Windows.Forms.TextBox();
             this.gpbClientInformation = new System.Windows.Forms.GroupBox();
+            this.mTxtCodePostal = new System.Windows.Forms.MaskedTextBox();
             this.txtTelephone = new System.Windows.Forms.TextBox();
             this.lblTelephone = new System.Windows.Forms.Label();
             this.txtVille = new System.Windows.Forms.TextBox();
@@ -53,13 +54,18 @@
             this.lblCodePostal = new System.Windows.Forms.Label();
             this.txtRue = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.mTxtCodePostal = new System.Windows.Forms.MaskedTextBox();
             this.toolTipCodePostal = new System.Windows.Forms.ToolTip(this.components);
             this.errorProviderCodePostal = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderRaisonSocial = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderActivite = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderType = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderNature = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbClientInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClientNumber
@@ -243,6 +249,18 @@
             this.gpbClientInformation.TabStop = false;
             this.gpbClientInformation.Text = "Information Société";
             // 
+            // mTxtCodePostal
+            // 
+            this.mTxtCodePostal.Location = new System.Drawing.Point(138, 273);
+            this.mTxtCodePostal.Mask = "99999";
+            this.mTxtCodePostal.Name = "mTxtCodePostal";
+            this.mTxtCodePostal.Size = new System.Drawing.Size(53, 20);
+            this.mTxtCodePostal.TabIndex = 30;
+            this.mTxtCodePostal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mTxtCodePostal.ValidatingType = typeof(int);
+            this.mTxtCodePostal.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mTxtCodePostal_MaskInputRejetected);
+            this.mTxtCodePostal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mTxtCodePostal_KeyDown);
+            // 
             // txtTelephone
             // 
             this.txtTelephone.Location = new System.Drawing.Point(138, 201);
@@ -300,18 +318,6 @@
             this.lblAddress.TabIndex = 22;
             this.lblAddress.Text = "Adresse : ";
             // 
-            // mTxtCodePostal
-            // 
-            this.mTxtCodePostal.Location = new System.Drawing.Point(138, 273);
-            this.mTxtCodePostal.Mask = "99999";
-            this.mTxtCodePostal.Name = "mTxtCodePostal";
-            this.mTxtCodePostal.Size = new System.Drawing.Size(53, 20);
-            this.mTxtCodePostal.TabIndex = 30;
-            this.mTxtCodePostal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.mTxtCodePostal.ValidatingType = typeof(int);
-            this.mTxtCodePostal.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mTxtCodePostal_MaskInputRejetected);
-            this.mTxtCodePostal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mTxtCodePostal_KeyDown);
-            // 
             // errorProviderCodePostal
             // 
             this.errorProviderCodePostal.ContainerControl = this;
@@ -319,6 +325,18 @@
             // errorProviderRaisonSocial
             // 
             this.errorProviderRaisonSocial.ContainerControl = this;
+            // 
+            // errorProviderActivite
+            // 
+            this.errorProviderActivite.ContainerControl = this;
+            // 
+            // errorProviderType
+            // 
+            this.errorProviderType.ContainerControl = this;
+            // 
+            // errorProviderNature
+            // 
+            this.errorProviderNature.ContainerControl = this;
             // 
             // FormClient
             // 
@@ -333,6 +351,9 @@
             this.gpbClientInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -364,7 +385,10 @@
         protected System.Windows.Forms.Label lblClientNumber;
         private System.Windows.Forms.ToolTip toolTipCodePostal;
         protected System.Windows.Forms.MaskedTextBox mTxtCodePostal;
-        private System.Windows.Forms.ErrorProvider errorProviderCodePostal;
-        private System.Windows.Forms.ErrorProvider errorProviderRaisonSocial;
+        protected System.Windows.Forms.ErrorProvider errorProviderCodePostal;
+        protected System.Windows.Forms.ErrorProvider errorProviderRaisonSocial;
+        protected System.Windows.Forms.ErrorProvider errorProviderActivite;
+        protected System.Windows.Forms.ErrorProvider errorProviderType;
+        protected System.Windows.Forms.ErrorProvider errorProviderNature;
     }
 }
