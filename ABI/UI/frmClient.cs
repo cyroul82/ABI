@@ -16,8 +16,6 @@ namespace ABI.UI
         public frmClient()
         {
             InitializeComponent();
-            Client c = new Client("agmelec", "sarl", "elec", "ar", 3, 1000, new Adresse("rue", "83700", "Saint Raphael"), "comments");
-            Donnees.listClient.Add(c);
             loadListClient();
         }
 

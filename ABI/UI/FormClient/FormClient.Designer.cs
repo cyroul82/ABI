@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblClientNumber = new System.Windows.Forms.Label();
             this.lblRaisonSocial = new System.Windows.Forms.Label();
             this.lblType = new System.Windows.Forms.Label();
@@ -49,11 +50,16 @@
             this.lblTelephone = new System.Windows.Forms.Label();
             this.txtVille = new System.Windows.Forms.TextBox();
             this.lblTown = new System.Windows.Forms.Label();
-            this.txtCodePostal = new System.Windows.Forms.TextBox();
             this.lblCodePostal = new System.Windows.Forms.Label();
             this.txtRue = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
+            this.mTxtCodePostal = new System.Windows.Forms.MaskedTextBox();
+            this.toolTipCodePostal = new System.Windows.Forms.ToolTip(this.components);
+            this.errorProviderCodePostal = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderRaisonSocial = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbClientInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClientNumber
@@ -110,6 +116,7 @@
             this.txtRaisonSocial.Name = "txtRaisonSocial";
             this.txtRaisonSocial.Size = new System.Drawing.Size(328, 20);
             this.txtRaisonSocial.TabIndex = 5;
+            this.txtRaisonSocial.Validated += new System.EventHandler(this.txtRaisonSocial_Validated);
             // 
             // lblDomaine
             // 
@@ -123,6 +130,9 @@
             // cbxActivity
             // 
             this.cbxActivity.FormattingEnabled = true;
+            this.cbxActivity.Items.AddRange(new object[] {
+            "Agro",
+            "Industrie"});
             this.cbxActivity.Location = new System.Drawing.Point(137, 92);
             this.cbxActivity.Name = "cbxActivity";
             this.cbxActivity.Size = new System.Drawing.Size(121, 21);
@@ -201,11 +211,11 @@
             // 
             // gpbClientInformation
             // 
+            this.gpbClientInformation.Controls.Add(this.mTxtCodePostal);
             this.gpbClientInformation.Controls.Add(this.txtTelephone);
             this.gpbClientInformation.Controls.Add(this.lblTelephone);
             this.gpbClientInformation.Controls.Add(this.txtVille);
             this.gpbClientInformation.Controls.Add(this.lblTown);
-            this.gpbClientInformation.Controls.Add(this.txtCodePostal);
             this.gpbClientInformation.Controls.Add(this.lblCodePostal);
             this.gpbClientInformation.Controls.Add(this.txtRue);
             this.gpbClientInformation.Controls.Add(this.lblAddress);
@@ -265,13 +275,6 @@
             this.lblTown.TabIndex = 26;
             this.lblTown.Text = "Ville : ";
             // 
-            // txtCodePostal
-            // 
-            this.txtCodePostal.Location = new System.Drawing.Point(138, 269);
-            this.txtCodePostal.Name = "txtCodePostal";
-            this.txtCodePostal.Size = new System.Drawing.Size(94, 20);
-            this.txtCodePostal.TabIndex = 25;
-            // 
             // lblCodePostal
             // 
             this.lblCodePostal.AutoSize = true;
@@ -297,6 +300,26 @@
             this.lblAddress.TabIndex = 22;
             this.lblAddress.Text = "Adresse : ";
             // 
+            // mTxtCodePostal
+            // 
+            this.mTxtCodePostal.Location = new System.Drawing.Point(138, 273);
+            this.mTxtCodePostal.Mask = "99999";
+            this.mTxtCodePostal.Name = "mTxtCodePostal";
+            this.mTxtCodePostal.Size = new System.Drawing.Size(53, 20);
+            this.mTxtCodePostal.TabIndex = 30;
+            this.mTxtCodePostal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.mTxtCodePostal.ValidatingType = typeof(int);
+            this.mTxtCodePostal.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mTxtCodePostal_MaskInputRejetected);
+            this.mTxtCodePostal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mTxtCodePostal_KeyDown);
+            // 
+            // errorProviderCodePostal
+            // 
+            this.errorProviderCodePostal.ContainerControl = this;
+            // 
+            // errorProviderRaisonSocial
+            // 
+            this.errorProviderRaisonSocial.ContainerControl = this;
+            // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,6 +331,8 @@
             this.Text = "Client";
             this.gpbClientInformation.ResumeLayout(false);
             this.gpbClientInformation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -333,10 +358,13 @@
         protected System.Windows.Forms.TextBox txtComment;
         protected System.Windows.Forms.TextBox txtRue;
         protected System.Windows.Forms.TextBox txtVille;
-        protected System.Windows.Forms.TextBox txtCodePostal;
         protected System.Windows.Forms.GroupBox gpbClientInformation;
         protected System.Windows.Forms.TextBox txtTelephone;
         private System.Windows.Forms.Label lblTelephone;
         protected System.Windows.Forms.Label lblClientNumber;
+        private System.Windows.Forms.ToolTip toolTipCodePostal;
+        protected System.Windows.Forms.MaskedTextBox mTxtCodePostal;
+        private System.Windows.Forms.ErrorProvider errorProviderCodePostal;
+        private System.Windows.Forms.ErrorProvider errorProviderRaisonSocial;
     }
 }

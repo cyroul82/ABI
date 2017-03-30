@@ -60,6 +60,7 @@
             // 
             // btnAjouterClient
             // 
+            this.btnAjouterClient.Enabled = false;
             this.btnAjouterClient.Location = new System.Drawing.Point(153, 18);
             this.btnAjouterClient.Name = "btnAjouterClient";
             this.btnAjouterClient.Size = new System.Drawing.Size(75, 23);

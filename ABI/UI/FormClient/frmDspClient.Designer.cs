@@ -90,7 +90,7 @@
             // 
             // txtCodePostal
             // 
-            this.txtCodePostal.Enabled = false;
+            this.mTxtCodePostal.Enabled = false;
             // 
             // gpbClientInformation
             // 
@@ -107,7 +107,7 @@
             this.gpbClientInformation.Controls.SetChildIndex(this.txtEffectif, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtComment, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtRue, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtCodePostal, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.mTxtCodePostal, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtVille, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.btnModifier, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtTelephone, 0);

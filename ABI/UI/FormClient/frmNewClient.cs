@@ -39,11 +39,11 @@ namespace ABI
 
             //Create the address
             String ville = txtVille.Text.Trim();
-            String codePostal = txtCodePostal.Text.Trim();
+            String codePostal = mTxtCodePostal.Text.Trim();
             String rue = txtRue.Text.Trim();
             Adresse adresse = new Adresse(rue, ville, codePostal);
 
-            String commentaire =
+            String comment = txtComment.Text.Trim();
 
             if(raisonSocial != "")
             {
@@ -59,13 +59,18 @@ namespace ABI
                                 {
                                     Int32 idClient = Donnees.clientNumber++;
                                     Client client = new Client(idClient, raisonSocial, type, activity,
-                                                                  nature, effectif, chiffreAffaires, adresse,  );
+                                                                  nature, effectif, chiffreAffaires, adresse, comment);
+                                    Donnees.listClient.Add(client);
                                 }
                                 
                             }
                         }
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Vérifier les données", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
 
