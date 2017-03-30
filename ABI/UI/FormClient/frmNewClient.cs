@@ -37,10 +37,14 @@ namespace ABI
             }
             if (!isTypeValid())
             {
-                err
+                errorProviderType.SetError(cbxType, "Requis");
+            }
+            if (!isNatureValid())
+            {
+                errorProviderType.SetError(cbxNature, "Requis");
             }
 
-            if (isRaisonSocialValid() && isActiviteValid())
+            if (isRaisonSocialValid() && isActiviteValid() && isTypeValid() && isNatureValid())
             {
                 String raisonSocial = txtRaisonSocial.Text.Trim();
                 String type = cbxType.SelectedItem.ToString();

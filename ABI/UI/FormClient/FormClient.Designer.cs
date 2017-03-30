@@ -60,12 +60,14 @@
             this.errorProviderActivite = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderType = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderNature = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderVille = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbClientInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClientNumber
@@ -115,6 +117,7 @@
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(121, 21);
             this.cbxType.TabIndex = 4;
+            this.cbxType.Validated += new System.EventHandler(this.cbxType_Validated);
             // 
             // txtRaisonSocial
             // 
@@ -143,6 +146,7 @@
             this.cbxActivity.Name = "cbxActivity";
             this.cbxActivity.Size = new System.Drawing.Size(121, 21);
             this.cbxActivity.TabIndex = 7;
+            this.cbxActivity.Validated += new System.EventHandler(this.cbxActivity_Validated);
             // 
             // lblNature
             // 
@@ -165,6 +169,7 @@
             this.cbxNature.Name = "cbxNature";
             this.cbxNature.Size = new System.Drawing.Size(121, 21);
             this.cbxNature.TabIndex = 9;
+            this.cbxNature.Validated += new System.EventHandler(this.cbxNature_Validated);
             // 
             // lblChiffreAffaire
             // 
@@ -320,23 +325,33 @@
             // 
             // errorProviderCodePostal
             // 
+            this.errorProviderCodePostal.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderCodePostal.ContainerControl = this;
             // 
             // errorProviderRaisonSocial
             // 
+            this.errorProviderRaisonSocial.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderRaisonSocial.ContainerControl = this;
             // 
             // errorProviderActivite
             // 
+            this.errorProviderActivite.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderActivite.ContainerControl = this;
             // 
             // errorProviderType
             // 
+            this.errorProviderType.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderType.ContainerControl = this;
             // 
             // errorProviderNature
             // 
+            this.errorProviderNature.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderNature.ContainerControl = this;
+            // 
+            // errorProviderVille
+            // 
+            this.errorProviderVille.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderVille.ContainerControl = this;
             // 
             // FormClient
             // 
@@ -354,6 +369,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,5 +406,6 @@
         protected System.Windows.Forms.ErrorProvider errorProviderActivite;
         protected System.Windows.Forms.ErrorProvider errorProviderType;
         protected System.Windows.Forms.ErrorProvider errorProviderNature;
+        protected System.Windows.Forms.ErrorProvider errorProviderVille;
     }
 }
