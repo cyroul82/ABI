@@ -27,24 +27,8 @@ namespace ABI
 
         private void btnAjouterClient_Click(object sender, EventArgs e)
         {
-            if (!isRaisonSocialValid())
-            {
-                errorProviderRaisonSocial.SetError(txtRaisonSocial, "Requis");
-            }
-            if (!isActiviteValid())
-            {
-                errorProviderActivite.SetError(cbxActivity, "Requis");
-            }
-            if (!isTypeValid())
-            {
-                errorProviderType.SetError(cbxType, "Requis");
-            }
-            if (!isNatureValid())
-            {
-                errorProviderType.SetError(cbxNature, "Requis");
-            }
-
-            if (isRaisonSocialValid() && isActiviteValid() && isTypeValid() && isNatureValid())
+            if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
+                & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
             {
                 String raisonSocial = txtRaisonSocial.Text.Trim();
                 String type = cbxType.SelectedItem.ToString();
@@ -54,7 +38,7 @@ namespace ABI
                 Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
                 Decimal chiffreAffaires = 0;
                 Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
-
+                String telephone = txtTelephone.Text.Trim();
                 //Create the address
                 String ville = txtVille.Text.Trim();
                 String codePostal = mTxtCodePostal.Text.Trim();
@@ -62,6 +46,11 @@ namespace ABI
                 Adresse adresse = new Adresse(rue, ville, codePostal);
 
                 String comment = txtComment.Text.Trim();
+                Int32 idClient = Donnees.clientNumber++;
+
+                Donnees.listClient.Add(new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, /*adresse,*/ comment, telephone));
+
+                DialogResult = DialogResult.OK;
             }
             
         }
@@ -69,6 +58,11 @@ namespace ABI
         private void btnAjouterContact_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void btnAnnulerClient_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

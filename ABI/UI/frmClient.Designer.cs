@@ -73,6 +73,7 @@
             this.grdClient.Size = new System.Drawing.Size(993, 450);
             this.grdClient.TabIndex = 1;
             this.grdClient.SelectionChanged += new System.EventHandler(this.grdClient_SelectionChanged);
+            this.grdClient.DoubleClick += new System.EventHandler(this.grdClient_DoubleClick);
             this.grdClient.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdClient_MouseClick);
             // 
             // panelControlClient
@@ -188,6 +189,7 @@
             this.MinimizeBox = false;
             this.Name = "frmClient";
             this.Text = "Liste des Clients";
+            this.Load += new System.EventHandler(this.frmClient_Load);
             this.panelListClient.ResumeLayout(false);
             this.panelListClient.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).EndInit();

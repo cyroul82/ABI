@@ -61,6 +61,8 @@
             this.errorProviderType = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderNature = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderVille = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderEffectif = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderCA = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbClientInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
@@ -68,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClientNumber
@@ -186,6 +190,7 @@
             this.txtCA.Name = "txtCA";
             this.txtCA.Size = new System.Drawing.Size(121, 20);
             this.txtCA.TabIndex = 11;
+            this.txtCA.Validated += new System.EventHandler(this.txtCA_Validated);
             // 
             // lblEffectif
             // 
@@ -202,6 +207,7 @@
             this.txtEffectif.Name = "txtEffectif";
             this.txtEffectif.Size = new System.Drawing.Size(78, 20);
             this.txtEffectif.TabIndex = 15;
+            this.txtEffectif.Validated += new System.EventHandler(this.txtEffectif_Validated);
             // 
             // lblCommentaire
             // 
@@ -288,6 +294,7 @@
             this.txtVille.Name = "txtVille";
             this.txtVille.Size = new System.Drawing.Size(121, 20);
             this.txtVille.TabIndex = 27;
+            this.txtVille.Validated += new System.EventHandler(this.txtVille_Validated);
             // 
             // lblTown
             // 
@@ -353,6 +360,16 @@
             this.errorProviderVille.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProviderVille.ContainerControl = this;
             // 
+            // errorProviderEffectif
+            // 
+            this.errorProviderEffectif.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderEffectif.ContainerControl = this;
+            // 
+            // errorProviderCA
+            // 
+            this.errorProviderCA.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderCA.ContainerControl = this;
+            // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,6 +387,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -407,5 +426,7 @@
         protected System.Windows.Forms.ErrorProvider errorProviderType;
         protected System.Windows.Forms.ErrorProvider errorProviderNature;
         protected System.Windows.Forms.ErrorProvider errorProviderVille;
+        protected System.Windows.Forms.ErrorProvider errorProviderEffectif;
+        protected System.Windows.Forms.ErrorProvider errorProviderCA;
     }
 }

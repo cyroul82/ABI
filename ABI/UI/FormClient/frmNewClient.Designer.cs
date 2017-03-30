@@ -34,6 +34,12 @@
             this.gpbClientInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +65,7 @@
             this.btnAnnulerClient.TabIndex = 1;
             this.btnAnnulerClient.Text = "Annuler";
             this.btnAnnulerClient.UseVisualStyleBackColor = true;
+            this.btnAnnulerClient.Click += new System.EventHandler(this.btnAnnulerClient_Click);
             // 
             // btnAjouterClient
             // 
@@ -84,6 +91,12 @@
             this.gpbClientInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

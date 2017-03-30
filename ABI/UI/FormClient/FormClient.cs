@@ -38,24 +38,59 @@ namespace ABI
             errorProviderCodePostal.SetError(mTxtCodePostal, String.Empty);
         }
 
+        protected Boolean isCodePostalValid()
+        {
+            if (mTxtCodePostal.Text.Trim().Length == 0 || errorProviderCodePostal.GetError(mTxtCodePostal) != String.Empty)
+            {
+                errorProviderCodePostal.SetError(mTxtCodePostal, "chiffres");
+                return false;
+            }
+            else
+            {
+                errorProviderCodePostal.SetError(mTxtCodePostal, String.Empty);
+                return true;
+            }
+
+        }
 
 
+        protected Boolean isVilleValid()
+        {
+            if(txtVille.Text.Trim().Length > 0)
+            {
+                errorProviderVille.SetError(txtVille, String.Empty);
+                return true;
+            }
+            else
+            {
+                errorProviderVille.SetError(txtVille, "Requis");
+                return false;
+            }
+        }
+
+        private void txtVille_Validated(object sender, EventArgs e)
+        {
+            isVilleValid();
+        }
 
 
         protected Boolean isRaisonSocialValid()
         {
-            return (txtRaisonSocial.Text.Length > 0);
-        }
-        private void txtRaisonSocial_Validated(object sender, EventArgs e)
-        {
-            if (isRaisonSocialValid())
+            if (txtRaisonSocial.Text.Trim().Length > 0)
             {
                 errorProviderRaisonSocial.SetError(txtRaisonSocial, String.Empty);
+                return true;
             }
             else
             {
                 errorProviderRaisonSocial.SetError(txtRaisonSocial, "requis");
+                return false;
             }
+        }
+
+        private void txtRaisonSocial_Validated(object sender, EventArgs e)
+        {
+            isRaisonSocialValid();
         }
 
 
@@ -64,18 +99,20 @@ namespace ABI
 
         protected Boolean isActiviteValid()
         {
-                return cbxActivity.SelectedIndex == -1 ? false : true; 
-        }
-        private void cbxActivity_Validated(object sender, EventArgs e)
-        {
-            if (isActiviteValid())
+            if(cbxActivity.SelectedIndex == -1)
             {
-                errorProviderActivite.SetError(cbxActivity, String.Empty);
+                errorProviderActivite.SetError(cbxActivity, "Requis");
+                return false;
             }
             else
             {
-                errorProviderActivite.SetError(cbxActivity, "Requis");
+                errorProviderActivite.SetError(cbxActivity, String.Empty);
+                return true;
             }
+        }
+        private void cbxActivity_Validated(object sender, EventArgs e)
+        {
+            isActiviteValid();
         }
 
 
@@ -84,18 +121,20 @@ namespace ABI
 
         protected Boolean isTypeValid()
         {
-            return cbxType.SelectedIndex == -1 ? false : true;
-        }
-        private void cbxType_Validated(object sender, EventArgs e)
-        {
-            if (isTypeValid())
+            if(cbxType.SelectedIndex == -1)
             {
-                errorProviderType.SetError(cbxType, String.Empty);
+                errorProviderType.SetError(cbxType, "Requis");
+                return false;
             }
             else
             {
-                errorProviderType.SetError(cbxType, "Requis");
+                errorProviderType.SetError(cbxType, String.Empty);
+                return true;
             }
+        }
+        private void cbxType_Validated(object sender, EventArgs e)
+        {
+            isTypeValid();
         }
 
 
@@ -104,20 +143,62 @@ namespace ABI
 
         protected Boolean isNatureValid()
         {
-            return cbxNature.SelectedIndex == -1 ? false : true;
+            if (cbxNature.SelectedIndex == -1)
+            {
+                errorProviderNature.SetError(cbxNature, "Requis");
+                return false;
+            }
+            else
+            {
+                errorProviderNature.SetError(cbxNature, String.Empty);
+                return true;
+            }
         }
 
 
         private void cbxNature_Validated(object sender, EventArgs e)
         {
-            if (isNatureValid())
+            isNatureValid();
+        }
+
+        protected Boolean isEffectifValid()
+        {
+            String s = txtEffectif.Text.Trim();
+            Int32 effectif;
+            if (s.Length == 0 || !Int32.TryParse(s, out effectif) | effectif == 0)
             {
-                errorProviderNature.SetError(cbxNature, String.Empty);
+                errorProviderEffectif.SetError(txtEffectif, "Requis");
+                return false;
             }
             else
             {
-                errorProviderNature.SetError(cbxNature, "Requis");
+                errorProviderEffectif.SetError(txtEffectif, String.Empty);
+                return true;
             }
+        }
+        private void txtEffectif_Validated(object sender, EventArgs e)
+        {
+            isEffectifValid();
+        }
+
+        protected Boolean isCAValid()
+        {
+            String s = txtCA.Text.Trim();
+            Decimal ca;
+            if(s.Length == 0 || !Decimal.TryParse(s,out ca) | ca == 0)
+            {
+                errorProviderCA.SetError(txtCA, "Requis");
+                return false;
+            }
+            else
+            {
+                errorProviderCA.SetError(txtCA, String.Empty);
+                return true;
+            }
+        }
+        private void txtCA_Validated(object sender, EventArgs e)
+        {
+            isCAValid();
         }
     }
 }
