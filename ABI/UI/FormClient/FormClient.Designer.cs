@@ -43,7 +43,7 @@
             this.lblEffectif = new System.Windows.Forms.Label();
             this.txtEffectif = new System.Windows.Forms.TextBox();
             this.lblCommentaire = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtComment = new System.Windows.Forms.TextBox();
             this.gpbClientInformation = new System.Windows.Forms.GroupBox();
             this.txtTelephone = new System.Windows.Forms.TextBox();
             this.lblTelephone = new System.Windows.Forms.Label();
@@ -191,13 +191,13 @@
             this.lblCommentaire.TabIndex = 16;
             this.lblCommentaire.Text = "Commentaires : ";
             // 
-            // textBox2
+            // txtComment
             // 
-            this.textBox2.Location = new System.Drawing.Point(14, 321);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(460, 105);
-            this.textBox2.TabIndex = 17;
+            this.txtComment.Location = new System.Drawing.Point(14, 321);
+            this.txtComment.Multiline = true;
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(460, 105);
+            this.txtComment.TabIndex = 17;
             // 
             // gpbClientInformation
             // 
@@ -209,7 +209,7 @@
             this.gpbClientInformation.Controls.Add(this.lblCodePostal);
             this.gpbClientInformation.Controls.Add(this.txtRue);
             this.gpbClientInformation.Controls.Add(this.lblAddress);
-            this.gpbClientInformation.Controls.Add(this.textBox2);
+            this.gpbClientInformation.Controls.Add(this.txtComment);
             this.gpbClientInformation.Controls.Add(this.lblCommentaire);
             this.gpbClientInformation.Controls.Add(this.txtEffectif);
             this.gpbClientInformation.Controls.Add(this.lblEffectif);
@@ -330,7 +330,7 @@
         protected System.Windows.Forms.ComboBox cbxNature;
         protected System.Windows.Forms.TextBox txtCA;
         protected System.Windows.Forms.TextBox txtEffectif;
-        protected System.Windows.Forms.TextBox textBox2;
+        protected System.Windows.Forms.TextBox txtComment;
         protected System.Windows.Forms.TextBox txtRue;
         protected System.Windows.Forms.TextBox txtVille;
         protected System.Windows.Forms.TextBox txtCodePostal;

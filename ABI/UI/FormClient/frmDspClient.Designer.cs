@@ -78,7 +78,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Enabled = false;
+            this.txtComment.Enabled = false;
             // 
             // txtRue
             // 
@@ -105,7 +105,7 @@
             this.gpbClientInformation.Controls.SetChildIndex(this.cbxNature, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtCA, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtEffectif, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.textBox2, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtComment, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtRue, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtCodePostal, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtVille, 0);

@@ -9,5 +9,6 @@ namespace ABI
     public class Donnees
     {
         public static List<Client> listClient = new List<Client>() ;
+        public static Int32 clientNumber = 0;
     }
 }

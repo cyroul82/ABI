@@ -27,25 +27,49 @@ namespace ABI
 
         private void btnAjouterClient_Click(object sender, EventArgs e)
         {
-            
-            //String raisonSocial = txtRaisonSocial.Text;
-            //String type = cbxType.SelectedItem.ToString();
-            //String activity = cbxActivity.SelectedItem.ToString();
-            //String nature = cbxNature.SelectedItem.ToString();
-            //Int32 effectif = 0;
-            //Boolean isEffectifAnInt = Int32.TryParse(txtEffectif.Text, out effectif);
-            
-            ////Create the address
-            //String ville = txtVille.Text;
-            //String codePostal = txtCodePostal.Text;
-            //String rue = txtRue.Text;
-            //Adresse adresse = new Adresse(rue, ville, codePostal);
-            
-        
+
+            String raisonSocial = txtRaisonSocial.Text.Trim();
+            String type = cbxType.SelectedItem.ToString();
+            String activity = cbxActivity.SelectedItem.ToString();
+            String nature = cbxNature.SelectedItem.ToString();
+            Int32 effectif = 0;
+            Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
+            Decimal chiffreAffaires = 0;
+            Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
+
+            //Create the address
+            String ville = txtVille.Text.Trim();
+            String codePostal = txtCodePostal.Text.Trim();
+            String rue = txtRue.Text.Trim();
+            Adresse adresse = new Adresse(rue, ville, codePostal);
+
+            String commentaire =
+
+            if(raisonSocial != "")
+            {
+                if(type != "")
+                {
+                    if (activity != "")
+                    {
+                        if(nature != "")
+                        {
+                            if (isEffectifInt)
+                            {
+                                if(isChiffreAffaireDecimal)
+                                {
+                                    Int32 idClient = Donnees.clientNumber++;
+                                    Client client = new Client(idClient, raisonSocial, type, activity,
+                                                                  nature, effectif, chiffreAffaires, adresse,  );
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
 
 
-            //Client client = new ABI.Client(txtRaisonSocial.Text, cbxType.SelectedItem.ToString(), cbxActivity.SelectedItem.ToString(),
-            //                              cbxNature.SelectedItem.ToString(), txtEffectif.Text)
+            
         }
 
         private void btnAjouterContact_Click(object sender, EventArgs e)

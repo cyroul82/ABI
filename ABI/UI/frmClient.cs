@@ -48,7 +48,7 @@ namespace ABI.UI
                 dr[5] = Donnees.listClient[i].Effectifs;
                 dr[6] = Donnees.listClient[i].ChiffreAffaires;
                 dr[7] = Donnees.listClient[i].Adresse;
-                dr[8] = Donnees.listClient[i].CommentComm;
+                dr[8] = Donnees.listClient[i].Comment;
                 dt.Rows.Add(dr);
             }
             grdClient.DataSource = dt;
@@ -91,7 +91,11 @@ namespace ABI.UI
             //        c = client;
             //    }
             //}
-            
+        }
+
+        private void grdClient_MouseClick(object sender, MouseEventArgs e)
+        {
+    
         }
     }
 }

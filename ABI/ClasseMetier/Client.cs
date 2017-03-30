@@ -16,7 +16,7 @@ namespace ABI
         private String nature;
         private Int32 effectifs;
         private Decimal chiffreAffaires;
-        private String commentComm;
+        private String comment;
         private List<Intervenant> listIntervenant;
 
         public Adresse Adresse
@@ -123,16 +123,16 @@ namespace ABI
             }
         }
 
-        public String CommentComm
+        public String Comment
         {
             get
             {
-                return commentComm;
+                return comment;
             }
 
             set
             {
-                commentComm = value;
+                comment = value;
             }
         }
 
@@ -149,10 +149,10 @@ namespace ABI
             }
         }
 
-        public Client(String raisonSocial, String typeSociete, String activite, String nature, Int32 effectifs, Decimal chiffreAffaires, Adresse adresse, String commentComm)
-        {
-            this.idClient = Donnees.listClient.Count + 1;
-            this.Adresse = adresse;
+        public Client(Int32 idClient, String raisonSocial, String typeSociete, 
+                        String activite, String nature, Int32 effectifs, 
+                        Decimal chiffreAffaires, Adresse adresse, String comment)
+        {           
             this.IdClient = idClient;
             this.RaisonSocial = raisonSocial;
             this.TypeSociete = typeSociete;
@@ -160,23 +160,8 @@ namespace ABI
             this.Nature = nature;
             this.Effectifs = effectifs;
             this.chiffreAffaires = chiffreAffaires;
-            this.CommentComm = commentComm;
-            ListIntervenant = new List<Intervenant>();
-        }
-
-        public Client(Int32 idClient, String raisonSocial, String typeSociete, String activite,
-                        String nature, Int32 effectifs, Decimal chiffreAffaires, Adresse adresse, String commentComm)
-        {
-            this.idClient = idClient;
             this.Adresse = adresse;
-            this.IdClient = idClient;
-            this.RaisonSocial = raisonSocial;
-            this.TypeSociete = typeSociete;
-            this.Activite = activite;
-            this.Nature = nature;
-            this.Effectifs = effectifs;
-            this.chiffreAffaires = chiffreAffaires;
-            this.CommentComm = commentComm;
+            this.Comment = comment;
             ListIntervenant = new List<Intervenant>();
         }
     }
