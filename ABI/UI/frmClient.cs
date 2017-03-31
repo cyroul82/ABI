@@ -102,10 +102,18 @@ namespace ABI.UI
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmNewClient fnc = new frmNewClient();
-            if(fnc.ShowDialog() == DialogResult.OK)
+            DialogResult result = fnc.ShowDialog();
+            if(result == DialogResult.OK)
             {
                 loadListClient();
             }
+            if(result == DialogResult.Yes)
+            {
+                loadListClient();
+                client = fnc.ClientCreated;
+                displayClientTab();
+            }
+            
         }
 
         private void btnAfficher_Click(object sender, EventArgs e)
@@ -147,10 +155,45 @@ namespace ABI.UI
             }
         }
 
+        private Boolean isTabOpen()
+        {
+            Boolean isOpen = false;
+            for (Int32 i = 0; i < tabControlClientDetail.TabCount; i++)
+            {
+                if (tabControlClientDetail.TabPages[i].Text == client.RaisonSocial)
+                {
+                    isOpen = true;
+                }
+
+            }
+
+            return isOpen;
+        }
+
+        private void removeTab(TabPage tabPage)
+        {
+            tabControlClientDetail.TabPages.Remove(tabPage);
+        }
+
+        private TabPage findTab()
+        {
+            TabPage tabPage = null;
+            for (Int32 i = 0; i < tabControlClientDetail.TabCount; i++)
+            {
+                
+                if (tabControlClientDetail.TabPages[i].Text == client.RaisonSocial)
+                {
+                    tabPage = tabControlClientDetail.TabPages[i];
+                }
+
+            }
+            return tabPage;
+        }
+
         private void displayClientTab()
         {
             bool b = true;
-            for(int i=0; i <tabControlClientDetail.TabCount; i++)
+            for(Int32 i=0; i <tabControlClientDetail.TabCount; i++)
             {
                 TabPage t = tabControlClientDetail.TabPages[i];
                 if(t.Text == client.RaisonSocial)
@@ -164,6 +207,7 @@ namespace ABI.UI
             if (b)
             {
                 frmDspClient fdc = new frmDspClient(client);
+                fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
                 fdc.TopLevel = false;
                 fdc.Dock = DockStyle.Fill;
 
@@ -176,6 +220,19 @@ namespace ABI.UI
             }
         }
 
+        private void displayForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            frmDspClient f = sender as frmDspClient;
+            if(f != null)
+            {
+                TabPage tabPage = findTab();
+                if (tabPage != null)
+                {
+                    removeTab(tabPage);
+                }
+            }
+        }
+
         private void frmClient_Load(object sender, EventArgs e)
         {
             loadListClient();
@@ -183,6 +240,30 @@ namespace ABI.UI
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                TabPage tabPage = findTab();
+                if(tabPage != null)
+                {
+                    removeTab(tabPage);
+                }
+                foreach (DataGridViewRow row in grdClient.SelectedRows)
+                {
+                    Int32 id = (Int32)row.Cells[0].Value;
+
+                    foreach (Client c in Donnees.listClient)
+                    {
+                        if (c.IdClient == id)
+                        {
+                            client = c;
+                        }
+                    }
+                }
+                Donnees.listClient.Remove(client);
+                client = null;
+                loadListClient();
+            }
             
         }
     }

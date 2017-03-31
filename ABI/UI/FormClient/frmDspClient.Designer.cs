@@ -44,6 +44,14 @@
             this.lblSearchClient = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gpbClientInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).BeginInit();
             this.panel1.SuspendLayout();
             this.gpxContact.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -76,7 +84,7 @@
             // 
             this.txtEffectif.Enabled = false;
             // 
-            // textBox2
+            // txtComment
             // 
             this.txtComment.Enabled = false;
             // 
@@ -87,10 +95,6 @@
             // txtVille
             // 
             this.txtVille.Enabled = false;
-            // 
-            // txtCodePostal
-            // 
-            this.mTxtCodePostal.Enabled = false;
             // 
             // gpbClientInformation
             // 
@@ -115,6 +119,10 @@
             // txtTelephone
             // 
             this.txtTelephone.Enabled = false;
+            // 
+            // mTxtCodePostal
+            // 
+            this.mTxtCodePostal.Enabled = false;
             // 
             // panel1
             // 
@@ -143,6 +151,7 @@
             this.btnFermer.TabIndex = 1;
             this.btnFermer.Text = "Fermer";
             this.btnFermer.UseVisualStyleBackColor = true;
+            this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
             // 
             // btnModifier
             // 
@@ -279,6 +288,14 @@
             this.Controls.SetChildIndex(this.gpxContact, 0);
             this.gpbClientInformation.ResumeLayout(false);
             this.gpbClientInformation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderNature)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).EndInit();
             this.panel1.ResumeLayout(false);
             this.gpxContact.ResumeLayout(false);
             this.panel2.ResumeLayout(false);

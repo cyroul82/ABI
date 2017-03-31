@@ -10,17 +10,24 @@ namespace ABI
 {
     public partial class frmDspClient : ABI.FormClient
     {
-        private Client client;
+        public Client Client { get; private set; }
         public frmDspClient(Client client)
         {
             InitializeComponent();
-            this.client = client;
+            this.Client = client;
         }
+
+        
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmNewContact fnc = new frmNewContact();
             fnc.ShowDialog();
+        }
+
+        private void btnFermer_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

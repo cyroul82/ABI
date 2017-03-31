@@ -10,22 +10,14 @@ namespace ABI
 {
     public partial class frmNewClient : ABI.FormClient
     {
+
+        public Client ClientCreated { get; private set; } = null;
         public frmNewClient()
         {
             InitializeComponent();
         }
 
-        private void btnAddClient_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCancelClient_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAjouterClient_Click(object sender, EventArgs e)
+        private void createClient()
         {
             if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
                 & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
@@ -48,21 +40,26 @@ namespace ABI
                 String comment = txtComment.Text.Trim();
                 Int32 idClient = Donnees.clientNumber++;
 
-                Donnees.listClient.Add(new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, /*adresse,*/ comment, telephone));
-
-                DialogResult = DialogResult.OK;
+                ClientCreated = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, /*adresse,*/ comment, telephone);
+                Donnees.listClient.Add(ClientCreated);
             }
-            
         }
 
-        private void btnAjouterContact_Click(object sender, EventArgs e)
+        private void btnAjouterClient_Click(object sender, EventArgs e)
         {
-            
+            createClient();
+            DialogResult = DialogResult.OK;
         }
 
         private void btnAnnulerClient_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            createClient();
+            DialogResult = DialogResult.Yes;
         }
     }
 }
