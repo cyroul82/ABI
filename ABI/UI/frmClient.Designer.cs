@@ -61,6 +61,9 @@
             // 
             // grdClient
             // 
+            this.grdClient.AllowUserToAddRows = false;
+            this.grdClient.AllowUserToDeleteRows = false;
+            this.grdClient.AllowUserToOrderColumns = true;
             this.grdClient.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grdClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

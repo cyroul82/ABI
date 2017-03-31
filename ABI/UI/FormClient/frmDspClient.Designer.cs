@@ -43,6 +43,7 @@
             this.txtSearchClient = new System.Windows.Forms.TextBox();
             this.lblSearchClient = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAnnulerModif = new System.Windows.Forms.Button();
             this.gpbClientInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
@@ -98,6 +99,7 @@
             // 
             // gpbClientInformation
             // 
+            this.gpbClientInformation.Controls.Add(this.btnAnnulerModif);
             this.gpbClientInformation.Controls.Add(this.btnModifier);
             this.gpbClientInformation.Dock = System.Windows.Forms.DockStyle.Left;
             this.gpbClientInformation.Size = new System.Drawing.Size(490, 484);
@@ -115,6 +117,7 @@
             this.gpbClientInformation.Controls.SetChildIndex(this.txtVille, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.btnModifier, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtTelephone, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.btnAnnulerModif, 0);
             // 
             // txtTelephone
             // 
@@ -131,7 +134,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(20, 504);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(947, 39);
+            this.panel1.Size = new System.Drawing.Size(956, 39);
             this.panel1.TabIndex = 1;
             // 
             // btnEnregistrer
@@ -155,12 +158,13 @@
             // 
             // btnModifier
             // 
-            this.btnModifier.Location = new System.Drawing.Point(399, 432);
+            this.btnModifier.Location = new System.Drawing.Point(265, 25);
             this.btnModifier.Name = "btnModifier";
             this.btnModifier.Size = new System.Drawing.Size(75, 23);
             this.btnModifier.TabIndex = 0;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
+            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
             // 
             // gpxContact
             // 
@@ -168,7 +172,7 @@
             this.gpxContact.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpxContact.Location = new System.Drawing.Point(510, 20);
             this.gpxContact.Name = "gpxContact";
-            this.gpxContact.Size = new System.Drawing.Size(457, 484);
+            this.gpxContact.Size = new System.Drawing.Size(466, 484);
             this.gpxContact.TabIndex = 2;
             this.gpxContact.TabStop = false;
             this.gpxContact.Text = "Contact";
@@ -181,7 +185,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 16);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(451, 465);
+            this.panel2.Size = new System.Drawing.Size(460, 465);
             this.panel2.TabIndex = 1;
             // 
             // panel3
@@ -233,13 +237,13 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(451, 29);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(460, 29);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnSearchClient
             // 
             this.btnSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSearchClient.Location = new System.Drawing.Point(373, 3);
+            this.btnSearchClient.Location = new System.Drawing.Point(382, 3);
             this.btnSearchClient.Name = "btnSearchClient";
             this.btnSearchClient.Size = new System.Drawing.Size(75, 23);
             this.btnSearchClient.TabIndex = 5;
@@ -249,7 +253,7 @@
             // txtSearchClient
             // 
             this.txtSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSearchClient.Location = new System.Drawing.Point(197, 4);
+            this.txtSearchClient.Location = new System.Drawing.Point(206, 4);
             this.txtSearchClient.Name = "txtSearchClient";
             this.txtSearchClient.Size = new System.Drawing.Size(170, 20);
             this.txtSearchClient.TabIndex = 4;
@@ -258,7 +262,7 @@
             // 
             this.lblSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSearchClient.AutoSize = true;
-            this.lblSearchClient.Location = new System.Drawing.Point(122, 8);
+            this.lblSearchClient.Location = new System.Drawing.Point(131, 8);
             this.lblSearchClient.Name = "lblSearchClient";
             this.lblSearchClient.Size = new System.Drawing.Size(69, 13);
             this.lblSearchClient.TabIndex = 3;
@@ -271,13 +275,24 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(451, 465);
+            this.dataGridView1.Size = new System.Drawing.Size(460, 465);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // btnAnnulerModif
+            // 
+            this.btnAnnulerModif.Location = new System.Drawing.Point(345, 25);
+            this.btnAnnulerModif.Name = "btnAnnulerModif";
+            this.btnAnnulerModif.Size = new System.Drawing.Size(75, 23);
+            this.btnAnnulerModif.TabIndex = 31;
+            this.btnAnnulerModif.Text = "Annuler";
+            this.btnAnnulerModif.UseVisualStyleBackColor = true;
+            this.btnAnnulerModif.Visible = false;
+            this.btnAnnulerModif.Click += new System.EventHandler(this.btnAnnulerModif_Click);
             // 
             // frmDspClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(987, 563);
+            this.ClientSize = new System.Drawing.Size(996, 563);
             this.Controls.Add(this.gpxContact);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -326,5 +341,6 @@
         private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Label lblSearchClient;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAnnulerModif;
     }
 }

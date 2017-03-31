@@ -129,15 +129,19 @@ namespace ABI.UI
         {
             foreach (DataGridViewRow row in grdClient.SelectedRows)
             {
-                Int32 id = (Int32)row.Cells[0].Value;
-
-                foreach (Client c in Donnees.listClient)
+                if (row != null)
                 {
-                    if (c.IdClient == id)
+                     Int32 id = (Int32)row.Cells[0].Value;
+
+                    foreach (Client c in Donnees.listClient)
                     {
-                        client = c;
+                        if (c.IdClient == id)
+                        {
+                            client = c;
+                        }
                     }
                 }
+                
             }
 
         }
