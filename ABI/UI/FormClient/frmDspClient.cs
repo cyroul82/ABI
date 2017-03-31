@@ -20,8 +20,6 @@ namespace ABI
             this.Client = client;
         }
 
-        
-
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmNewContact fnc = new frmNewContact();
@@ -40,8 +38,6 @@ namespace ABI
             txtEffectif.Text = Client.Effectifs.ToString();
             txtCA.Text = Client.ChiffreAffaires.ToString();
             txtTelephone.Text = Client.Telephone;
-            
-
         }
 
         private void btnModifier_Click(object sender, EventArgs e)
@@ -49,14 +45,12 @@ namespace ABI
             if(btnModifier.Text == MODIFIER)
             {
                 enableClient();
-                
             }
             else
             {
                 disableClient();
                 
             }
-            
         }
 
         private void enableClient()
@@ -99,5 +93,6 @@ namespace ABI
         {
             disableClient();
         }
+
     }
 }

@@ -56,7 +56,7 @@
             this.panelListClient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelListClient.Location = new System.Drawing.Point(0, 0);
             this.panelListClient.Name = "panelListClient";
-            this.panelListClient.Size = new System.Drawing.Size(1106, 483);
+            this.panelListClient.Size = new System.Drawing.Size(952, 574);
             this.panelListClient.TabIndex = 0;
             // 
             // grdClient
@@ -73,7 +73,7 @@
             this.grdClient.Name = "grdClient";
             this.grdClient.ReadOnly = true;
             this.grdClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdClient.Size = new System.Drawing.Size(993, 450);
+            this.grdClient.Size = new System.Drawing.Size(839, 541);
             this.grdClient.TabIndex = 1;
             this.grdClient.SelectionChanged += new System.EventHandler(this.grdClient_SelectionChanged);
             this.grdClient.DoubleClick += new System.EventHandler(this.grdClient_DoubleClick);
@@ -88,7 +88,7 @@
             this.panelControlClient.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControlClient.Location = new System.Drawing.Point(0, 33);
             this.panelControlClient.Name = "panelControlClient";
-            this.panelControlClient.Size = new System.Drawing.Size(113, 450);
+            this.panelControlClient.Size = new System.Drawing.Size(113, 541);
             this.panelControlClient.TabIndex = 2;
             // 
             // btnAjouter
@@ -132,7 +132,7 @@
             this.flowLayoutPanelSearchClient.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelSearchClient.Name = "flowLayoutPanelSearchClient";
             this.flowLayoutPanelSearchClient.Padding = new System.Windows.Forms.Padding(113, 0, 0, 0);
-            this.flowLayoutPanelSearchClient.Size = new System.Drawing.Size(1106, 33);
+            this.flowLayoutPanelSearchClient.Size = new System.Drawing.Size(952, 33);
             this.flowLayoutPanelSearchClient.TabIndex = 0;
             // 
             // lblSearchClient
@@ -170,7 +170,7 @@
             this.tabControlClientDetail.Location = new System.Drawing.Point(0, 0);
             this.tabControlClientDetail.Name = "tabControlClientDetail";
             this.tabControlClientDetail.SelectedIndex = 0;
-            this.tabControlClientDetail.Size = new System.Drawing.Size(1114, 509);
+            this.tabControlClientDetail.Size = new System.Drawing.Size(960, 600);
             this.tabControlClientDetail.TabIndex = 3;
             // 
             // tabPage1
@@ -178,7 +178,7 @@
             this.tabPage1.Controls.Add(this.panelListClient);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1106, 483);
+            this.tabPage1.Size = new System.Drawing.Size(952, 574);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Liste Clients";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -187,10 +187,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1114, 509);
+            this.ClientSize = new System.Drawing.Size(960, 600);
             this.Controls.Add(this.tabControlClientDetail);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(960, 600);
             this.Name = "frmClient";
             this.Text = "Liste des Clients";
             this.Load += new System.EventHandler(this.frmClient_Load);

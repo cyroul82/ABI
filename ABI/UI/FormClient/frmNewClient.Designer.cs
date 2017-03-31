@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.btnAnnulerClient = new System.Windows.Forms.Button();
             this.btnAjouterClient = new System.Windows.Forms.Button();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.gpbClientInformation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
@@ -41,12 +40,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).BeginInit();
+            this.gpbClientInformation.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpbClientInformation
             // 
-            this.gpbClientInformation.Size = new System.Drawing.Size(493, 441);
+            this.gpbClientInformation.Size = new System.Drawing.Size(493, 483);
             // 
             // panel1
             // 
@@ -54,10 +54,20 @@
             this.panel1.Controls.Add(this.btnAnnulerClient);
             this.panel1.Controls.Add(this.btnAjouterClient);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(20, 461);
+            this.panel1.Location = new System.Drawing.Point(20, 460);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(493, 52);
+            this.panel1.Size = new System.Drawing.Size(493, 43);
             this.panel1.TabIndex = 1;
+            // 
+            // btnPreview
+            // 
+            this.btnPreview.Location = new System.Drawing.Point(177, 17);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(142, 23);
+            this.btnPreview.TabIndex = 2;
+            this.btnPreview.Text = "Enregistrer et Visualiser";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // btnAnnulerClient
             // 
@@ -79,28 +89,16 @@
             this.btnAjouterClient.UseVisualStyleBackColor = true;
             this.btnAjouterClient.Click += new System.EventHandler(this.btnAjouterClient_Click);
             // 
-            // btnPreview
-            // 
-            this.btnPreview.Location = new System.Drawing.Point(177, 17);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(142, 23);
-            this.btnPreview.TabIndex = 2;
-            this.btnPreview.Text = "Enregistrer et Visualiser";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
-            // 
             // frmNewClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(533, 533);
+            this.ClientSize = new System.Drawing.Size(533, 523);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmNewClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gpbClientInformation, 0);
-            this.gpbClientInformation.ResumeLayout(false);
-            this.gpbClientInformation.PerformLayout();
+            this.Controls.SetChildIndex(this.panel1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();
@@ -109,6 +107,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).EndInit();
+            this.gpbClientInformation.ResumeLayout(false);
+            this.gpbClientInformation.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

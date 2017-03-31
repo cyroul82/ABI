@@ -29,31 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.lblClientNumber = new System.Windows.Forms.Label();
-            this.lblRaisonSocial = new System.Windows.Forms.Label();
-            this.lblType = new System.Windows.Forms.Label();
-            this.txtNumero = new System.Windows.Forms.TextBox();
-            this.cbxType = new System.Windows.Forms.ComboBox();
-            this.txtRaisonSocial = new System.Windows.Forms.TextBox();
-            this.lblDomaine = new System.Windows.Forms.Label();
-            this.cbxActivity = new System.Windows.Forms.ComboBox();
-            this.lblNature = new System.Windows.Forms.Label();
-            this.cbxNature = new System.Windows.Forms.ComboBox();
-            this.lblChiffreAffaire = new System.Windows.Forms.Label();
-            this.txtCA = new System.Windows.Forms.TextBox();
-            this.lblEffectif = new System.Windows.Forms.Label();
-            this.txtEffectif = new System.Windows.Forms.TextBox();
-            this.lblCommentaire = new System.Windows.Forms.Label();
-            this.txtComment = new System.Windows.Forms.TextBox();
-            this.gpbClientInformation = new System.Windows.Forms.GroupBox();
-            this.mTxtCodePostal = new System.Windows.Forms.MaskedTextBox();
-            this.txtTelephone = new System.Windows.Forms.TextBox();
-            this.lblTelephone = new System.Windows.Forms.Label();
-            this.txtVille = new System.Windows.Forms.TextBox();
-            this.lblTown = new System.Windows.Forms.Label();
-            this.lblCodePostal = new System.Windows.Forms.Label();
-            this.txtRue = new System.Windows.Forms.TextBox();
-            this.lblAddress = new System.Windows.Forms.Label();
             this.toolTipCodePostal = new System.Windows.Forms.ToolTip(this.components);
             this.errorProviderCodePostal = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderRaisonSocial = new System.Windows.Forms.ErrorProvider(this.components);
@@ -63,7 +38,31 @@
             this.errorProviderVille = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderEffectif = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderCA = new System.Windows.Forms.ErrorProvider(this.components);
-            this.gpbClientInformation.SuspendLayout();
+            this.gpbClientInformation = new System.Windows.Forms.GroupBox();
+            this.mTxtCodePostal = new System.Windows.Forms.MaskedTextBox();
+            this.txtTelephone = new System.Windows.Forms.TextBox();
+            this.lblTelephone = new System.Windows.Forms.Label();
+            this.txtVille = new System.Windows.Forms.TextBox();
+            this.lblTown = new System.Windows.Forms.Label();
+            this.lblCodePostal = new System.Windows.Forms.Label();
+            this.txtRue = new System.Windows.Forms.TextBox();
+            this.lblAddress = new System.Windows.Forms.Label();
+            this.txtComment = new System.Windows.Forms.TextBox();
+            this.lblCommentaire = new System.Windows.Forms.Label();
+            this.txtEffectif = new System.Windows.Forms.TextBox();
+            this.lblEffectif = new System.Windows.Forms.Label();
+            this.txtCA = new System.Windows.Forms.TextBox();
+            this.lblChiffreAffaire = new System.Windows.Forms.Label();
+            this.cbxNature = new System.Windows.Forms.ComboBox();
+            this.lblNature = new System.Windows.Forms.Label();
+            this.cbxActivity = new System.Windows.Forms.ComboBox();
+            this.lblDomaine = new System.Windows.Forms.Label();
+            this.txtRaisonSocial = new System.Windows.Forms.TextBox();
+            this.cbxType = new System.Windows.Forms.ComboBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.lblType = new System.Windows.Forms.Label();
+            this.lblRaisonSocial = new System.Windows.Forms.Label();
+            this.lblClientNumber = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
@@ -72,159 +71,48 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).BeginInit();
+            this.gpbClientInformation.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblClientNumber
+            // errorProviderCodePostal
             // 
-            this.lblClientNumber.AutoSize = true;
-            this.lblClientNumber.Location = new System.Drawing.Point(11, 30);
-            this.lblClientNumber.Name = "lblClientNumber";
-            this.lblClientNumber.Size = new System.Drawing.Size(78, 13);
-            this.lblClientNumber.TabIndex = 0;
-            this.lblClientNumber.Text = "Numéro client :";
+            this.errorProviderCodePostal.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderCodePostal.ContainerControl = this;
             // 
-            // lblRaisonSocial
+            // errorProviderRaisonSocial
             // 
-            this.lblRaisonSocial.AutoSize = true;
-            this.lblRaisonSocial.Location = new System.Drawing.Point(12, 61);
-            this.lblRaisonSocial.Name = "lblRaisonSocial";
-            this.lblRaisonSocial.Size = new System.Drawing.Size(81, 13);
-            this.lblRaisonSocial.TabIndex = 1;
-            this.lblRaisonSocial.Text = "Raison Social : ";
+            this.errorProviderRaisonSocial.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderRaisonSocial.ContainerControl = this;
             // 
-            // lblType
+            // errorProviderActivite
             // 
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(284, 96);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(40, 13);
-            this.lblType.TabIndex = 2;
-            this.lblType.Text = "Type : ";
+            this.errorProviderActivite.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderActivite.ContainerControl = this;
             // 
-            // txtNumero
+            // errorProviderType
             // 
-            this.txtNumero.Enabled = false;
-            this.txtNumero.Location = new System.Drawing.Point(138, 26);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.ReadOnly = true;
-            this.txtNumero.Size = new System.Drawing.Size(121, 20);
-            this.txtNumero.TabIndex = 3;
+            this.errorProviderType.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderType.ContainerControl = this;
             // 
-            // cbxType
+            // errorProviderNature
             // 
-            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxType.FormattingEnabled = true;
-            this.cbxType.Items.AddRange(new object[] {
-            "Public",
-            "Privé"});
-            this.cbxType.Location = new System.Drawing.Point(345, 92);
-            this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(121, 21);
-            this.cbxType.TabIndex = 4;
-            this.cbxType.Validated += new System.EventHandler(this.cbxType_Validated);
+            this.errorProviderNature.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderNature.ContainerControl = this;
             // 
-            // txtRaisonSocial
+            // errorProviderVille
             // 
-            this.txtRaisonSocial.Location = new System.Drawing.Point(138, 57);
-            this.txtRaisonSocial.Name = "txtRaisonSocial";
-            this.txtRaisonSocial.Size = new System.Drawing.Size(328, 20);
-            this.txtRaisonSocial.TabIndex = 5;
-            this.txtRaisonSocial.Validated += new System.EventHandler(this.txtRaisonSocial_Validated);
+            this.errorProviderVille.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderVille.ContainerControl = this;
             // 
-            // lblDomaine
+            // errorProviderEffectif
             // 
-            this.lblDomaine.AutoSize = true;
-            this.lblDomaine.Location = new System.Drawing.Point(11, 96);
-            this.lblDomaine.Name = "lblDomaine";
-            this.lblDomaine.Size = new System.Drawing.Size(104, 13);
-            this.lblDomaine.TabIndex = 6;
-            this.lblDomaine.Text = "Domaine d\'Activité : ";
+            this.errorProviderEffectif.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderEffectif.ContainerControl = this;
             // 
-            // cbxActivity
+            // errorProviderCA
             // 
-            this.cbxActivity.FormattingEnabled = true;
-            this.cbxActivity.Items.AddRange(new object[] {
-            "Agro",
-            "Industrie"});
-            this.cbxActivity.Location = new System.Drawing.Point(137, 92);
-            this.cbxActivity.Name = "cbxActivity";
-            this.cbxActivity.Size = new System.Drawing.Size(121, 21);
-            this.cbxActivity.TabIndex = 7;
-            this.cbxActivity.Validated += new System.EventHandler(this.cbxActivity_Validated);
-            // 
-            // lblNature
-            // 
-            this.lblNature.AutoSize = true;
-            this.lblNature.Location = new System.Drawing.Point(12, 132);
-            this.lblNature.Name = "lblNature";
-            this.lblNature.Size = new System.Drawing.Size(48, 13);
-            this.lblNature.TabIndex = 8;
-            this.lblNature.Text = "Nature : ";
-            // 
-            // cbxNature
-            // 
-            this.cbxNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxNature.FormattingEnabled = true;
-            this.cbxNature.Items.AddRange(new object[] {
-            "Principale",
-            "Secondaire",
-            "Ancienne"});
-            this.cbxNature.Location = new System.Drawing.Point(138, 128);
-            this.cbxNature.Name = "cbxNature";
-            this.cbxNature.Size = new System.Drawing.Size(121, 21);
-            this.cbxNature.TabIndex = 9;
-            this.cbxNature.Validated += new System.EventHandler(this.cbxNature_Validated);
-            // 
-            // lblChiffreAffaire
-            // 
-            this.lblChiffreAffaire.AutoSize = true;
-            this.lblChiffreAffaire.Location = new System.Drawing.Point(12, 171);
-            this.lblChiffreAffaire.Name = "lblChiffreAffaire";
-            this.lblChiffreAffaire.Size = new System.Drawing.Size(92, 13);
-            this.lblChiffreAffaire.TabIndex = 10;
-            this.lblChiffreAffaire.Text = "Chiffre d\'Affaires : ";
-            // 
-            // txtCA
-            // 
-            this.txtCA.Location = new System.Drawing.Point(137, 167);
-            this.txtCA.Name = "txtCA";
-            this.txtCA.Size = new System.Drawing.Size(121, 20);
-            this.txtCA.TabIndex = 11;
-            this.txtCA.Validated += new System.EventHandler(this.txtCA_Validated);
-            // 
-            // lblEffectif
-            // 
-            this.lblEffectif.AutoSize = true;
-            this.lblEffectif.Location = new System.Drawing.Point(284, 132);
-            this.lblEffectif.Name = "lblEffectif";
-            this.lblEffectif.Size = new System.Drawing.Size(54, 13);
-            this.lblEffectif.TabIndex = 14;
-            this.lblEffectif.Text = "Effectifs : ";
-            // 
-            // txtEffectif
-            // 
-            this.txtEffectif.Location = new System.Drawing.Point(345, 128);
-            this.txtEffectif.Name = "txtEffectif";
-            this.txtEffectif.Size = new System.Drawing.Size(78, 20);
-            this.txtEffectif.TabIndex = 15;
-            this.txtEffectif.Validated += new System.EventHandler(this.txtEffectif_Validated);
-            // 
-            // lblCommentaire
-            // 
-            this.lblCommentaire.AutoSize = true;
-            this.lblCommentaire.Location = new System.Drawing.Point(12, 305);
-            this.lblCommentaire.Name = "lblCommentaire";
-            this.lblCommentaire.Size = new System.Drawing.Size(82, 13);
-            this.lblCommentaire.TabIndex = 16;
-            this.lblCommentaire.Text = "Commentaires : ";
-            // 
-            // txtComment
-            // 
-            this.txtComment.Location = new System.Drawing.Point(14, 321);
-            this.txtComment.Multiline = true;
-            this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(460, 105);
-            this.txtComment.TabIndex = 17;
+            this.errorProviderCA.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProviderCA.ContainerControl = this;
             // 
             // gpbClientInformation
             // 
@@ -258,7 +146,7 @@
             this.gpbClientInformation.Size = new System.Drawing.Size(488, 445);
             this.gpbClientInformation.TabIndex = 0;
             this.gpbClientInformation.TabStop = false;
-            this.gpbClientInformation.Text = "Information Société";
+            this.gpbClientInformation.Text = "Information Client";
             // 
             // mTxtCodePostal
             // 
@@ -330,45 +218,157 @@
             this.lblAddress.TabIndex = 22;
             this.lblAddress.Text = "Adresse : ";
             // 
-            // errorProviderCodePostal
+            // txtComment
             // 
-            this.errorProviderCodePostal.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderCodePostal.ContainerControl = this;
+            this.txtComment.Location = new System.Drawing.Point(14, 321);
+            this.txtComment.Multiline = true;
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(460, 105);
+            this.txtComment.TabIndex = 17;
             // 
-            // errorProviderRaisonSocial
+            // lblCommentaire
             // 
-            this.errorProviderRaisonSocial.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderRaisonSocial.ContainerControl = this;
+            this.lblCommentaire.AutoSize = true;
+            this.lblCommentaire.Location = new System.Drawing.Point(12, 305);
+            this.lblCommentaire.Name = "lblCommentaire";
+            this.lblCommentaire.Size = new System.Drawing.Size(82, 13);
+            this.lblCommentaire.TabIndex = 16;
+            this.lblCommentaire.Text = "Commentaires : ";
             // 
-            // errorProviderActivite
+            // txtEffectif
             // 
-            this.errorProviderActivite.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderActivite.ContainerControl = this;
+            this.txtEffectif.Location = new System.Drawing.Point(345, 128);
+            this.txtEffectif.Name = "txtEffectif";
+            this.txtEffectif.Size = new System.Drawing.Size(78, 20);
+            this.txtEffectif.TabIndex = 15;
+            this.txtEffectif.Validated += new System.EventHandler(this.txtEffectif_Validated);
             // 
-            // errorProviderType
+            // lblEffectif
             // 
-            this.errorProviderType.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderType.ContainerControl = this;
+            this.lblEffectif.AutoSize = true;
+            this.lblEffectif.Location = new System.Drawing.Point(284, 132);
+            this.lblEffectif.Name = "lblEffectif";
+            this.lblEffectif.Size = new System.Drawing.Size(54, 13);
+            this.lblEffectif.TabIndex = 14;
+            this.lblEffectif.Text = "Effectifs : ";
             // 
-            // errorProviderNature
+            // txtCA
             // 
-            this.errorProviderNature.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderNature.ContainerControl = this;
+            this.txtCA.Location = new System.Drawing.Point(137, 167);
+            this.txtCA.Name = "txtCA";
+            this.txtCA.Size = new System.Drawing.Size(121, 20);
+            this.txtCA.TabIndex = 11;
+            this.txtCA.Validated += new System.EventHandler(this.txtCA_Validated);
             // 
-            // errorProviderVille
+            // lblChiffreAffaire
             // 
-            this.errorProviderVille.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderVille.ContainerControl = this;
+            this.lblChiffreAffaire.AutoSize = true;
+            this.lblChiffreAffaire.Location = new System.Drawing.Point(12, 171);
+            this.lblChiffreAffaire.Name = "lblChiffreAffaire";
+            this.lblChiffreAffaire.Size = new System.Drawing.Size(92, 13);
+            this.lblChiffreAffaire.TabIndex = 10;
+            this.lblChiffreAffaire.Text = "Chiffre d\'Affaires : ";
             // 
-            // errorProviderEffectif
+            // cbxNature
             // 
-            this.errorProviderEffectif.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderEffectif.ContainerControl = this;
+            this.cbxNature.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxNature.FormattingEnabled = true;
+            this.cbxNature.Items.AddRange(new object[] {
+            "Principale",
+            "Secondaire",
+            "Ancienne"});
+            this.cbxNature.Location = new System.Drawing.Point(138, 128);
+            this.cbxNature.Name = "cbxNature";
+            this.cbxNature.Size = new System.Drawing.Size(121, 21);
+            this.cbxNature.TabIndex = 9;
+            this.cbxNature.Validated += new System.EventHandler(this.cbxNature_Validated);
             // 
-            // errorProviderCA
+            // lblNature
             // 
-            this.errorProviderCA.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
-            this.errorProviderCA.ContainerControl = this;
+            this.lblNature.AutoSize = true;
+            this.lblNature.Location = new System.Drawing.Point(12, 132);
+            this.lblNature.Name = "lblNature";
+            this.lblNature.Size = new System.Drawing.Size(48, 13);
+            this.lblNature.TabIndex = 8;
+            this.lblNature.Text = "Nature : ";
+            // 
+            // cbxActivity
+            // 
+            this.cbxActivity.FormattingEnabled = true;
+            this.cbxActivity.Items.AddRange(new object[] {
+            "Agro",
+            "Industrie"});
+            this.cbxActivity.Location = new System.Drawing.Point(137, 92);
+            this.cbxActivity.Name = "cbxActivity";
+            this.cbxActivity.Size = new System.Drawing.Size(121, 21);
+            this.cbxActivity.TabIndex = 7;
+            this.cbxActivity.Validated += new System.EventHandler(this.cbxActivity_Validated);
+            // 
+            // lblDomaine
+            // 
+            this.lblDomaine.AutoSize = true;
+            this.lblDomaine.Location = new System.Drawing.Point(11, 96);
+            this.lblDomaine.Name = "lblDomaine";
+            this.lblDomaine.Size = new System.Drawing.Size(104, 13);
+            this.lblDomaine.TabIndex = 6;
+            this.lblDomaine.Text = "Domaine d\'Activité : ";
+            // 
+            // txtRaisonSocial
+            // 
+            this.txtRaisonSocial.Location = new System.Drawing.Point(138, 57);
+            this.txtRaisonSocial.Name = "txtRaisonSocial";
+            this.txtRaisonSocial.Size = new System.Drawing.Size(328, 20);
+            this.txtRaisonSocial.TabIndex = 5;
+            this.txtRaisonSocial.Validated += new System.EventHandler(this.txtRaisonSocial_Validated);
+            // 
+            // cbxType
+            // 
+            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxType.FormattingEnabled = true;
+            this.cbxType.Items.AddRange(new object[] {
+            "Public",
+            "Privé"});
+            this.cbxType.Location = new System.Drawing.Point(345, 92);
+            this.cbxType.Name = "cbxType";
+            this.cbxType.Size = new System.Drawing.Size(121, 21);
+            this.cbxType.TabIndex = 4;
+            this.cbxType.Validated += new System.EventHandler(this.cbxType_Validated);
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.Enabled = false;
+            this.txtNumero.Location = new System.Drawing.Point(138, 26);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.ReadOnly = true;
+            this.txtNumero.Size = new System.Drawing.Size(121, 20);
+            this.txtNumero.TabIndex = 3;
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(284, 96);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(40, 13);
+            this.lblType.TabIndex = 2;
+            this.lblType.Text = "Type : ";
+            // 
+            // lblRaisonSocial
+            // 
+            this.lblRaisonSocial.AutoSize = true;
+            this.lblRaisonSocial.Location = new System.Drawing.Point(12, 61);
+            this.lblRaisonSocial.Name = "lblRaisonSocial";
+            this.lblRaisonSocial.Size = new System.Drawing.Size(81, 13);
+            this.lblRaisonSocial.TabIndex = 1;
+            this.lblRaisonSocial.Text = "Raison Social : ";
+            // 
+            // lblClientNumber
+            // 
+            this.lblClientNumber.AutoSize = true;
+            this.lblClientNumber.Location = new System.Drawing.Point(11, 30);
+            this.lblClientNumber.Name = "lblClientNumber";
+            this.lblClientNumber.Size = new System.Drawing.Size(78, 13);
+            this.lblClientNumber.TabIndex = 0;
+            this.lblClientNumber.Text = "Numéro client :";
             // 
             // FormClient
             // 
@@ -379,8 +379,6 @@
             this.Name = "FormClient";
             this.Padding = new System.Windows.Forms.Padding(20);
             this.Text = "Client";
-            this.gpbClientInformation.ResumeLayout(false);
-            this.gpbClientInformation.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();
@@ -389,37 +387,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderVille)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).EndInit();
+            this.gpbClientInformation.ResumeLayout(false);
+            this.gpbClientInformation.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Label lblRaisonSocial;
-        private System.Windows.Forms.Label lblType;
-        private System.Windows.Forms.Label lblDomaine;
-        private System.Windows.Forms.Label lblNature;
-        private System.Windows.Forms.Label lblChiffreAffaire;
-        private System.Windows.Forms.Label lblEffectif;
-        private System.Windows.Forms.Label lblCommentaire;
-        private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.Label lblTown;
-        private System.Windows.Forms.Label lblCodePostal;
-        protected System.Windows.Forms.TextBox txtNumero;
-        protected System.Windows.Forms.ComboBox cbxType;
-        protected System.Windows.Forms.TextBox txtRaisonSocial;
-        protected System.Windows.Forms.ComboBox cbxActivity;
-        protected System.Windows.Forms.ComboBox cbxNature;
-        protected System.Windows.Forms.TextBox txtCA;
-        protected System.Windows.Forms.TextBox txtEffectif;
-        protected System.Windows.Forms.TextBox txtComment;
-        protected System.Windows.Forms.TextBox txtRue;
-        protected System.Windows.Forms.TextBox txtVille;
-        protected System.Windows.Forms.GroupBox gpbClientInformation;
-        protected System.Windows.Forms.TextBox txtTelephone;
-        private System.Windows.Forms.Label lblTelephone;
-        protected System.Windows.Forms.Label lblClientNumber;
         private System.Windows.Forms.ToolTip toolTipCodePostal;
-        protected System.Windows.Forms.MaskedTextBox mTxtCodePostal;
         protected System.Windows.Forms.ErrorProvider errorProviderCodePostal;
         protected System.Windows.Forms.ErrorProvider errorProviderRaisonSocial;
         protected System.Windows.Forms.ErrorProvider errorProviderActivite;
@@ -428,5 +403,30 @@
         protected System.Windows.Forms.ErrorProvider errorProviderVille;
         protected System.Windows.Forms.ErrorProvider errorProviderEffectif;
         protected System.Windows.Forms.ErrorProvider errorProviderCA;
+        protected System.Windows.Forms.MaskedTextBox mTxtCodePostal;
+        protected System.Windows.Forms.TextBox txtTelephone;
+        private System.Windows.Forms.Label lblTelephone;
+        protected System.Windows.Forms.TextBox txtVille;
+        private System.Windows.Forms.Label lblTown;
+        private System.Windows.Forms.Label lblCodePostal;
+        protected System.Windows.Forms.TextBox txtRue;
+        private System.Windows.Forms.Label lblAddress;
+        protected System.Windows.Forms.TextBox txtComment;
+        private System.Windows.Forms.Label lblCommentaire;
+        protected System.Windows.Forms.TextBox txtEffectif;
+        private System.Windows.Forms.Label lblEffectif;
+        protected System.Windows.Forms.TextBox txtCA;
+        private System.Windows.Forms.Label lblChiffreAffaire;
+        protected System.Windows.Forms.ComboBox cbxNature;
+        private System.Windows.Forms.Label lblNature;
+        protected System.Windows.Forms.ComboBox cbxActivity;
+        private System.Windows.Forms.Label lblDomaine;
+        protected System.Windows.Forms.TextBox txtRaisonSocial;
+        protected System.Windows.Forms.ComboBox cbxType;
+        protected System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Label lblType;
+        private System.Windows.Forms.Label lblRaisonSocial;
+        protected System.Windows.Forms.Label lblClientNumber;
+        protected internal System.Windows.Forms.GroupBox gpbClientInformation;
     }
 }
