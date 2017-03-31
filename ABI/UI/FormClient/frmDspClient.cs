@@ -29,5 +29,16 @@ namespace ABI
         {
             Close();
         }
+
+        private void frmDspClient_Load(object sender, EventArgs e)
+        {
+            txtNumero.Text = Client.IdClient.ToString();
+            txtRaisonSocial.Text = Client.RaisonSocial;
+            txtEffectif.Text = Client.Effectifs.ToString();
+            txtCA.Text = Client.ChiffreAffaires.ToString();
+            txtTelephone.Text = Client.Telephone;
+            
+
+        }
     }
 }
