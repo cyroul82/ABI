@@ -19,8 +19,8 @@ namespace ABI
 
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            frmDspClient fdc = new frmDspClient();
-            fdc.ShowDialog();
+            //frmDspClient fdc = new frmDspClient();
+            //fdc.ShowDialog();
         }
 
         private void bntAddIntervenant_Click(object sender, EventArgs e)

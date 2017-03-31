@@ -10,9 +10,11 @@ namespace ABI
 {
     public partial class frmDspClient : ABI.FormClient
     {
-        public frmDspClient()
+        private Client client;
+        public frmDspClient(Client client)
         {
             InitializeComponent();
+            this.client = client;
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)

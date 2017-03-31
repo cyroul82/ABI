@@ -17,11 +17,11 @@ namespace ABI.UI
         public frmClient()
         {
             InitializeComponent();
-            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
-            Donnees.listClient.Add(new Client(256, "Made in Mode", "Public", "Agro", "Principale", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
-            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
-            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
-            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "comment", "0645248403"));
+            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "oui mais non", "0645248403"));
+            Donnees.listClient.Add(new Client(145, "Made in Mode", "Prvié", "Agro", "Principale", 5, 1500, /*new Adresse("verdun", "83700", "st raph"),*/ "alors bon", "5646897453"));
+            Donnees.listClient.Add(new Client(659, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, /*new Adresse("verdun", "83700", "st raph"),*/ "oki doki", "45678564"));
+            Donnees.listClient.Add(new Client(859, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870, /*new Adresse("verdun", "83700", "st raph"),*/ "c parti", "21456731"));
+            Donnees.listClient.Add(new Client(487, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, /*new Adresse("verdun", "83700", "st raph"),*/ "comment ca", "54564654"));
         }
 
 
@@ -112,33 +112,26 @@ namespace ABI.UI
         {
             if (client != null)
             {
-                frmDspClient fdc = new frmDspClient();
-                fdc.Dock = DockStyle.Fill;
-                fdc.TopLevel = false;
-                TabPage tp = new TabPage(client.RaisonSocial);
-                tp.Controls.Add(fdc);
-                tabControlClientDetail.Controls.Add(tp);
-                fdc.Show();
-            }
-            else
-            {
-                MessageBox.Show("Selectionner un client", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                displayClientTab();
             }
             
         }
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
         {
-            //Int32 index = grdClient.CurrentRow.Index;
-            //if(index != -1)
-            //{
-            //    DataGridViewRow row = grdClient.SelectedRows[index-1];
-            //    Client c = row.DataBoundItem as Client;
-            //    if (c != null)
-            //    {
-            //        c = client;
-            //    }
-            //}
+            foreach (DataGridViewRow row in grdClient.SelectedRows)
+            {
+                Int32 id = (Int32)row.Cells[0].Value;
+
+                foreach (Client c in Donnees.listClient)
+                {
+                    if (c.IdClient == id)
+                    {
+                        client = c;
+                    }
+                }
+            }
+
         }
 
         private void grdClient_MouseClick(object sender, MouseEventArgs e)
@@ -148,33 +141,49 @@ namespace ABI.UI
 
         private void grdClient_DoubleClick(object sender, EventArgs e)
         {
-
-
-            Int32 index = grdClient.CurrentRow.Index;
-            if (index != -1)
+            if (client != null)
             {
+                displayClientTab();
+            }
+        }
 
-                Int32 id = (Int32)dt.Rows[index].Field<Int32>("id Client");
-                foreach(Client c in Donnees.listClient)
+        private void displayClientTab()
+        {
+            bool b = true;
+            for(int i=0; i <tabControlClientDetail.TabCount; i++)
+            {
+                TabPage t = tabControlClientDetail.TabPages[i];
+                if(t.Text == client.RaisonSocial)
                 {
-                    if (c.IdClient == id)
-                    {
-                        client = c;
-                    }
+                    tabControlClientDetail.SelectTab(t);
+                    b = false;
                 }
+                
+            }
 
-                if (client != null)
-                {
-                    TabPage tabPage1 = new TabPage(client.RaisonSocial);
-                    tabControlClientDetail.Controls.Add(tabPage1);
-                    client = null;
-                }
+            if (b)
+            {
+                frmDspClient fdc = new frmDspClient(client);
+                fdc.TopLevel = false;
+                fdc.Dock = DockStyle.Fill;
+
+
+                TabPage tabPage1 = new TabPage(client.RaisonSocial);
+                tabPage1.Controls.Add(fdc);
+                tabControlClientDetail.Controls.Add(tabPage1);
+                tabControlClientDetail.SelectTab(tabPage1);
+                fdc.Show();
             }
         }
 
         private void frmClient_Load(object sender, EventArgs e)
         {
             loadListClient();
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
