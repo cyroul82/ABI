@@ -29,7 +29,18 @@ namespace ABI
 
         private void btnFermer_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult result = MessageBox.Show("Voulez-vous sauvegarder les modifications ?", "Modifications", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                btnModifierClient_Click(sender, e);
+                Close();
+            }
+            else if (result == DialogResult.No)
+            {
+                Close();
+            }
+            
+            
         }
 
         private void frmDspClient_Load(object sender, EventArgs e)

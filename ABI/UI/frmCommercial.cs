@@ -13,6 +13,7 @@ namespace ABI.UI
     public partial class frmCommercial : Form
     {
         private Client client;
+        private TabPage tabPage;
         private DataTable table;
         private DataColumn column;
         private DataRow row;
@@ -387,7 +388,7 @@ namespace ABI.UI
 
         private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TabPage tabPage = tabControlClientDetail.TabPages[tabControlClientDetail.SelectedIndex];
+            tabPage = tabControlClientDetail.TabPages[tabControlClientDetail.SelectedIndex];
             foreach(KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
             {
                 if(kvp.Value == tabPage)
