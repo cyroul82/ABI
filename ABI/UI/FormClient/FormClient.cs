@@ -12,9 +12,8 @@ namespace ABI
 {
     public partial class FormClient : Form
     {
-        
-        internal Client client { get; set; } = null;
-        
+        protected Client client;
+        private const String REQUIS = "Requis";
         public FormClient()
         {
             InitializeComponent();
@@ -65,7 +64,7 @@ namespace ABI
             }
             else
             {
-                errorProviderVille.SetError(txtVille, "Requis");
+                errorProviderVille.SetError(txtVille, REQUIS);
                 return false;
             }
         }
@@ -85,7 +84,7 @@ namespace ABI
             }
             else
             {
-                errorProviderRaisonSocial.SetError(txtRaisonSocial, "requis");
+                errorProviderRaisonSocial.SetError(txtRaisonSocial, REQUIS);
                 return false;
             }
         }
@@ -103,7 +102,7 @@ namespace ABI
         {
             if(cbxActivity.SelectedIndex == -1)
             {
-                errorProviderActivite.SetError(cbxActivity, "Requis");
+                errorProviderActivite.SetError(cbxActivity, REQUIS);
                 return false;
             }
             else
@@ -125,7 +124,7 @@ namespace ABI
         {
             if(cbxType.SelectedIndex == -1)
             {
-                errorProviderType.SetError(cbxType, "Requis");
+                errorProviderType.SetError(cbxType, REQUIS);
                 return false;
             }
             else
@@ -147,7 +146,7 @@ namespace ABI
         {
             if (cbxNature.SelectedIndex == -1)
             {
-                errorProviderNature.SetError(cbxNature, "Requis");
+                errorProviderNature.SetError(cbxNature, REQUIS);
                 return false;
             }
             else
@@ -169,7 +168,7 @@ namespace ABI
             Int32 effectif;
             if (s.Length == 0 || !Int32.TryParse(s, out effectif) | effectif == 0)
             {
-                errorProviderEffectif.SetError(txtEffectif, "Requis");
+                errorProviderEffectif.SetError(txtEffectif, REQUIS);
                 return false;
             }
             else
@@ -189,7 +188,7 @@ namespace ABI
             Decimal ca;
             if(s.Length == 0 || !Decimal.TryParse(s,out ca) | ca == 0)
             {
-                errorProviderCA.SetError(txtCA, "Requis");
+                errorProviderCA.SetError(txtCA, REQUIS);
                 return false;
             }
             else

@@ -96,6 +96,11 @@ namespace ABI.UI
             idClient.Alignment = DataGridViewContentAlignment.MiddleCenter;
             grdClient.Columns["id Client"].DefaultCellStyle = idClient;
 
+            if(client != null)
+            {
+                
+            }
+
 
         }
 
@@ -110,7 +115,6 @@ namespace ABI.UI
             if(result == DialogResult.Yes)
             {
                 loadListClient();
-                client = fnc.client;
                 displayClientTab();
             }
             
@@ -170,7 +174,6 @@ namespace ABI.UI
                 }
 
             }
-
             return isOpen;
         }
 
@@ -222,8 +225,9 @@ namespace ABI.UI
             }
         }
 
-        private void savingClient(object sender, EventArgs e)
+        private void savingClient(Client client)
         {
+            this.client = client;
             loadListClient();
         }
 

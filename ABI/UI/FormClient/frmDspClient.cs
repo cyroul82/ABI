@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    public delegate void UpdatedClientHandler(object sender, EventArgs e);
+    public delegate void UpdatedClientHandler(Client client);
     public partial class frmDspClient : ABI.FormClient
     {
         public event UpdatedClientHandler Updated;
@@ -62,11 +62,9 @@ namespace ABI
             {
                 if (updateClient(client.IdClient))
                 {
-                    Updated?.Invoke(this, e);
+                    Updated?.Invoke(client);
                     disableClient();
-
                 }
-
             }
         }
 
