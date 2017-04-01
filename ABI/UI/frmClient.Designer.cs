@@ -39,13 +39,13 @@
             this.txtSearchClient = new System.Windows.Forms.TextBox();
             this.btnSearchClient = new System.Windows.Forms.Button();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ClientListTab = new System.Windows.Forms.TabPage();
             this.panelListClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             this.panelControlClient.SuspendLayout();
             this.flowLayoutPanelSearchClient.SuspendLayout();
             this.tabControlClientDetail.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.ClientListTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelListClient
@@ -165,23 +165,24 @@
             // 
             // tabControlClientDetail
             // 
-            this.tabControlClientDetail.Controls.Add(this.tabPage1);
+            this.tabControlClientDetail.Controls.Add(this.ClientListTab);
             this.tabControlClientDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlClientDetail.Location = new System.Drawing.Point(0, 0);
             this.tabControlClientDetail.Name = "tabControlClientDetail";
             this.tabControlClientDetail.SelectedIndex = 0;
             this.tabControlClientDetail.Size = new System.Drawing.Size(960, 600);
             this.tabControlClientDetail.TabIndex = 3;
+            this.tabControlClientDetail.SelectedIndexChanged += new System.EventHandler(this.tabControlClientDetail_SelectedIndexChanged);
             // 
-            // tabPage1
+            // ClientListTab
             // 
-            this.tabPage1.Controls.Add(this.panelListClient);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(952, 574);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Liste Clients";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.ClientListTab.Controls.Add(this.panelListClient);
+            this.ClientListTab.Location = new System.Drawing.Point(4, 22);
+            this.ClientListTab.Name = "ClientListTab";
+            this.ClientListTab.Size = new System.Drawing.Size(952, 574);
+            this.ClientListTab.TabIndex = 0;
+            this.ClientListTab.Text = "Liste Clients";
+            this.ClientListTab.UseVisualStyleBackColor = true;
             // 
             // frmClient
             // 
@@ -202,7 +203,7 @@
             this.flowLayoutPanelSearchClient.ResumeLayout(false);
             this.flowLayoutPanelSearchClient.PerformLayout();
             this.tabControlClientDetail.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.ClientListTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -220,6 +221,6 @@
         private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Label lblSearchClient;
         private System.Windows.Forms.TabControl tabControlClientDetail;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage ClientListTab;
     }
 }

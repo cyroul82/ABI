@@ -220,7 +220,7 @@ namespace ABI
                 String ville = txtVille.Text.Trim();
                 String codePostal = mTxtCodePostal.Text.Trim();
                 String rue = txtRue.Text.Trim();
-                Adresse adresse = new Adresse(rue, ville, codePostal);
+                Adresse adresse = new Adresse(rue, codePostal, ville);
                 String comment = txtComment.Text.Trim();
                 Int32 idClient = Donnees.clientNumber++;
 

@@ -17,6 +17,7 @@ namespace ABI
         {
             table = new DataTable("ClientTable");
             column = new DataColumn();
+            MakeClientTable();
         }
 
         private void MakeClientTable()
@@ -105,8 +106,8 @@ namespace ABI
         public void addClient(Client client)
         {
             row = table.NewRow();
-            row["id Client"] = client.IdClient;
-            row["Raison Social"] = client.RaisonSocial;
+            row[0] = client.IdClient;
+            row[1] = client.RaisonSocial;
             row["Type"] = client.TypeSociete;
             row["Activite"] = client.Activite;
             row["Nature"] = client.Nature;

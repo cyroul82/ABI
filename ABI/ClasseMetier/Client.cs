@@ -179,21 +179,5 @@ namespace ABI
             this.telephone = telephone;
             ListIntervenant = new List<Intervenant>();
         }
-        //public Client(Int32 idClient, String raisonSocial, String typeSociete,
-        //                String activite, String nature, Int32 effectifs,
-        //                Decimal chiffreAffaires, String comment, String telephone)
-        //{
-        //    this.IdClient = idClient;
-        //    this.RaisonSocial = raisonSocial;
-        //    this.TypeSociete = typeSociete;
-        //    this.Activite = activite;
-        //    this.Nature = nature;
-        //    this.Effectifs = effectifs;
-        //    this.chiffreAffaires = chiffreAffaires;
-        //    //this.Adresse = new Adresse("une rue", "83700", "ST Raph") ;
-        //    this.Comment = comment;
-        //    this.telephone = telephone;
-        //    ListIntervenant = new List<Intervenant>();
-        //}
     }
 }
