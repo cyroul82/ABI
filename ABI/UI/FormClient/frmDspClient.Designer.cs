@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnFermer = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
             this.gpxContact = new System.Windows.Forms.GroupBox();
@@ -136,18 +135,9 @@
             this.gpbClientInformation.Controls.SetChildIndex(this.btnModifierClient, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.btnAnnulerModifClient, 0);
             // 
-            // btnEnregistrer
-            // 
-            this.btnEnregistrer.Location = new System.Drawing.Point(20, 477);
-            this.btnEnregistrer.Name = "btnEnregistrer";
-            this.btnEnregistrer.Size = new System.Drawing.Size(75, 23);
-            this.btnEnregistrer.TabIndex = 2;
-            this.btnEnregistrer.Text = "Enregistrer";
-            this.btnEnregistrer.UseVisualStyleBackColor = true;
-            // 
             // btnFermer
             // 
-            this.btnFermer.Location = new System.Drawing.Point(110, 477);
+            this.btnFermer.Location = new System.Drawing.Point(20, 477);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(75, 23);
             this.btnFermer.TabIndex = 1;
@@ -347,7 +337,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(976, 600);
             this.Controls.Add(this.btnFermer);
-            this.Controls.Add(this.btnEnregistrer);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(960, 600);
@@ -356,7 +345,6 @@
             this.Load += new System.EventHandler(this.frmDspClient_Load);
             this.Controls.SetChildIndex(this.gpbClientInformation, 0);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
-            this.Controls.SetChildIndex(this.btnEnregistrer, 0);
             this.Controls.SetChildIndex(this.btnFermer, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
@@ -387,7 +375,6 @@
         #endregion
         private System.Windows.Forms.Button btnFermer;
         private System.Windows.Forms.Button btnModifier;
-        private System.Windows.Forms.Button btnEnregistrer;
         private System.Windows.Forms.GroupBox gpxContact;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;

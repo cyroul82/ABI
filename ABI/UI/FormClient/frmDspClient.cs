@@ -14,6 +14,7 @@ namespace ABI
         public event UpdatedClientHandler Updated;
         private const String MODIFIER = "Modifier";
         private const String ENREGISTRER = "Enregistrer";
+        public Boolean IsModifed { get; private set; } = false;
         public frmDspClient(Client client)
         {
             InitializeComponent();
@@ -84,6 +85,7 @@ namespace ABI
             cbxType.Enabled = true;
             btnModifierClient.Text = ENREGISTRER;
             btnAnnulerModifClient.Visible = true;
+            IsModifed = true;
         }
 
         private void disableClient()
@@ -102,6 +104,7 @@ namespace ABI
             cbxType.Enabled = false;
             btnModifierClient.Text = MODIFIER;
             btnAnnulerModifClient.Visible = false;
+            IsModifed = false;
         }
 
         private void btnAnnulerModif_Click(object sender, EventArgs e)

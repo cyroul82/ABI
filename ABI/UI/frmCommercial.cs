@@ -10,29 +10,30 @@ using System.Windows.Forms;
 
 namespace ABI.UI
 {
-    public partial class frmClient : Form
+    public partial class frmCommercial : Form
     {
         private Client client;
         private DataTable table;
         private DataColumn column;
         private DataRow row;
         private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
-        private const String IDCLIENT = "id Client";
-        private const String RAISONSOCIALE = "Raison Sociale";
+        private const String IDCLIENT = "idClient";
+        private const String RAISONSOCIALE = "RaisonSociale";
         private const String TYPE = "Type";
-        private const String ACTIVITE = "Activité";
+        private const String ACTIVITE = "Activite";
         private const String NATURE = "Nature";
         private const String EFFECTIF = "Effectif";
-        private const String CHIFFREAFFAIRES = "Chiffre d'affaires";
+        private const String CHIFFREAFFAIRES = "ChiffreAffaires";
         private const String VILLE = "Ville";
-        private const String TELEPHONE = "Téléphone";
+        private const String TELEPHONE = "Telephone";
+        private const String TELEPHONE_CAPTION = "Téléphone";
         private const String COMMENTAIRE = "Commentaires";
 
-        public frmClient()
+        public frmCommercial()
         {
             InitializeComponent();
             Donnees.listClient.Add(new Client(Donnees.clientNumber++, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, new Adresse("verdun", "83700", "st raph"), "oui mais non", "0645248403"));
-            Donnees.listClient.Add(new Client(Donnees.clientNumber++, "Made in Mode", "Prvié", "Agro", "Principale", 5, 1500, new Adresse("verdun", "83700", "st raph"), "alors bon", "5646897453"));
+            Donnees.listClient.Add(new Client(Donnees.clientNumber++, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500, new Adresse("verdun", "83700", "st raph"), "alors bon", "5646897453"));
             Donnees.listClient.Add(new Client(Donnees.clientNumber++, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, new Adresse("verdun", "83700", "st raph"), "oki doki", "45678564"));
             Donnees.listClient.Add(new Client(Donnees.clientNumber++, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870, new Adresse("verdun", "83700", "st raph"), "c parti", "21456731"));
             Donnees.listClient.Add(new Client(Donnees.clientNumber++, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, new Adresse("verdun", "83700", "st raph"), "comment ca", "54564654"));
@@ -42,7 +43,9 @@ namespace ABI.UI
         {
             loadListClient();
         }
-
+        /// <summary>
+        /// Loads the list of client form Donnee.listClient and styles the dataGridView grdClient
+        /// </summary>
         private void loadListClient()
         {
             table = new DataTable();
@@ -93,8 +96,12 @@ namespace ABI.UI
             grdClient.Columns[IDCLIENT].DefaultCellStyle = idClient;
         }
 
+        /// <summary>
+        /// Build the Table Column with DataColumn
+        /// </summary>
         private void buildTableColumn()
         {
+            //Column IDCLIENT Unique and ReadOnly
             column = new DataColumn();
             column.DataType = typeof(System.Int32);
             column.ColumnName = IDCLIENT;
@@ -102,6 +109,7 @@ namespace ABI.UI
             column.Unique = true;
             table.Columns.Add(column);
 
+            //Column RAISON SOCIALE
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = RAISONSOCIALE;
@@ -110,6 +118,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
+            //Column TYPE
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = TYPE;
@@ -118,6 +127,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
+            //Column ACTIVITE
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = ACTIVITE;
@@ -126,6 +136,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
+            //Column NATURE
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = NATURE;
@@ -134,6 +145,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
+            //Column EFFECTIF
             column = new DataColumn();
             column.DataType = typeof(System.Int32);
             column.ColumnName = EFFECTIF;
@@ -142,6 +154,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
+            //Column CHIFFRE AFFAIRES
             column = new DataColumn();
             column.DataType = typeof(System.Decimal);
             column.ColumnName = CHIFFREAFFAIRES;
@@ -150,6 +163,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
+            //Column VILLE
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = VILLE;
@@ -158,6 +172,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
+            //Column TELEPHONE
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = TELEPHONE;
@@ -166,6 +181,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
+            //Column COMMENTAIRES
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = COMMENTAIRE;
@@ -190,14 +206,25 @@ namespace ABI.UI
             row[COMMENTAIRE] = client.Comment;
             table.Rows.Add(row);
         }
+        
 
         private void updateClientToTable(Client client)
         {
+            //Update tab Text
+            foreach(KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+            {
+                if(kvp.Key == client)
+                {
+                    TabPage tabPage = kvp.Value;
+                    tabPage.Text = client.RaisonSocial;
+                }
+            }
+            //update the listClient in Donnees
             for(Int32 i=0; i < table.Rows.Count; i++)
             {
                 Int32 idClient = (Int32)table.Rows[i][0];
                 if(idClient == client.IdClient)
-                {
+                { 
 
                     table.Rows[i][RAISONSOCIALE] = client.RaisonSocial;
                     table.Rows[i][TYPE] = client.TypeSociete;
@@ -277,13 +304,15 @@ namespace ABI.UI
 
         private void removeTab()
         {
-            TabPage tabPage = tabPageDictionnary[client];
-            if (tabPage != null)
+            if (tabPageDictionnary.ContainsKey(client))
             {
-                tabControlClientDetail.TabPages.Remove(tabPage);
-                tabPageDictionnary.Remove(client);
+                TabPage tabPage = tabPageDictionnary[client];
+                if (tabPage != null)
+                {
+                    tabControlClientDetail.TabPages.Remove(tabPage);
+                    tabPageDictionnary.Remove(client);
+                }
             }
-
         }
 
         private void AddClientTab(Client client)
@@ -326,6 +355,11 @@ namespace ABI.UI
             }
         }
 
+        /// <summary>
+        /// Upon supprimer_click show a dialog to confirm and delete the client from the list, the dataGridView and the tabControl if open 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -349,7 +383,6 @@ namespace ABI.UI
                 client = null;
                 loadListClient();
             }
-            
         }
 
         private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
@@ -362,7 +395,11 @@ namespace ABI.UI
                     client = kvp.Key;
                 }
             }
-            
+        }
+
+        private void btnFermer_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

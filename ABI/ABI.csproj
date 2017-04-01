@@ -85,11 +85,11 @@
     <Compile Include="UI\FormClient\FormContact\frmNewContact.Designer.cs">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\frmClient.cs">
+    <Compile Include="UI\frmCommercial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\frmClient.Designer.cs">
-      <DependentUpon>frmClient.cs</DependentUpon>
+    <Compile Include="UI\frmCommercial.Designer.cs">
+      <DependentUpon>frmCommercial.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmIntervention.cs">
       <SubType>Form</SubType>
@@ -124,8 +124,8 @@
     <EmbeddedResource Include="UI\FormClient\FormContact\frmNewContact.resx">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmClient.resx">
-      <DependentUpon>frmClient.cs</DependentUpon>
+    <EmbeddedResource Include="UI\frmCommercial.resx">
+      <DependentUpon>frmCommercial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmIntervention.resx">
       <DependentUpon>frmIntervention.cs</DependentUpon>

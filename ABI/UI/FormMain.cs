@@ -12,31 +12,28 @@ namespace ABI
 {
     public partial class FormMain : Form
     {
-        ABI.UI.frmClient gestionCommercial;
+        ABI.UI.frmCommercial commercial;
         public FormMain()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
         }
-
-        private void enregistreEvenementsGestionClient()
-        {
-            if(gestionCommercial != null)
-            {
-            }
-        }
-
-
         private void clientToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (gestionCommercial == null)
+            if (commercial == null)
             {
-                gestionCommercial = new ABI.UI.frmClient();
-                gestionCommercial.MdiParent = this;
-                gestionCommercial.Dock = DockStyle.Fill;
-                gestionCommercial.Show();
+                commercial = new ABI.UI.frmCommercial();
+                commercial.FormClosing += new FormClosingEventHandler(this.commercial_Closing);
+                commercial.MdiParent = this;
+                commercial.Dock = DockStyle.Fill;
+                commercial.Show();
             }
-            else gestionCommercial.Activate();
+            else commercial.Activate();
+        }
+
+        private void commercial_Closing(object sender, FormClosingEventArgs e)
+        {
+            commercial = null;
         }
     }
 }

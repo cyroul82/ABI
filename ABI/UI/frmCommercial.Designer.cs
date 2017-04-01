@@ -1,6 +1,6 @@
 ﻿namespace ABI.UI
 {
-    partial class frmClient
+    partial class frmCommercial
     {
         /// <summary>
         /// Required designer variable.
@@ -40,6 +40,7 @@
             this.btnSearchClient = new System.Windows.Forms.Button();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
+            this.btnFermer = new System.Windows.Forms.Button();
             this.panelListClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             this.panelControlClient.SuspendLayout();
@@ -82,6 +83,7 @@
             // panelControlClient
             // 
             this.panelControlClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelControlClient.Controls.Add(this.btnFermer);
             this.panelControlClient.Controls.Add(this.btnAjouter);
             this.panelControlClient.Controls.Add(this.btnAfficher);
             this.panelControlClient.Controls.Add(this.btnSupprimer);
@@ -184,6 +186,16 @@
             this.ClientListTab.Text = "Liste Clients";
             this.ClientListTab.UseVisualStyleBackColor = true;
             // 
+            // btnFermer
+            // 
+            this.btnFermer.Location = new System.Drawing.Point(21, 99);
+            this.btnFermer.Name = "btnFermer";
+            this.btnFermer.Size = new System.Drawing.Size(75, 23);
+            this.btnFermer.TabIndex = 4;
+            this.btnFermer.Text = "Fermer";
+            this.btnFermer.UseVisualStyleBackColor = true;
+            this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
+            // 
             // frmClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -222,5 +234,6 @@
         private System.Windows.Forms.Label lblSearchClient;
         private System.Windows.Forms.TabControl tabControlClientDetail;
         private System.Windows.Forms.TabPage ClientListTab;
+        private System.Windows.Forms.Button btnFermer;
     }
 }
