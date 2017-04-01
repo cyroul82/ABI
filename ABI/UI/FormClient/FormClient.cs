@@ -12,6 +12,8 @@ namespace ABI
 {
     public partial class FormClient : Form
     {
+
+        protected Client client { get; set; } = null;
         public FormClient()
         {
             InitializeComponent();
@@ -201,6 +203,33 @@ namespace ABI
             isCAValid();
         }
 
+        protected void createClient()
+        {
+            String raisonSocial = txtRaisonSocial.Text.Trim();
+            String type = cbxType.SelectedItem.ToString();
+            String activity = cbxActivity.SelectedItem.ToString();
+            String nature = cbxNature.SelectedItem.ToString();
+            Int32 effectif = 0;
+            Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
+            Decimal chiffreAffaires = 0;
+            Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
+            String telephone = txtTelephone.Text.Trim();
+            //Create the address
+            String ville = txtVille.Text.Trim();
+            String codePostal = mTxtCodePostal.Text.Trim();
+            String rue = txtRue.Text.Trim();
+            Adresse adresse = new Adresse(rue, ville, codePostal);
+
+            String comment = txtComment.Text.Trim();
+            Int32 idClient = Donnees.clientNumber++;
+
+            client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, /*adresse,*/ comment, telephone);
+            if(client != null)
+            {
+                Donnees.listClient.Add(client);
+            }
+            
+        }
 
     }
 }

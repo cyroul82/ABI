@@ -13,11 +13,10 @@ namespace ABI
 
         public const String MODIFIER = "Modifier";
         public const String ENREGISTRER = "Enregistrer";
-        public Client Client { get; private set; }
         public frmDspClient(Client client)
         {
             InitializeComponent();
-            this.Client = client;
+            base.client = client;
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
@@ -33,16 +32,16 @@ namespace ABI
 
         private void frmDspClient_Load(object sender, EventArgs e)
         {
-            txtNumero.Text = Client.IdClient.ToString();
-            txtRaisonSocial.Text = Client.RaisonSocial;
-            txtEffectif.Text = Client.Effectifs.ToString();
-            txtCA.Text = Client.ChiffreAffaires.ToString();
-            txtTelephone.Text = Client.Telephone;
+            txtNumero.Text = base.client.IdClient.ToString();
+            txtRaisonSocial.Text = base.client.RaisonSocial;
+            txtEffectif.Text = base.client.Effectifs.ToString();
+            txtCA.Text = base.client.ChiffreAffaires.ToString();
+            txtTelephone.Text = base.client.Telephone;
         }
 
-        private void btnModifier_Click(object sender, EventArgs e)
+        private void btnModifierClient_Click(object sender, EventArgs e)
         {
-            if(btnModifier.Text == MODIFIER)
+            if(btnModifierClient.Text == MODIFIER)
             {
                 enableClient();
             }
@@ -67,8 +66,8 @@ namespace ABI
             cbxActivity.Enabled = true;
             cbxNature.Enabled = true;
             cbxType.Enabled = true;
-            btnModifier.Text = ENREGISTRER;
-            btnAnnulerModif.Visible = true;
+            btnModifierClient.Text = ENREGISTRER;
+            btnAnnulerModifClient.Visible = true;
         }
 
         private void disableClient()
@@ -85,8 +84,8 @@ namespace ABI
             cbxActivity.Enabled = false;
             cbxNature.Enabled = false;
             cbxType.Enabled = false;
-            btnModifier.Text = MODIFIER;
-            btnAnnulerModif.Visible = false;
+            btnModifierClient.Text = MODIFIER;
+            btnAnnulerModifClient.Visible = false;
         }
 
         private void btnAnnulerModif_Click(object sender, EventArgs e)

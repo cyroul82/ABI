@@ -46,6 +46,8 @@
             this.btnAnnulerModif = new System.Windows.Forms.Button();
             this.gpxDocument = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnModifierClient = new System.Windows.Forms.Button();
+            this.btnAnnulerModifClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
@@ -115,9 +117,26 @@
             // gpbClientInformation
             // 
             this.gpbClientInformation.AutoSize = true;
+            this.gpbClientInformation.Controls.Add(this.btnAnnulerModifClient);
+            this.gpbClientInformation.Controls.Add(this.btnModifierClient);
             this.gpbClientInformation.Dock = System.Windows.Forms.DockStyle.None;
             this.gpbClientInformation.Location = new System.Drawing.Point(20, 22);
             this.gpbClientInformation.Size = new System.Drawing.Size(480, 449);
+            this.gpbClientInformation.Controls.SetChildIndex(this.lblClientNumber, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtNumero, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.cbxType, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtRaisonSocial, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.cbxActivity, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.cbxNature, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtCA, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtEffectif, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtComment, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtRue, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtVille, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtTelephone, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.mTxtCodePostal, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.btnModifierClient, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.btnAnnulerModifClient, 0);
             // 
             // panel1
             // 
@@ -126,7 +145,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(20, 541);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(920, 39);
+            this.panel1.Size = new System.Drawing.Size(936, 39);
             this.panel1.TabIndex = 1;
             // 
             // btnEnregistrer
@@ -156,7 +175,7 @@
             this.btnModifier.TabIndex = 0;
             this.btnModifier.Text = "Modifier";
             this.btnModifier.UseVisualStyleBackColor = true;
-            this.btnModifier.Click += new System.EventHandler(this.btnModifier_Click);
+            this.btnModifier.Click += new System.EventHandler(this.btnModifierClient_Click);
             // 
             // gpxContact
             // 
@@ -164,7 +183,8 @@
             this.gpxContact.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpxContact.Location = new System.Drawing.Point(0, 0);
             this.gpxContact.Name = "gpxContact";
-            this.gpxContact.Size = new System.Drawing.Size(421, 255);
+            this.gpxContact.Padding = new System.Windows.Forms.Padding(10);
+            this.gpxContact.Size = new System.Drawing.Size(437, 255);
             this.gpxContact.TabIndex = 2;
             this.gpxContact.TabStop = false;
             this.gpxContact.Text = "Contact";
@@ -175,19 +195,21 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 16);
+            this.panel2.Location = new System.Drawing.Point(10, 23);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(415, 236);
+            this.panel2.Size = new System.Drawing.Size(417, 222);
             this.panel2.TabIndex = 1;
             // 
             // dtgContact
             // 
+            this.dtgContact.AllowUserToAddRows = false;
+            this.dtgContact.AllowUserToDeleteRows = false;
             this.dtgContact.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dtgContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgContact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgContact.Location = new System.Drawing.Point(112, 31);
+            this.dtgContact.Location = new System.Drawing.Point(112, 29);
             this.dtgContact.Name = "dtgContact";
-            this.dtgContact.Size = new System.Drawing.Size(303, 205);
+            this.dtgContact.Size = new System.Drawing.Size(305, 193);
             this.dtgContact.TabIndex = 1;
             // 
             // panel3
@@ -196,9 +218,9 @@
             this.panel3.Controls.Add(this.btnAfficher);
             this.panel3.Controls.Add(this.btnSupprimer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 31);
+            this.panel3.Location = new System.Drawing.Point(0, 29);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(112, 205);
+            this.panel3.Size = new System.Drawing.Size(112, 193);
             this.panel3.TabIndex = 2;
             // 
             // btnAjouter
@@ -232,7 +254,6 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Controls.Add(this.btnSearchClient);
             this.flowLayoutPanel1.Controls.Add(this.txtSearchClient);
             this.flowLayoutPanel1.Controls.Add(this.lblSearchClient);
@@ -240,13 +261,13 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(415, 31);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(417, 29);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnSearchClient
             // 
             this.btnSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSearchClient.Location = new System.Drawing.Point(335, 3);
+            this.btnSearchClient.Location = new System.Drawing.Point(339, 3);
             this.btnSearchClient.Name = "btnSearchClient";
             this.btnSearchClient.Size = new System.Drawing.Size(75, 23);
             this.btnSearchClient.TabIndex = 5;
@@ -256,7 +277,7 @@
             // txtSearchClient
             // 
             this.txtSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSearchClient.Location = new System.Drawing.Point(84, 4);
+            this.txtSearchClient.Location = new System.Drawing.Point(88, 4);
             this.txtSearchClient.Name = "txtSearchClient";
             this.txtSearchClient.Size = new System.Drawing.Size(245, 20);
             this.txtSearchClient.TabIndex = 4;
@@ -265,7 +286,7 @@
             // 
             this.lblSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSearchClient.AutoSize = true;
-            this.lblSearchClient.Location = new System.Drawing.Point(9, 8);
+            this.lblSearchClient.Location = new System.Drawing.Point(13, 8);
             this.lblSearchClient.Name = "lblSearchClient";
             this.lblSearchClient.Size = new System.Drawing.Size(69, 13);
             this.lblSearchClient.TabIndex = 3;
@@ -287,7 +308,7 @@
             this.gpxDocument.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpxDocument.Location = new System.Drawing.Point(0, 0);
             this.gpxDocument.Name = "gpxDocument";
-            this.gpxDocument.Size = new System.Drawing.Size(421, 253);
+            this.gpxDocument.Size = new System.Drawing.Size(437, 253);
             this.gpxDocument.TabIndex = 3;
             this.gpxDocument.TabStop = false;
             this.gpxDocument.Text = "Document";
@@ -308,14 +329,35 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gpxDocument);
-            this.splitContainer1.Size = new System.Drawing.Size(421, 512);
+            this.splitContainer1.Size = new System.Drawing.Size(437, 512);
             this.splitContainer1.SplitterDistance = 255;
             this.splitContainer1.TabIndex = 4;
+            // 
+            // btnModifierClient
+            // 
+            this.btnModifierClient.Location = new System.Drawing.Point(277, 25);
+            this.btnModifierClient.Name = "btnModifierClient";
+            this.btnModifierClient.Size = new System.Drawing.Size(75, 23);
+            this.btnModifierClient.TabIndex = 31;
+            this.btnModifierClient.Text = "Modifier";
+            this.btnModifierClient.UseVisualStyleBackColor = true;
+            this.btnModifierClient.Click += new System.EventHandler(this.btnModifierClient_Click);
+            // 
+            // btnAnnulerModifClient
+            // 
+            this.btnAnnulerModifClient.Location = new System.Drawing.Point(358, 25);
+            this.btnAnnulerModifClient.Name = "btnAnnulerModifClient";
+            this.btnAnnulerModifClient.Size = new System.Drawing.Size(75, 23);
+            this.btnAnnulerModifClient.TabIndex = 32;
+            this.btnAnnulerModifClient.Text = "Annuler";
+            this.btnAnnulerModifClient.UseVisualStyleBackColor = true;
+            this.btnAnnulerModifClient.Visible = false;
+            this.btnAnnulerModifClient.Click += new System.EventHandler(this.btnAnnulerModif_Click);
             // 
             // frmDspClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(960, 600);
+            this.ClientSize = new System.Drawing.Size(976, 600);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -373,5 +415,7 @@
         private System.Windows.Forms.Button btnAnnulerModif;
         private System.Windows.Forms.GroupBox gpxDocument;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button btnModifierClient;
+        private System.Windows.Forms.Button btnAnnulerModifClient;
     }
 }

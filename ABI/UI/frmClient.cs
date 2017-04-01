@@ -110,7 +110,7 @@ namespace ABI.UI
             if(result == DialogResult.Yes)
             {
                 loadListClient();
-                client = fnc.ClientCreated;
+                client = fnc.CLien;
                 displayClientTab();
             }
             
