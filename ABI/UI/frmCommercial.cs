@@ -18,6 +18,9 @@ namespace ABI.UI
         private DataColumn column;
         private DataRow row;
         private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
+        private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
+
+        //Declare all the constants for the columns (gridDataView)
         private const String IDCLIENT = "idClient";
         private const String RAISONSOCIALE = "RaisonSociale";
         private const String TYPE = "Type";
@@ -69,8 +72,6 @@ namespace ABI.UI
             // Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default
             // value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
             grdClient.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
-
-
 
             grdClient.RowsDefaultCellStyle.BackColor = Color.LightGray;
             grdClient.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray;
@@ -290,10 +291,6 @@ namespace ABI.UI
             }
         }
 
-        private void grdClient_MouseClick(object sender, MouseEventArgs e)
-        {
-    
-        }
 
         private void grdClient_DoubleClick(object sender, EventArgs e)
         {
@@ -312,6 +309,7 @@ namespace ABI.UI
                 {
                     tabControlClientDetail.TabPages.Remove(tabPage);
                     tabPageDictionnary.Remove(client);
+                    frmDspClientDictionnary.Remove(tabPage);
                 }
             }
         }
@@ -328,7 +326,6 @@ namespace ABI.UI
                 frmDspClient fdc = new frmDspClient(client);
                 fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
                 fdc.Updated += new UpdatedClientHandler(this.updatedClient);
-
                 fdc.TopLevel = false;
                 fdc.Dock = DockStyle.Fill;
 
@@ -337,6 +334,7 @@ namespace ABI.UI
                 tabControlClientDetail.Controls.Add(tabPage);
                 tabControlClientDetail.SelectTab(tabPage);
                 tabPageDictionnary.Add(client, tabPage);
+                frmDspClientDictionnary.Add(tabPage, fdc);
                 fdc.Show();
             }
         }
@@ -367,7 +365,6 @@ namespace ABI.UI
             if (result == DialogResult.Yes)
             {
                 removeTab();
-
                 foreach (DataGridViewRow row in grdClient.SelectedRows)
                 {
                     Int32 id = (Int32)row.Cells[0].Value;
@@ -403,16 +400,33 @@ namespace ABI.UI
 
         private void btnFermer_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult result = MessageBox.Show("Voulez-vous vraiment fermer la partie Commerciale ?", "Fermeture", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                btnFermerOnglets_Click(sender, e);
+                frmDspClientDictionnary.Clear();
+                tabControlClientDetail.TabPages.Clear();
+                tabPageDictionnary.Clear();
+                Donnees.listClient.Clear();
+                Close();
+            }
         }
 
         private void btnFermerOnglets_Click(object sender, EventArgs e)
         {
             foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
             {
+                //for (Int32 i = 0; i < frmDspClientDictionnary.Count; i++)
+                //{
+                //    if (frmDspClientDictionnary.ContainsKey(kvp.Value))
+                //    {
+                //        frmDspClientDictionnary[kvp.Value].Close(); ;
+                //    }
+                //}
+
                 tabControlClientDetail.TabPages.Remove(kvp.Value);
             }
-
+            frmDspClientDictionnary.Clear(); ;
             tabPageDictionnary.Clear();
         }
     }

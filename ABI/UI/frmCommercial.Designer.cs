@@ -79,7 +79,6 @@
             this.grdClient.TabIndex = 1;
             this.grdClient.SelectionChanged += new System.EventHandler(this.grdClient_SelectionChanged);
             this.grdClient.DoubleClick += new System.EventHandler(this.grdClient_DoubleClick);
-            this.grdClient.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdClient_MouseClick);
             // 
             // panelControlClient
             // 
