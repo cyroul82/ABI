@@ -17,6 +17,16 @@ namespace ABI.UI
         private DataColumn column;
         private DataRow row;
         private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
+        private const String IDCLIENT = "id Client";
+        private const String RAISONSOCIALE = "Raison Sociale";
+        private const String TYPE = "Type";
+        private const String ACTIVITE = "Activité";
+        private const String NATURE = "Nature";
+        private const String EFFECTIF = "Effectif";
+        private const String CHIFFREAFFAIRES = "Chiffre d'affaires";
+        private const String VILLE = "Ville";
+        private const String TELEPHONE = "Téléphone";
+        private const String COMMENTAIRE = "Commentaires";
 
         public frmClient()
         {
@@ -33,7 +43,6 @@ namespace ABI.UI
             loadListClient();
         }
 
-
         private void loadListClient()
         {
             table = new DataTable();
@@ -47,13 +56,12 @@ namespace ABI.UI
             }
             grdClient.DataSource = table.DefaultView;
 
-            grdClient.Columns["id Client"].Visible = false;
+            grdClient.Columns[IDCLIENT].Visible = false;
 
             // Set the row and column header styles.
 
             grdClient.RowHeadersDefaultCellStyle.BackColor = Color.Black;
             
-
             // Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default
             // value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
             grdClient.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
@@ -78,25 +86,25 @@ namespace ABI.UI
             DataGridViewCellStyle raisonSocialStyle = new DataGridViewCellStyle();
             raisonSocialStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
             raisonSocialStyle.ForeColor = Color.DarkBlue;
-            grdClient.Columns["Raison Social"].DefaultCellStyle = raisonSocialStyle;
+            grdClient.Columns[RAISONSOCIALE].DefaultCellStyle = raisonSocialStyle;
 
             DataGridViewCellStyle idClient = new DataGridViewCellStyle();
             idClient.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            grdClient.Columns["id Client"].DefaultCellStyle = idClient;
+            grdClient.Columns[IDCLIENT].DefaultCellStyle = idClient;
         }
 
         private void buildTableColumn()
         {
             column = new DataColumn();
             column.DataType = typeof(System.Int32);
-            column.ColumnName = "id Client";
+            column.ColumnName = IDCLIENT;
             column.ReadOnly = true;
             column.Unique = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = "Raison Social";
+            column.ColumnName = RAISONSOCIALE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -104,7 +112,7 @@ namespace ABI.UI
 
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = "Type";
+            column.ColumnName = TYPE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -112,7 +120,7 @@ namespace ABI.UI
 
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = "Activite";
+            column.ColumnName = ACTIVITE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -120,7 +128,7 @@ namespace ABI.UI
 
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = "Nature";
+            column.ColumnName = NATURE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -128,7 +136,7 @@ namespace ABI.UI
 
             column = new DataColumn();
             column.DataType = typeof(System.Int32);
-            column.ColumnName = "Effectif";
+            column.ColumnName = EFFECTIF;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -136,7 +144,7 @@ namespace ABI.UI
 
             column = new DataColumn();
             column.DataType = typeof(System.Decimal);
-            column.ColumnName = "CA";
+            column.ColumnName = CHIFFREAFFAIRES;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -144,7 +152,7 @@ namespace ABI.UI
 
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = "Ville";
+            column.ColumnName = VILLE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -152,7 +160,7 @@ namespace ABI.UI
 
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = "Téléphone";
+            column.ColumnName = TELEPHONE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -160,7 +168,7 @@ namespace ABI.UI
 
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = "Commentaire";
+            column.ColumnName = COMMENTAIRE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -170,16 +178,16 @@ namespace ABI.UI
         private void addClientToTable(Client client)
         {
             row = table.NewRow();
-            row["id Client"] = client.IdClient;
-            row["Raison social"] = client.RaisonSocial;
-            row["Type"] = client.TypeSociete;
-            row["Activite"] = client.Activite;
-            row["Nature"] = client.Nature;
-            row["Effectif"] = client.Effectifs.ToString();
-            row["CA"] = client.ChiffreAffaires.ToString();
-            row["Ville"] = client.Adresse.Ville;
-            row["Commentaire"] = client.Comment;
-            row["Téléphone"] = client.Telephone;
+            row[IDCLIENT] = client.IdClient;
+            row[RAISONSOCIALE] = client.RaisonSocial;
+            row[TYPE] = client.TypeSociete;
+            row[ACTIVITE] = client.Activite;
+            row[NATURE] = client.Nature;
+            row[EFFECTIF] = client.Effectifs.ToString();
+            row[CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
+            row[VILLE] = client.Adresse.Ville;
+            row[TELEPHONE] = client.Telephone;
+            row[COMMENTAIRE] = client.Comment;
             table.Rows.Add(row);
         }
 
@@ -191,15 +199,15 @@ namespace ABI.UI
                 if(idClient == client.IdClient)
                 {
 
-                    table.Rows[i][1] = client.RaisonSocial;
-                    table.Rows[i][2] = client.TypeSociete;
-                    table.Rows[i][3] = client.Activite;
-                    table.Rows[i][4] = client.Nature;
-                    table.Rows[i][5] = client.Effectifs.ToString();
-                    table.Rows[i][6] = client.ChiffreAffaires.ToString();
-                    table.Rows[i][7] = client.Adresse.Ville;
-                    table.Rows[i][8] = client.Comment;
-                    table.Rows[i][9] = client.Telephone;
+                    table.Rows[i][RAISONSOCIALE] = client.RaisonSocial;
+                    table.Rows[i][TYPE] = client.TypeSociete;
+                    table.Rows[i][ACTIVITE] = client.Activite;
+                    table.Rows[i][NATURE] = client.Nature;
+                    table.Rows[i][EFFECTIF] = client.Effectifs.ToString();
+                    table.Rows[i][CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
+                    table.Rows[i][VILLE] = client.Adresse.Ville;
+                    table.Rows[i][TELEPHONE] = client.Telephone;
+                    table.Rows[i][COMMENTAIRE] = client.Comment;
                     
                 }
             }
