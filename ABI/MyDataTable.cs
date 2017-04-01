@@ -16,6 +16,7 @@ namespace ABI
         public MyDataTable()
         {
             table = new DataTable("ClientTable");
+            column = new DataColumn();
         }
 
         private void MakeClientTable()
@@ -101,9 +102,27 @@ namespace ABI
 
         }
 
-        public void addRow(Client client)
+        public void addClient(Client client)
         {
-            
+            row = table.NewRow();
+            row["id Client"] = client.IdClient;
+            row["Raison Social"] = client.RaisonSocial;
+            row["Type"] = client.TypeSociete;
+            row["Activite"] = client.Activite;
+            row["Nature"] = client.Nature;
+            row["Effectif"] = client.Effectifs.ToString();
+            row["CA"] = client.ChiffreAffaires.ToString();
+            row["Ville"] = client.Adresse.Ville;
+            row["Commentaire"] = client.Comment;
+            row["Téléphone"] = client.Telephone;
+
+            table.Rows.Add(row);
+
+        }
+
+        public void deleteRow(Client client)
+        {
+
         }
 
     }
