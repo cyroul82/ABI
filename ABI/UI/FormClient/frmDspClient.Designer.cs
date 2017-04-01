@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnEnregistrer = new System.Windows.Forms.Button();
             this.btnFermer = new System.Windows.Forms.Button();
             this.btnModifier = new System.Windows.Forms.Button();
@@ -57,7 +56,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEffectif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).BeginInit();
             this.gpbClientInformation.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.gpxContact.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgContact)).BeginInit();
@@ -138,19 +136,9 @@
             this.gpbClientInformation.Controls.SetChildIndex(this.btnModifierClient, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.btnAnnulerModifClient, 0);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnEnregistrer);
-            this.panel1.Controls.Add(this.btnFermer);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(20, 541);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(936, 39);
-            this.panel1.TabIndex = 1;
-            // 
             // btnEnregistrer
             // 
-            this.btnEnregistrer.Location = new System.Drawing.Point(434, 6);
+            this.btnEnregistrer.Location = new System.Drawing.Point(20, 477);
             this.btnEnregistrer.Name = "btnEnregistrer";
             this.btnEnregistrer.Size = new System.Drawing.Size(75, 23);
             this.btnEnregistrer.TabIndex = 2;
@@ -159,7 +147,7 @@
             // 
             // btnFermer
             // 
-            this.btnFermer.Location = new System.Drawing.Point(515, 6);
+            this.btnFermer.Location = new System.Drawing.Point(110, 477);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(75, 23);
             this.btnFermer.TabIndex = 1;
@@ -358,16 +346,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(976, 600);
+            this.Controls.Add(this.btnFermer);
+            this.Controls.Add(this.btnEnregistrer);
             this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(960, 600);
             this.Name = "frmDspClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.frmDspClient_Load);
-            this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gpbClientInformation, 0);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
+            this.Controls.SetChildIndex(this.btnEnregistrer, 0);
+            this.Controls.SetChildIndex(this.btnFermer, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();
@@ -378,7 +368,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCA)).EndInit();
             this.gpbClientInformation.ResumeLayout(false);
             this.gpbClientInformation.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.gpxContact.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -396,8 +385,6 @@
 		}
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnFermer;
         private System.Windows.Forms.Button btnModifier;
         private System.Windows.Forms.Button btnEnregistrer;

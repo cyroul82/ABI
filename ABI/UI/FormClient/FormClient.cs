@@ -12,8 +12,9 @@ namespace ABI
 {
     public partial class FormClient : Form
     {
-
-        protected Client client { get; set; } = null;
+        
+        internal Client client { get; set; } = null;
+        
         public FormClient()
         {
             InitializeComponent();
@@ -52,7 +53,6 @@ namespace ABI
                 errorProviderCodePostal.SetError(mTxtCodePostal, String.Empty);
                 return true;
             }
-
         }
 
 
@@ -203,33 +203,74 @@ namespace ABI
             isCAValid();
         }
 
-        protected void createClient()
+        protected Boolean saveClient()
         {
-            String raisonSocial = txtRaisonSocial.Text.Trim();
-            String type = cbxType.SelectedItem.ToString();
-            String activity = cbxActivity.SelectedItem.ToString();
-            String nature = cbxNature.SelectedItem.ToString();
-            Int32 effectif = 0;
-            Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
-            Decimal chiffreAffaires = 0;
-            Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
-            String telephone = txtTelephone.Text.Trim();
-            //Create the address
-            String ville = txtVille.Text.Trim();
-            String codePostal = mTxtCodePostal.Text.Trim();
-            String rue = txtRue.Text.Trim();
-            Adresse adresse = new Adresse(rue, ville, codePostal);
-
-            String comment = txtComment.Text.Trim();
-            Int32 idClient = Donnees.clientNumber++;
-
-            client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, /*adresse,*/ comment, telephone);
-            if(client != null)
+            if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
+                   & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
             {
+                String raisonSocial = txtRaisonSocial.Text.Trim();
+                String type = cbxType.SelectedItem.ToString();
+                String activity = cbxActivity.SelectedItem.ToString();
+                String nature = cbxNature.SelectedItem.ToString();
+                Int32 effectif = 0;
+                Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
+                Decimal chiffreAffaires = 0;
+                Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
+                String telephone = txtTelephone.Text.Trim();
+                //Create the address
+                String ville = txtVille.Text.Trim();
+                String codePostal = mTxtCodePostal.Text.Trim();
+                String rue = txtRue.Text.Trim();
+                Adresse adresse = new Adresse(rue, ville, codePostal);
+                String comment = txtComment.Text.Trim();
+                Int32 idClient = Donnees.clientNumber++;
+
+                client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, adresse, comment, telephone);
                 Donnees.listClient.Add(client);
+                return true;
             }
-            
+            else       
+            {
+                return false;
+            }
         }
+
+        protected Boolean updateClient(Int32 idClient)
+        {
+            if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
+                   & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
+            {
+
+                for (Int32 i = 0; i < Donnees.listClient.Count; i++)
+                {
+                    Client c = Donnees.listClient[i];
+                    if (c.IdClient == idClient)
+                    {
+                        c.Comment = txtComment.Text.Trim();
+                        c.RaisonSocial = txtRaisonSocial.Text.Trim();
+                        c.TypeSociete = cbxType.SelectedItem.ToString();
+                        c.Activite = cbxActivity.SelectedItem.ToString();
+                        c.Nature = cbxNature.SelectedItem.ToString();
+                        Int32 effectif = 0;
+                        Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
+                        c.Effectifs = effectif;
+                        Decimal chiffreAffaires = 0;
+                        Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
+                        c.ChiffreAffaires = chiffreAffaires;
+                        c.Telephone = txtTelephone.Text.Trim();
+                        //Create the address
+                        c.Adresse.Ville = txtVille.Text.Trim();
+                        c.Adresse.CodePostal = mTxtCodePostal.Text.Trim();
+                        c.Adresse.Rue = txtRue.Text.Trim();
+                    }
+                }
+                return true;
+            }
+            else return false;
+
+        }
+
+
 
     }
 }

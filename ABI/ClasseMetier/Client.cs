@@ -8,7 +8,7 @@ namespace ABI
 {
     public class Client
     {
-        //private Adresse adresse;
+        private Adresse adresse;
         private Int32 idClient;
         private String raisonSocial;
         private String typeSociete;
@@ -20,18 +20,18 @@ namespace ABI
         private String telephone;
         private List<Intervenant> listIntervenant;
 
-        //public Adresse Adresse
-        //{
-        //    get
-        //    {
-        //        return adresse;
-        //    }
+        public Adresse Adresse
+        {
+            get
+            {
+                return adresse;
+            }
 
-        //    set
-        //    {
-        //        adresse = value;
-        //    }
-        //}
+            set
+            {
+                adresse = value;
+            }
+        }
 
         public Int32 IdClient
         {
@@ -163,25 +163,9 @@ namespace ABI
             }
         }
 
-        //public Client(Int32 idClient, String raisonSocial, String typeSociete, 
-        //                String activite, String nature, Int32 effectifs, 
-        //                Decimal chiffreAffaires, Adresse adresse, String comment, String telephone)
-        //{           
-        //    this.IdClient = idClient;
-        //    this.RaisonSocial = raisonSocial;
-        //    this.TypeSociete = typeSociete;
-        //    this.Activite = activite;
-        //    this.Nature = nature;
-        //    this.Effectifs = effectifs;
-        //    this.chiffreAffaires = chiffreAffaires;
-        //    this.Adresse = adresse;
-        //    this.Comment = comment;
-        //    this.telephone = telephone;
-        //    ListIntervenant = new List<Intervenant>();
-        //}
         public Client(Int32 idClient, String raisonSocial, String typeSociete,
                         String activite, String nature, Int32 effectifs,
-                        Decimal chiffreAffaires, String comment, String telephone)
+                        Decimal chiffreAffaires, Adresse adresse, String comment, String telephone)
         {
             this.IdClient = idClient;
             this.RaisonSocial = raisonSocial;
@@ -190,10 +174,26 @@ namespace ABI
             this.Nature = nature;
             this.Effectifs = effectifs;
             this.chiffreAffaires = chiffreAffaires;
-            //this.Adresse = new Adresse("une rue", "83700", "ST Raph") ;
+            this.Adresse = adresse;
             this.Comment = comment;
             this.telephone = telephone;
             ListIntervenant = new List<Intervenant>();
         }
+        //public Client(Int32 idClient, String raisonSocial, String typeSociete,
+        //                String activite, String nature, Int32 effectifs,
+        //                Decimal chiffreAffaires, String comment, String telephone)
+        //{
+        //    this.IdClient = idClient;
+        //    this.RaisonSocial = raisonSocial;
+        //    this.TypeSociete = typeSociete;
+        //    this.Activite = activite;
+        //    this.Nature = nature;
+        //    this.Effectifs = effectifs;
+        //    this.chiffreAffaires = chiffreAffaires;
+        //    //this.Adresse = new Adresse("une rue", "83700", "ST Raph") ;
+        //    this.Comment = comment;
+        //    this.telephone = telephone;
+        //    ListIntervenant = new List<Intervenant>();
+        //}
     }
 }

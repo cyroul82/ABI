@@ -19,10 +19,8 @@ namespace ABI
 
         private void btnAjouterClient_Click(object sender, EventArgs e)
         {
-            if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
-                   & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
+            if (saveClient())
             {
-                createClient();
                 DialogResult = DialogResult.OK;
             }
                 
@@ -35,10 +33,8 @@ namespace ABI
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
-                   & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
+            if (saveClient())
             {
-                createClient();
                 DialogResult = DialogResult.Yes;
             }
         }

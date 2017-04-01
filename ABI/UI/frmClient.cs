@@ -17,11 +17,11 @@ namespace ABI.UI
         public frmClient()
         {
             InitializeComponent();
-            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, /*new Adresse("verdun", "83700", "st raph"),*/ "oui mais non", "0645248403"));
-            Donnees.listClient.Add(new Client(145, "Made in Mode", "Prvié", "Agro", "Principale", 5, 1500, /*new Adresse("verdun", "83700", "st raph"),*/ "alors bon", "5646897453"));
-            Donnees.listClient.Add(new Client(659, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, /*new Adresse("verdun", "83700", "st raph"),*/ "oki doki", "45678564"));
-            Donnees.listClient.Add(new Client(859, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870, /*new Adresse("verdun", "83700", "st raph"),*/ "c parti", "21456731"));
-            Donnees.listClient.Add(new Client(487, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, /*new Adresse("verdun", "83700", "st raph"),*/ "comment ca", "54564654"));
+            Donnees.listClient.Add(new Client(256, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, new Adresse("verdun", "83700", "st raph"), "oui mais non", "0645248403"));
+            Donnees.listClient.Add(new Client(145, "Made in Mode", "Prvié", "Agro", "Principale", 5, 1500, new Adresse("verdun", "83700", "st raph"), "alors bon", "5646897453"));
+            Donnees.listClient.Add(new Client(659, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, new Adresse("verdun", "83700", "st raph"), "oki doki", "45678564"));
+            Donnees.listClient.Add(new Client(859, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870, new Adresse("verdun", "83700", "st raph"), "c parti", "21456731"));
+            Donnees.listClient.Add(new Client(487, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, new Adresse("verdun", "83700", "st raph"), "comment ca", "54564654"));
         }
 
 
@@ -37,7 +37,7 @@ namespace ABI.UI
             dt.Columns.Add(new DataColumn("Nature", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Effectif", typeof(System.Int32)));
             dt.Columns.Add(new DataColumn("CA", typeof(System.Decimal)));
-            //dt.Columns.Add(new DataColumn("Adresse", typeof(Adresse)));
+            dt.Columns.Add(new DataColumn("Ville", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Téléphone", typeof(System.String)));
             dt.Columns.Add(new DataColumn("Commentaire", typeof(System.String)));
 
@@ -52,9 +52,9 @@ namespace ABI.UI
                 dr[4] = Donnees.listClient[i].Nature;
                 dr[5] = Donnees.listClient[i].Effectifs;
                 dr[6] = Donnees.listClient[i].ChiffreAffaires;
-                //dr[7] = Donnees.listClient[i].Adresse;
-                dr[7] = Donnees.listClient[i].Telephone;
-                dr[8] = Donnees.listClient[i].Comment;
+                dr[7] = Donnees.listClient[i].Adresse.Ville;
+                dr[8] = Donnees.listClient[i].Telephone;
+                dr[9] = Donnees.listClient[i].Comment;
                 dt.Rows.Add(dr);
                 
             }
@@ -110,7 +110,7 @@ namespace ABI.UI
             if(result == DialogResult.Yes)
             {
                 loadListClient();
-                client = fnc.CLien;
+                client = fnc.client;
                 displayClientTab();
             }
             
@@ -184,12 +184,10 @@ namespace ABI.UI
             TabPage tabPage = null;
             for (Int32 i = 0; i < tabControlClientDetail.TabCount; i++)
             {
-                
                 if (tabControlClientDetail.TabPages[i].Text == client.RaisonSocial)
                 {
                     tabPage = tabControlClientDetail.TabPages[i];
                 }
-
             }
             return tabPage;
         }
@@ -205,23 +203,28 @@ namespace ABI.UI
                     tabControlClientDetail.SelectTab(t);
                     b = false;
                 }
-                
             }
 
             if (b)
             {
                 frmDspClient fdc = new frmDspClient(client);
                 fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
+                fdc.Updated += new UpdatedClientHandler(this.savingClient);
+                
                 fdc.TopLevel = false;
                 fdc.Dock = DockStyle.Fill;
-
-
+                
                 TabPage tabPage1 = new TabPage(client.RaisonSocial);
                 tabPage1.Controls.Add(fdc);
                 tabControlClientDetail.Controls.Add(tabPage1);
                 tabControlClientDetail.SelectTab(tabPage1);
                 fdc.Show();
             }
+        }
+
+        private void savingClient(object sender, EventArgs e)
+        {
+            loadListClient();
         }
 
         private void displayForm_Closing(object sender, FormClosingEventArgs e)

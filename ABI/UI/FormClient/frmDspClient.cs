@@ -8,11 +8,12 @@ using System.Windows.Forms;
 
 namespace ABI
 {
+    public delegate void UpdatedClientHandler(object sender, EventArgs e);
     public partial class frmDspClient : ABI.FormClient
     {
-
-        public const String MODIFIER = "Modifier";
-        public const String ENREGISTRER = "Enregistrer";
+        public event UpdatedClientHandler Updated;
+        private const String MODIFIER = "Modifier";
+        private const String ENREGISTRER = "Enregistrer";
         public frmDspClient(Client client)
         {
             InitializeComponent();
@@ -32,11 +33,23 @@ namespace ABI
 
         private void frmDspClient_Load(object sender, EventArgs e)
         {
-            txtNumero.Text = base.client.IdClient.ToString();
-            txtRaisonSocial.Text = base.client.RaisonSocial;
-            txtEffectif.Text = base.client.Effectifs.ToString();
-            txtCA.Text = base.client.ChiffreAffaires.ToString();
-            txtTelephone.Text = base.client.Telephone;
+            fillUpForm();
+        }
+
+        private void fillUpForm()
+        {
+            txtNumero.Text = client.IdClient.ToString();
+            txtRaisonSocial.Text = client.RaisonSocial;
+            txtEffectif.Text = client.Effectifs.ToString();
+            txtCA.Text = client.ChiffreAffaires.ToString();
+            txtTelephone.Text = client.Telephone;
+            mTxtCodePostal.Text = client.Adresse.CodePostal;
+            txtVille.Text = client.Adresse.Ville;
+            txtRue.Text = client.Adresse.Rue;
+            txtComment.Text = client.Comment;
+            cbxActivity.SelectedItem = client.Activite;
+            cbxNature.SelectedItem = client.Nature;
+            cbxType.SelectedItem = client.TypeSociete;
         }
 
         private void btnModifierClient_Click(object sender, EventArgs e)
@@ -47,8 +60,13 @@ namespace ABI
             }
             else
             {
-                disableClient();
-                
+                if (updateClient(client.IdClient))
+                {
+                    Updated?.Invoke(this, e);
+                    disableClient();
+
+                }
+
             }
         }
 
@@ -90,6 +108,7 @@ namespace ABI
 
         private void btnAnnulerModif_Click(object sender, EventArgs e)
         {
+            fillUpForm();
             disableClient();
         }
 
