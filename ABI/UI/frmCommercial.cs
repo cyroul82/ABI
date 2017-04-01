@@ -388,12 +388,15 @@ namespace ABI.UI
 
         private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tabPage = tabControlClientDetail.TabPages[tabControlClientDetail.SelectedIndex];
-            foreach(KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+            if (tabControlClientDetail.TabCount > 0)
             {
-                if(kvp.Value == tabPage)
+                tabPage = tabControlClientDetail.TabPages[tabControlClientDetail.SelectedIndex];
+                foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
                 {
-                    client = kvp.Key;
+                    if (kvp.Value == tabPage)
+                    {
+                        client = kvp.Key;
+                    }
                 }
             }
         }
@@ -401,6 +404,16 @@ namespace ABI.UI
         private void btnFermer_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnFermerOnglets_Click(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+            {
+                tabControlClientDetail.TabPages.Remove(kvp.Value);
+            }
+
+            tabPageDictionnary.Clear();
         }
     }
 }

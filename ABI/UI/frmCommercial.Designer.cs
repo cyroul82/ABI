@@ -31,6 +31,7 @@
             this.panelListClient = new System.Windows.Forms.Panel();
             this.grdClient = new System.Windows.Forms.DataGridView();
             this.panelControlClient = new System.Windows.Forms.Panel();
+            this.btnFermer = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAfficher = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
@@ -40,7 +41,7 @@
             this.btnSearchClient = new System.Windows.Forms.Button();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
-            this.btnFermer = new System.Windows.Forms.Button();
+            this.btnFermerOnglets = new System.Windows.Forms.Button();
             this.panelListClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             this.panelControlClient.SuspendLayout();
@@ -83,6 +84,7 @@
             // panelControlClient
             // 
             this.panelControlClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelControlClient.Controls.Add(this.btnFermerOnglets);
             this.panelControlClient.Controls.Add(this.btnFermer);
             this.panelControlClient.Controls.Add(this.btnAjouter);
             this.panelControlClient.Controls.Add(this.btnAfficher);
@@ -92,6 +94,17 @@
             this.panelControlClient.Name = "panelControlClient";
             this.panelControlClient.Size = new System.Drawing.Size(113, 541);
             this.panelControlClient.TabIndex = 2;
+            // 
+            // btnFermer
+            // 
+            this.btnFermer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnFermer.Location = new System.Drawing.Point(21, 508);
+            this.btnFermer.Name = "btnFermer";
+            this.btnFermer.Size = new System.Drawing.Size(75, 23);
+            this.btnFermer.TabIndex = 4;
+            this.btnFermer.Text = "Fermer";
+            this.btnFermer.UseVisualStyleBackColor = true;
+            this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
             // 
             // btnAjouter
             // 
@@ -186,17 +199,17 @@
             this.ClientListTab.Text = "Liste Clients";
             this.ClientListTab.UseVisualStyleBackColor = true;
             // 
-            // btnFermer
+            // btnFermerOnglets
             // 
-            this.btnFermer.Location = new System.Drawing.Point(21, 99);
-            this.btnFermer.Name = "btnFermer";
-            this.btnFermer.Size = new System.Drawing.Size(75, 23);
-            this.btnFermer.TabIndex = 4;
-            this.btnFermer.Text = "Fermer";
-            this.btnFermer.UseVisualStyleBackColor = true;
-            this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
+            this.btnFermerOnglets.Location = new System.Drawing.Point(21, 99);
+            this.btnFermerOnglets.Name = "btnFermerOnglets";
+            this.btnFermerOnglets.Size = new System.Drawing.Size(75, 41);
+            this.btnFermerOnglets.TabIndex = 5;
+            this.btnFermerOnglets.Text = "Fermer tous les onglets";
+            this.btnFermerOnglets.UseVisualStyleBackColor = true;
+            this.btnFermerOnglets.Click += new System.EventHandler(this.btnFermerOnglets_Click);
             // 
-            // frmClient
+            // frmCommercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -205,7 +218,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(960, 600);
-            this.Name = "frmClient";
+            this.Name = "frmCommercial";
             this.Text = "Liste des Clients";
             this.Load += new System.EventHandler(this.frmClient_Load);
             this.panelListClient.ResumeLayout(false);
@@ -235,5 +248,6 @@
         private System.Windows.Forms.TabControl tabControlClientDetail;
         private System.Windows.Forms.TabPage ClientListTab;
         private System.Windows.Forms.Button btnFermer;
+        private System.Windows.Forms.Button btnFermerOnglets;
     }
 }
