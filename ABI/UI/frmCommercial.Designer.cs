@@ -81,7 +81,7 @@
             this.grdClient.ReadOnly = true;
             this.grdClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdClient.Size = new System.Drawing.Size(839, 541);
-            this.grdClient.TabIndex = 1;
+            this.grdClient.TabIndex = 8;
             this.grdClient.SelectionChanged += new System.EventHandler(this.grdClient_SelectionChanged);
             this.grdClient.DoubleClick += new System.EventHandler(this.grdClient_DoubleClick);
             // 
@@ -104,7 +104,7 @@
             this.btnFermerOnglets.Location = new System.Drawing.Point(21, 99);
             this.btnFermerOnglets.Name = "btnFermerOnglets";
             this.btnFermerOnglets.Size = new System.Drawing.Size(75, 41);
-            this.btnFermerOnglets.TabIndex = 5;
+            this.btnFermerOnglets.TabIndex = 6;
             this.btnFermerOnglets.Text = "Fermer tous les onglets";
             this.btnFermerOnglets.UseVisualStyleBackColor = true;
             this.btnFermerOnglets.Click += new System.EventHandler(this.btnFermerOnglets_Click);
@@ -115,7 +115,7 @@
             this.btnFermer.Location = new System.Drawing.Point(21, 508);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(75, 23);
-            this.btnFermer.TabIndex = 4;
+            this.btnFermer.TabIndex = 7;
             this.btnFermer.Text = "Fermer";
             this.btnFermer.UseVisualStyleBackColor = true;
             this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
@@ -125,7 +125,7 @@
             this.btnAjouter.Location = new System.Drawing.Point(21, 12);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(75, 23);
-            this.btnAjouter.TabIndex = 1;
+            this.btnAjouter.TabIndex = 2;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
@@ -135,7 +135,7 @@
             this.btnAfficher.Location = new System.Drawing.Point(21, 70);
             this.btnAfficher.Name = "btnAfficher";
             this.btnAfficher.Size = new System.Drawing.Size(75, 23);
-            this.btnAfficher.TabIndex = 3;
+            this.btnAfficher.TabIndex = 4;
             this.btnAfficher.Text = "Afficher";
             this.btnAfficher.UseVisualStyleBackColor = true;
             this.btnAfficher.Click += new System.EventHandler(this.btnAfficher_Click);
@@ -145,7 +145,7 @@
             this.btnSupprimer.Location = new System.Drawing.Point(21, 41);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(75, 23);
-            this.btnSupprimer.TabIndex = 2;
+            this.btnSupprimer.TabIndex = 3;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
             this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
@@ -162,7 +162,7 @@
             this.flowLayoutPanelSearchClient.Name = "flowLayoutPanelSearchClient";
             this.flowLayoutPanelSearchClient.Padding = new System.Windows.Forms.Padding(113, 0, 0, 0);
             this.flowLayoutPanelSearchClient.Size = new System.Drawing.Size(952, 33);
-            this.flowLayoutPanelSearchClient.TabIndex = 0;
+            this.flowLayoutPanelSearchClient.TabIndex = 1;
             // 
             // lblSearchClient
             // 
@@ -180,7 +180,7 @@
             this.txtSearchClient.Location = new System.Drawing.Point(191, 4);
             this.txtSearchClient.Name = "txtSearchClient";
             this.txtSearchClient.Size = new System.Drawing.Size(381, 20);
-            this.txtSearchClient.TabIndex = 4;
+            this.txtSearchClient.TabIndex = 0;
             // 
             // btnSearchClient
             // 
@@ -188,7 +188,7 @@
             this.btnSearchClient.Location = new System.Drawing.Point(578, 3);
             this.btnSearchClient.Name = "btnSearchClient";
             this.btnSearchClient.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchClient.TabIndex = 5;
+            this.btnSearchClient.TabIndex = 1;
             this.btnSearchClient.Text = "Ok";
             this.btnSearchClient.UseVisualStyleBackColor = true;
             // 
@@ -220,7 +220,7 @@
             this.fermerToolStripMenuItem,
             this.fermerTousToolStripMenuItem});
             this.contextMenuStripTab.Name = "contextMenuStripTab";
-            this.contextMenuStripTab.Size = new System.Drawing.Size(153, 70);
+            this.contextMenuStripTab.Size = new System.Drawing.Size(140, 48);
             // 
             // fermerToolStripMenuItem
             // 

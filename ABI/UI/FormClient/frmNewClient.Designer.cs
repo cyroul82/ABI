@@ -71,6 +71,7 @@
             // 
             // btnAnnulerClient
             // 
+            this.btnAnnulerClient.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnnulerClient.Location = new System.Drawing.Point(328, 17);
             this.btnAnnulerClient.Name = "btnAnnulerClient";
             this.btnAnnulerClient.Size = new System.Drawing.Size(75, 23);
@@ -91,7 +92,9 @@
             // 
             // frmNewClient
             // 
+            this.AcceptButton = this.btnAjouterClient;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.CancelButton = this.btnAnnulerClient;
             this.ClientSize = new System.Drawing.Size(533, 523);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

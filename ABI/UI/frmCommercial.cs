@@ -42,6 +42,7 @@ namespace ABI.UI
         public frmCommercial()
         {
             InitializeComponent();
+            txtSearchClient.Select();
             Donnees.listClient.Add(new Client(Donnees.clientNumber++, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, new Adresse("verdun", "83700", "st raph"), "oui mais non", "0645248403"));
             Donnees.listClient.Add(new Client(Donnees.clientNumber++, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500, new Adresse("verdun", "83700", "st raph"), "alors bon", "5646897453"));
             Donnees.listClient.Add(new Client(Donnees.clientNumber++, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, new Adresse("verdun", "83700", "st raph"), "oki doki", "45678564"));

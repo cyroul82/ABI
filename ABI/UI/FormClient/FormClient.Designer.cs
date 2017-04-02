@@ -154,7 +154,7 @@
             this.mTxtCodePostal.Mask = "99999";
             this.mTxtCodePostal.Name = "mTxtCodePostal";
             this.mTxtCodePostal.Size = new System.Drawing.Size(53, 20);
-            this.mTxtCodePostal.TabIndex = 30;
+            this.mTxtCodePostal.TabIndex = 9;
             this.mTxtCodePostal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.mTxtCodePostal.ValidatingType = typeof(int);
             this.mTxtCodePostal.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mTxtCodePostal_MaskInputRejetected);
@@ -165,7 +165,7 @@
             this.txtTelephone.Location = new System.Drawing.Point(138, 201);
             this.txtTelephone.Name = "txtTelephone";
             this.txtTelephone.Size = new System.Drawing.Size(121, 20);
-            this.txtTelephone.TabIndex = 29;
+            this.txtTelephone.TabIndex = 7;
             // 
             // lblTelephone
             // 
@@ -181,7 +181,7 @@
             this.txtVille.Location = new System.Drawing.Point(344, 273);
             this.txtVille.Name = "txtVille";
             this.txtVille.Size = new System.Drawing.Size(121, 20);
-            this.txtVille.TabIndex = 27;
+            this.txtVille.TabIndex = 10;
             this.txtVille.Validated += new System.EventHandler(this.txtVille_Validated);
             // 
             // lblTown
@@ -207,7 +207,7 @@
             this.txtRue.Location = new System.Drawing.Point(137, 235);
             this.txtRue.Name = "txtRue";
             this.txtRue.Size = new System.Drawing.Size(328, 20);
-            this.txtRue.TabIndex = 23;
+            this.txtRue.TabIndex = 8;
             // 
             // lblAddress
             // 
@@ -224,7 +224,7 @@
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(460, 105);
-            this.txtComment.TabIndex = 17;
+            this.txtComment.TabIndex = 11;
             // 
             // lblCommentaire
             // 
@@ -240,7 +240,7 @@
             this.txtEffectif.Location = new System.Drawing.Point(345, 128);
             this.txtEffectif.Name = "txtEffectif";
             this.txtEffectif.Size = new System.Drawing.Size(78, 20);
-            this.txtEffectif.TabIndex = 15;
+            this.txtEffectif.TabIndex = 5;
             this.txtEffectif.Validated += new System.EventHandler(this.txtEffectif_Validated);
             // 
             // lblEffectif
@@ -257,7 +257,7 @@
             this.txtCA.Location = new System.Drawing.Point(137, 167);
             this.txtCA.Name = "txtCA";
             this.txtCA.Size = new System.Drawing.Size(121, 20);
-            this.txtCA.TabIndex = 11;
+            this.txtCA.TabIndex = 6;
             this.txtCA.Validated += new System.EventHandler(this.txtCA_Validated);
             // 
             // lblChiffreAffaire
@@ -280,7 +280,7 @@
             this.cbxNature.Location = new System.Drawing.Point(138, 128);
             this.cbxNature.Name = "cbxNature";
             this.cbxNature.Size = new System.Drawing.Size(121, 21);
-            this.cbxNature.TabIndex = 9;
+            this.cbxNature.TabIndex = 4;
             this.cbxNature.Validated += new System.EventHandler(this.cbxNature_Validated);
             // 
             // lblNature
@@ -301,7 +301,7 @@
             this.cbxActivity.Location = new System.Drawing.Point(137, 92);
             this.cbxActivity.Name = "cbxActivity";
             this.cbxActivity.Size = new System.Drawing.Size(121, 21);
-            this.cbxActivity.TabIndex = 7;
+            this.cbxActivity.TabIndex = 2;
             this.cbxActivity.Validated += new System.EventHandler(this.cbxActivity_Validated);
             // 
             // lblDomaine
@@ -318,7 +318,7 @@
             this.txtRaisonSocial.Location = new System.Drawing.Point(138, 57);
             this.txtRaisonSocial.Name = "txtRaisonSocial";
             this.txtRaisonSocial.Size = new System.Drawing.Size(328, 20);
-            this.txtRaisonSocial.TabIndex = 5;
+            this.txtRaisonSocial.TabIndex = 1;
             this.txtRaisonSocial.Validated += new System.EventHandler(this.txtRaisonSocial_Validated);
             // 
             // cbxType
@@ -331,7 +331,7 @@
             this.cbxType.Location = new System.Drawing.Point(345, 92);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(121, 21);
-            this.cbxType.TabIndex = 4;
+            this.cbxType.TabIndex = 3;
             this.cbxType.Validated += new System.EventHandler(this.cbxType_Validated);
             // 
             // txtNumero
