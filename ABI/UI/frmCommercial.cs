@@ -17,6 +17,7 @@ namespace ABI.UI
         private DataTable table;
         private DataColumn column;
         private DataRow row;
+        //Dictionnary to keep a track of the TabPage opened associated with a client as Key
         private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
         private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
 
@@ -33,6 +34,9 @@ namespace ABI.UI
         private const String TELEPHONE_CAPTION = "Téléphone";
         private const String COMMENTAIRE = "Commentaires";
 
+        /// <summary>
+        /// Constructor with no argument
+        /// </summary>
         public frmCommercial()
         {
             InitializeComponent();
@@ -43,6 +47,11 @@ namespace ABI.UI
             Donnees.listClient.Add(new Client(Donnees.clientNumber++, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, new Adresse("verdun", "83700", "st raph"), "comment ca", "54564654"));
         }
 
+        /// <summary>
+        /// Call to initialize the Class
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmClient_Load(object sender, EventArgs e)
         {
             loadListClient();
@@ -193,6 +202,10 @@ namespace ABI.UI
             table.Columns.Add(column);
         }
 
+        /// <summary>
+        /// Add a Client
+        /// </summary>
+        /// <param name="client"></param>
         private void addClientToTable(Client client)
         {
             row = table.NewRow();
@@ -209,10 +222,13 @@ namespace ABI.UI
             table.Rows.Add(row);
         }
         
-
+        /// <summary>
+        /// Update a Client
+        /// </summary>
+        /// <param name="client"></param>
         private void updateClientToTable(Client client)
         {
-            //Update tab Text
+            //Update tabPage.Text
             foreach(KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
             {
                 if(kvp.Key == client)
@@ -221,13 +237,12 @@ namespace ABI.UI
                     tabPage.Text = client.RaisonSocial;
                 }
             }
-            //update the listClient in Donnees
+            //Update the listClient in Donnees
             for(Int32 i=0; i < table.Rows.Count; i++)
             {
                 Int32 idClient = (Int32)table.Rows[i][0];
                 if(idClient == client.IdClient)
                 { 
-
                     table.Rows[i][RAISONSOCIALE] = client.RaisonSocial;
                     table.Rows[i][TYPE] = client.TypeSociete;
                     table.Rows[i][ACTIVITE] = client.Activite;
@@ -237,26 +252,30 @@ namespace ABI.UI
                     table.Rows[i][VILLE] = client.Adresse.Ville;
                     table.Rows[i][TELEPHONE] = client.Telephone;
                     table.Rows[i][COMMENTAIRE] = client.Comment;
-                    
                 }
             }
         }
 
+        /// <summary>
+        /// Button Add Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmNewClient fnc = new frmNewClient();
             fnc.saveNewClient += new SaveNewClient(this.saveNewClient);
             DialogResult result = fnc.ShowDialog();
-            if(result == DialogResult.OK || result == DialogResult.Yes)
+            if (result == DialogResult.Yes)
             {
-                //loadListClient();
-                if(result == DialogResult.Yes)
-                {
-                    AddClientTab(client);
-                }                
-            }         
+                AddClientTab(client);
+            }
         }
 
+        /// <summary>
+        /// Save a new Client
+        /// </summary>
+        /// <param name="client"></param>
         private void saveNewClient(Client client)
         {
             this.client = client;
@@ -291,12 +310,20 @@ namespace ABI.UI
             }
         }
 
-
         private void grdClient_DoubleClick(object sender, EventArgs e)
         {
             if (client != null)
             {
                 AddClientTab(client);
+            }
+        }
+
+        private void displayForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            frmDspClient f = sender as frmDspClient;
+            if (f != null)
+            {
+                removeTab();
             }
         }
 
@@ -343,15 +370,6 @@ namespace ABI.UI
         {
             this.client = client;
             updateClientToTable(client);
-        }
-
-        private void displayForm_Closing(object sender, FormClosingEventArgs e)
-        {
-            frmDspClient f = sender as frmDspClient;
-            if(f != null)
-            {
-                removeTab();
-            }
         }
 
         /// <summary>
@@ -414,18 +432,37 @@ namespace ABI.UI
 
         private void btnFermerOnglets_Click(object sender, EventArgs e)
         {
-            foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+            for(Int32 i=0; i<tabPageDictionnary.Count; i++)
             {
-                //for (Int32 i = 0; i < frmDspClientDictionnary.Count; i++)
-                //{
-                //    if (frmDspClientDictionnary.ContainsKey(kvp.Value))
-                //    {
-                //        frmDspClientDictionnary[kvp.Value].Close(); ;
-                //    }
-                //}
+                KeyValuePair<Client,TabPage> k = tabPageDictionnary.ElementAt(i);
+                tabControlClientDetail.TabPages.Remove(k.Value);
 
-                tabControlClientDetail.TabPages.Remove(kvp.Value);
+                frmDspClient f = frmDspClientDictionnary[k.Value] as frmDspClient;
+                if (f != null)
+                {
+                    if (f.IsModifed)
+                    {
+                        tabControlClientDetail.SelectTab(k.Value);
+                    }
+                }
             }
+            //foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+            //{
+            //    frmDspClient f = frmDspClientDictionnary[kvp.Value] as frmDspClient;
+            //    if (f != null)
+            //    {
+            //        f.Close();
+            //    }
+            //    //for (Int32 i = 0; i < frmDspClientDictionnary.Count; i++)
+            //    //{
+            //    //    if (frmDspClientDictionnary.ContainsKey(kvp.Value))
+            //    //    {
+            //    //        frmDspClientDictionnary[kvp.Value].Close(); ;
+            //    //    }
+            //    //}
+
+            //    tabControlClientDetail.TabPages.Remove(kvp.Value);
+            //}
             frmDspClientDictionnary.Clear(); ;
             tabPageDictionnary.Clear();
         }

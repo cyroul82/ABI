@@ -27,7 +27,7 @@ namespace ABI
             fnc.ShowDialog();
         }
 
-        private void btnFermer_Click(object sender, EventArgs e)
+        public void btnFermer_Click(object sender, EventArgs e)
         {
             if (IsModifed)
             {
