@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelListClient = new System.Windows.Forms.Panel();
             this.grdClient = new System.Windows.Forms.DataGridView();
             this.panelControlClient = new System.Windows.Forms.Panel();
+            this.btnFermerOnglets = new System.Windows.Forms.Button();
             this.btnFermer = new System.Windows.Forms.Button();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAfficher = new System.Windows.Forms.Button();
@@ -41,13 +43,16 @@
             this.btnSearchClient = new System.Windows.Forms.Button();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
-            this.btnFermerOnglets = new System.Windows.Forms.Button();
+            this.contextMenuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fermerTousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelListClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             this.panelControlClient.SuspendLayout();
             this.flowLayoutPanelSearchClient.SuspendLayout();
             this.tabControlClientDetail.SuspendLayout();
             this.ClientListTab.SuspendLayout();
+            this.contextMenuStripTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelListClient
@@ -93,6 +98,16 @@
             this.panelControlClient.Name = "panelControlClient";
             this.panelControlClient.Size = new System.Drawing.Size(113, 541);
             this.panelControlClient.TabIndex = 2;
+            // 
+            // btnFermerOnglets
+            // 
+            this.btnFermerOnglets.Location = new System.Drawing.Point(21, 99);
+            this.btnFermerOnglets.Name = "btnFermerOnglets";
+            this.btnFermerOnglets.Size = new System.Drawing.Size(75, 41);
+            this.btnFermerOnglets.TabIndex = 5;
+            this.btnFermerOnglets.Text = "Fermer tous les onglets";
+            this.btnFermerOnglets.UseVisualStyleBackColor = true;
+            this.btnFermerOnglets.Click += new System.EventHandler(this.btnFermerOnglets_Click);
             // 
             // btnFermer
             // 
@@ -187,6 +202,7 @@
             this.tabControlClientDetail.Size = new System.Drawing.Size(960, 600);
             this.tabControlClientDetail.TabIndex = 3;
             this.tabControlClientDetail.SelectedIndexChanged += new System.EventHandler(this.tabControlClientDetail_SelectedIndexChanged);
+            this.tabControlClientDetail.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControlClientDetail_MouseUp);
             // 
             // ClientListTab
             // 
@@ -198,15 +214,27 @@
             this.ClientListTab.Text = "Liste Clients";
             this.ClientListTab.UseVisualStyleBackColor = true;
             // 
-            // btnFermerOnglets
+            // contextMenuStripTab
             // 
-            this.btnFermerOnglets.Location = new System.Drawing.Point(21, 99);
-            this.btnFermerOnglets.Name = "btnFermerOnglets";
-            this.btnFermerOnglets.Size = new System.Drawing.Size(75, 41);
-            this.btnFermerOnglets.TabIndex = 5;
-            this.btnFermerOnglets.Text = "Fermer tous les onglets";
-            this.btnFermerOnglets.UseVisualStyleBackColor = true;
-            this.btnFermerOnglets.Click += new System.EventHandler(this.btnFermerOnglets_Click);
+            this.contextMenuStripTab.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fermerToolStripMenuItem,
+            this.fermerTousToolStripMenuItem});
+            this.contextMenuStripTab.Name = "contextMenuStripTab";
+            this.contextMenuStripTab.Size = new System.Drawing.Size(153, 70);
+            // 
+            // fermerToolStripMenuItem
+            // 
+            this.fermerToolStripMenuItem.Name = "fermerToolStripMenuItem";
+            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fermerToolStripMenuItem.Text = "Fermer";
+            this.fermerToolStripMenuItem.Click += new System.EventHandler(this.fermerToolStripMenuItem_Click);
+            // 
+            // fermerTousToolStripMenuItem
+            // 
+            this.fermerTousToolStripMenuItem.Name = "fermerTousToolStripMenuItem";
+            this.fermerTousToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fermerTousToolStripMenuItem.Text = "Fermer Tous";
+            this.fermerTousToolStripMenuItem.Click += new System.EventHandler(this.fermerTousToolStripMenuItem_Click);
             // 
             // frmCommercial
             // 
@@ -228,6 +256,7 @@
             this.flowLayoutPanelSearchClient.PerformLayout();
             this.tabControlClientDetail.ResumeLayout(false);
             this.ClientListTab.ResumeLayout(false);
+            this.contextMenuStripTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -248,5 +277,8 @@
         private System.Windows.Forms.TabPage ClientListTab;
         private System.Windows.Forms.Button btnFermer;
         private System.Windows.Forms.Button btnFermerOnglets;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripTab;
+        private System.Windows.Forms.ToolStripMenuItem fermerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fermerTousToolStripMenuItem;
     }
 }

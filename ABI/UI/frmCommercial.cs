@@ -14,6 +14,7 @@ namespace ABI.UI
     {
         private Client client;
         private TabPage tabPage;
+        private frmDspClient formClient;
         private DataTable table;
         private DataColumn column;
         private DataRow row;
@@ -24,6 +25,7 @@ namespace ABI.UI
         //Declare all the constants for the columns (gridDataView)
         private const String IDCLIENT = "idClient";
         private const String RAISONSOCIALE = "RaisonSociale";
+        private const String RAISONSOCIALE_CAPTION = "Raison Sociale";
         private const String TYPE = "Type";
         private const String ACTIVITE = "Activite";
         private const String NATURE = "Nature";
@@ -124,8 +126,9 @@ namespace ABI.UI
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = RAISONSOCIALE;
+            column.Caption = RAISONSOCIALE_CAPTION;
             column.ReadOnly = false;
-            column.Unique = false;
+            column.Unique = true;
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
@@ -208,18 +211,25 @@ namespace ABI.UI
         /// <param name="client"></param>
         private void addClientToTable(Client client)
         {
-            row = table.NewRow();
-            row[IDCLIENT] = client.IdClient;
-            row[RAISONSOCIALE] = client.RaisonSocial;
-            row[TYPE] = client.TypeSociete;
-            row[ACTIVITE] = client.Activite;
-            row[NATURE] = client.Nature;
-            row[EFFECTIF] = client.Effectifs.ToString();
-            row[CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
-            row[VILLE] = client.Adresse.Ville;
-            row[TELEPHONE] = client.Telephone;
-            row[COMMENTAIRE] = client.Comment;
-            table.Rows.Add(row);
+            try
+            {
+                row = table.NewRow();
+                row[IDCLIENT] = client.IdClient;
+                row[RAISONSOCIALE] = client.RaisonSocial;
+                row[TYPE] = client.TypeSociete;
+                row[ACTIVITE] = client.Activite;
+                row[NATURE] = client.Nature;
+                row[EFFECTIF] = client.Effectifs.ToString();
+                row[CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
+                row[VILLE] = client.Adresse.Ville;
+                row[TELEPHONE] = client.Telephone;
+                row[COMMENTAIRE] = client.Comment;
+                table.Rows.Add(row);
+            }
+            catch (ConstraintException e)
+            {
+                MessageBox.Show("Impossible d'ajouter ce client : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         
         /// <summary>
@@ -293,11 +303,16 @@ namespace ABI.UI
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
         {
+            setClientFromDataGridView();
+        }
+
+        private void setClientFromDataGridView()
+        {
             foreach (DataGridViewRow row in grdClient.SelectedRows)
             {
                 if (row != null)
                 {
-                     Int32 id = (Int32)row.Cells[0].Value;
+                    Int32 id = (Int32)row.Cells[0].Value;
 
                     foreach (Client c in Donnees.listClient)
                     {
@@ -337,6 +352,7 @@ namespace ABI.UI
                     tabControlClientDetail.TabPages.Remove(tabPage);
                     tabPageDictionnary.Remove(client);
                     frmDspClientDictionnary.Remove(tabPage);
+                    tabControlClientDetail.SelectTab(0);
                 }
             }
         }
@@ -403,14 +419,29 @@ namespace ABI.UI
 
         private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+
             if (tabControlClientDetail.TabCount > 0)
             {
-                tabPage = tabControlClientDetail.TabPages[tabControlClientDetail.SelectedIndex];
-                foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+                if (tabControlClientDetail.SelectedIndex == 0)
                 {
-                    if (kvp.Value == tabPage)
+                    setClientFromDataGridView();
+                }
+                else
+                {
+                    tabPage = tabControlClientDetail.TabPages[tabControlClientDetail.SelectedIndex];
+
+                    foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
                     {
-                        client = kvp.Key;
+                        if (kvp.Value == tabPage)
+                        {
+                            client = kvp.Key;
+                        }
+                    }
+
+                    if (frmDspClientDictionnary.ContainsKey(tabPage))
+                    {
+                        formClient = frmDspClientDictionnary[tabPage];
                     }
                 }
             }
@@ -446,25 +477,37 @@ namespace ABI.UI
                     }
                 }
             }
-            //foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
-            //{
-            //    frmDspClient f = frmDspClientDictionnary[kvp.Value] as frmDspClient;
-            //    if (f != null)
-            //    {
-            //        f.Close();
-            //    }
-            //    //for (Int32 i = 0; i < frmDspClientDictionnary.Count; i++)
-            //    //{
-            //    //    if (frmDspClientDictionnary.ContainsKey(kvp.Value))
-            //    //    {
-            //    //        frmDspClientDictionnary[kvp.Value].Close(); ;
-            //    //    }
-            //    //}
-
-            //    tabControlClientDetail.TabPages.Remove(kvp.Value);
-            //}
             frmDspClientDictionnary.Clear(); ;
             tabPageDictionnary.Clear();
+        }
+
+        private void tabControlClientDetail_MouseUp(object sender, MouseEventArgs e)
+        {
+            //if(e.Button == MouseButtons.Right)
+            //{
+            //    for (Int32 i = 0; i < tabControlClientDetail.TabCount; i++)
+            //    {
+            //        // get their rectangle area and check if it contains the mouse cursor
+            //        Rectangle r = tabControlClientDetail.GetTabRect(i);
+
+            //        if (r.Contains(e.Location))
+            //        {
+            //            // show the context menu here
+            //            tabControlClientDetail.SelectTab(i);
+            //            contextMenuStripTab.Show(Cursor.Position.X, Cursor.Position.Y);
+            //        }
+            //    }
+            //}
+        }
+
+        private void fermerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.removeTab();
+        }
+
+        private void fermerTousToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnFermerOnglets_Click(sender, e);
         }
     }
 }
