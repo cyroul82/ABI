@@ -420,8 +420,6 @@ namespace ABI.UI
 
         private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-
             if (tabControlClientDetail.TabCount > 0)
             {
                 if (tabControlClientDetail.SelectedIndex == 0)
@@ -510,5 +508,35 @@ namespace ABI.UI
         {
             btnFermerOnglets_Click(sender, e);
         }
+
+        private void btnSearchClient_Click(object sender, EventArgs e)
+        {
+           if(client != null)
+            {
+                AddClientTab(client);
+            }
+        }
+
+        private void btnToutAfficher_Click(object sender, EventArgs e)
+        {
+            txtSearchClient.Text = null;
+            ((DataView)grdClient.DataSource).RowFilter = null;
+        }
+
+        private void txtSearchClient_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && txtSearchClient.Text != String.Empty)
+            {
+                if (client != null)
+                {
+                    AddClientTab(client);
+                }
+            }
+            else if (txtSearchClient.Text != null)
+            {
+                ((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
+            }
+        }
+
     }
 }
