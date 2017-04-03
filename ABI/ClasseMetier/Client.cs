@@ -20,6 +20,7 @@ namespace ABI
         private String comment;
         private String telephone;
         private Int32 contactsCount;
+        private Int32 compteurContacts = 0;
         private List<Contact> listContacts;
 
         public Adresse Adresse
@@ -175,6 +176,19 @@ namespace ABI
             set
             {
                 listContacts = value;
+            }
+        }
+
+        public int CompteurContacts
+        {
+            get
+            {
+                return compteurContacts;
+            }
+
+            set
+            {
+                compteurContacts = value;
             }
         }
 

@@ -182,11 +182,14 @@
             // 
             this.grdContact.AllowUserToAddRows = false;
             this.grdContact.AllowUserToDeleteRows = false;
+            this.grdContact.AllowUserToOrderColumns = true;
             this.grdContact.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grdContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdContact.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grdContact.Location = new System.Drawing.Point(112, 29);
+            this.grdContact.MultiSelect = false;
             this.grdContact.Name = "grdContact";
+            this.grdContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdContact.Size = new System.Drawing.Size(305, 193);
             this.grdContact.TabIndex = 1;
             this.grdContact.SelectionChanged += new System.EventHandler(this.grdContact_SelectionChanged);

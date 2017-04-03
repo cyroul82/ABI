@@ -470,10 +470,10 @@ namespace ABI.UI
                 frmDspClient f = frmDspClientDictionnary[k.Value] as frmDspClient;
                 if (f != null)
                 {
-                    if (f.IsModifed)
-                    {
-                        tabControlClientDetail.SelectTab(k.Value);
-                    }
+                    //if (f.IsModifed)
+                    //{
+                    //    tabControlClientDetail.SelectTab(k.Value);
+                    //}
                 }
             }
             frmDspClientDictionnary.Clear(); ;

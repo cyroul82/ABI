@@ -157,14 +157,19 @@ namespace ABI
 
         private void grdContact_SelectionChanged(object sender, EventArgs e)
         {
-
-            Int32 id = (Int32)grdContact[0, grdContact.CurrentRow.Index].Value;
-            for (Int32 i = 0; i < client.ListContacts.Count; i++)
+            foreach(DataGridViewRow row in grdContact.SelectedRows)
             {
-                Contact c = client.ListContacts[i];
-                if (contact.IdContact == id)
+                if(row != null)
                 {
-                    contact = c;
+                    Int32 id = (Int32)row.Cells[0].Value;
+                    foreach(Contact c in client.ListContacts)
+                    {
+                        if(c.IdContact == id)
+                        {
+                            contact = c;
+                        }
+                    }
+                    
                 }
             }
         }
@@ -269,9 +274,10 @@ namespace ABI
 
         public void Removecontact(Contact contact)
         {
-            Int32 indexRow = Find(contact);
-            Delete(indexRow);
-            Console.WriteLine("line contact if found : " + indexRow);
+            
+            //Int32 indexRow = Find(contact);
+            //Delete(indexRow);
+            Console.WriteLine("line contact if found : " );
         }
 
         

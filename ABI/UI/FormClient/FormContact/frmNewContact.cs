@@ -24,33 +24,22 @@ namespace ABI
         private void btnAddContact_Click(object sender, EventArgs e)
         {
             addContact();            
-            if(saveNewContact != null && contact != null)
+            if(contact != null)
             {   
-                saveNewContact(contact);
+                saveNewContact?.Invoke(contact);
                 this.DialogResult = DialogResult.OK;
             }
         }
 
         public void addContact()
         {
-            //TODO think another and better way for the idClient !!!
-            Int32 id;
-            if(client.ListContacts.Count == 0)
-            {
-                id = 1;
-            }else
-            {
-                Int32 idLastContact = client.ListContacts[client.ListContacts.Count].IdContact;
-                id = idLastContact++;
-            }
-            
-
             String nom = txtContactName.Text;
             String fonction = txtContactType.Text;
             String email = txtContactEmail.Text;
             String telephone = txtContactTelephone.Text;
-
-            contact = new Contact(id, nom, fonction, email, telephone);
+            client.CompteurContacts++;
+            
+            contact = new Contact(client.CompteurContacts, nom, fonction, email, telephone);
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
