@@ -244,14 +244,12 @@ namespace ABI.UI
         {
             this.client = client;
             //Update tabPage.Text
-            foreach(KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+            if (tabPageDictionnary.ContainsKey(client))
             {
-                if(kvp.Key == client)
-                {
-                    TabPage tabPage = kvp.Value;
-                    tabPage.Text = client.RaisonSocial;
-                }
+                TabPage tabPage = tabPageDictionnary[client];
+                tabPage.Text = client.RaisonSocial;
             }
+
             //Update the listClient in Donnees
             for(Int32 i=0; i < table.Rows.Count; i++)
             {
@@ -271,12 +269,12 @@ namespace ABI.UI
             }
         }
 
-        private void grdClient_SelectionChanged(object sender, EventArgs e)
+        private void deleteClientToTable(Client client)
         {
-            setClientFromDataGridView();
+
         }
 
-        private void setClientFromDataGridView()
+        private void grdClient_SelectionChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in grdClient.SelectedRows)
             {
@@ -318,7 +316,7 @@ namespace ABI.UI
             {
                 frmDspClient fdc = new frmDspClient(client);
                 fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
-                fdc.Updated += new UpdatedClientHandler(this.updateClientToTable);
+                fdc.UpdatingClient += new UpdatingClientHandler(this.updateClientToTable);
                 fdc.TopLevel = false;
                 fdc.Dock = DockStyle.Fill;
 
@@ -359,7 +357,7 @@ namespace ABI.UI
             {
                 if (tabControlClientDetail.SelectedIndex == 0)
                 {
-                    setClientFromDataGridView();
+                    grdClient_SelectionChanged(sender, e);
                 }
                 else
                 {

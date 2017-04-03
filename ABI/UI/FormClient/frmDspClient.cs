@@ -9,13 +9,13 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    public delegate void UpdatedClientHandler(Client client);
+    public delegate void UpdatingClientHandler(Client client);
     public partial class frmDspClient : ABI.FormClient
     {
         private MyDataTable table;
         private MyDataView dataView;
         private Contact contact;
-        public event UpdatedClientHandler Updated;
+        public UpdatingClientHandler UpdatingClient;
         private const String MODIFIER = "Modifier";
         private const String ENREGISTRER = "Enregistrer";
 
@@ -99,7 +99,7 @@ namespace ABI
             {
                 if (updateClient(client.IdClient))
                 {
-                    Updated?.Invoke(client);
+                    UpdatingClient?.Invoke(client);
                     disableClient();
                 }
             }
