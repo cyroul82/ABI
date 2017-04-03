@@ -213,6 +213,7 @@ namespace ABI.UI
         /// <param name="client"></param>
         private void addClientToTable(Client client)
         {
+            this.client = client;
             try
             {
                 row = table.NewRow();
@@ -241,6 +242,7 @@ namespace ABI.UI
         /// <param name="client"></param>
         private void updateClientToTable(Client client)
         {
+            this.client = client;
             //Update tabPage.Text
             foreach(KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
             {
@@ -267,41 +269,6 @@ namespace ABI.UI
                     table.Rows[i][COMMENTAIRE] = client.Comment;
                 }
             }
-        }
-
-        /// <summary>
-        /// Button Add Click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAjouter_Click(object sender, EventArgs e)
-        {
-            frmNewClient fnc = new frmNewClient();
-            fnc.saveNewClient += new SaveNewClient(this.saveNewClient);
-            DialogResult result = fnc.ShowDialog();
-            if (result == DialogResult.Yes)
-            {
-                AddClientTab(client);
-            }
-        }
-
-        /// <summary>
-        /// Save a new Client
-        /// </summary>
-        /// <param name="client"></param>
-        private void saveNewClient(Client client)
-        {
-            this.client = client;
-            addClientToTable(client);
-        }
-
-        private void btnAfficher_Click(object sender, EventArgs e)
-        {
-            if (client != null)
-            {
-                AddClientTab(client);
-            }
-            
         }
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
@@ -336,15 +303,34 @@ namespace ABI.UI
             }
         }
 
-        private void displayForm_Closing(object sender, FormClosingEventArgs e)
+
+
+
+        ///////////////////////////////////////////////////TabControl
+        private void AddClientTab(Client client)
         {
-            frmDspClient f = sender as frmDspClient;
-            if (f != null)
+            if (tabPageDictionnary.ContainsKey(client))
             {
-                removeTab();
+                TabPage tabPage = tabPageDictionnary[client];
+                tabControlClientDetail.SelectTab(tabPage);
+            }
+            else
+            {
+                frmDspClient fdc = new frmDspClient(client);
+                fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
+                fdc.Updated += new UpdatedClientHandler(this.updateClientToTable);
+                fdc.TopLevel = false;
+                fdc.Dock = DockStyle.Fill;
+
+                TabPage tabPage = new TabPage(client.RaisonSocial);
+                tabPage.Controls.Add(fdc);
+                tabControlClientDetail.Controls.Add(tabPage);
+                tabControlClientDetail.SelectTab(tabPage);
+                tabPageDictionnary.Add(client, tabPage);
+                frmDspClientDictionnary.Add(tabPage, fdc);
+                fdc.Show();
             }
         }
-
         private void removeTab()
         {
             if (tabPageDictionnary.ContainsKey(client))
@@ -359,67 +345,14 @@ namespace ABI.UI
                 }
             }
         }
-
-        private void AddClientTab(Client client)
+        private void displayForm_Closing(object sender, FormClosingEventArgs e)
         {
-            if (tabPageDictionnary.ContainsKey(client))
-            {
-                TabPage tabPage = tabPageDictionnary[client];
-                tabControlClientDetail.SelectTab(tabPage);
-            }
-            else
-            {
-                frmDspClient fdc = new frmDspClient(client);
-                fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
-                fdc.Updated += new UpdatedClientHandler(this.updatedClient);
-                fdc.TopLevel = false;
-                fdc.Dock = DockStyle.Fill;
-
-                TabPage tabPage = new TabPage(client.RaisonSocial);
-                tabPage.Controls.Add(fdc);
-                tabControlClientDetail.Controls.Add(tabPage);
-                tabControlClientDetail.SelectTab(tabPage);
-                tabPageDictionnary.Add(client, tabPage);
-                frmDspClientDictionnary.Add(tabPage, fdc);
-                fdc.Show();
-            }
-        }
-
-        private void updatedClient(Client client)
-        {
-            this.client = client;
-            updateClientToTable(client);
-        }
-
-        /// <summary>
-        /// Upon supprimer_click show a dialog to confirm and delete the client from the list, the dataGridView and the tabControl if open 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSupprimer_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            frmDspClient f = sender as frmDspClient;
+            if (f != null)
             {
                 removeTab();
-                foreach (DataGridViewRow row in grdClient.SelectedRows)
-                {
-                    Int32 id = (Int32)row.Cells[0].Value;
-
-                    foreach (Client c in Donnees.listClient)
-                    {
-                        if (c.IdClient == id)
-                        {
-                            client = c;
-                        }
-                    }
-                }
-                Donnees.listClient.Remove(client);
-                client = null;
-                loadListClient();
             }
         }
-
         private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControlClientDetail.TabCount > 0)
@@ -447,21 +380,59 @@ namespace ABI.UI
                 }
             }
         }
+        ///////////////////////////////////////////////////End TabControl
 
-        private void btnFermer_Click(object sender, EventArgs e)
+
+
+
+
+        ///////////////////////////////////////////////////Button Click Left Panel
+        /// <summary>
+        /// Button Add Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAjouter_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Voulez-vous vraiment fermer la partie Commerciale ?", "Fermeture", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(result == DialogResult.Yes)
+            frmNewClient fnc = new frmNewClient();
+            fnc.saveNewClient += new SaveNewClient(this.addClientToTable);
+            DialogResult result = fnc.ShowDialog();
+            if (result == DialogResult.Yes)
             {
-                btnFermerOnglets_Click(sender, e);
-                frmDspClientDictionnary.Clear();
-                tabControlClientDetail.TabPages.Clear();
-                tabPageDictionnary.Clear();
-                Donnees.listClient.Clear();
-                Close();
+                AddClientTab(client);
             }
         }
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                removeTab();
+                foreach (DataGridViewRow row in grdClient.SelectedRows)
+                {
+                    Int32 id = (Int32)row.Cells[0].Value;
 
+                    foreach (Client c in Donnees.listClient)
+                    {
+                        if (c.IdClient == id)
+                        {
+                            client = c;
+                        }
+                    }
+                }
+                Donnees.listClient.Remove(client);
+                client = null;
+                loadListClient();
+            }
+        }
+        private void btnAfficher_Click(object sender, EventArgs e)
+        {
+            if (client != null)
+            {
+                AddClientTab(client);
+            }
+            
+        }
         private void btnFermerOnglets_Click(object sender, EventArgs e)
         {
             for(Int32 i=0; i<tabPageDictionnary.Count; i++)
@@ -481,7 +452,26 @@ namespace ABI.UI
             frmDspClientDictionnary.Clear(); ;
             tabPageDictionnary.Clear();
         }
+        private void btnFermer_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Voulez-vous vraiment fermer la partie Commerciale ?", "Fermeture", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                btnFermerOnglets_Click(sender, e);
+                frmDspClientDictionnary.Clear();
+                tabControlClientDetail.TabPages.Clear();
+                tabPageDictionnary.Clear();
+                Donnees.listClient.Clear();
+                Close();
+            }
+        }
+        //////////////////////////////////////////////////End Button Click Left Panel
 
+
+
+
+
+        /////////////////////////////////////////////////Right Click Tab
         private void tabControlClientDetail_MouseUp(object sender, MouseEventArgs e)
         {
             //if(e.Button == MouseButtons.Right)
@@ -500,7 +490,6 @@ namespace ABI.UI
             //    }
             //}
         }
-
         private void fermerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.removeTab();
@@ -510,7 +499,14 @@ namespace ABI.UI
         {
             btnFermerOnglets_Click(sender, e);
         }
+        ////////////////////////////////////////////////End Right Click Tab (Contextuel Menu)
 
+
+
+
+
+
+        ////////////////////////////////////////////////Search Panel Button & Textbox Click 
         private void btnSearchClient_Click(object sender, EventArgs e)
         {
            if(client != null)
@@ -539,6 +535,6 @@ namespace ABI.UI
                 ((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
             }
         }
-
+        ////////////////////////////////////////////////End Search Panel Button & Textbox Click
     }
 }
