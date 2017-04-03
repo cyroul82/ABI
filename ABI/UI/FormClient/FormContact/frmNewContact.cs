@@ -33,13 +33,24 @@ namespace ABI
 
         public void addContact()
         {
-            client.ContactsCount++;
+            //TODO think another and better way for the idClient !!!
+            Int32 id;
+            if(client.ListContacts.Count == 0)
+            {
+                id = 1;
+            }else
+            {
+                Int32 idLastContact = client.ListContacts[client.ListContacts.Count].IdContact;
+                id = idLastContact++;
+            }
+            
+
             String nom = txtContactName.Text;
             String fonction = txtContactType.Text;
             String email = txtContactEmail.Text;
             String telephone = txtContactTelephone.Text;
 
-            contact = new Contact(client.ContactsCount, nom, fonction, email, telephone);
+            contact = new Contact(id, nom, fonction, email, telephone);
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

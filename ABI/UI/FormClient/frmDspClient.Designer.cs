@@ -189,6 +189,7 @@
             this.grdContact.Name = "grdContact";
             this.grdContact.Size = new System.Drawing.Size(305, 193);
             this.grdContact.TabIndex = 1;
+            this.grdContact.SelectionChanged += new System.EventHandler(this.grdContact_SelectionChanged);
             // 
             // panel3
             // 
@@ -228,6 +229,7 @@
             this.btnSupprimer.TabIndex = 2;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // flowLayoutPanel1
             // 

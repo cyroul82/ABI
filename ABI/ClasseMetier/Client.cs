@@ -139,19 +139,6 @@ namespace ABI
             }
         }
 
-        internal List<Contact> ListContacts
-        {
-            get
-            {
-                return listContacts;
-            }
-
-            set
-            {
-                listContacts = value;
-            }
-        }
-
         public string Telephone
         {
             get
@@ -175,6 +162,19 @@ namespace ABI
             set
             {
                 contactsCount = value;
+            }
+        }
+
+        public List<Contact> ListContacts
+        {
+            get
+            {
+                return listContacts;
+            }
+
+            set
+            {
+                listContacts = value;
             }
         }
 

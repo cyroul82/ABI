@@ -14,6 +14,7 @@ namespace ABI
     {
         private MyDataTable table;
         private MyDataView dataView;
+        private Contact contact;
         public event UpdatedClientHandler Updated;
         private const String MODIFIER = "Modifier";
         private const String ENREGISTRER = "Enregistrer";
@@ -34,6 +35,7 @@ namespace ABI
         private void saveContact(Contact contact)
         {
             dataView.AddContact(contact);
+            client.ListContacts.Add(contact);
         }
 
         public void btnFermer_Click(object sender, EventArgs e)
@@ -64,8 +66,11 @@ namespace ABI
             table = new MyDataTable("ContactTable");
             grdContact.DataSource = table;
             dataView = new MyDataView(table);
-            
-            
+
+            foreach(Contact contact in client.ListContacts)
+            {
+                dataView.AddContact(contact);
+            }
         }
 
         private void fillUpForm()
@@ -143,6 +148,26 @@ namespace ABI
             fillUpForm();
             disableClient();
         }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            dataView.Removecontact(contact);
+            client.ListContacts.Remove(contact);
+        }
+
+        private void grdContact_SelectionChanged(object sender, EventArgs e)
+        {
+
+            Int32 id = (Int32)grdContact[0, grdContact.CurrentRow.Index].Value;
+            for (Int32 i = 0; i < client.ListContacts.Count; i++)
+            {
+                Contact c = client.ListContacts[i];
+                if (contact.IdContact == id)
+                {
+                    contact = c;
+                }
+            }
+        }
     }
 
     class MyDataTable : DataTable
@@ -209,8 +234,6 @@ namespace ABI
             column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
-
-
         }
     }
 
@@ -228,16 +251,30 @@ namespace ABI
 
         public void AddContact(Contact contact)
         {
-            DataRowView newRow = AddNew();
-            newRow[IDCLIENT] = contact.IdContact;
-            newRow[NOM] = contact.Nom;
-            newRow[FONCTION] = contact.Fonction;
-            newRow[EMAIL] = contact.Email;
-            newRow[TELEPHONE] = contact.Telephone;
-            newRow.EndEdit();
+            try
+            {
+                DataRowView newRow = AddNew();
+                newRow[IDCLIENT] = contact.IdContact;
+                newRow[NOM] = contact.Nom;
+                newRow[FONCTION] = contact.Fonction;
+                newRow[EMAIL] = contact.Email;
+                newRow[TELEPHONE] = contact.Telephone;
+                newRow.EndEdit();
+            }
+            catch (ConstraintException e)
+            {
+                MessageBox.Show("ConstraintException : " + e.Message);
+            }
         }
 
+        public void Removecontact(Contact contact)
+        {
+            Int32 indexRow = Find(contact);
+            Delete(indexRow);
+            Console.WriteLine("line contact if found : " + indexRow);
+        }
 
+        
 
 
     }
