@@ -19,8 +19,8 @@ namespace ABI.UI
         private DataColumn column;
         private DataRow row;
         //Dictionnary to keep a track of the TabPage opened associated with a client as Key
-        private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
-        private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
+        private Dictionary<Int32, TabPage> tabPageDictionnary = new Dictionary<Int32, TabPage>();
+        private Dictionary<Int32, frmDspClient> frmDspClientDictionnary = new Dictionary<Int32, frmDspClient>();
 
         //Declare all the constants for the columns (gridDataView)
         private const String IDCLIENT = "idClient";
@@ -240,9 +240,9 @@ namespace ABI.UI
         private void updateClientToTable(Client client)
         {
             //Update tabPage.Text
-            foreach(KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+            foreach(KeyValuePair<Int32, TabPage> kvp in tabPageDictionnary)
             {
-                if(kvp.Key == client)
+                if(kvp.Key == client.IdClient)
                 {
                     TabPage tabPage = kvp.Value;
                     tabPage.Text = client.RaisonSocial;
@@ -345,14 +345,14 @@ namespace ABI.UI
 
         private void removeTab()
         {
-            if (tabPageDictionnary.ContainsKey(client))
+            if (tabPageDictionnary.ContainsKey(client.IdClient))
             {
-                TabPage tabPage = tabPageDictionnary[client];
+                TabPage tabPage = tabPageDictionnary[client.IdClient];
                 if (tabPage != null)
                 {
                     tabControlClientDetail.TabPages.Remove(tabPage);
-                    tabPageDictionnary.Remove(client);
-                    frmDspClientDictionnary.Remove(tabPage);
+                    tabPageDictionnary.Remove(client.IdClient);
+                    frmDspClientDictionnary.Remove(client.IdClient);
                     tabControlClientDetail.SelectTab(0);
                 }
             }
@@ -360,9 +360,9 @@ namespace ABI.UI
 
         private void AddClientTab(Client client)
         {
-            if (tabPageDictionnary.ContainsKey(client))
+            if (tabPageDictionnary.ContainsKey(client.IdClient))
             {
-                TabPage tabPage = tabPageDictionnary[client];
+                TabPage tabPage = tabPageDictionnary[client.IdClient];
                 tabControlClientDetail.SelectTab(tabPage);
             }
             else
@@ -377,8 +377,8 @@ namespace ABI.UI
                 tabPage.Controls.Add(fdc);
                 tabControlClientDetail.Controls.Add(tabPage);
                 tabControlClientDetail.SelectTab(tabPage);
-                tabPageDictionnary.Add(client, tabPage);
-                frmDspClientDictionnary.Add(tabPage, fdc);
+                tabPageDictionnary.Add(client.IdClient, tabPage);
+                frmDspClientDictionnary.Add(client.IdClient, fdc);
                 fdc.Show();
             }
         }
@@ -420,6 +420,7 @@ namespace ABI.UI
 
         private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             if (tabControlClientDetail.TabCount > 0)
             {
                 if (tabControlClientDetail.SelectedIndex == 0)
@@ -428,19 +429,28 @@ namespace ABI.UI
                 }
                 else
                 {
+                    
                     tabPage = tabControlClientDetail.TabPages[tabControlClientDetail.SelectedIndex];
-
-                    foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+                    Int32 idClient=0;
+                    foreach (KeyValuePair<Int32, TabPage> kvp in tabPageDictionnary)
                     {
                         if (kvp.Value == tabPage)
                         {
-                            client = kvp.Key;
+                            idClient = kvp.Key;
+                            //Find Client with idClient
+                            foreach(Client c in Donnees.listClient)
+                            {
+                                if (c.IdClient == idClient)
+                                {
+                                    client = c;
+                                }
+                            }
                         }
                     }
 
-                    if (frmDspClientDictionnary.ContainsKey(tabPage))
+                    if (frmDspClientDictionnary.ContainsKey(idClient))
                     {
-                        formClient = frmDspClientDictionnary[tabPage];
+                        formClient = frmDspClientDictionnary[idClient];
                     }
                 }
             }
@@ -464,10 +474,10 @@ namespace ABI.UI
         {
             for(Int32 i=0; i<tabPageDictionnary.Count; i++)
             {
-                KeyValuePair<Client,TabPage> k = tabPageDictionnary.ElementAt(i);
+                KeyValuePair<Int32,TabPage> k = tabPageDictionnary.ElementAt(i);
                 tabControlClientDetail.TabPages.Remove(k.Value);
 
-                frmDspClient f = frmDspClientDictionnary[k.Value] as frmDspClient;
+                frmDspClient f = frmDspClientDictionnary[k.Key] as frmDspClient;
                 if (f != null)
                 {
                     if (f.IsModifed)
