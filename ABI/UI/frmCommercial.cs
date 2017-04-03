@@ -18,6 +18,7 @@ namespace ABI.UI
         private DataTable table;
         private DataColumn column;
         private DataRow row;
+
         //Dictionnary to keep a track of the TabPage opened associated with a client as Key
         private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
         private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
@@ -226,6 +227,7 @@ namespace ABI.UI
                 row[TELEPHONE] = client.Telephone;
                 row[COMMENTAIRE] = client.Comment;
                 table.Rows.Add(row);
+
             }
             catch (ConstraintException e)
             {

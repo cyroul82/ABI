@@ -13,7 +13,7 @@ namespace ABI
     public partial class frmNewClient : ABI.FormClient
     {
 
-        public event SaveNewClient saveNewClient;
+        public SaveNewClient saveNewClient;
         public frmNewClient()
         {
             InitializeComponent();

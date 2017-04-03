@@ -274,10 +274,9 @@ namespace ABI
 
         public void Removecontact(Contact contact)
         {
-            
-            //Int32 indexRow = Find(contact);
+            Int32 indexRow = Find(contact);
             //Delete(indexRow);
-            Console.WriteLine("line contact if found : " );
+            Console.WriteLine("line contact if found : " + indexRow );
         }
 
         
