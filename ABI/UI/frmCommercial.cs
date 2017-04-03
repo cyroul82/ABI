@@ -71,7 +71,7 @@ namespace ABI.UI
 
             for (Int32 i = 0; i < Donnees.listClient.Count; i++)
             {
-                addClientToTable(Donnees.listClient[i]);
+                addClientDataTable(Donnees.listClient[i]);
                 
             }
             grdClient.DataSource = table.DefaultView;
@@ -211,7 +211,7 @@ namespace ABI.UI
         /// Add a Client
         /// </summary>
         /// <param name="client"></param>
-        private void addClientToTable(Client client)
+        private void addClientDataTable(Client client)
         {
             this.client = client;
             try
@@ -240,7 +240,7 @@ namespace ABI.UI
         /// Update a Client
         /// </summary>
         /// <param name="client"></param>
-        private void updateClientToTable(Client client)
+        private void updateClientDataTable(Client client)
         {
             this.client = client;
             //Update tabPage.Text
@@ -250,12 +250,12 @@ namespace ABI.UI
                 tabPage.Text = client.RaisonSocial;
             }
 
-            //Update the listClient in Donnees
-            for(Int32 i=0; i < table.Rows.Count; i++)
+            //Update the listClient in DataView
+            for (Int32 i = 0; i < table.Rows.Count; i++)
             {
                 Int32 idClient = (Int32)table.Rows[i][0];
-                if(idClient == client.IdClient)
-                { 
+                if (idClient == client.IdClient)
+                {
                     table.Rows[i][RAISONSOCIALE] = client.RaisonSocial;
                     table.Rows[i][TYPE] = client.TypeSociete;
                     table.Rows[i][ACTIVITE] = client.Activite;
@@ -269,9 +269,17 @@ namespace ABI.UI
             }
         }
 
-        private void deleteClientToTable(Client client)
+        private void deleteClientDataTable(Client client)
         {
-
+            for (Int32 i = 0; i < table.Rows.Count; i++)
+            {
+                Int32 idClient = (Int32)table.Rows[i][0];
+                if (idClient == client.IdClient)
+                {
+                    table.Rows[i].Delete();
+                }
+            }
+            
         }
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
@@ -316,7 +324,8 @@ namespace ABI.UI
             {
                 frmDspClient fdc = new frmDspClient(client);
                 fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
-                fdc.UpdatingClient += new UpdatingClientHandler(this.updateClientToTable);
+                fdc.UpdatingClient += new ClientHandler(this.updateClientDataTable);
+                fdc.DeletingClient += new ClientHandler(this.deleteClientDataTable);
                 fdc.TopLevel = false;
                 fdc.Dock = DockStyle.Fill;
 
@@ -393,7 +402,7 @@ namespace ABI.UI
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmNewClient fnc = new frmNewClient();
-            fnc.saveNewClient += new SaveNewClient(this.addClientToTable);
+            fnc.saveNewClient += new SaveNewClient(this.addClientDataTable);
             DialogResult result = fnc.ShowDialog();
             if (result == DialogResult.Yes)
             {
@@ -419,8 +428,7 @@ namespace ABI.UI
                     }
                 }
                 Donnees.listClient.Remove(client);
-                client = null;
-                loadListClient();
+                deleteClientDataTable(client);
             }
         }
         private void btnAfficher_Click(object sender, EventArgs e)

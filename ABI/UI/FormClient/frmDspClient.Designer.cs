@@ -46,6 +46,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.btnModifierClient = new System.Windows.Forms.Button();
             this.btnAnnulerModifClient = new System.Windows.Forms.Button();
+            this.btnDeleteClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
@@ -232,7 +233,7 @@
             this.btnSupprimer.TabIndex = 2;
             this.btnSupprimer.Text = "Supprimer";
             this.btnSupprimer.UseVisualStyleBackColor = true;
-            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimerContact_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -337,10 +338,21 @@
             this.btnAnnulerModifClient.Visible = false;
             this.btnAnnulerModifClient.Click += new System.EventHandler(this.btnAnnulerModif_Click);
             // 
+            // btnDeleteClient
+            // 
+            this.btnDeleteClient.Location = new System.Drawing.Point(101, 477);
+            this.btnDeleteClient.Name = "btnDeleteClient";
+            this.btnDeleteClient.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteClient.TabIndex = 5;
+            this.btnDeleteClient.Text = "Supprimer";
+            this.btnDeleteClient.UseVisualStyleBackColor = true;
+            this.btnDeleteClient.Click += new System.EventHandler(this.btnSupprimerClient_Click);
+            // 
             // frmDspClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(976, 600);
+            this.Controls.Add(this.btnDeleteClient);
             this.Controls.Add(this.btnFermer);
             this.Controls.Add(this.splitContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -351,6 +363,7 @@
             this.Controls.SetChildIndex(this.gpbClientInformation, 0);
             this.Controls.SetChildIndex(this.splitContainer1, 0);
             this.Controls.SetChildIndex(this.btnFermer, 0);
+            this.Controls.SetChildIndex(this.btnDeleteClient, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();
@@ -396,5 +409,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnModifierClient;
         private System.Windows.Forms.Button btnAnnulerModifClient;
+        private System.Windows.Forms.Button btnDeleteClient;
     }
 }

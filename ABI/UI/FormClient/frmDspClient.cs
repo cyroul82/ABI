@@ -9,13 +9,14 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    public delegate void UpdatingClientHandler(Client client);
+    public delegate void ClientHandler(Client client);
     public partial class frmDspClient : ABI.FormClient
     {
         private MyDataTable table;
         private MyDataView dataView;
         private Contact contact;
-        public UpdatingClientHandler UpdatingClient;
+        public ClientHandler UpdatingClient;
+        public ClientHandler DeletingClient;
         private const String MODIFIER = "Modifier";
         private const String ENREGISTRER = "Enregistrer";
 
@@ -149,7 +150,7 @@ namespace ABI
             disableClient();
         }
 
-        private void btnSupprimer_Click(object sender, EventArgs e)
+        private void btnSupprimerContact_Click(object sender, EventArgs e)
         {
             dataView.Removecontact(contact);
             client.ListContacts.Remove(contact);
@@ -172,6 +173,11 @@ namespace ABI
                     
                 }
             }
+        }
+
+        private void btnSupprimerClient_Click(object sender, EventArgs e)
+        {
+//            DeletingClient?.Invoke(client);
         }
     }
 
