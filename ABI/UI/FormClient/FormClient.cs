@@ -19,6 +19,12 @@ namespace ABI
             InitializeComponent();
         }
 
+        public FormClient(Client client)
+        {
+            InitializeComponent();
+            this.client = client;
+        }
+
         private void mTxtCodePostal_MaskInputRejetected(object sender, MaskInputRejectedEventArgs e)
         {
             if (mTxtCodePostal.MaskFull)

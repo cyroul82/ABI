@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABI.ClasseMetier;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,20 +12,28 @@ namespace ABI
     public delegate void UpdatedClientHandler(Client client);
     public partial class frmDspClient : ABI.FormClient
     {
+        private MyDataTable table;
+        private MyDataView dataView;
         public event UpdatedClientHandler Updated;
         private const String MODIFIER = "Modifier";
         private const String ENREGISTRER = "Enregistrer";
+
         public Boolean IsModifed { get; private set; } = false;
-        public frmDspClient(Client client)
+        public frmDspClient(Client client): base(client)
         {
             InitializeComponent();
-            base.client = client;
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            frmNewContact fnc = new frmNewContact();
+            frmNewContact fnc = new frmNewContact(client);
+            fnc.saveNewContact += new SaveNewContact(this.saveContact);
             fnc.ShowDialog();
+        }
+
+        private void saveContact(Contact contact)
+        {
+            dataView.AddContact(contact);
         }
 
         public void btnFermer_Click(object sender, EventArgs e)
@@ -51,6 +60,12 @@ namespace ABI
         private void frmDspClient_Load(object sender, EventArgs e)
         {
             fillUpForm();
+
+            table = new MyDataTable("ContactTable");
+            grdContact.DataSource = table;
+            dataView = new MyDataView(table);
+            
+            
         }
 
         private void fillUpForm()
@@ -128,6 +143,102 @@ namespace ABI
             fillUpForm();
             disableClient();
         }
+    }
+
+    class MyDataTable : DataTable
+    {
+        private DataColumn column;
+        private const String IDCLIENT = "idClient";
+        private const String NOM = "Nom";
+        private const String NOM_CAPTION = "Nom";
+        private const String FONCTION = "Fonction";
+        private const String EMAIL = "Email";
+        private const String TELEPHONE = "Téléphone";
+        public MyDataTable(string tableName) : base(tableName)
+        {
+            buildTableColumn();
+        }
+
+        /// <summary>
+        /// Build the Table Column with DataColumn
+        /// </summary>
+        private void buildTableColumn()
+        {
+            column = new DataColumn();
+            //Column IDCLIENT Unique and ReadOnly
+            column = new DataColumn();
+            column.DataType = typeof(System.Int32);
+            column.ColumnName = IDCLIENT;
+            column.ReadOnly = true;
+            column.Unique = true;
+            Columns.Add(column);
+
+            //Column RAISON SOCIALE
+            column = new DataColumn();
+            column.DataType = typeof(System.String);
+            column.ColumnName = NOM;
+            column.Caption = NOM_CAPTION;
+            column.ReadOnly = false;
+            column.Unique = true;
+            column.AutoIncrement = false;
+            Columns.Add(column);
+
+            //Column FONCTION
+            column = new DataColumn();
+            column.DataType = typeof(System.String);
+            column.ColumnName = FONCTION;
+            column.ReadOnly = false;
+            column.Unique = false;
+            column.AutoIncrement = false;
+            Columns.Add(column);
+
+            //Column EMAIL
+            column = new DataColumn();
+            column.DataType = typeof(System.String);
+            column.ColumnName = EMAIL;
+            column.ReadOnly = false;
+            column.Unique = false;
+            column.AutoIncrement = false;
+            Columns.Add(column);
+
+            //Column TELEPHONE
+            column = new DataColumn();
+            column.DataType = typeof(System.String);
+            column.ColumnName = TELEPHONE;
+            column.ReadOnly = false;
+            column.Unique = false;
+            column.AutoIncrement = false;
+            Columns.Add(column);
+
+
+        }
+    }
+
+    class MyDataView : DataView
+    {
+        private const String IDCLIENT = "idClient";
+        private const String NOM = "Nom";
+        private const String FONCTION = "Fonction";
+        private const String EMAIL = "Email";
+        private const String TELEPHONE = "Téléphone";
+        public MyDataView(DataTable table) : base(table)
+        {
+
+        }
+
+        public void AddContact(Contact contact)
+        {
+            DataRowView newRow = AddNew();
+            newRow[IDCLIENT] = contact.IdContact;
+            newRow[NOM] = contact.Nom;
+            newRow[FONCTION] = contact.Fonction;
+            newRow[EMAIL] = contact.Email;
+            newRow[TELEPHONE] = contact.Telephone;
+            newRow.EndEdit();
+        }
+
+
+
 
     }
 }

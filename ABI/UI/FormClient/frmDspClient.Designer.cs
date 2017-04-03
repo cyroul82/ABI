@@ -32,7 +32,7 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.gpxContact = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dtgContact = new System.Windows.Forms.DataGridView();
+            this.grdContact = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAfficher = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             this.gpbClientInformation.SuspendLayout();
             this.gpxContact.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgContact)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdContact)).BeginInit();
             this.panel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -169,7 +169,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dtgContact);
+            this.panel2.Controls.Add(this.grdContact);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -178,17 +178,17 @@
             this.panel2.Size = new System.Drawing.Size(417, 222);
             this.panel2.TabIndex = 1;
             // 
-            // dtgContact
+            // grdContact
             // 
-            this.dtgContact.AllowUserToAddRows = false;
-            this.dtgContact.AllowUserToDeleteRows = false;
-            this.dtgContact.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dtgContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgContact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtgContact.Location = new System.Drawing.Point(112, 29);
-            this.dtgContact.Name = "dtgContact";
-            this.dtgContact.Size = new System.Drawing.Size(305, 193);
-            this.dtgContact.TabIndex = 1;
+            this.grdContact.AllowUserToAddRows = false;
+            this.grdContact.AllowUserToDeleteRows = false;
+            this.grdContact.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.grdContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdContact.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdContact.Location = new System.Drawing.Point(112, 29);
+            this.grdContact.Name = "grdContact";
+            this.grdContact.Size = new System.Drawing.Size(305, 193);
+            this.grdContact.TabIndex = 1;
             // 
             // panel3
             // 
@@ -359,7 +359,7 @@
             this.gpxContact.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgContact)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdContact)).EndInit();
             this.panel3.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -385,7 +385,7 @@
         private System.Windows.Forms.Button btnSearchClient;
         private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Label lblSearchClient;
-        private System.Windows.Forms.DataGridView dtgContact;
+        private System.Windows.Forms.DataGridView grdContact;
         private System.Windows.Forms.Button btnAnnulerModif;
         private System.Windows.Forms.GroupBox gpxDocument;
         private System.Windows.Forms.SplitContainer splitContainer1;

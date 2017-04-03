@@ -25,8 +25,8 @@ namespace ABI
 
         private void bntAddIntervenant_Click(object sender, EventArgs e)
         {
-            frmNewContact fnc = new frmNewContact();
-            fnc.ShowDialog();
+            //frmNewContact fnc = new frmNewContact();
+            //fnc.ShowDialog();
 
         }
 

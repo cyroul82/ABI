@@ -29,7 +29,9 @@
         private void InitializeComponent()
         {
             this.gpxContactDetail = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtContactIdClient = new System.Windows.Forms.TextBox();
+            this.lblIdContact = new System.Windows.Forms.Label();
+            this.txtContactTelephone = new System.Windows.Forms.TextBox();
             this.lblContactTelephone = new System.Windows.Forms.Label();
             this.txtContactEmail = new System.Windows.Forms.TextBox();
             this.lblContactEmail = new System.Windows.Forms.Label();
@@ -37,16 +39,14 @@
             this.txtContactName = new System.Windows.Forms.TextBox();
             this.lblContactType = new System.Windows.Forms.Label();
             this.lblContactName = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblIdContact = new System.Windows.Forms.Label();
             this.gpxContactDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpxContactDetail
             // 
-            this.gpxContactDetail.Controls.Add(this.textBox2);
+            this.gpxContactDetail.Controls.Add(this.txtContactIdClient);
             this.gpxContactDetail.Controls.Add(this.lblIdContact);
-            this.gpxContactDetail.Controls.Add(this.textBox1);
+            this.gpxContactDetail.Controls.Add(this.txtContactTelephone);
             this.gpxContactDetail.Controls.Add(this.lblContactTelephone);
             this.gpxContactDetail.Controls.Add(this.txtContactEmail);
             this.gpxContactDetail.Controls.Add(this.lblContactEmail);
@@ -61,12 +61,29 @@
             this.gpxContactDetail.TabStop = false;
             this.gpxContactDetail.Text = "Detail";
             // 
-            // textBox1
+            // txtContactIdClient
             // 
-            this.textBox1.Location = new System.Drawing.Point(93, 121);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 20);
-            this.textBox1.TabIndex = 21;
+            this.txtContactIdClient.Location = new System.Drawing.Point(93, 17);
+            this.txtContactIdClient.Name = "txtContactIdClient";
+            this.txtContactIdClient.ReadOnly = true;
+            this.txtContactIdClient.Size = new System.Drawing.Size(121, 20);
+            this.txtContactIdClient.TabIndex = 23;
+            // 
+            // lblIdContact
+            // 
+            this.lblIdContact.AutoSize = true;
+            this.lblIdContact.Location = new System.Drawing.Point(23, 21);
+            this.lblIdContact.Name = "lblIdContact";
+            this.lblIdContact.Size = new System.Drawing.Size(62, 13);
+            this.lblIdContact.TabIndex = 22;
+            this.lblIdContact.Text = "Identifiant : ";
+            // 
+            // txtContactTelephone
+            // 
+            this.txtContactTelephone.Location = new System.Drawing.Point(93, 121);
+            this.txtContactTelephone.Name = "txtContactTelephone";
+            this.txtContactTelephone.Size = new System.Drawing.Size(181, 20);
+            this.txtContactTelephone.TabIndex = 21;
             // 
             // lblContactTelephone
             // 
@@ -125,23 +142,6 @@
             this.lblContactName.TabIndex = 14;
             this.lblContactName.Text = "Nom :";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(93, 17);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 23;
-            // 
-            // lblIdContact
-            // 
-            this.lblIdContact.AutoSize = true;
-            this.lblIdContact.Location = new System.Drawing.Point(23, 21);
-            this.lblIdContact.Name = "lblIdContact";
-            this.lblIdContact.Size = new System.Drawing.Size(62, 13);
-            this.lblIdContact.TabIndex = 22;
-            this.lblIdContact.Text = "Identifiant : ";
-            // 
             // FormContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,17 +157,16 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox gpxContactDetail;
         private System.Windows.Forms.Label lblContactEmail;
-        private System.Windows.Forms.TextBox txtContactType;
-        private System.Windows.Forms.TextBox txtContactName;
         private System.Windows.Forms.Label lblContactType;
         private System.Windows.Forms.Label lblContactName;
-        private System.Windows.Forms.TextBox txtContactEmail;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lblContactTelephone;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label lblIdContact;
+        protected System.Windows.Forms.GroupBox gpxContactDetail;
+        protected System.Windows.Forms.TextBox txtContactType;
+        protected System.Windows.Forms.TextBox txtContactName;
+        protected System.Windows.Forms.TextBox txtContactEmail;
+        protected System.Windows.Forms.TextBox txtContactTelephone;
+        protected System.Windows.Forms.TextBox txtContactIdClient;
     }
 }

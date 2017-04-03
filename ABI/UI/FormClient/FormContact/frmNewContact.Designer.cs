@@ -30,6 +30,7 @@
         {
             this.btnAddContact = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.gpxContactDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddContact
@@ -40,6 +41,7 @@
             this.btnAddContact.TabIndex = 1;
             this.btnAddContact.Text = "Ajouter";
             this.btnAddContact.UseVisualStyleBackColor = true;
+            this.btnAddContact.Click += new System.EventHandler(this.btnAddContact_Click);
             // 
             // btnAnnuler
             // 
@@ -49,6 +51,7 @@
             this.btnAnnuler.TabIndex = 2;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // frmNewContact
             // 
@@ -59,8 +62,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmNewContact";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Controls.SetChildIndex(this.gpxContactDetail, 0);
             this.Controls.SetChildIndex(this.btnAddContact, 0);
             this.Controls.SetChildIndex(this.btnAnnuler, 0);
+            this.gpxContactDetail.ResumeLayout(false);
+            this.gpxContactDetail.PerformLayout();
             this.ResumeLayout(false);
 
         }

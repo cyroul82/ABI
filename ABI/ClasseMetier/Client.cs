@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABI.ClasseMetier;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace ABI
         private Decimal chiffreAffaires;
         private String comment;
         private String telephone;
-        private List<Intervenant> listIntervenant;
+        private List<Contact> listContacts;
 
         public Adresse Adresse
         {
@@ -137,16 +138,16 @@ namespace ABI
             }
         }
 
-        internal List<Intervenant> ListIntervenant
+        internal List<Contact> ListContacts
         {
             get
             {
-                return listIntervenant;
+                return listContacts;
             }
 
             set
             {
-                listIntervenant = value;
+                listContacts = value;
             }
         }
 
@@ -177,7 +178,7 @@ namespace ABI
             this.Adresse = adresse;
             this.Comment = comment;
             this.telephone = telephone;
-            ListIntervenant = new List<Intervenant>();
+            ListContacts = new List<Contact>();
         }
     }
 }

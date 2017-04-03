@@ -133,7 +133,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
-            //Column TYPE
+            //Column FONCTION
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = TYPE;
@@ -142,7 +142,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
-            //Column ACTIVITE
+            //Column EMAIL
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = ACTIVITE;
@@ -151,7 +151,7 @@ namespace ABI.UI
             column.AutoIncrement = false;
             table.Columns.Add(column);
 
-            //Column NATURE
+            //Column TELEPHONE
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = NATURE;
