@@ -29,17 +29,17 @@ namespace ABI
                 saveNewContact(contact);
                 this.DialogResult = DialogResult.OK;
             }
-                    }
+        }
 
         public void addContact()
         {
-            Int32 id = client.ListContacts.Count + 1;
+            client.ContactsCount++;
             String nom = txtContactName.Text;
             String fonction = txtContactType.Text;
             String email = txtContactEmail.Text;
             String telephone = txtContactTelephone.Text;
 
-            contact = new Contact(id, nom, fonction, email, telephone);
+            contact = new Contact(client.ContactsCount, nom, fonction, email, telephone);
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

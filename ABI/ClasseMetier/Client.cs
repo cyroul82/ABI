@@ -19,6 +19,7 @@ namespace ABI
         private Decimal chiffreAffaires;
         private String comment;
         private String telephone;
+        private Int32 contactsCount;
         private List<Contact> listContacts;
 
         public Adresse Adresse
@@ -161,6 +162,19 @@ namespace ABI
             set
             {
                 telephone = value;
+            }
+        }
+
+        public int ContactsCount
+        {
+            get
+            {
+                return contactsCount;
+            }
+
+            set
+            {
+                contactsCount = value;
             }
         }
 

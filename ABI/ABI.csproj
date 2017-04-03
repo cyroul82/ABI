@@ -103,7 +103,6 @@
     <Compile Include="UI\frmListIntervenant.Designer.cs">
       <DependentUpon>frmListIntervenant.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClasseMetier\Intervenant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="UI\FormClient\FormClient.resx">
