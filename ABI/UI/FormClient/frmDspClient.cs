@@ -107,7 +107,7 @@ namespace ABI
             cbxActivity.Enabled = true;
             cbxNature.Enabled = true;
             cbxType.Enabled = true;
-            btnModifierClient.Text = ENREGISTRER;
+            btnModifierClient.Text = Tools.ENREGISTRER;
             btnAnnulerModifClient.Visible = true;
             IsModifed = true;
         }
@@ -126,7 +126,7 @@ namespace ABI
             cbxActivity.Enabled = false;
             cbxNature.Enabled = false;
             cbxType.Enabled = false;
-            btnModifierClient.Text = MODIFIER;
+            btnModifierClient.Text = Tools.MODIFIER;
             btnAnnulerModifClient.Visible = false;
             IsModifed = false;
         }
