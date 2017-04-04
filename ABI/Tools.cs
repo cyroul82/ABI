@@ -25,5 +25,8 @@ namespace ABI
         public const String CHIFFREAFFAIRES = "ChiffreAffaires";
         public const String VILLE = "Ville";
         public const String COMMENTAIRE = "Commentaires";
+
+        public const String PUBLIC = "Public";
+        public const String PRIVE = "Privé";
     }
 }

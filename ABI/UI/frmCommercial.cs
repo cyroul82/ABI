@@ -19,6 +19,7 @@ namespace ABI.UI
         private DataTable table;
         private DataColumn column;
         private DataRow row;
+        private String searchCriteria;
         //Variable used to control the click on the dataGridView, within itself = false, outside the dataGridView = true
         private Boolean isHitGridNoWhere = false;
 
@@ -48,7 +49,17 @@ namespace ABI.UI
         private void frmClient_Load(object sender, EventArgs e)
         {
             loadListClient();
-            //cbxSeach.Items.Add(Tools.)
+            cbxSearch.Items.Add(Tools.RAISONSOCIALE);
+            cbxSearch.Items.Add(Tools.VILLE);
+            cbxSearch.Items.Add(Tools.CHIFFREAFFAIRES);
+            cbxSearch.Items.Add(Tools.EFFECTIF);
+            cbxSearch.Items.Add(Tools.ACTIVITE);
+            cbxSearch.Items.Add(Tools.NATURE);
+            cbxSearch.Items.Add(Tools.TYPE);
+            cbxSearch.SelectedItem = Tools.RAISONSOCIALE;
+
+            cbxType.Items.Add(Tools.PUBLIC);
+            cbxType.Items.Add(Tools.PRIVE);
         }
         /// <summary>
         /// Loads the list of client form Donnee.listClient and styles the dataGridView grdClient
@@ -564,9 +575,101 @@ namespace ABI.UI
                     AddClientTab(client);
                 }
             }
-            else if (txtSearchClient.Text != null)
+            else if (txtSearchClient.Text != null && searchCriteria == Tools.RAISONSOCIALE)
             {
                 ((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
+            }
+            else if (txtSearchClient.Text != null && searchCriteria == Tools.VILLE)
+            {
+                ((DataView)grdClient.DataSource).RowFilter = "Ville like '%" + txtSearchClient.Text + "%'";
+            }
+
+        }
+
+        private void cbxSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            searchCriteria = cbxSearch.SelectedItem.ToString();
+            if (searchCriteria == Tools.CHIFFREAFFAIRES || searchCriteria == Tools.EFFECTIF)
+            {
+                showControlChiffreAffairesAndEffectif();
+                hideControlType();  
+            }
+            if(searchCriteria == Tools.RAISONSOCIALE)
+            {
+                hideControlChiffreAffairesAndEffectif();
+                hideControlType();
+            }
+            if(searchCriteria == Tools.VILLE)
+            {
+                hideControlChiffreAffairesAndEffectif();
+                hideControlType();
+            }
+            if(searchCriteria == Tools.EFFECTIF)
+            {
+                showControlChiffreAffairesAndEffectif();
+                hideControlType();
+            }
+            if(searchCriteria == Tools.TYPE)
+            {
+                showControlType();
+            }
+        }
+
+        private void hideControlChiffreAffairesAndEffectif()
+        {
+            rbEgal.Visible = false;
+            rbInfEgal.Visible = false;
+            rbSupEgal.Visible = false;
+            btnSearch.Visible = false;
+        }
+        private void showControlChiffreAffairesAndEffectif()
+        {
+            rbEgal.Visible = true;
+            rbInfEgal.Visible = true;
+            rbSupEgal.Visible = true;
+            btnSearch.Visible = true;
+        }
+        private void hideControlType()
+        {
+            cbxType.Visible = false;
+        }
+        private void showControlType()
+        {
+            cbxType.Visible = true;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (txtSearchClient.Text != null && searchCriteria == Tools.CHIFFREAFFAIRES)
+            {
+                if (rbEgal.Checked)
+                {
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " = " + Decimal.Parse(txtSearchClient.Text);
+                }
+                if (rbInfEgal.Checked)
+                {
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " <= " + Decimal.Parse(txtSearchClient.Text) ;
+                }
+                if (rbSupEgal.Checked)
+                {
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " >= " + Decimal.Parse(txtSearchClient.Text);
+                }
+            }
+
+            if (txtSearchClient.Text != null && searchCriteria == Tools.EFFECTIF)
+            {
+                if (rbEgal.Checked)
+                {
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " = " + Decimal.Parse(txtSearchClient.Text);
+                }
+                if (rbInfEgal.Checked)
+                {
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " <= " + Decimal.Parse(txtSearchClient.Text);
+                }
+                if (rbSupEgal.Checked)
+                {
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " >= " + Decimal.Parse(txtSearchClient.Text);
+                }
             }
         }
 

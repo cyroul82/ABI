@@ -40,14 +40,18 @@
             this.flowLayoutPanelSearchClient = new System.Windows.Forms.FlowLayoutPanel();
             this.lblSearchClient = new System.Windows.Forms.Label();
             this.txtSearchClient = new System.Windows.Forms.TextBox();
-            this.btnSearchClient = new System.Windows.Forms.Button();
+            this.rbEgal = new System.Windows.Forms.RadioButton();
+            this.rbInfEgal = new System.Windows.Forms.RadioButton();
+            this.rbSupEgal = new System.Windows.Forms.RadioButton();
+            this.cbxSearch = new System.Windows.Forms.ComboBox();
             this.btnToutAfficher = new System.Windows.Forms.Button();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
             this.contextMenuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fermerTousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbxSeach = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.cbxType = new System.Windows.Forms.ComboBox();
             this.panelListClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             this.panelControlClient.SuspendLayout();
@@ -77,12 +81,12 @@
             this.grdClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grdClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdClient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdClient.Location = new System.Drawing.Point(113, 33);
+            this.grdClient.Location = new System.Drawing.Point(113, 62);
             this.grdClient.MultiSelect = false;
             this.grdClient.Name = "grdClient";
             this.grdClient.ReadOnly = true;
             this.grdClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdClient.Size = new System.Drawing.Size(839, 541);
+            this.grdClient.Size = new System.Drawing.Size(839, 512);
             this.grdClient.TabIndex = 8;
             this.grdClient.SelectionChanged += new System.EventHandler(this.grdClient_SelectionChanged);
             this.grdClient.DoubleClick += new System.EventHandler(this.grdClient_DoubleClick);
@@ -97,9 +101,9 @@
             this.panelControlClient.Controls.Add(this.btnAfficher);
             this.panelControlClient.Controls.Add(this.btnSupprimer);
             this.panelControlClient.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControlClient.Location = new System.Drawing.Point(0, 33);
+            this.panelControlClient.Location = new System.Drawing.Point(0, 62);
             this.panelControlClient.Name = "panelControlClient";
-            this.panelControlClient.Size = new System.Drawing.Size(113, 541);
+            this.panelControlClient.Size = new System.Drawing.Size(113, 512);
             this.panelControlClient.TabIndex = 2;
             // 
             // btnFermerOnglets
@@ -115,7 +119,7 @@
             // btnFermer
             // 
             this.btnFermer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFermer.Location = new System.Drawing.Point(21, 508);
+            this.btnFermer.Location = new System.Drawing.Point(21, 479);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(75, 23);
             this.btnFermer.TabIndex = 7;
@@ -159,21 +163,24 @@
             this.flowLayoutPanelSearchClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanelSearchClient.Controls.Add(this.lblSearchClient);
             this.flowLayoutPanelSearchClient.Controls.Add(this.txtSearchClient);
-            this.flowLayoutPanelSearchClient.Controls.Add(this.cbxSeach);
-            this.flowLayoutPanelSearchClient.Controls.Add(this.btnSearchClient);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.rbEgal);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.rbInfEgal);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.rbSupEgal);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.btnSearch);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.cbxSearch);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.cbxType);
             this.flowLayoutPanelSearchClient.Controls.Add(this.btnToutAfficher);
             this.flowLayoutPanelSearchClient.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanelSearchClient.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelSearchClient.Name = "flowLayoutPanelSearchClient";
-            this.flowLayoutPanelSearchClient.Padding = new System.Windows.Forms.Padding(113, 0, 0, 0);
-            this.flowLayoutPanelSearchClient.Size = new System.Drawing.Size(952, 33);
+            this.flowLayoutPanelSearchClient.Size = new System.Drawing.Size(952, 62);
             this.flowLayoutPanelSearchClient.TabIndex = 1;
             // 
             // lblSearchClient
             // 
             this.lblSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSearchClient.AutoSize = true;
-            this.lblSearchClient.Location = new System.Drawing.Point(116, 8);
+            this.lblSearchClient.Location = new System.Drawing.Point(3, 8);
             this.lblSearchClient.Name = "lblSearchClient";
             this.lblSearchClient.Size = new System.Drawing.Size(69, 13);
             this.lblSearchClient.TabIndex = 3;
@@ -182,30 +189,65 @@
             // txtSearchClient
             // 
             this.txtSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSearchClient.Location = new System.Drawing.Point(191, 4);
+            this.txtSearchClient.Location = new System.Drawing.Point(78, 4);
             this.txtSearchClient.Name = "txtSearchClient";
             this.txtSearchClient.Size = new System.Drawing.Size(381, 20);
             this.txtSearchClient.TabIndex = 0;
             this.txtSearchClient.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchClient_KeyUp);
             // 
-            // btnSearchClient
+            // rbEgal
             // 
-            this.btnSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSearchClient.Location = new System.Drawing.Point(705, 3);
-            this.btnSearchClient.Name = "btnSearchClient";
-            this.btnSearchClient.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchClient.TabIndex = 1;
-            this.btnSearchClient.Text = "Ok";
-            this.btnSearchClient.UseVisualStyleBackColor = true;
-            this.btnSearchClient.Click += new System.EventHandler(this.btnSearchClient_Click);
+            this.rbEgal.AutoSize = true;
+            this.rbEgal.Location = new System.Drawing.Point(465, 3);
+            this.rbEgal.Name = "rbEgal";
+            this.rbEgal.Size = new System.Drawing.Size(31, 17);
+            this.rbEgal.TabIndex = 8;
+            this.rbEgal.TabStop = true;
+            this.rbEgal.Text = "=";
+            this.rbEgal.UseVisualStyleBackColor = true;
+            this.rbEgal.Visible = false;
+            // 
+            // rbInfEgal
+            // 
+            this.rbInfEgal.AutoSize = true;
+            this.rbInfEgal.Location = new System.Drawing.Point(502, 3);
+            this.rbInfEgal.Name = "rbInfEgal";
+            this.rbInfEgal.Size = new System.Drawing.Size(37, 17);
+            this.rbInfEgal.TabIndex = 7;
+            this.rbInfEgal.TabStop = true;
+            this.rbInfEgal.Text = "<=";
+            this.rbInfEgal.UseVisualStyleBackColor = true;
+            this.rbInfEgal.Visible = false;
+            // 
+            // rbSupEgal
+            // 
+            this.rbSupEgal.AutoSize = true;
+            this.rbSupEgal.Location = new System.Drawing.Point(545, 3);
+            this.rbSupEgal.Name = "rbSupEgal";
+            this.rbSupEgal.Size = new System.Drawing.Size(37, 17);
+            this.rbSupEgal.TabIndex = 6;
+            this.rbSupEgal.TabStop = true;
+            this.rbSupEgal.Text = ">=";
+            this.rbSupEgal.UseVisualStyleBackColor = true;
+            this.rbSupEgal.Visible = false;
+            // 
+            // cbxSearch
+            // 
+            this.cbxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSearch.FormattingEnabled = true;
+            this.cbxSearch.Location = new System.Drawing.Point(653, 3);
+            this.cbxSearch.Name = "cbxSearch";
+            this.cbxSearch.Size = new System.Drawing.Size(121, 21);
+            this.cbxSearch.TabIndex = 5;
+            this.cbxSearch.SelectedIndexChanged += new System.EventHandler(this.cbxSearch_SelectedIndexChanged);
             // 
             // btnToutAfficher
             // 
-            this.btnToutAfficher.Location = new System.Drawing.Point(786, 3);
+            this.btnToutAfficher.Location = new System.Drawing.Point(3, 32);
             this.btnToutAfficher.Name = "btnToutAfficher";
             this.btnToutAfficher.Size = new System.Drawing.Size(75, 23);
             this.btnToutAfficher.TabIndex = 4;
-            this.btnToutAfficher.Text = "Tout Afficher";
+            this.btnToutAfficher.Text = "Réinitialiser";
             this.btnToutAfficher.UseVisualStyleBackColor = true;
             this.btnToutAfficher.Click += new System.EventHandler(this.btnToutAfficher_Click);
             // 
@@ -253,14 +295,26 @@
             this.fermerTousToolStripMenuItem.Text = "Fermer Tous";
             this.fermerTousToolStripMenuItem.Click += new System.EventHandler(this.fermerTousToolStripMenuItem_Click);
             // 
-            // cbxSeach
+            // btnSearch
             // 
-            this.cbxSeach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxSeach.FormattingEnabled = true;
-            this.cbxSeach.Location = new System.Drawing.Point(578, 3);
-            this.cbxSeach.Name = "cbxSeach";
-            this.cbxSeach.Size = new System.Drawing.Size(121, 21);
-            this.cbxSeach.TabIndex = 5;
+            this.btnSearch.Location = new System.Drawing.Point(588, 3);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(59, 23);
+            this.btnSearch.TabIndex = 9;
+            this.btnSearch.Text = "OK";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Visible = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // cbxType
+            // 
+            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxType.FormattingEnabled = true;
+            this.cbxType.Location = new System.Drawing.Point(780, 3);
+            this.cbxType.Name = "cbxType";
+            this.cbxType.Size = new System.Drawing.Size(121, 21);
+            this.cbxType.TabIndex = 10;
+            this.cbxType.Visible = false;
             // 
             // frmCommercial
             // 
@@ -296,7 +350,6 @@
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnAfficher;
         private System.Windows.Forms.Panel panelControlClient;
-        private System.Windows.Forms.Button btnSearchClient;
         private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Label lblSearchClient;
         private System.Windows.Forms.TabControl tabControlClientDetail;
@@ -307,6 +360,11 @@
         private System.Windows.Forms.ToolStripMenuItem fermerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fermerTousToolStripMenuItem;
         private System.Windows.Forms.Button btnToutAfficher;
-        private System.Windows.Forms.ComboBox cbxSeach;
+        private System.Windows.Forms.ComboBox cbxSearch;
+        private System.Windows.Forms.RadioButton rbSupEgal;
+        private System.Windows.Forms.RadioButton rbEgal;
+        private System.Windows.Forms.RadioButton rbInfEgal;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.ComboBox cbxType;
     }
 }
