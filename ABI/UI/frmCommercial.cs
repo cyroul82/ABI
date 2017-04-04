@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataGridView;
 
 namespace ABI.UI
 {
@@ -18,6 +19,8 @@ namespace ABI.UI
         private DataTable table;
         private DataColumn column;
         private DataRow row;
+        //Variable used to control the click on the dataGridView, within itself = false, outside the dataGridView = true
+        private Boolean isHitGridNoWhere = false;
 
         //Dictionnary to keep a track of the TabPage opened associated with a client as Key
         private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
@@ -304,15 +307,39 @@ namespace ABI.UI
             }
         }
 
+        /// <summary>
+        /// Double click on the gridDataView
+        /// <para>Check first that the client isn't null and isHitGridNoWhere isn't true</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void grdClient_DoubleClick(object sender, EventArgs e)
         {
-            if (client != null)
+            
+            if (client != null && !isHitGridNoWhere)
             {
                 AddClientTab(client);
             }
         }
 
-
+        /// <summary>
+        /// Check whether a click is within the dataGridView or outside
+        /// <para>If outside, the variable isHitGridNoWhere = true</para>
+        /// <para>If inside, the variable isHitGridNoWhere = false</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void grdClient_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (grdClient.HitTest(e.X, e.Y) == HitTestInfo.Nowhere)
+                {
+                    isHitGridNoWhere = true;
+                }
+                else isHitGridNoWhere = false;
+            }
+        }
 
 
         ///////////////////////////////////////////////////TabControl
@@ -552,6 +579,7 @@ namespace ABI.UI
                 ((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
             }
         }
+
         ////////////////////////////////////////////////End Search Panel Button & Textbox Click
     }
 }

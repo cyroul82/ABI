@@ -41,12 +41,12 @@
             this.lblSearchClient = new System.Windows.Forms.Label();
             this.txtSearchClient = new System.Windows.Forms.TextBox();
             this.btnSearchClient = new System.Windows.Forms.Button();
+            this.btnToutAfficher = new System.Windows.Forms.Button();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
             this.contextMenuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fermerTousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnToutAfficher = new System.Windows.Forms.Button();
             this.panelListClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             this.panelControlClient.SuspendLayout();
@@ -85,6 +85,7 @@
             this.grdClient.TabIndex = 8;
             this.grdClient.SelectionChanged += new System.EventHandler(this.grdClient_SelectionChanged);
             this.grdClient.DoubleClick += new System.EventHandler(this.grdClient_DoubleClick);
+            this.grdClient.MouseUp += new System.Windows.Forms.MouseEventHandler(this.grdClient_MouseUp);
             // 
             // panelControlClient
             // 
@@ -196,6 +197,16 @@
             this.btnSearchClient.UseVisualStyleBackColor = true;
             this.btnSearchClient.Click += new System.EventHandler(this.btnSearchClient_Click);
             // 
+            // btnToutAfficher
+            // 
+            this.btnToutAfficher.Location = new System.Drawing.Point(659, 3);
+            this.btnToutAfficher.Name = "btnToutAfficher";
+            this.btnToutAfficher.Size = new System.Drawing.Size(75, 23);
+            this.btnToutAfficher.TabIndex = 4;
+            this.btnToutAfficher.Text = "Tout Afficher";
+            this.btnToutAfficher.UseVisualStyleBackColor = true;
+            this.btnToutAfficher.Click += new System.EventHandler(this.btnToutAfficher_Click);
+            // 
             // tabControlClientDetail
             // 
             this.tabControlClientDetail.Controls.Add(this.ClientListTab);
@@ -239,16 +250,6 @@
             this.fermerTousToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.fermerTousToolStripMenuItem.Text = "Fermer Tous";
             this.fermerTousToolStripMenuItem.Click += new System.EventHandler(this.fermerTousToolStripMenuItem_Click);
-            // 
-            // btnToutAfficher
-            // 
-            this.btnToutAfficher.Location = new System.Drawing.Point(659, 3);
-            this.btnToutAfficher.Name = "btnToutAfficher";
-            this.btnToutAfficher.Size = new System.Drawing.Size(75, 23);
-            this.btnToutAfficher.TabIndex = 4;
-            this.btnToutAfficher.Text = "Tout Afficher";
-            this.btnToutAfficher.UseVisualStyleBackColor = true;
-            this.btnToutAfficher.Click += new System.EventHandler(this.btnToutAfficher_Click);
             // 
             // frmCommercial
             // 
