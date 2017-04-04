@@ -190,6 +190,7 @@
             this.grdContact.Location = new System.Drawing.Point(112, 29);
             this.grdContact.MultiSelect = false;
             this.grdContact.Name = "grdContact";
+            this.grdContact.ReadOnly = true;
             this.grdContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdContact.Size = new System.Drawing.Size(305, 193);
             this.grdContact.TabIndex = 1;

@@ -47,11 +47,11 @@ namespace ABI.UI
         {
             InitializeComponent();
             txtSearchClient.Select();
-            Donnees.listClient.Add(new Client(Donnees.clientNumber++, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, new Adresse("verdun", "83700", "st raph"), "oui mais non", "0645248403"));
-            Donnees.listClient.Add(new Client(Donnees.clientNumber++, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500, new Adresse("verdun", "83700", "st raph"), "alors bon", "5646897453"));
-            Donnees.listClient.Add(new Client(Donnees.clientNumber++, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, new Adresse("verdun", "83700", "st raph"), "oki doki", "45678564"));
-            Donnees.listClient.Add(new Client(Donnees.clientNumber++, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870, new Adresse("verdun", "83700", "st raph"), "c parti", "21456731"));
-            Donnees.listClient.Add(new Client(Donnees.clientNumber++, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, new Adresse("verdun", "83700", "st raph"), "comment ca", "54564654"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, new Adresse("verdun", "83700", "st raph"), "oui mais non", "0645248403"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500, new Adresse("verdun", "83700", "st raph"), "alors bon", "5646897453"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, new Adresse("verdun", "83700", "st raph"), "oki doki", "45678564"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870, new Adresse("verdun", "83700", "st raph"), "c parti", "21456731"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, new Adresse("verdun", "83700", "st raph"), "comment ca", "54564654"));
         }
 
         /// <summary>
@@ -72,9 +72,9 @@ namespace ABI.UI
             column = new DataColumn();
             buildTableColumn();
 
-            for (Int32 i = 0; i < Donnees.listClient.Count; i++)
+            for (Int32 i = 0; i < Data.listClient.Count; i++)
             {
-                addClientDataTable(Donnees.listClient[i]);
+                addClientDataTable(Data.listClient[i]);
                 
             }
             grdClient.DataSource = table.DefaultView;
@@ -293,7 +293,7 @@ namespace ABI.UI
                 {
                     Int32 id = (Int32)row.Cells[0].Value;
 
-                    foreach (Client c in Donnees.listClient)
+                    foreach (Client c in Data.listClient)
                     {
                         if (c.IdClient == id)
                         {
@@ -454,7 +454,7 @@ namespace ABI.UI
                     {
                         Int32 id = (Int32)row.Cells[0].Value;
 
-                        foreach (Client c in Donnees.listClient)
+                        foreach (Client c in Data.listClient)
                         {
                             if (c.IdClient == id)
                             {
@@ -462,7 +462,7 @@ namespace ABI.UI
                             }
                         }
                     }
-                    Donnees.listClient.Remove(client);
+                    Data.listClient.Remove(client);
                     //loadListClient();
                     deleteClientDataTable(client);
                     client = null;
@@ -505,7 +505,7 @@ namespace ABI.UI
                 frmDspClientDictionnary.Clear();
                 tabControlClientDetail.TabPages.Clear();
                 tabPageDictionnary.Clear();
-                Donnees.listClient.Clear();
+                Data.listClient.Clear();
                 Close();
             }
         }

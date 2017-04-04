@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace ABI
 {
     public delegate void ClientHandler(Client client);
+
     public partial class frmDspClient : ABI.FormClient
     {
         private MyDataTable table;
@@ -26,6 +27,8 @@ namespace ABI
         private const String FONCTION = "Fonction";
         private const String EMAIL = "Email";
         private const String TELEPHONE = "Téléphone";
+
+
 
         public Boolean IsModifed { get; private set; } = false;
         public frmDspClient(Client client): base(client)

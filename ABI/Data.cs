@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ABI
 {
-    public class Donnees
+    public class Data
     {
         public static List<Client> listClient = new List<Client>() ;
         public static Int32 clientNumber = 0;

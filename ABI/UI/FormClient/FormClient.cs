@@ -228,10 +228,10 @@ namespace ABI
                 String rue = txtRue.Text.Trim();
                 Adresse adresse = new Adresse(rue, codePostal, ville);
                 String comment = txtComment.Text.Trim();
-                Int32 idClient = Donnees.clientNumber++;
+                Int32 idClient = ++Data.clientNumber;
 
                 client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, adresse, comment, telephone);
-                Donnees.listClient.Add(client);
+                Data.listClient.Add(client);
                 return true;
             }
             else       
@@ -246,9 +246,9 @@ namespace ABI
                    & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
             {
 
-                for (Int32 i = 0; i < Donnees.listClient.Count; i++)
+                for (Int32 i = 0; i < Data.listClient.Count; i++)
                 {
-                    Client c = Donnees.listClient[i];
+                    Client c = Data.listClient[i];
                     if (c.IdClient == idClient)
                     {
                         c.Comment = txtComment.Text.Trim();
