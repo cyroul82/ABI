@@ -28,39 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnEnregistrerContact = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.gpxContactDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // btnEnregistrerContact
             // 
-            this.button1.Location = new System.Drawing.Point(71, 170);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnEnregistrerContact.Location = new System.Drawing.Point(71, 170);
+            this.btnEnregistrerContact.Name = "btnEnregistrerContact";
+            this.btnEnregistrerContact.Size = new System.Drawing.Size(75, 23);
+            this.btnEnregistrerContact.TabIndex = 1;
+            this.btnEnregistrerContact.Text = "Enregistrer";
+            this.btnEnregistrerContact.UseVisualStyleBackColor = true;
+            this.btnEnregistrerContact.Click += new System.EventHandler(this.btnEnregistrerContact_Click);
             // 
-            // button2
+            // btnAnnuler
             // 
-            this.button2.Location = new System.Drawing.Point(163, 170);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Location = new System.Drawing.Point(163, 170);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
+            this.btnAnnuler.TabIndex = 2;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
             // frmDspContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(316, 199);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnAnnuler);
+            this.Controls.Add(this.btnEnregistrerContact);
             this.Name = "frmDspContact";
+            this.Load += new System.EventHandler(this.frmDspContact_Load);
             this.Controls.SetChildIndex(this.gpxContactDetail, 0);
-            this.Controls.SetChildIndex(this.button1, 0);
-            this.Controls.SetChildIndex(this.button2, 0);
+            this.Controls.SetChildIndex(this.btnEnregistrerContact, 0);
+            this.Controls.SetChildIndex(this.btnAnnuler, 0);
             this.gpxContactDetail.ResumeLayout(false);
             this.gpxContactDetail.PerformLayout();
             this.ResumeLayout(false);
@@ -69,7 +72,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnEnregistrerContact;
+        private System.Windows.Forms.Button btnAnnuler;
     }
 }

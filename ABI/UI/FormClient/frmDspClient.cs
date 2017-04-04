@@ -1,4 +1,5 @@
 ﻿using ABI.ClasseMetier;
+using ABI.UI.FormClient.FormContact;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,12 @@ namespace ABI
         public ClientHandler DeletingClient;
         private const String MODIFIER = "Modifier";
         private const String ENREGISTRER = "Enregistrer";
+        private const String IDCLIENT = "idClient";
+        private const String NOM = "Nom";
+        private const String NOM_CAPTION = "Nom";
+        private const String FONCTION = "Fonction";
+        private const String EMAIL = "Email";
+        private const String TELEPHONE = "Téléphone";
 
         public Boolean IsModifed { get; private set; } = false;
         public frmDspClient(Client client): base(client)
@@ -26,21 +33,7 @@ namespace ABI
             InitializeComponent();
         }
 
-
-        private void btnAjouter_Click(object sender, EventArgs e)
-        {
-            frmNewContact fnc = new frmNewContact(client);
-            fnc.saveNewContact += new SaveNewContact(this.saveContact);
-            fnc.ShowDialog();
-        }
-
-        private void saveContact(Contact contact)
-        {
-            dataView.AddContact(contact);
-            client.ListContacts.Add(contact);
-        }
-
-        public void btnFermer_Click(object sender, EventArgs e)
+        public void btnFermerClient_Click(object sender, EventArgs e)
         {
             if (IsModifed)
             {
@@ -145,12 +138,48 @@ namespace ABI
             IsModifed = false;
         }
 
-        private void btnAnnulerModif_Click(object sender, EventArgs e)
+        private void btnAnnulerModificationClient_Click(object sender, EventArgs e)
         {
             fillUpForm();
             disableClient();
         }
 
+        private void btnSupprimerClient_Click(object sender, EventArgs e)
+        {
+//            DeletingClient?.Invoke(client);
+        }
+
+
+        //Contact
+        private void grdContact_SelectionChanged(object sender, EventArgs e)
+        {
+            foreach(DataGridViewRow row in grdContact.SelectedRows)
+            {
+                if(row != null)
+                {
+                    Int32 id = (Int32)row.Cells[0].Value;
+                    foreach(Contact c in client.ListContacts)
+                    {
+                        if(c.IdContact == id)
+                        {
+                            contact = c;
+                        }
+                    }
+                }
+            }
+        }
+        private void btnAjouterContact_Click(object sender, EventArgs e)
+        {
+            frmNewContact fnc = new frmNewContact(client);
+            fnc.saveNewContact += new SaveNewContact(this.saveContact);
+            fnc.ShowDialog();
+        }
+        private void saveContact(Contact contact)
+        {
+            this.contact = contact;
+            dataView.AddContact(contact);
+            client.ListContacts.Add(contact);
+        }
         private void btnSupprimerContact_Click(object sender, EventArgs e)
         {
             for (Int32 i = 0; i < table.Rows.Count; i++)
@@ -166,35 +195,30 @@ namespace ABI
             }
            // dataView.Removecontact(contact);
             client.ListContacts.Remove(contact);
+            contact = null;
         }
-
-        private void grdContact_SelectionChanged(object sender, EventArgs e)
-        {
-            foreach(DataGridViewRow row in grdContact.SelectedRows)
-            {
-                if(row != null)
-                {
-                    Int32 id = (Int32)row.Cells[0].Value;
-                    foreach(Contact c in client.ListContacts)
-                    {
-                        if(c.IdContact == id)
-                        {
-                            contact = c;
-                        }
-                    }
-                    
-                }
-            }
-        }
-
-        private void btnSupprimerClient_Click(object sender, EventArgs e)
-        {
-//            DeletingClient?.Invoke(client);
-        }
-
         private void btnModifierContact_Click(object sender, EventArgs e)
         {
-
+            if(contact != null) { 
+            frmDspContact dspContact = new frmDspContact(ref contact);
+                if (dspContact.ShowDialog() == DialogResult.OK)
+                {
+                    for (Int32 i = 0; i < table.Rows.Count; i++)
+                    {
+                        Int32 idContact = (Int32)table.Rows[i][0];
+                        if (contact != null)
+                        {
+                            if (idContact == contact.IdContact)
+                            {
+                                table.Rows[i][NOM] = contact.Nom;
+                                table.Rows[i][FONCTION] = contact.Fonction;
+                                table.Rows[i][EMAIL] = contact.Email;
+                                table.Rows[i][TELEPHONE] = contact.Telephone;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -295,12 +319,6 @@ namespace ABI
             }
         }
 
-        public void Removecontact(Contact contact)
-        {
-            //Int32 indexRow = Find(contact);
-            //Delete(indexRow);
-           // Console.WriteLine("line contact if found : " + indexRow );
-        }
 
         
 

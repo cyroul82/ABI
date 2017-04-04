@@ -143,7 +143,7 @@
             this.gpbClientInformation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpbClientInformation.Location = new System.Drawing.Point(20, 20);
             this.gpbClientInformation.Name = "gpbClientInformation";
-            this.gpbClientInformation.Size = new System.Drawing.Size(488, 445);
+            this.gpbClientInformation.Size = new System.Drawing.Size(488, 457);
             this.gpbClientInformation.TabIndex = 0;
             this.gpbClientInformation.TabStop = false;
             this.gpbClientInformation.Text = "Information Client";
@@ -374,7 +374,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(528, 485);
+            this.ClientSize = new System.Drawing.Size(528, 497);
             this.Controls.Add(this.gpbClientInformation);
             this.Name = "FormClient";
             this.Padding = new System.Windows.Forms.Padding(20);

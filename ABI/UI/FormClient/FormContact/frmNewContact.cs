@@ -34,7 +34,7 @@ namespace ABI
         public void addContact()
         {
             String nom = txtContactName.Text;
-            String fonction = txtContactType.Text;
+            String fonction = txtContactFonction.Text;
             String email = txtContactEmail.Text;
             String telephone = txtContactTelephone.Text;
             client.CompteurContacts++;

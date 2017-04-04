@@ -35,7 +35,7 @@
             this.lblContactTelephone = new System.Windows.Forms.Label();
             this.txtContactEmail = new System.Windows.Forms.TextBox();
             this.lblContactEmail = new System.Windows.Forms.Label();
-            this.txtContactType = new System.Windows.Forms.TextBox();
+            this.txtContactFonction = new System.Windows.Forms.TextBox();
             this.txtContactName = new System.Windows.Forms.TextBox();
             this.lblContactType = new System.Windows.Forms.Label();
             this.lblContactName = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@
             this.gpxContactDetail.Controls.Add(this.lblContactTelephone);
             this.gpxContactDetail.Controls.Add(this.txtContactEmail);
             this.gpxContactDetail.Controls.Add(this.lblContactEmail);
-            this.gpxContactDetail.Controls.Add(this.txtContactType);
+            this.gpxContactDetail.Controls.Add(this.txtContactFonction);
             this.gpxContactDetail.Controls.Add(this.txtContactName);
             this.gpxContactDetail.Controls.Add(this.lblContactType);
             this.gpxContactDetail.Controls.Add(this.lblContactName);
@@ -110,12 +110,12 @@
             this.lblContactEmail.TabIndex = 18;
             this.lblContactEmail.Text = "Email : ";
             // 
-            // txtContactType
+            // txtContactFonction
             // 
-            this.txtContactType.Location = new System.Drawing.Point(93, 69);
-            this.txtContactType.Name = "txtContactType";
-            this.txtContactType.Size = new System.Drawing.Size(120, 20);
-            this.txtContactType.TabIndex = 17;
+            this.txtContactFonction.Location = new System.Drawing.Point(93, 69);
+            this.txtContactFonction.Name = "txtContactFonction";
+            this.txtContactFonction.Size = new System.Drawing.Size(120, 20);
+            this.txtContactFonction.TabIndex = 17;
             // 
             // txtContactName
             // 
@@ -163,7 +163,7 @@
         private System.Windows.Forms.Label lblContactTelephone;
         private System.Windows.Forms.Label lblIdContact;
         protected System.Windows.Forms.GroupBox gpxContactDetail;
-        protected System.Windows.Forms.TextBox txtContactType;
+        protected System.Windows.Forms.TextBox txtContactFonction;
         protected System.Windows.Forms.TextBox txtContactName;
         protected System.Windows.Forms.TextBox txtContactEmail;
         protected System.Windows.Forms.TextBox txtContactTelephone;

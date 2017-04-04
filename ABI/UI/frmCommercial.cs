@@ -279,6 +279,7 @@ namespace ABI.UI
                     table.Rows[i].Delete();
                 }
             }
+            client = null;
         }
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
@@ -410,25 +411,29 @@ namespace ABI.UI
         }
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (client != null)
             {
-                removeTab();
-                foreach (DataGridViewRow row in grdClient.SelectedRows)
+                DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    Int32 id = (Int32)row.Cells[0].Value;
-
-                    foreach (Client c in Donnees.listClient)
+                    removeTab();
+                    foreach (DataGridViewRow row in grdClient.SelectedRows)
                     {
-                        if (c.IdClient == id)
+                        Int32 id = (Int32)row.Cells[0].Value;
+
+                        foreach (Client c in Donnees.listClient)
                         {
-                            client = c;
+                            if (c.IdClient == id)
+                            {
+                                client = c;
+                            }
                         }
                     }
+                    Donnees.listClient.Remove(client);
+                    //loadListClient();
+                    deleteClientDataTable(client);
+                    client = null;
                 }
-                Donnees.listClient.Remove(client);
-                //loadListClient();
-                deleteClientDataTable(client);
             }
         }
         private void btnAfficher_Click(object sender, EventArgs e)

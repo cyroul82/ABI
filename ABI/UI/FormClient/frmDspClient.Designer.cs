@@ -144,7 +144,7 @@
             this.btnFermer.TabIndex = 1;
             this.btnFermer.Text = "Fermer";
             this.btnFermer.UseVisualStyleBackColor = true;
-            this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
+            this.btnFermer.Click += new System.EventHandler(this.btnFermerClient_Click);
             // 
             // btnModifier
             // 
@@ -214,7 +214,7 @@
             this.btnAjouter.TabIndex = 1;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
-            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouterContact_Click);
             // 
             // btnModifierContact
             // 
@@ -286,7 +286,7 @@
             this.btnAnnulerModif.Text = "Annuler";
             this.btnAnnulerModif.UseVisualStyleBackColor = true;
             this.btnAnnulerModif.Visible = false;
-            this.btnAnnulerModif.Click += new System.EventHandler(this.btnAnnulerModif_Click);
+            this.btnAnnulerModif.Click += new System.EventHandler(this.btnAnnulerModificationClient_Click);
             // 
             // gpxDocument
             // 
@@ -337,7 +337,7 @@
             this.btnAnnulerModifClient.Text = "Annuler";
             this.btnAnnulerModifClient.UseVisualStyleBackColor = true;
             this.btnAnnulerModifClient.Visible = false;
-            this.btnAnnulerModifClient.Click += new System.EventHandler(this.btnAnnulerModif_Click);
+            this.btnAnnulerModifClient.Click += new System.EventHandler(this.btnAnnulerModificationClient_Click);
             // 
             // btnDeleteClient
             // 
