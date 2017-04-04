@@ -47,6 +47,7 @@
             this.contextMenuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fermerTousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbxSeach = new System.Windows.Forms.ComboBox();
             this.panelListClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             this.panelControlClient.SuspendLayout();
@@ -158,6 +159,7 @@
             this.flowLayoutPanelSearchClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanelSearchClient.Controls.Add(this.lblSearchClient);
             this.flowLayoutPanelSearchClient.Controls.Add(this.txtSearchClient);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.cbxSeach);
             this.flowLayoutPanelSearchClient.Controls.Add(this.btnSearchClient);
             this.flowLayoutPanelSearchClient.Controls.Add(this.btnToutAfficher);
             this.flowLayoutPanelSearchClient.Dock = System.Windows.Forms.DockStyle.Top;
@@ -189,7 +191,7 @@
             // btnSearchClient
             // 
             this.btnSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSearchClient.Location = new System.Drawing.Point(578, 3);
+            this.btnSearchClient.Location = new System.Drawing.Point(705, 3);
             this.btnSearchClient.Name = "btnSearchClient";
             this.btnSearchClient.Size = new System.Drawing.Size(75, 23);
             this.btnSearchClient.TabIndex = 1;
@@ -199,7 +201,7 @@
             // 
             // btnToutAfficher
             // 
-            this.btnToutAfficher.Location = new System.Drawing.Point(659, 3);
+            this.btnToutAfficher.Location = new System.Drawing.Point(786, 3);
             this.btnToutAfficher.Name = "btnToutAfficher";
             this.btnToutAfficher.Size = new System.Drawing.Size(75, 23);
             this.btnToutAfficher.TabIndex = 4;
@@ -251,6 +253,15 @@
             this.fermerTousToolStripMenuItem.Text = "Fermer Tous";
             this.fermerTousToolStripMenuItem.Click += new System.EventHandler(this.fermerTousToolStripMenuItem_Click);
             // 
+            // cbxSeach
+            // 
+            this.cbxSeach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSeach.FormattingEnabled = true;
+            this.cbxSeach.Location = new System.Drawing.Point(578, 3);
+            this.cbxSeach.Name = "cbxSeach";
+            this.cbxSeach.Size = new System.Drawing.Size(121, 21);
+            this.cbxSeach.TabIndex = 5;
+            // 
             // frmCommercial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,5 +307,6 @@
         private System.Windows.Forms.ToolStripMenuItem fermerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fermerTousToolStripMenuItem;
         private System.Windows.Forms.Button btnToutAfficher;
+        private System.Windows.Forms.ComboBox cbxSeach;
     }
 }

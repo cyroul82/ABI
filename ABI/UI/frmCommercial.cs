@@ -26,20 +26,6 @@ namespace ABI.UI
         private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
         private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
 
-        //Declare all the constants for the columns (gridDataView)
-        private const String IDCLIENT = "idClient";
-        private const String RAISONSOCIALE = "RaisonSociale";
-        private const String RAISONSOCIALE_CAPTION = "Raison Sociale";
-        private const String TYPE = "Type";
-        private const String ACTIVITE = "Activite";
-        private const String NATURE = "Nature";
-        private const String EFFECTIF = "Effectif";
-        private const String CHIFFREAFFAIRES = "ChiffreAffaires";
-        private const String VILLE = "Ville";
-        private const String TELEPHONE = "Telephone";
-        private const String TELEPHONE_CAPTION = "Téléphone";
-        private const String COMMENTAIRE = "Commentaires";
-
         /// <summary>
         /// Constructor with no argument
         /// </summary>
@@ -62,6 +48,7 @@ namespace ABI.UI
         private void frmClient_Load(object sender, EventArgs e)
         {
             loadListClient();
+            //cbxSeach.Items.Add(Tools.)
         }
         /// <summary>
         /// Loads the list of client form Donnee.listClient and styles the dataGridView grdClient
@@ -79,7 +66,7 @@ namespace ABI.UI
             }
             grdClient.DataSource = table.DefaultView;
 
-            grdClient.Columns[IDCLIENT].Visible = false;
+            grdClient.Columns[Tools.IDCLIENT].Visible = false;
 
             // Set the row and column header styles.
 
@@ -107,11 +94,11 @@ namespace ABI.UI
             DataGridViewCellStyle raisonSocialStyle = new DataGridViewCellStyle();
             raisonSocialStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
             raisonSocialStyle.ForeColor = Color.DarkBlue;
-            grdClient.Columns[RAISONSOCIALE].DefaultCellStyle = raisonSocialStyle;
+            grdClient.Columns[Tools.RAISONSOCIALE].DefaultCellStyle = raisonSocialStyle;
 
             DataGridViewCellStyle idClient = new DataGridViewCellStyle();
             idClient.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            grdClient.Columns[IDCLIENT].DefaultCellStyle = idClient;
+            grdClient.Columns[Tools.IDCLIENT].DefaultCellStyle = idClient;
         }
 
         /// <summary>
@@ -122,7 +109,7 @@ namespace ABI.UI
             //Column IDCLIENT Unique and ReadOnly
             column = new DataColumn();
             column.DataType = typeof(System.Int32);
-            column.ColumnName = IDCLIENT;
+            column.ColumnName = Tools.IDCLIENT;
             column.ReadOnly = true;
             column.Unique = true;
             table.Columns.Add(column);
@@ -130,8 +117,7 @@ namespace ABI.UI
             //Column RAISON SOCIALE
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = RAISONSOCIALE;
-            column.Caption = RAISONSOCIALE_CAPTION;
+            column.ColumnName = Tools.RAISONSOCIALE;
             column.ReadOnly = false;
             column.Unique = true;
             column.AutoIncrement = false;
@@ -140,7 +126,7 @@ namespace ABI.UI
             //Column FONCTION
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = TYPE;
+            column.ColumnName = Tools.TYPE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -149,7 +135,7 @@ namespace ABI.UI
             //Column EMAIL
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = ACTIVITE;
+            column.ColumnName = Tools.ACTIVITE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -158,7 +144,7 @@ namespace ABI.UI
             //Column TELEPHONE
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = NATURE;
+            column.ColumnName = Tools.NATURE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -167,7 +153,7 @@ namespace ABI.UI
             //Column EFFECTIF
             column = new DataColumn();
             column.DataType = typeof(System.Int32);
-            column.ColumnName = EFFECTIF;
+            column.ColumnName = Tools.EFFECTIF;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -176,7 +162,7 @@ namespace ABI.UI
             //Column CHIFFRE AFFAIRES
             column = new DataColumn();
             column.DataType = typeof(System.Decimal);
-            column.ColumnName = CHIFFREAFFAIRES;
+            column.ColumnName = Tools.CHIFFREAFFAIRES;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -185,7 +171,7 @@ namespace ABI.UI
             //Column VILLE
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = VILLE;
+            column.ColumnName = Tools.VILLE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -194,7 +180,7 @@ namespace ABI.UI
             //Column TELEPHONE
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = TELEPHONE;
+            column.ColumnName = Tools.TELEPHONE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -203,7 +189,7 @@ namespace ABI.UI
             //Column COMMENTAIRES
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = COMMENTAIRE;
+            column.ColumnName = Tools.COMMENTAIRE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -220,16 +206,16 @@ namespace ABI.UI
             try
             {
                 row = table.NewRow();
-                row[IDCLIENT] = client.IdClient;
-                row[RAISONSOCIALE] = client.RaisonSocial;
-                row[TYPE] = client.TypeSociete;
-                row[ACTIVITE] = client.Activite;
-                row[NATURE] = client.Nature;
-                row[EFFECTIF] = client.Effectifs.ToString();
-                row[CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
-                row[VILLE] = client.Adresse.Ville;
-                row[TELEPHONE] = client.Telephone;
-                row[COMMENTAIRE] = client.Comment;
+                row[Tools.IDCLIENT] = client.IdClient;
+                row[Tools.RAISONSOCIALE] = client.RaisonSocial;
+                row[Tools.TYPE] = client.TypeSociete;
+                row[Tools.ACTIVITE] = client.Activite;
+                row[Tools.NATURE] = client.Nature;
+                row[Tools.EFFECTIF] = client.Effectifs.ToString();
+                row[Tools.CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
+                row[Tools.VILLE] = client.Adresse.Ville;
+                row[Tools.TELEPHONE] = client.Telephone;
+                row[Tools.COMMENTAIRE] = client.Comment;
                 table.Rows.Add(row);
 
             }
@@ -259,15 +245,15 @@ namespace ABI.UI
                 Int32 idClient = (Int32)table.Rows[i][0];
                 if (idClient == client.IdClient)
                 {
-                    table.Rows[i][RAISONSOCIALE] = client.RaisonSocial;
-                    table.Rows[i][TYPE] = client.TypeSociete;
-                    table.Rows[i][ACTIVITE] = client.Activite;
-                    table.Rows[i][NATURE] = client.Nature;
-                    table.Rows[i][EFFECTIF] = client.Effectifs.ToString();
-                    table.Rows[i][CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
-                    table.Rows[i][VILLE] = client.Adresse.Ville;
-                    table.Rows[i][TELEPHONE] = client.Telephone;
-                    table.Rows[i][COMMENTAIRE] = client.Comment;
+                    table.Rows[i][Tools.RAISONSOCIALE] = client.RaisonSocial;
+                    table.Rows[i][Tools.TYPE] = client.TypeSociete;
+                    table.Rows[i][Tools.ACTIVITE] = client.Activite;
+                    table.Rows[i][Tools.NATURE] = client.Nature;
+                    table.Rows[i][Tools.EFFECTIF] = client.Effectifs.ToString();
+                    table.Rows[i][Tools.CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
+                    table.Rows[i][Tools.VILLE] = client.Adresse.Ville;
+                    table.Rows[i][Tools.TELEPHONE] = client.Telephone;
+                    table.Rows[i][Tools.COMMENTAIRE] = client.Comment;
                 }
             }
         }
