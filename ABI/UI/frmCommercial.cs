@@ -427,8 +427,8 @@ namespace ABI.UI
                     }
                 }
                 Donnees.listClient.Remove(client);
-                loadListClient();
-                //deleteClientDataTable(client);
+                //loadListClient();
+                deleteClientDataTable(client);
             }
         }
         private void btnAfficher_Click(object sender, EventArgs e)
