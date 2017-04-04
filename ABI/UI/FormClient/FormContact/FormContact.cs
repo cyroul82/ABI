@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABI.ClasseMetier;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 
 namespace ABI
 {
+    public delegate void ContactHandler(Contact contact);
     public partial class FormContact : Form
     {
         public FormContact()

@@ -171,10 +171,10 @@ namespace ABI
         private void btnAjouterContact_Click(object sender, EventArgs e)
         {
             frmNewContact fnc = new frmNewContact(client);
-            fnc.saveNewContact += new SaveNewContact(this.saveContact);
+            fnc.saveNewContact += new ContactHandler(this.savingContact);
             fnc.ShowDialog();
         }
-        private void saveContact(Contact contact)
+        private void savingContact(Contact contact)
         {
             this.contact = contact;
             dataView.AddContact(contact);
@@ -200,22 +200,25 @@ namespace ABI
         private void btnModifierContact_Click(object sender, EventArgs e)
         {
             if(contact != null) { 
-            frmDspContact dspContact = new frmDspContact(ref contact);
-                if (dspContact.ShowDialog() == DialogResult.OK)
+                frmDspContact dspContact = new frmDspContact(ref contact);
+                dspContact.updatingContact += new ContactHandler(this.UpdatingContact);
+                dspContact.ShowDialog();
+            }
+        }
+
+        private void UpdatingContact(Contact contact)
+        {
+            for (Int32 i = 0; i < table.Rows.Count; i++)
+            {
+                Int32 idContact = (Int32)table.Rows[i][0];
+                if (contact != null)
                 {
-                    for (Int32 i = 0; i < table.Rows.Count; i++)
+                    if (idContact == contact.IdContact)
                     {
-                        Int32 idContact = (Int32)table.Rows[i][0];
-                        if (contact != null)
-                        {
-                            if (idContact == contact.IdContact)
-                            {
-                                table.Rows[i][NOM] = contact.Nom;
-                                table.Rows[i][FONCTION] = contact.Fonction;
-                                table.Rows[i][EMAIL] = contact.Email;
-                                table.Rows[i][TELEPHONE] = contact.Telephone;
-                            }
-                        }
+                        table.Rows[i][NOM] = contact.Nom;
+                        table.Rows[i][FONCTION] = contact.Fonction;
+                        table.Rows[i][EMAIL] = contact.Email;
+                        table.Rows[i][TELEPHONE] = contact.Telephone;
                     }
                 }
             }

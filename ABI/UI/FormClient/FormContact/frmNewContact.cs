@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    public delegate void SaveNewContact(Contact contact);
+    
     public partial class frmNewContact : ABI.FormContact
     {
         private Contact contact;
         private Client client;
-        public event SaveNewContact saveNewContact;
+        public event ContactHandler saveNewContact;
         public frmNewContact(Client client)
         {
             InitializeComponent();

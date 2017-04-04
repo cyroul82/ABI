@@ -87,5 +87,10 @@ namespace ABI.ClasseMetier
                 telephone = value;
             }
         }
+
+        public override string ToString()
+        {
+            return idContact + " " + nom + " " + fonction + " " + email + " " + telephone;
+        }
     }
 }

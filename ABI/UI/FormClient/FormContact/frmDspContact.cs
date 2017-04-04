@@ -12,6 +12,7 @@ namespace ABI.UI.FormClient.FormContact
     public partial class frmDspContact : ABI.FormContact
     {
         private Contact contact;
+        public ContactHandler updatingContact;
         public frmDspContact(ref Contact contact)
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace ABI.UI.FormClient.FormContact
         private void btnEnregistrerContact_Click(object sender, EventArgs e)
         {
             getContact();
+            updatingContact?.Invoke(contact);
             DialogResult = DialogResult.OK;
 
         }

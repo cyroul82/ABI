@@ -295,6 +295,9 @@ namespace ABI.UI
                         if (c.IdClient == id)
                         {
                             client = c;
+                            for (int i = 0; i < client.ListContacts.Count ; i++){
+                                Console.WriteLine(client.ListContacts[i].ToString());
+                            }
                         }
                     }
                 }
@@ -315,27 +318,30 @@ namespace ABI.UI
         ///////////////////////////////////////////////////TabControl
         private void AddClientTab(Client client)
         {
-            if (tabPageDictionnary.ContainsKey(client))
+            if (client != null)
             {
-                TabPage tabPage = tabPageDictionnary[client];
-                tabControlClientDetail.SelectTab(tabPage);
-            }
-            else
-            {
-                frmDspClient fdc = new frmDspClient(client);
-                fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
-                fdc.UpdatingClient += new ClientHandler(this.updateClientDataTable);
-                //fdc.DeletingClient += new ClientHandler(this.deleteClientDataTable);
-                fdc.TopLevel = false;
-                fdc.Dock = DockStyle.Fill;
+                if (tabPageDictionnary.ContainsKey(client))
+                {
+                    TabPage tabPage = tabPageDictionnary[client];
+                    tabControlClientDetail.SelectTab(tabPage);
+                }
+                else
+                {
+                    frmDspClient fdc = new frmDspClient(client);
+                    fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
+                    fdc.UpdatingClient += new ClientHandler(this.updateClientDataTable);
+                    //fdc.DeletingClient += new ClientHandler(this.deleteClientDataTable);
+                    fdc.TopLevel = false;
+                    fdc.Dock = DockStyle.Fill;
 
-                TabPage tabPage = new TabPage(client.RaisonSocial);
-                tabPage.Controls.Add(fdc);
-                tabControlClientDetail.Controls.Add(tabPage);
-                tabControlClientDetail.SelectTab(tabPage);
-                tabPageDictionnary.Add(client, tabPage);
-                frmDspClientDictionnary.Add(tabPage, fdc);
-                fdc.Show();
+                    TabPage tabPage = new TabPage(client.RaisonSocial);
+                    tabPage.Controls.Add(fdc);
+                    tabControlClientDetail.Controls.Add(tabPage);
+                    tabControlClientDetail.SelectTab(tabPage);
+                    tabPageDictionnary.Add(client, tabPage);
+                    frmDspClientDictionnary.Add(tabPage, fdc);
+                    fdc.Show();
+                }
             }
         }
         private void removeTab()
