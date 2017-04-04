@@ -9,13 +9,15 @@ namespace ABI.ClasseMetier
     public class Contact
     {
         private Int32 idContact;
+        private Int32 idClient;
         private String nom;
         private String fonction;
         private String email;
         private String telephone;
 
-        public Contact(int idContact, string nom, string fonction, string email, string telephone)
+        public Contact(int idClient, int idContact, string nom, string fonction, string email, string telephone)
         {
+            this.idClient = idClient;
             this.idContact = idContact;
             this.nom = nom;
             this.fonction = fonction;
@@ -85,6 +87,19 @@ namespace ABI.ClasseMetier
             set
             {
                 telephone = value;
+            }
+        }
+
+        public int IdClient
+        {
+            get
+            {
+                return idClient;
+            }
+
+            set
+            {
+                idClient = value;
             }
         }
 

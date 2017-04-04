@@ -19,16 +19,6 @@ namespace ABI
         private Contact contact;
         public ClientHandler UpdatingClient;
         public ClientHandler DeletingClient;
-        private const String MODIFIER = "Modifier";
-        private const String ENREGISTRER = "Enregistrer";
-        private const String IDCLIENT = "idClient";
-        private const String NOM = "Nom";
-        private const String NOM_CAPTION = "Nom";
-        private const String FONCTION = "Fonction";
-        private const String EMAIL = "Email";
-        private const String TELEPHONE = "Téléphone";
-
-
 
         public Boolean IsModifed { get; private set; } = false;
         public frmDspClient(Client client): base(client)
@@ -89,7 +79,7 @@ namespace ABI
 
         private void btnModifierClient_Click(object sender, EventArgs e)
         {
-            if(btnModifierClient.Text == MODIFIER)
+            if(btnModifierClient.Text == Tools.MODIFIER)
             {
                 enableClient();
             }
@@ -218,10 +208,10 @@ namespace ABI
                 {
                     if (idContact == contact.IdContact)
                     {
-                        table.Rows[i][NOM] = contact.Nom;
-                        table.Rows[i][FONCTION] = contact.Fonction;
-                        table.Rows[i][EMAIL] = contact.Email;
-                        table.Rows[i][TELEPHONE] = contact.Telephone;
+                        table.Rows[i][Tools.NOM] = contact.Nom;
+                        table.Rows[i][Tools.FONCTION] = contact.Fonction;
+                        table.Rows[i][Tools.EMAIL] = contact.Email;
+                        table.Rows[i][Tools.TELEPHONE] = contact.Telephone;
                     }
                 }
             }
@@ -231,12 +221,6 @@ namespace ABI
     class MyDataTable : DataTable
     {
         private DataColumn column;
-        private const String IDCLIENT = "idClient";
-        private const String NOM = "Nom";
-        private const String NOM_CAPTION = "Nom";
-        private const String FONCTION = "Fonction";
-        private const String EMAIL = "Email";
-        private const String TELEPHONE = "Téléphone";
         public MyDataTable(string tableName) : base(tableName)
         {
             buildTableColumn();
@@ -248,19 +232,29 @@ namespace ABI
         private void buildTableColumn()
         {
             column = new DataColumn();
-            //Column IDCLIENT Unique and ReadOnly
+            //Column IDCLIENT
             column = new DataColumn();
             column.DataType = typeof(System.Int32);
-            column.ColumnName = IDCLIENT;
+            column.ColumnName = Tools.IDCLIENT;
             column.ReadOnly = true;
+            column.Unique = false;
+            column.AutoIncrement = false;
+            Columns.Add(column);
+
+            column = new DataColumn();
+            //Column IDCONTACT Unique and ReadOnly
+            column = new DataColumn();
+            column.DataType = typeof(System.Int32);
+            column.ColumnName = Tools.IDCONTACT;
+            column.ReadOnly = true;
+            column.AutoIncrement = true;
             column.Unique = true;
             Columns.Add(column);
 
             //Column RAISON SOCIALE
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = NOM;
-            column.Caption = NOM_CAPTION;
+            column.ColumnName = Tools.NOM;
             column.ReadOnly = false;
             column.Unique = true;
             column.AutoIncrement = false;
@@ -269,7 +263,7 @@ namespace ABI
             //Column FONCTION
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = FONCTION;
+            column.ColumnName = Tools.FONCTION;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -278,7 +272,7 @@ namespace ABI
             //Column EMAIL
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = EMAIL;
+            column.ColumnName = Tools.EMAIL;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -287,7 +281,7 @@ namespace ABI
             //Column TELEPHONE
             column = new DataColumn();
             column.DataType = typeof(System.String);
-            column.ColumnName = TELEPHONE;
+            column.ColumnName = Tools.TELEPHONE;
             column.ReadOnly = false;
             column.Unique = false;
             column.AutoIncrement = false;
@@ -297,11 +291,6 @@ namespace ABI
 
     class MyDataView : DataView
     {
-        private const String IDCLIENT = "idClient";
-        private const String NOM = "Nom";
-        private const String FONCTION = "Fonction";
-        private const String EMAIL = "Email";
-        private const String TELEPHONE = "Téléphone";
         public MyDataView(DataTable table) : base(table)
         {
 
@@ -312,11 +301,12 @@ namespace ABI
             try
             {
                 DataRowView newRow = AddNew();
-                newRow[IDCLIENT] = contact.IdContact;
-                newRow[NOM] = contact.Nom;
-                newRow[FONCTION] = contact.Fonction;
-                newRow[EMAIL] = contact.Email;
-                newRow[TELEPHONE] = contact.Telephone;
+                newRow[Tools.IDCLIENT] = contact.IdClient;
+                newRow[Tools.IDCONTACT] = contact.IdContact;
+                newRow[Tools.NOM] = contact.Nom;
+                newRow[Tools.FONCTION] = contact.Fonction;
+                newRow[Tools.EMAIL] = contact.Email;
+                newRow[Tools.TELEPHONE] = contact.Telephone;
                 newRow.EndEdit();
             }
             catch (ConstraintException e)
