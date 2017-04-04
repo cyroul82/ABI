@@ -50,17 +50,17 @@
     <Compile Include="ClasseMetier\Contact.cs" />
     <Compile Include="Data.cs" />
     <Compile Include="Tools.cs" />
-    <Compile Include="UI\FormClient\FormClient.cs">
+    <Compile Include="UI\FormClient\FormClientBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormClient\FormClient.Designer.cs">
-      <DependentUpon>FormClient.cs</DependentUpon>
+    <Compile Include="UI\FormClient\FormClientBase.Designer.cs">
+      <DependentUpon>FormClientBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormClient\FormContact\FormContact.cs">
+    <Compile Include="UI\FormClient\FormContact\FormContactBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormClient\FormContact\FormContact.Designer.cs">
-      <DependentUpon>FormContact.cs</DependentUpon>
+    <Compile Include="UI\FormClient\FormContact\FormContactBase.Designer.cs">
+      <DependentUpon>FormContactBase.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormClient\FormContact\frmDspContact.cs">
       <SubType>Form</SubType>
@@ -68,11 +68,11 @@
     <Compile Include="UI\FormClient\FormContact\frmDspContact.Designer.cs">
       <DependentUpon>frmDspContact.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormMain.cs">
+    <Compile Include="UI\frmMdiParent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="UI\frmMdiParent.Designer.cs">
+      <DependentUpon>frmMdiParent.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormClient\frmDspClient.cs">
       <SubType>Form</SubType>
@@ -100,17 +100,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\FormClient\FormClient.resx">
-      <DependentUpon>FormClient.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormClient\FormClientBase.resx">
+      <DependentUpon>FormClientBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormClient\FormContact\FormContact.resx">
-      <DependentUpon>FormContact.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormClient\FormContact\FormContactBase.resx">
+      <DependentUpon>FormContactBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormClient\FormContact\frmDspContact.resx">
       <DependentUpon>frmDspContact.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="UI\frmMdiParent.resx">
+      <DependentUpon>frmMdiParent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormClient\frmDspClient.resx">
       <DependentUpon>frmDspClient.cs</DependentUpon>
