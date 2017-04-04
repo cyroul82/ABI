@@ -40,7 +40,6 @@
             this.flowLayoutPanelSearchClient = new System.Windows.Forms.FlowLayoutPanel();
             this.lblSearchClient = new System.Windows.Forms.Label();
             this.txtSearchClient = new System.Windows.Forms.TextBox();
-            this.btnSearchClient = new System.Windows.Forms.Button();
             this.btnToutAfficher = new System.Windows.Forms.Button();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
@@ -158,7 +157,6 @@
             this.flowLayoutPanelSearchClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanelSearchClient.Controls.Add(this.lblSearchClient);
             this.flowLayoutPanelSearchClient.Controls.Add(this.txtSearchClient);
-            this.flowLayoutPanelSearchClient.Controls.Add(this.btnSearchClient);
             this.flowLayoutPanelSearchClient.Controls.Add(this.btnToutAfficher);
             this.flowLayoutPanelSearchClient.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanelSearchClient.Location = new System.Drawing.Point(0, 0);
@@ -186,24 +184,13 @@
             this.txtSearchClient.TabIndex = 0;
             this.txtSearchClient.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchClient_KeyUp);
             // 
-            // btnSearchClient
-            // 
-            this.btnSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnSearchClient.Location = new System.Drawing.Point(578, 3);
-            this.btnSearchClient.Name = "btnSearchClient";
-            this.btnSearchClient.Size = new System.Drawing.Size(75, 23);
-            this.btnSearchClient.TabIndex = 1;
-            this.btnSearchClient.Text = "Ok";
-            this.btnSearchClient.UseVisualStyleBackColor = true;
-            this.btnSearchClient.Click += new System.EventHandler(this.btnSearchClient_Click);
-            // 
             // btnToutAfficher
             // 
-            this.btnToutAfficher.Location = new System.Drawing.Point(659, 3);
+            this.btnToutAfficher.Location = new System.Drawing.Point(578, 3);
             this.btnToutAfficher.Name = "btnToutAfficher";
             this.btnToutAfficher.Size = new System.Drawing.Size(75, 23);
             this.btnToutAfficher.TabIndex = 4;
-            this.btnToutAfficher.Text = "Tout Afficher";
+            this.btnToutAfficher.Text = "Réinitialiser";
             this.btnToutAfficher.UseVisualStyleBackColor = true;
             this.btnToutAfficher.Click += new System.EventHandler(this.btnToutAfficher_Click);
             // 
@@ -285,7 +272,6 @@
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.Button btnAfficher;
         private System.Windows.Forms.Panel panelControlClient;
-        private System.Windows.Forms.Button btnSearchClient;
         private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Label lblSearchClient;
         private System.Windows.Forms.TabControl tabControlClientDetail;

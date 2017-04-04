@@ -246,24 +246,21 @@ namespace ABI
         /// </summary>
         private void buildTableColumn()
         {
-            column = new DataColumn();
-            //Column IDCLIENT
-            column = new DataColumn();
-            column.DataType = typeof(System.Int32);
-            column.ColumnName = Tools.IDCLIENT;
-            column.ReadOnly = true;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
-
-            column = new DataColumn();
-            //Column IDCONTACT Unique and ReadOnly
+            
             column = new DataColumn();
             column.DataType = typeof(System.Int32);
             column.ColumnName = Tools.IDCONTACT;
             column.ReadOnly = true;
             column.AutoIncrement = true;
             column.Unique = true;
+            Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = typeof(System.Int32);
+            column.ColumnName = Tools.IDCLIENT;
+            column.ReadOnly = true;
+            column.Unique = false;
+            column.AutoIncrement = false;
             Columns.Add(column);
 
             //Column RAISON SOCIALE

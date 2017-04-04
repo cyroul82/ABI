@@ -33,7 +33,8 @@ namespace ABI
                 }
                 else
                 {
-                    MessageBox.Show("Le contact doit avoir un nom", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    lblError.Visible = true;
+                    //MessageBox.Show("Le contact doit avoir un nom", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }

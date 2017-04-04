@@ -119,7 +119,7 @@
             this.gpbClientInformation.Controls.Add(this.btnModifierClient);
             this.gpbClientInformation.Dock = System.Windows.Forms.DockStyle.None;
             this.gpbClientInformation.Location = new System.Drawing.Point(20, 22);
-            this.gpbClientInformation.Size = new System.Drawing.Size(480, 449);
+            this.gpbClientInformation.Size = new System.Drawing.Size(484, 449);
             this.gpbClientInformation.Controls.SetChildIndex(this.lblClientNumber, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtNumero, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.cbxType, 0);

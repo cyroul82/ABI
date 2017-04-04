@@ -33,10 +33,6 @@
             this.gpxContactDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gpxContactDetail
-            // 
-            this.gpxContactDetail.Size = new System.Drawing.Size(296, 183);
-            // 
             // txtContactIdClient
             // 
             this.txtContactIdClient.Visible = false;
@@ -45,6 +41,10 @@
             // 
             this.lblIdContact.Location = new System.Drawing.Point(25, 20);
             this.lblIdContact.Visible = false;
+            // 
+            // lblError
+            // 
+            this.lblError.Location = new System.Drawing.Point(102, 173);
             // 
             // btnAddContact
             // 
@@ -78,12 +78,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frmNewContact";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Controls.SetChildIndex(this.lblError, 0);
             this.Controls.SetChildIndex(this.gpxContactDetail, 0);
             this.Controls.SetChildIndex(this.btnAddContact, 0);
             this.Controls.SetChildIndex(this.btnAnnuler, 0);
             this.gpxContactDetail.ResumeLayout(false);
             this.gpxContactDetail.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
