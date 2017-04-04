@@ -45,6 +45,7 @@
             // 
             // btnAnnuler
             // 
+            this.btnAnnuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnAnnuler.Location = new System.Drawing.Point(163, 170);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
@@ -55,7 +56,9 @@
             // 
             // frmDspContact
             // 
+            this.AcceptButton = this.btnEnregistrerContact;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.CancelButton = this.btnAnnuler;
             this.ClientSize = new System.Drawing.Size(316, 199);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEnregistrerContact);

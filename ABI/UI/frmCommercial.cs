@@ -272,6 +272,25 @@ namespace ABI.UI
             }
         }
 
+        private void deletingClient(Client client)
+        {
+            removeTab();
+            foreach (DataGridViewRow row in grdClient.SelectedRows)
+            {
+                Int32 id = (Int32)row.Cells[0].Value;
+
+                foreach (Client c in Data.listClient)
+                {
+                    if (c.IdClient == id)
+                    {
+                        client = c;
+                    }
+                }
+            }
+            Data.listClient.Remove(client);
+            deleteClientDataTable(client);
+        }
+
         private void deleteClientDataTable(Client client)
         {
             for (Int32 i = 0; i < table.Rows.Count; i++)
@@ -350,14 +369,15 @@ namespace ABI.UI
                 if (tabPageDictionnary.ContainsKey(client))
                 {
                     TabPage tabPage = tabPageDictionnary[client];
-                    tabControlClientDetail.SelectTab(tabPage);
+                        tabControlClientDetail.SelectTab(tabPage);
+                    
                 }
                 else
                 {
                     frmDspClient fdc = new frmDspClient(client);
                     fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
                     fdc.UpdatingClient += new ClientHandler(this.updateClientDataTable);
-                    //fdc.DeletingClient += new ClientHandler(this.deleteClientDataTable);
+                    fdc.DeletingClient += new ClientHandler(this.deletingClient);
                     fdc.TopLevel = false;
                     fdc.Dock = DockStyle.Fill;
 
@@ -449,23 +469,7 @@ namespace ABI.UI
                 DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    removeTab();
-                    foreach (DataGridViewRow row in grdClient.SelectedRows)
-                    {
-                        Int32 id = (Int32)row.Cells[0].Value;
-
-                        foreach (Client c in Data.listClient)
-                        {
-                            if (c.IdClient == id)
-                            {
-                                client = c;
-                            }
-                        }
-                    }
-                    Data.listClient.Remove(client);
-                    //loadListClient();
-                    deleteClientDataTable(client);
-                    client = null;
+                    deletingClient(client);
                 }
             }
         }

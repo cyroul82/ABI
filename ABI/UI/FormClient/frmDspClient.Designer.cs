@@ -184,6 +184,7 @@
             this.grdContact.AllowUserToAddRows = false;
             this.grdContact.AllowUserToDeleteRows = false;
             this.grdContact.AllowUserToOrderColumns = true;
+            this.grdContact.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdContact.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.grdContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdContact.Dock = System.Windows.Forms.DockStyle.Fill;

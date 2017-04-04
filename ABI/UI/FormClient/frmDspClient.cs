@@ -52,8 +52,12 @@ namespace ABI
             fillUpForm();
 
             table = new MyDataTable("ContactTable");
+            
             grdContact.DataSource = table;
+            
             dataView = new MyDataView(table);
+            grdContact.Columns[Tools.IDCLIENT].Visible = false;
+            grdContact.Columns[Tools.IDCONTACT].Visible = false;
 
             foreach(Contact contact in client.ListContacts)
             {
@@ -139,7 +143,18 @@ namespace ABI
 
         private void btnSupprimerClient_Click(object sender, EventArgs e)
         {
-//            DeletingClient?.Invoke(client);
+            DialogResult result = MessageBox.Show("Voulez-vous supprimer ce client ?", "Suppression de Client", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                DeletingClient?.Invoke(client);
+                Close();
+            }
+            else if (result == DialogResult.No)
+            {
+                Close();
+            }
+            
+            
         }
 
 
