@@ -279,7 +279,6 @@ namespace ABI.UI
                     table.Rows[i].Delete();
                 }
             }
-            
         }
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
@@ -325,7 +324,7 @@ namespace ABI.UI
                 frmDspClient fdc = new frmDspClient(client);
                 fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
                 fdc.UpdatingClient += new ClientHandler(this.updateClientDataTable);
-                fdc.DeletingClient += new ClientHandler(this.deleteClientDataTable);
+                //fdc.DeletingClient += new ClientHandler(this.deleteClientDataTable);
                 fdc.TopLevel = false;
                 fdc.Dock = DockStyle.Fill;
 
@@ -411,8 +410,27 @@ namespace ABI.UI
         }
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            
+            DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                removeTab();
+                foreach (DataGridViewRow row in grdClient.SelectedRows)
+                {
+                    Int32 id = (Int32)row.Cells[0].Value;
+
+                    foreach (Client c in Donnees.listClient)
+                    {
+                        if (c.IdClient == id)
+                        {
+                            client = c;
+                        }
+                    }
+                }
+                Donnees.listClient.Remove(client);
+                loadListClient();
+                //deleteClientDataTable(client);
             }
+        }
         private void btnAfficher_Click(object sender, EventArgs e)
         {
             if (client != null)

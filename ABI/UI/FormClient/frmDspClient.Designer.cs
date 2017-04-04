@@ -35,7 +35,7 @@
             this.grdContact = new System.Windows.Forms.DataGridView();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnAjouter = new System.Windows.Forms.Button();
-            this.btnAfficher = new System.Windows.Forms.Button();
+            this.btnModifierContact = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSearchClient = new System.Windows.Forms.Button();
@@ -198,7 +198,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.btnAjouter);
-            this.panel3.Controls.Add(this.btnAfficher);
+            this.panel3.Controls.Add(this.btnModifierContact);
             this.panel3.Controls.Add(this.btnSupprimer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 29);
@@ -216,14 +216,15 @@
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
-            // btnAfficher
+            // btnModifierContact
             // 
-            this.btnAfficher.Location = new System.Drawing.Point(21, 70);
-            this.btnAfficher.Name = "btnAfficher";
-            this.btnAfficher.Size = new System.Drawing.Size(75, 23);
-            this.btnAfficher.TabIndex = 3;
-            this.btnAfficher.Text = "Afficher";
-            this.btnAfficher.UseVisualStyleBackColor = true;
+            this.btnModifierContact.Location = new System.Drawing.Point(21, 70);
+            this.btnModifierContact.Name = "btnModifierContact";
+            this.btnModifierContact.Size = new System.Drawing.Size(75, 23);
+            this.btnModifierContact.TabIndex = 3;
+            this.btnModifierContact.Text = "Modifier";
+            this.btnModifierContact.UseVisualStyleBackColor = true;
+            this.btnModifierContact.Click += new System.EventHandler(this.btnModifierContact_Click);
             // 
             // btnSupprimer
             // 
@@ -397,7 +398,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnAjouter;
-        private System.Windows.Forms.Button btnAfficher;
+        private System.Windows.Forms.Button btnModifierContact;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnSearchClient;

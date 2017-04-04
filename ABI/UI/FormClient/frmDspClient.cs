@@ -191,6 +191,11 @@ namespace ABI
         {
 //            DeletingClient?.Invoke(client);
         }
+
+        private void btnModifierContact_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     class MyDataTable : DataTable
@@ -292,7 +297,6 @@ namespace ABI
 
         public void Removecontact(Contact contact)
         {
-
             //Int32 indexRow = Find(contact);
             //Delete(indexRow);
            // Console.WriteLine("line contact if found : " + indexRow );

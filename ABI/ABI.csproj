@@ -61,6 +61,12 @@
     <Compile Include="UI\FormClient\FormContact\FormContact.Designer.cs">
       <DependentUpon>FormContact.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FormClient\FormContact\frmDspContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormClient\FormContact\frmDspContact.Designer.cs">
+      <DependentUpon>frmDspContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormClient\FormContact\FormContact.resx">
       <DependentUpon>FormContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormClient\FormContact\frmDspContact.resx">
+      <DependentUpon>frmDspContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
