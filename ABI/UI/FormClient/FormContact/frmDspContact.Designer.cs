@@ -60,6 +60,7 @@
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEnregistrerContact);
             this.Name = "frmDspContact";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.frmDspContact_Load);
             this.Controls.SetChildIndex(this.gpxContactDetail, 0);
             this.Controls.SetChildIndex(this.btnEnregistrerContact, 0);

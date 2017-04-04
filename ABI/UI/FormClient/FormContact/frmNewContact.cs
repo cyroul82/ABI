@@ -23,22 +23,29 @@ namespace ABI
 
         private void btnAddContact_Click(object sender, EventArgs e)
         {
-            addContact();            
-            if(contact != null)
-            {   
-                saveNewContact?.Invoke(contact);
-                this.DialogResult = DialogResult.OK;
+            addContact();
+            if (contact != null)
+            {
+                if (isNameValid())
+                {
+                    saveNewContact?.Invoke(contact);
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Le contact doit avoir un nom", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
         }
 
         public void addContact()
         {
-            String nom = txtContactName.Text;
+            String nom = txtContactName.Text.Trim();
             String fonction = txtContactFonction.Text;
             String email = txtContactEmail.Text;
             String telephone = txtContactTelephone.Text;
             client.CompteurContacts++;
-            
+
             contact = new Contact(client.CompteurContacts, nom, fonction, email, telephone);
         }
 

@@ -33,9 +33,22 @@
             this.gpxContactDetail.SuspendLayout();
             this.SuspendLayout();
             // 
+            // gpxContactDetail
+            // 
+            this.gpxContactDetail.Size = new System.Drawing.Size(296, 183);
+            // 
+            // txtContactIdClient
+            // 
+            this.txtContactIdClient.Visible = false;
+            // 
+            // lblIdContact
+            // 
+            this.lblIdContact.Location = new System.Drawing.Point(25, 20);
+            this.lblIdContact.Visible = false;
+            // 
             // btnAddContact
             // 
-            this.btnAddContact.Location = new System.Drawing.Point(79, 176);
+            this.btnAddContact.Location = new System.Drawing.Point(73, 201);
             this.btnAddContact.Name = "btnAddContact";
             this.btnAddContact.Size = new System.Drawing.Size(75, 23);
             this.btnAddContact.TabIndex = 1;
@@ -45,7 +58,7 @@
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(170, 176);
+            this.btnAnnuler.Location = new System.Drawing.Point(164, 201);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuler.TabIndex = 2;
@@ -56,7 +69,7 @@
             // frmNewContact
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(316, 211);
+            this.ClientSize = new System.Drawing.Size(316, 236);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnAddContact);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

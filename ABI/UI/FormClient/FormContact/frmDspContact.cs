@@ -44,9 +44,18 @@ namespace ABI.UI.FormClient.FormContact
         private void btnEnregistrerContact_Click(object sender, EventArgs e)
         {
             getContact();
-            updatingContact?.Invoke(contact);
-            DialogResult = DialogResult.OK;
-
+            if (contact != null)
+            {
+                if (isNameValid())
+                {
+                    updatingContact?.Invoke(contact);
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Le contact doit avoir un nom", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            }
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
