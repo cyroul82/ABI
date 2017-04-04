@@ -26,6 +26,7 @@ namespace ABI
             InitializeComponent();
         }
 
+
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmNewContact fnc = new frmNewContact(client);
@@ -152,7 +153,18 @@ namespace ABI
 
         private void btnSupprimerContact_Click(object sender, EventArgs e)
         {
-            dataView.Removecontact(contact);
+            for (Int32 i = 0; i < table.Rows.Count; i++)
+            {
+                Int32 idContact = (Int32)table.Rows[i][0];
+                if (contact != null)
+                {
+                    if (idContact == contact.IdContact)
+                    {
+                        table.Rows[i].Delete();
+                    }
+                }
+            }
+           // dataView.Removecontact(contact);
             client.ListContacts.Remove(contact);
         }
 
@@ -280,6 +292,7 @@ namespace ABI
 
         public void Removecontact(Contact contact)
         {
+
             //Int32 indexRow = Find(contact);
             //Delete(indexRow);
            // Console.WriteLine("line contact if found : " + indexRow );

@@ -411,26 +411,8 @@ namespace ABI.UI
         }
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-                removeTab();
-                foreach (DataGridViewRow row in grdClient.SelectedRows)
-                {
-                    Int32 id = (Int32)row.Cells[0].Value;
-
-                    foreach (Client c in Donnees.listClient)
-                    {
-                        if (c.IdClient == id)
-                        {
-                            client = c;
-                        }
-                    }
-                }
-                Donnees.listClient.Remove(client);
-                deleteClientDataTable(client);
+            
             }
-        }
         private void btnAfficher_Click(object sender, EventArgs e)
         {
             if (client != null)
