@@ -40,7 +40,6 @@
             this.errorProviderCA = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbClientInformation = new System.Windows.Forms.GroupBox();
             this.mTxtCodePostal = new System.Windows.Forms.MaskedTextBox();
-            this.txtTelephone = new System.Windows.Forms.TextBox();
             this.lblTelephone = new System.Windows.Forms.Label();
             this.txtVille = new System.Windows.Forms.TextBox();
             this.lblTown = new System.Windows.Forms.Label();
@@ -63,6 +62,7 @@
             this.lblType = new System.Windows.Forms.Label();
             this.lblRaisonSocial = new System.Windows.Forms.Label();
             this.lblClientNumber = new System.Windows.Forms.Label();
+            this.txtTelephone = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
@@ -116,8 +116,8 @@
             // 
             // gpbClientInformation
             // 
-            this.gpbClientInformation.Controls.Add(this.mTxtCodePostal);
             this.gpbClientInformation.Controls.Add(this.txtTelephone);
+            this.gpbClientInformation.Controls.Add(this.mTxtCodePostal);
             this.gpbClientInformation.Controls.Add(this.lblTelephone);
             this.gpbClientInformation.Controls.Add(this.txtVille);
             this.gpbClientInformation.Controls.Add(this.lblTown);
@@ -159,13 +159,6 @@
             this.mTxtCodePostal.ValidatingType = typeof(int);
             this.mTxtCodePostal.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mTxtCodePostal_MaskInputRejetected);
             this.mTxtCodePostal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mTxtCodePostal_KeyDown);
-            // 
-            // txtTelephone
-            // 
-            this.txtTelephone.Location = new System.Drawing.Point(138, 201);
-            this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(121, 20);
-            this.txtTelephone.TabIndex = 7;
             // 
             // lblTelephone
             // 
@@ -370,6 +363,15 @@
             this.lblClientNumber.TabIndex = 0;
             this.lblClientNumber.Text = "Numéro client :";
             // 
+            // txtTelephone
+            // 
+            this.txtTelephone.Location = new System.Drawing.Point(138, 202);
+            this.txtTelephone.Mask = "00 00 00 00 00 00";
+            this.txtTelephone.Name = "txtTelephone";
+            this.txtTelephone.Size = new System.Drawing.Size(120, 20);
+            this.txtTelephone.TabIndex = 29;
+            this.txtTelephone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // FormClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -404,7 +406,6 @@
         protected System.Windows.Forms.ErrorProvider errorProviderEffectif;
         protected System.Windows.Forms.ErrorProvider errorProviderCA;
         protected System.Windows.Forms.MaskedTextBox mTxtCodePostal;
-        protected System.Windows.Forms.TextBox txtTelephone;
         private System.Windows.Forms.Label lblTelephone;
         protected System.Windows.Forms.TextBox txtVille;
         private System.Windows.Forms.Label lblTown;
@@ -428,5 +429,6 @@
         private System.Windows.Forms.Label lblRaisonSocial;
         protected System.Windows.Forms.Label lblClientNumber;
         protected internal System.Windows.Forms.GroupBox gpbClientInformation;
+        public System.Windows.Forms.MaskedTextBox txtTelephone;
     }
 }
