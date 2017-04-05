@@ -35,7 +35,7 @@
             // 
             // btnEnregistrerContact
             // 
-            this.btnEnregistrerContact.Location = new System.Drawing.Point(71, 170);
+            this.btnEnregistrerContact.Location = new System.Drawing.Point(71, 187);
             this.btnEnregistrerContact.Name = "btnEnregistrerContact";
             this.btnEnregistrerContact.Size = new System.Drawing.Size(75, 23);
             this.btnEnregistrerContact.TabIndex = 1;
@@ -46,7 +46,7 @@
             // btnAnnuler
             // 
             this.btnAnnuler.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAnnuler.Location = new System.Drawing.Point(163, 170);
+            this.btnAnnuler.Location = new System.Drawing.Point(163, 187);
             this.btnAnnuler.Name = "btnAnnuler";
             this.btnAnnuler.Size = new System.Drawing.Size(75, 23);
             this.btnAnnuler.TabIndex = 2;
@@ -59,18 +59,20 @@
             this.AcceptButton = this.btnEnregistrerContact;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = this.btnAnnuler;
-            this.ClientSize = new System.Drawing.Size(316, 199);
+            this.ClientSize = new System.Drawing.Size(316, 218);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnEnregistrerContact);
             this.Name = "frmDspContact";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.frmDspContact_Load);
+            this.Controls.SetChildIndex(this.lblError, 0);
             this.Controls.SetChildIndex(this.gpxContactDetail, 0);
             this.Controls.SetChildIndex(this.btnEnregistrerContact, 0);
             this.Controls.SetChildIndex(this.btnAnnuler, 0);
             this.gpxContactDetail.ResumeLayout(false);
             this.gpxContactDetail.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
