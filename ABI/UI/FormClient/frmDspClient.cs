@@ -231,6 +231,15 @@ namespace ABI
                 }
             }
         }
+
+        private void txtSearchContact_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (txtSearchContact.Text != String.Empty)
+            {
+               dataView.RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
+           }
+        }
+
     }
 
     class MyDataTable : DataTable
@@ -267,8 +276,8 @@ namespace ABI
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = Tools.NOM;
-            column.ReadOnly = false;
-            column.Unique = true;
+            column.ReadOnly = true;
+            column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
 
@@ -276,7 +285,7 @@ namespace ABI
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = Tools.FONCTION;
-            column.ReadOnly = false;
+            column.ReadOnly = true;
             column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
@@ -285,7 +294,7 @@ namespace ABI
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = Tools.EMAIL;
-            column.ReadOnly = false;
+            column.ReadOnly = true;
             column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
@@ -294,7 +303,7 @@ namespace ABI
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = Tools.TELEPHONE;
-            column.ReadOnly = false;
+            column.ReadOnly = true;
             column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
