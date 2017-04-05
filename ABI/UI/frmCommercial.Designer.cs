@@ -43,15 +43,15 @@
             this.rbEgal = new System.Windows.Forms.RadioButton();
             this.rbInfEgal = new System.Windows.Forms.RadioButton();
             this.rbSupEgal = new System.Windows.Forms.RadioButton();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.cbxSearch = new System.Windows.Forms.ComboBox();
+            this.cbxType = new System.Windows.Forms.ComboBox();
             this.btnToutAfficher = new System.Windows.Forms.Button();
             this.tabControlClientDetail = new System.Windows.Forms.TabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
             this.contextMenuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fermerTousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.cbxType = new System.Windows.Forms.ComboBox();
             this.panelListClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             this.panelControlClient.SuspendLayout();
@@ -162,13 +162,13 @@
             this.flowLayoutPanelSearchClient.AutoSize = true;
             this.flowLayoutPanelSearchClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.flowLayoutPanelSearchClient.Controls.Add(this.lblSearchClient);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.cbxSearch);
             this.flowLayoutPanelSearchClient.Controls.Add(this.txtSearchClient);
             this.flowLayoutPanelSearchClient.Controls.Add(this.rbEgal);
             this.flowLayoutPanelSearchClient.Controls.Add(this.rbInfEgal);
             this.flowLayoutPanelSearchClient.Controls.Add(this.rbSupEgal);
-            this.flowLayoutPanelSearchClient.Controls.Add(this.btnSearch);
-            this.flowLayoutPanelSearchClient.Controls.Add(this.cbxSearch);
             this.flowLayoutPanelSearchClient.Controls.Add(this.cbxType);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.btnSearch);
             this.flowLayoutPanelSearchClient.Controls.Add(this.btnToutAfficher);
             this.flowLayoutPanelSearchClient.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanelSearchClient.Location = new System.Drawing.Point(0, 0);
@@ -189,7 +189,7 @@
             // txtSearchClient
             // 
             this.txtSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSearchClient.Location = new System.Drawing.Point(78, 4);
+            this.txtSearchClient.Location = new System.Drawing.Point(205, 4);
             this.txtSearchClient.Name = "txtSearchClient";
             this.txtSearchClient.Size = new System.Drawing.Size(381, 20);
             this.txtSearchClient.TabIndex = 0;
@@ -198,7 +198,7 @@
             // rbEgal
             // 
             this.rbEgal.AutoSize = true;
-            this.rbEgal.Location = new System.Drawing.Point(465, 3);
+            this.rbEgal.Location = new System.Drawing.Point(592, 3);
             this.rbEgal.Name = "rbEgal";
             this.rbEgal.Size = new System.Drawing.Size(31, 17);
             this.rbEgal.TabIndex = 8;
@@ -210,7 +210,7 @@
             // rbInfEgal
             // 
             this.rbInfEgal.AutoSize = true;
-            this.rbInfEgal.Location = new System.Drawing.Point(502, 3);
+            this.rbInfEgal.Location = new System.Drawing.Point(629, 3);
             this.rbInfEgal.Name = "rbInfEgal";
             this.rbInfEgal.Size = new System.Drawing.Size(37, 17);
             this.rbInfEgal.TabIndex = 7;
@@ -222,7 +222,7 @@
             // rbSupEgal
             // 
             this.rbSupEgal.AutoSize = true;
-            this.rbSupEgal.Location = new System.Drawing.Point(545, 3);
+            this.rbSupEgal.Location = new System.Drawing.Point(672, 3);
             this.rbSupEgal.Name = "rbSupEgal";
             this.rbSupEgal.Size = new System.Drawing.Size(37, 17);
             this.rbSupEgal.TabIndex = 6;
@@ -231,15 +231,36 @@
             this.rbSupEgal.UseVisualStyleBackColor = true;
             this.rbSupEgal.Visible = false;
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(842, 3);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(78, 23);
+            this.btnSearch.TabIndex = 9;
+            this.btnSearch.Text = "Recherche";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Visible = false;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // cbxSearch
             // 
             this.cbxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxSearch.FormattingEnabled = true;
-            this.cbxSearch.Location = new System.Drawing.Point(653, 3);
+            this.cbxSearch.Location = new System.Drawing.Point(78, 3);
             this.cbxSearch.Name = "cbxSearch";
             this.cbxSearch.Size = new System.Drawing.Size(121, 21);
             this.cbxSearch.TabIndex = 5;
             this.cbxSearch.SelectedIndexChanged += new System.EventHandler(this.cbxSearch_SelectedIndexChanged);
+            // 
+            // cbxType
+            // 
+            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxType.FormattingEnabled = true;
+            this.cbxType.Location = new System.Drawing.Point(715, 3);
+            this.cbxType.Name = "cbxType";
+            this.cbxType.Size = new System.Drawing.Size(121, 21);
+            this.cbxType.TabIndex = 10;
+            this.cbxType.Visible = false;
             // 
             // btnToutAfficher
             // 
@@ -294,27 +315,6 @@
             this.fermerTousToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.fermerTousToolStripMenuItem.Text = "Fermer Tous";
             this.fermerTousToolStripMenuItem.Click += new System.EventHandler(this.fermerTousToolStripMenuItem_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(588, 3);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(59, 23);
-            this.btnSearch.TabIndex = 9;
-            this.btnSearch.Text = "OK";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Visible = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // cbxType
-            // 
-            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(780, 3);
-            this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(121, 21);
-            this.cbxType.TabIndex = 10;
-            this.cbxType.Visible = false;
             // 
             // frmCommercial
             // 

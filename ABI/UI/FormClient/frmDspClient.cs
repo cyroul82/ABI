@@ -190,20 +190,23 @@ namespace ABI
         }
         private void btnSupprimerContact_Click(object sender, EventArgs e)
         {
-            for (Int32 i = 0; i < table.Rows.Count; i++)
+            if (MessageBox.Show("Voulez-vous supprimer le contact " + contact.Nom, "Supprimer un contact", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
             {
-                Int32 idContact = (Int32)table.Rows[i][0];
-                if (contact != null)
+                for (Int32 i = 0; i < table.Rows.Count; i++)
                 {
-                    if (idContact == contact.IdContact)
+                    Int32 idContact = (Int32)table.Rows[i][0];
+                    if (contact != null)
                     {
-                        table.Rows[i].Delete();
+                        if (idContact == contact.IdContact)
+                        {
+                            table.Rows[i].Delete();
+                        }
                     }
                 }
+                // dataView.Removecontact(contact);
+                client.ListContacts.Remove(contact);
+                contact = null;
             }
-           // dataView.Removecontact(contact);
-            client.ListContacts.Remove(contact);
-            contact = null;
         }
         private void btnModifierContact_Click(object sender, EventArgs e)
         {
