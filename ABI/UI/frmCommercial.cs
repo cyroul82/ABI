@@ -23,17 +23,19 @@ namespace ABI.UI
         //Variable used to control the click on the dataGridView, within itself = false, outside the dataGridView = true
         private Boolean isHitGridNoWhere = false;
 
-        //Dictionnary to keep a track of the TabPage opened associated with a client as Key
+        //Dictionnary to keep the reference of the TabPage opened associated with a client as Key
         private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
+        //Dictionnary to keep the reference of the frmDspClient created associated with a tabPage as Key
         private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
 
         /// <summary>
-        /// Constructor with no argument
+        /// Constructor with no arguments
         /// </summary>
         public frmCommercial()
         {
             InitializeComponent();
             txtSearchClient.Select();
+            //Dummy data
             Data.listClient.Add(new Client(++Data.clientNumber, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "oui mais non", "0645248403"));
             Data.listClient.Add(new Client(++Data.clientNumber, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "alors bon", "5646897453"));
             Data.listClient.Add(new Client(++Data.clientNumber, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, new Adresse(Data.clientNumber,  "verdun", "83700", "st raph"), "oki doki", "45678564"));
@@ -477,6 +479,7 @@ namespace ABI.UI
 
 
         ///////////////////////////////////////////////////Button Click Left Panel
+
         /// <summary>
         /// Open a new frmNewClient Dialog and register an event when saving the client 
         /// <para>Add a tab with the new client upon creation</para>
@@ -607,6 +610,7 @@ namespace ABI.UI
 
 
         ////////////////////////////////////////////////Search Panel Button & Textbox Click 
+
         /// <summary>
         /// Display the complete list clients upon the button click
         /// </summary>
@@ -618,12 +622,14 @@ namespace ABI.UI
             ((DataView)grdClient.DataSource).RowFilter = null;
         }
         /// <summary>
-        /// 
+        /// Called upon each key up on the search box
+        /// <para>used when raisonsociale or ville is selected or when press enter with a seleted client</para>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtSearchClient_KeyUp(object sender, KeyEventArgs e)
         {
+            //if the key is enter and text isn't null, then if the client isn't null open the client tab 
             if (e.KeyCode == Keys.Enter && txtSearchClient.Text != String.Empty)
             {
                 if (client != null)
@@ -631,17 +637,24 @@ namespace ABI.UI
                     AddClientTab(client);
                 }
             }
+            //if raisonsociale is selected, filter the list by raison sociale
             else if (txtSearchClient.Text != null && searchCriteria == Tools.RAISONSOCIALE)
             {
                 ((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
             }
+            //if raisonsociale is selected, filter the list by ville
             else if (txtSearchClient.Text != null && searchCriteria == Tools.VILLE)
             {
                 ((DataView)grdClient.DataSource).RowFilter = "Ville like '%" + txtSearchClient.Text + "%'";
             }
 
         }
-
+        /// <summary>
+        /// Display or hide the appropriate controls upon the search criteria selection
+        /// <para>sets up the variable searchCriteria with the selected item</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbxSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
             searchCriteria = cbxSearch.SelectedItem.ToString();
@@ -670,7 +683,9 @@ namespace ABI.UI
                 showControlType();
             }
         }
-
+        /// <summary>
+        /// Hide controls used for chiffreAffaire and Effectifs
+        /// </summary>
         private void hideControlChiffreAffairesAndEffectif()
         {
             rbEgal.Visible = false;
@@ -678,6 +693,9 @@ namespace ABI.UI
             rbSupEgal.Visible = false;
             btnSearch.Visible = false;
         }
+        /// <summary>
+        /// Show controls used for chiffreAffaire and Effectifs
+        /// </summary>
         private void showControlChiffreAffairesAndEffectif()
         {
             rbEgal.Visible = true;
@@ -685,15 +703,25 @@ namespace ABI.UI
             rbSupEgal.Visible = true;
             btnSearch.Visible = true;
         }
+        /// <summary>
+        /// Hide controls used for Type
+        /// </summary>
         private void hideControlType()
         {
             cbxType.Visible = false;
         }
+        /// <summary>
+        /// Show controls used for Type
+        /// </summary>
         private void showControlType()
         {
             cbxType.Visible = true;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             if (txtSearchClient.Text != null && searchCriteria == Tools.CHIFFREAFFAIRES)
