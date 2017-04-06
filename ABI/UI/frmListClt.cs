@@ -11,7 +11,7 @@ using static System.Windows.Forms.DataGridView;
 
 namespace ABI.UI
 {
-    public partial class frmListClie : Form
+    public partial class frmListClt : Form
     {
         private Client client;
         private TabPage tabPage;
@@ -31,7 +31,7 @@ namespace ABI.UI
         /// <summary>
         /// Constructor with no arguments
         /// </summary>
-        public frmListClie()
+        public frmListClt()
         {
             InitializeComponent();
             txtSearchClient.Select();

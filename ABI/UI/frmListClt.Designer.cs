@@ -1,6 +1,6 @@
 ﻿namespace ABI.UI
 {
-    partial class frmListClie
+    partial class frmListClt
     {
         /// <summary>
         /// Required designer variable.
@@ -32,11 +32,11 @@
             this.panelListClient = new System.Windows.Forms.Panel();
             this.grdClient = new System.Windows.Forms.DataGridView();
             this.panelControlClient = new System.Windows.Forms.Panel();
-            this.btnFermerOnglets = new System.Windows.Forms.Button();
-            this.btnFermer = new System.Windows.Forms.Button();
-            this.btnAjouter = new System.Windows.Forms.Button();
-            this.btnAfficher = new System.Windows.Forms.Button();
-            this.btnSupprimer = new System.Windows.Forms.Button();
+            this.btnCloseTabs = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnDsp = new System.Windows.Forms.Button();
+            this.btnDel = new System.Windows.Forms.Button();
             this.flowLayoutPanelSearchClient = new System.Windows.Forms.FlowLayoutPanel();
             this.lblSearchClient = new System.Windows.Forms.Label();
             this.cbxSearch = new System.Windows.Forms.ComboBox();
@@ -46,7 +46,7 @@
             this.rbSupEgal = new System.Windows.Forms.RadioButton();
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnToutAfficher = new System.Windows.Forms.Button();
+            this.btnDspAll = new System.Windows.Forms.Button();
             this.tabControlClients = new System.Windows.Forms.TabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
             this.contextMenuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -95,67 +95,67 @@
             // panelControlClient
             // 
             this.panelControlClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panelControlClient.Controls.Add(this.btnFermerOnglets);
-            this.panelControlClient.Controls.Add(this.btnFermer);
-            this.panelControlClient.Controls.Add(this.btnAjouter);
-            this.panelControlClient.Controls.Add(this.btnAfficher);
-            this.panelControlClient.Controls.Add(this.btnSupprimer);
+            this.panelControlClient.Controls.Add(this.btnCloseTabs);
+            this.panelControlClient.Controls.Add(this.btnClose);
+            this.panelControlClient.Controls.Add(this.btnAdd);
+            this.panelControlClient.Controls.Add(this.btnDsp);
+            this.panelControlClient.Controls.Add(this.btnDel);
             this.panelControlClient.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelControlClient.Location = new System.Drawing.Point(0, 62);
             this.panelControlClient.Name = "panelControlClient";
             this.panelControlClient.Size = new System.Drawing.Size(113, 512);
             this.panelControlClient.TabIndex = 2;
             // 
-            // btnFermerOnglets
+            // btnCloseTabs
             // 
-            this.btnFermerOnglets.Location = new System.Drawing.Point(21, 99);
-            this.btnFermerOnglets.Name = "btnFermerOnglets";
-            this.btnFermerOnglets.Size = new System.Drawing.Size(75, 41);
-            this.btnFermerOnglets.TabIndex = 6;
-            this.btnFermerOnglets.Text = "Fermer tous les onglets";
-            this.btnFermerOnglets.UseVisualStyleBackColor = true;
-            this.btnFermerOnglets.Click += new System.EventHandler(this.btnFermerOnglets_Click);
+            this.btnCloseTabs.Location = new System.Drawing.Point(21, 99);
+            this.btnCloseTabs.Name = "btnCloseTabs";
+            this.btnCloseTabs.Size = new System.Drawing.Size(75, 41);
+            this.btnCloseTabs.TabIndex = 6;
+            this.btnCloseTabs.Text = "Fermer tous les onglets";
+            this.btnCloseTabs.UseVisualStyleBackColor = true;
+            this.btnCloseTabs.Click += new System.EventHandler(this.btnFermerOnglets_Click);
             // 
-            // btnFermer
+            // btnClose
             // 
-            this.btnFermer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnFermer.Location = new System.Drawing.Point(21, 479);
-            this.btnFermer.Name = "btnFermer";
-            this.btnFermer.Size = new System.Drawing.Size(75, 23);
-            this.btnFermer.TabIndex = 7;
-            this.btnFermer.Text = "Fermer";
-            this.btnFermer.UseVisualStyleBackColor = true;
-            this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnClose.Location = new System.Drawing.Point(21, 479);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.Text = "Fermer";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnFermer_Click);
             // 
-            // btnAjouter
+            // btnAdd
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(21, 12);
-            this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(75, 23);
-            this.btnAjouter.TabIndex = 2;
-            this.btnAjouter.Text = "Ajouter";
-            this.btnAjouter.UseVisualStyleBackColor = true;
-            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
+            this.btnAdd.Location = new System.Drawing.Point(21, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Ajouter";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
-            // btnAfficher
+            // btnDsp
             // 
-            this.btnAfficher.Location = new System.Drawing.Point(21, 70);
-            this.btnAfficher.Name = "btnAfficher";
-            this.btnAfficher.Size = new System.Drawing.Size(75, 23);
-            this.btnAfficher.TabIndex = 4;
-            this.btnAfficher.Text = "Afficher";
-            this.btnAfficher.UseVisualStyleBackColor = true;
-            this.btnAfficher.Click += new System.EventHandler(this.btnAfficher_Click);
+            this.btnDsp.Location = new System.Drawing.Point(21, 70);
+            this.btnDsp.Name = "btnDsp";
+            this.btnDsp.Size = new System.Drawing.Size(75, 23);
+            this.btnDsp.TabIndex = 4;
+            this.btnDsp.Text = "Afficher";
+            this.btnDsp.UseVisualStyleBackColor = true;
+            this.btnDsp.Click += new System.EventHandler(this.btnAfficher_Click);
             // 
-            // btnSupprimer
+            // btnDel
             // 
-            this.btnSupprimer.Location = new System.Drawing.Point(21, 41);
-            this.btnSupprimer.Name = "btnSupprimer";
-            this.btnSupprimer.Size = new System.Drawing.Size(75, 23);
-            this.btnSupprimer.TabIndex = 3;
-            this.btnSupprimer.Text = "Supprimer";
-            this.btnSupprimer.UseVisualStyleBackColor = true;
-            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
+            this.btnDel.Location = new System.Drawing.Point(21, 41);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(75, 23);
+            this.btnDel.TabIndex = 3;
+            this.btnDel.Text = "Supprimer";
+            this.btnDel.UseVisualStyleBackColor = true;
+            this.btnDel.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
             // flowLayoutPanelSearchClient
             // 
@@ -169,7 +169,7 @@
             this.flowLayoutPanelSearchClient.Controls.Add(this.rbSupEgal);
             this.flowLayoutPanelSearchClient.Controls.Add(this.cbxType);
             this.flowLayoutPanelSearchClient.Controls.Add(this.btnSearch);
-            this.flowLayoutPanelSearchClient.Controls.Add(this.btnToutAfficher);
+            this.flowLayoutPanelSearchClient.Controls.Add(this.btnDspAll);
             this.flowLayoutPanelSearchClient.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanelSearchClient.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelSearchClient.Name = "flowLayoutPanelSearchClient";
@@ -262,15 +262,15 @@
             this.btnSearch.Visible = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // btnToutAfficher
+            // btnDspAll
             // 
-            this.btnToutAfficher.Location = new System.Drawing.Point(3, 32);
-            this.btnToutAfficher.Name = "btnToutAfficher";
-            this.btnToutAfficher.Size = new System.Drawing.Size(75, 23);
-            this.btnToutAfficher.TabIndex = 4;
-            this.btnToutAfficher.Text = "Réinitialiser";
-            this.btnToutAfficher.UseVisualStyleBackColor = true;
-            this.btnToutAfficher.Click += new System.EventHandler(this.btnToutAfficher_Click);
+            this.btnDspAll.Location = new System.Drawing.Point(3, 32);
+            this.btnDspAll.Name = "btnDspAll";
+            this.btnDspAll.Size = new System.Drawing.Size(75, 23);
+            this.btnDspAll.TabIndex = 4;
+            this.btnDspAll.Text = "Réinitialiser";
+            this.btnDspAll.UseVisualStyleBackColor = true;
+            this.btnDspAll.Click += new System.EventHandler(this.btnToutAfficher_Click);
             // 
             // tabControlClients
             // 
@@ -316,7 +316,7 @@
             this.fermerTousToolStripMenuItem.Text = "Fermer Tous";
             this.fermerTousToolStripMenuItem.Click += new System.EventHandler(this.fermerTousToolStripMenuItem_Click);
             // 
-            // frmListClie
+            // frmListClt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -325,7 +325,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(960, 600);
-            this.Name = "frmListClie";
+            this.Name = "frmListClt";
             this.Text = "Liste des Clients";
             this.Load += new System.EventHandler(this.frmClient_Load);
             this.panelListClient.ResumeLayout(false);
@@ -346,20 +346,20 @@
         private System.Windows.Forms.Panel panelListClient;
         private System.Windows.Forms.DataGridView grdClient;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSearchClient;
-        private System.Windows.Forms.Button btnAjouter;
-        private System.Windows.Forms.Button btnSupprimer;
-        private System.Windows.Forms.Button btnAfficher;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnDel;
+        private System.Windows.Forms.Button btnDsp;
         private System.Windows.Forms.Panel panelControlClient;
         private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Label lblSearchClient;
         private System.Windows.Forms.TabControl tabControlClients;
         private System.Windows.Forms.TabPage ClientListTab;
-        private System.Windows.Forms.Button btnFermer;
-        private System.Windows.Forms.Button btnFermerOnglets;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnCloseTabs;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripTab;
         private System.Windows.Forms.ToolStripMenuItem fermerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fermerTousToolStripMenuItem;
-        private System.Windows.Forms.Button btnToutAfficher;
+        private System.Windows.Forms.Button btnDspAll;
         private System.Windows.Forms.ComboBox cbxSearch;
         private System.Windows.Forms.RadioButton rbSupEgal;
         private System.Windows.Forms.RadioButton rbEgal;
