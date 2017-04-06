@@ -1,6 +1,6 @@
 ﻿namespace ABI.UI
 {
-    partial class frmCommercial
+    partial class frmListClie
     {
         /// <summary>
         /// Required designer variable.
@@ -39,15 +39,15 @@
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.flowLayoutPanelSearchClient = new System.Windows.Forms.FlowLayoutPanel();
             this.lblSearchClient = new System.Windows.Forms.Label();
+            this.cbxSearch = new System.Windows.Forms.ComboBox();
             this.txtSearchClient = new System.Windows.Forms.TextBox();
             this.rbEgal = new System.Windows.Forms.RadioButton();
             this.rbInfEgal = new System.Windows.Forms.RadioButton();
             this.rbSupEgal = new System.Windows.Forms.RadioButton();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.cbxSearch = new System.Windows.Forms.ComboBox();
             this.cbxType = new System.Windows.Forms.ComboBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.btnToutAfficher = new System.Windows.Forms.Button();
-            this.tabControlClientDetail = new System.Windows.Forms.TabControl();
+            this.tabControlClients = new System.Windows.Forms.TabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
             this.contextMenuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,7 +56,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             this.panelControlClient.SuspendLayout();
             this.flowLayoutPanelSearchClient.SuspendLayout();
-            this.tabControlClientDetail.SuspendLayout();
+            this.tabControlClients.SuspendLayout();
             this.ClientListTab.SuspendLayout();
             this.contextMenuStripTab.SuspendLayout();
             this.SuspendLayout();
@@ -186,6 +186,16 @@
             this.lblSearchClient.TabIndex = 3;
             this.lblSearchClient.Text = "Recherche : ";
             // 
+            // cbxSearch
+            // 
+            this.cbxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxSearch.FormattingEnabled = true;
+            this.cbxSearch.Location = new System.Drawing.Point(78, 3);
+            this.cbxSearch.Name = "cbxSearch";
+            this.cbxSearch.Size = new System.Drawing.Size(121, 21);
+            this.cbxSearch.TabIndex = 5;
+            this.cbxSearch.SelectedIndexChanged += new System.EventHandler(this.cbxSearch_SelectedIndexChanged);
+            // 
             // txtSearchClient
             // 
             this.txtSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -231,6 +241,16 @@
             this.rbSupEgal.UseVisualStyleBackColor = true;
             this.rbSupEgal.Visible = false;
             // 
+            // cbxType
+            // 
+            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxType.FormattingEnabled = true;
+            this.cbxType.Location = new System.Drawing.Point(715, 3);
+            this.cbxType.Name = "cbxType";
+            this.cbxType.Size = new System.Drawing.Size(121, 21);
+            this.cbxType.TabIndex = 10;
+            this.cbxType.Visible = false;
+            // 
             // btnSearch
             // 
             this.btnSearch.Location = new System.Drawing.Point(842, 3);
@@ -242,26 +262,6 @@
             this.btnSearch.Visible = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // cbxSearch
-            // 
-            this.cbxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxSearch.FormattingEnabled = true;
-            this.cbxSearch.Location = new System.Drawing.Point(78, 3);
-            this.cbxSearch.Name = "cbxSearch";
-            this.cbxSearch.Size = new System.Drawing.Size(121, 21);
-            this.cbxSearch.TabIndex = 5;
-            this.cbxSearch.SelectedIndexChanged += new System.EventHandler(this.cbxSearch_SelectedIndexChanged);
-            // 
-            // cbxType
-            // 
-            this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(715, 3);
-            this.cbxType.Name = "cbxType";
-            this.cbxType.Size = new System.Drawing.Size(121, 21);
-            this.cbxType.TabIndex = 10;
-            this.cbxType.Visible = false;
-            // 
             // btnToutAfficher
             // 
             this.btnToutAfficher.Location = new System.Drawing.Point(3, 32);
@@ -272,17 +272,17 @@
             this.btnToutAfficher.UseVisualStyleBackColor = true;
             this.btnToutAfficher.Click += new System.EventHandler(this.btnToutAfficher_Click);
             // 
-            // tabControlClientDetail
+            // tabControlClients
             // 
-            this.tabControlClientDetail.Controls.Add(this.ClientListTab);
-            this.tabControlClientDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlClientDetail.Location = new System.Drawing.Point(0, 0);
-            this.tabControlClientDetail.Name = "tabControlClientDetail";
-            this.tabControlClientDetail.SelectedIndex = 0;
-            this.tabControlClientDetail.Size = new System.Drawing.Size(960, 600);
-            this.tabControlClientDetail.TabIndex = 3;
-            this.tabControlClientDetail.SelectedIndexChanged += new System.EventHandler(this.tabControlClientDetail_SelectedIndexChanged);
-            this.tabControlClientDetail.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControlClientDetail_MouseUp);
+            this.tabControlClients.Controls.Add(this.ClientListTab);
+            this.tabControlClients.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlClients.Location = new System.Drawing.Point(0, 0);
+            this.tabControlClients.Name = "tabControlClients";
+            this.tabControlClients.SelectedIndex = 0;
+            this.tabControlClients.Size = new System.Drawing.Size(960, 600);
+            this.tabControlClients.TabIndex = 3;
+            this.tabControlClients.SelectedIndexChanged += new System.EventHandler(this.tabControlClientDetail_SelectedIndexChanged);
+            this.tabControlClients.MouseUp += new System.Windows.Forms.MouseEventHandler(this.tabControlClientDetail_MouseUp);
             // 
             // ClientListTab
             // 
@@ -316,16 +316,16 @@
             this.fermerTousToolStripMenuItem.Text = "Fermer Tous";
             this.fermerTousToolStripMenuItem.Click += new System.EventHandler(this.fermerTousToolStripMenuItem_Click);
             // 
-            // frmCommercial
+            // frmListClie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(960, 600);
-            this.Controls.Add(this.tabControlClientDetail);
+            this.Controls.Add(this.tabControlClients);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(960, 600);
-            this.Name = "frmCommercial";
+            this.Name = "frmListClie";
             this.Text = "Liste des Clients";
             this.Load += new System.EventHandler(this.frmClient_Load);
             this.panelListClient.ResumeLayout(false);
@@ -334,7 +334,7 @@
             this.panelControlClient.ResumeLayout(false);
             this.flowLayoutPanelSearchClient.ResumeLayout(false);
             this.flowLayoutPanelSearchClient.PerformLayout();
-            this.tabControlClientDetail.ResumeLayout(false);
+            this.tabControlClients.ResumeLayout(false);
             this.ClientListTab.ResumeLayout(false);
             this.contextMenuStripTab.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -352,7 +352,7 @@
         private System.Windows.Forms.Panel panelControlClient;
         private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Label lblSearchClient;
-        private System.Windows.Forms.TabControl tabControlClientDetail;
+        private System.Windows.Forms.TabControl tabControlClients;
         private System.Windows.Forms.TabPage ClientListTab;
         private System.Windows.Forms.Button btnFermer;
         private System.Windows.Forms.Button btnFermerOnglets;

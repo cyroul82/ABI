@@ -12,7 +12,7 @@ namespace ABI
 {
     public partial class FormMain : Form
     {
-        ABI.UI.frmCommercial commercial;
+        ABI.UI.frmListClie commercial;
         public FormMain()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace ABI
         {
             if (commercial == null)
             {
-                commercial = new ABI.UI.frmCommercial();
+                commercial = new ABI.UI.frmListClie();
                 commercial.FormClosing += new FormClosingEventHandler(this.commercial_Closing);
                 commercial.MdiParent = this;
                 commercial.Dock = DockStyle.Fill;

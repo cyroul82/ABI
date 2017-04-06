@@ -46,7 +46,7 @@
             // 
             // gpbClientInformation
             // 
-            this.gpbClientInformation.Size = new System.Drawing.Size(493, 483);
+            this.gpbClientInformation.Size = new System.Drawing.Size(493, 448);
             // 
             // panel1
             // 
@@ -54,7 +54,7 @@
             this.panel1.Controls.Add(this.btnAnnulerClient);
             this.panel1.Controls.Add(this.btnAjouterClient);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(20, 460);
+            this.panel1.Location = new System.Drawing.Point(20, 468);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(493, 43);
             this.panel1.TabIndex = 1;
@@ -95,13 +95,13 @@
             this.AcceptButton = this.btnAjouterClient;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.CancelButton = this.btnAnnulerClient;
-            this.ClientSize = new System.Drawing.Size(533, 523);
+            this.ClientSize = new System.Drawing.Size(533, 531);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmNewClient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Controls.SetChildIndex(this.gpbClientInformation, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.gpbClientInformation, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();

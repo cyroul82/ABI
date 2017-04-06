@@ -74,17 +74,17 @@
     <Compile Include="UI\frmMdiParent.Designer.cs">
       <DependentUpon>frmMdiParent.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormClient\frmDspClient.cs">
+    <Compile Include="UI\FormClient\frmDspClie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormClient\frmDspClient.Designer.cs">
-      <DependentUpon>frmDspClient.cs</DependentUpon>
+    <Compile Include="UI\FormClient\frmDspClie.Designer.cs">
+      <DependentUpon>frmDspClie.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormClient\frmNewClient.cs">
+    <Compile Include="UI\FormClient\frmNewClie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormClient\frmNewClient.Designer.cs">
-      <DependentUpon>frmNewClient.cs</DependentUpon>
+    <Compile Include="UI\FormClient\frmNewClie.Designer.cs">
+      <DependentUpon>frmNewClie.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormClient\FormContact\frmNewContact.cs">
       <SubType>Form</SubType>
@@ -92,11 +92,11 @@
     <Compile Include="UI\FormClient\FormContact\frmNewContact.Designer.cs">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\frmCommercial.cs">
+    <Compile Include="UI\frmListClie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\frmCommercial.Designer.cs">
-      <DependentUpon>frmCommercial.cs</DependentUpon>
+    <Compile Include="UI\frmListClie.Designer.cs">
+      <DependentUpon>frmListClie.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,17 +112,17 @@
     <EmbeddedResource Include="UI\frmMdiParent.resx">
       <DependentUpon>frmMdiParent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormClient\frmDspClient.resx">
-      <DependentUpon>frmDspClient.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormClient\frmDspClie.resx">
+      <DependentUpon>frmDspClie.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormClient\frmNewClient.resx">
-      <DependentUpon>frmNewClient.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormClient\frmNewClie.resx">
+      <DependentUpon>frmNewClie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormClient\FormContact\frmNewContact.resx">
       <DependentUpon>frmNewContact.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\frmCommercial.resx">
-      <DependentUpon>frmCommercial.cs</DependentUpon>
+    <EmbeddedResource Include="UI\frmListClie.resx">
+      <DependentUpon>frmListClie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

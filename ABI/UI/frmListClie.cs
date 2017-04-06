@@ -11,7 +11,7 @@ using static System.Windows.Forms.DataGridView;
 
 namespace ABI.UI
 {
-    public partial class frmCommercial : Form
+    public partial class frmListClie : Form
     {
         private Client client;
         private TabPage tabPage;
@@ -31,7 +31,7 @@ namespace ABI.UI
         /// <summary>
         /// Constructor with no arguments
         /// </summary>
-        public frmCommercial()
+        public frmListClie()
         {
             InitializeComponent();
             txtSearchClient.Select();
@@ -373,7 +373,7 @@ namespace ABI.UI
                 if (tabPageDictionnary.ContainsKey(client))
                 {
                     TabPage tabPage = tabPageDictionnary[client];
-                        tabControlClientDetail.SelectTab(tabPage);
+                        tabControlClients.SelectTab(tabPage);
                     
                 }
                 //If the client isn't open yet, create the form frmDspClient with the client and display the tab
@@ -389,9 +389,9 @@ namespace ABI.UI
                     TabPage tabPage = new TabPage(client.RaisonSocial);
                     tabPage.Controls.Add(fdc);
                     //Add the tab to the tab control
-                    tabControlClientDetail.Controls.Add(tabPage);
+                    tabControlClients.Controls.Add(tabPage);
                     //Set the actual display
-                    tabControlClientDetail.SelectTab(tabPage);
+                    tabControlClients.SelectTab(tabPage);
                     //Add the tab to the dictionnary
                     tabPageDictionnary.Add(client, tabPage);
                     //Add the form to the dictionnary
@@ -412,13 +412,13 @@ namespace ABI.UI
                 if (tabPage != null)
                 {
                     //Remove the tab from the tab Control
-                    tabControlClientDetail.TabPages.Remove(tabPage);
+                    tabControlClients.TabPages.Remove(tabPage);
                     //Remove the tab from the dictionnary
                     tabPageDictionnary.Remove(client);
                     //Remove the form from the dictionnary
                     frmDspClientDictionnary.Remove(tabPage);
                     //Display the ListClient tab (Main tab)
-                    tabControlClientDetail.SelectTab(0);
+                    tabControlClients.SelectTab(0);
                 }
             }
         }
@@ -442,10 +442,10 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tabControlClientDetail.TabCount > 0)
+            if (tabControlClients.TabCount > 0)
             {
                 //if the ListClient tab is selected
-                if (tabControlClientDetail.SelectedIndex == 0)
+                if (tabControlClients.SelectedIndex == 0)
                 {
                     //The client takes the value of the datagridview selection
                     grdClient_SelectionChanged(sender, e);
@@ -453,7 +453,7 @@ namespace ABI.UI
                 else
                 {
                     //Get the tabpage selected 
-                    tabPage = tabControlClientDetail.TabPages[tabControlClientDetail.SelectedIndex];
+                    tabPage = tabControlClients.TabPages[tabControlClients.SelectedIndex];
 
                     //find the reference in the dictionnary to get the client
                     foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
@@ -535,7 +535,7 @@ namespace ABI.UI
             for(Int32 i=0; i<tabPageDictionnary.Count; i++)
             {
                 KeyValuePair<Client,TabPage> k = tabPageDictionnary.ElementAt(i);
-                tabControlClientDetail.TabPages.Remove(k.Value);
+                tabControlClients.TabPages.Remove(k.Value);
 
                 frmDspClient f = frmDspClientDictionnary[k.Value] as frmDspClient;
                 if (f != null)
@@ -562,7 +562,7 @@ namespace ABI.UI
             {
                 btnFermerOnglets_Click(sender, e);
                 frmDspClientDictionnary.Clear();
-                tabControlClientDetail.TabPages.Clear();
+                tabControlClients.TabPages.Clear();
                 tabPageDictionnary.Clear();
                 //Todo to delete when finished !
                 Data.listClient.Clear();
