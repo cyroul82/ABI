@@ -8,12 +8,14 @@ namespace ABI
 {
     public class Adresse
     {
+        public Int32 IdClient { get; set; }
         public String Ville { get; set; }
         public String Rue { get; set; }
         public String CodePostal { get; set; }
 
-        public Adresse(String rue, String codePostal, String ville)
+        public Adresse(Int32 idClient, String rue, String codePostal, String ville)
         {
+            IdClient = idClient;
             Ville = ville;
             Rue = rue;
             CodePostal = codePostal;

@@ -34,11 +34,11 @@ namespace ABI.UI
         {
             InitializeComponent();
             txtSearchClient.Select();
-            Data.listClient.Add(new Client(++Data.clientNumber, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, new Adresse("verdun", "83700", "st raph"), "oui mais non", "0645248403"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500, new Adresse("verdun", "83700", "st raph"), "alors bon", "5646897453"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, new Adresse("verdun", "83700", "st raph"), "oki doki", "45678564"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870, new Adresse("verdun", "83700", "st raph"), "c parti", "21456731"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, new Adresse("verdun", "83700", "st raph"), "comment ca", "54564654"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "oui mais non", "0645248403"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "alors bon", "5646897453"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, new Adresse(Data.clientNumber,  "verdun", "83700", "st raph"), "oki doki", "45678564"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "c parti", "21456731"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "comment ca", "54564654"));
         }
 
         /// <summary>
@@ -359,16 +359,22 @@ namespace ABI.UI
 
 
         ///////////////////////////////////////////////////TabControl
+        /// <summary>
+        /// Add a client to the TabControl, check whether the form display Client isn't already opened 
+        /// </summary>
+        /// <param name="client">Used to link the tab with the client</param>
         private void AddClientTab(Client client)
         {
             if (client != null)
             {
+                //If the client already opened then display it in the TabControl
                 if (tabPageDictionnary.ContainsKey(client))
                 {
                     TabPage tabPage = tabPageDictionnary[client];
                         tabControlClientDetail.SelectTab(tabPage);
                     
                 }
+                //If the client isn't open yet, create the form frmDspClient with the client and display the tab
                 else
                 {
                     frmDspClient fdc = new frmDspClient(client);
@@ -380,14 +386,22 @@ namespace ABI.UI
 
                     TabPage tabPage = new TabPage(client.RaisonSocial);
                     tabPage.Controls.Add(fdc);
+                    //Add the tab to the tab control
                     tabControlClientDetail.Controls.Add(tabPage);
+                    //Set the actual display
                     tabControlClientDetail.SelectTab(tabPage);
+                    //Add the tab to the dictionnary
                     tabPageDictionnary.Add(client, tabPage);
+                    //Add the form to the dictionnary
                     frmDspClientDictionnary.Add(tabPage, fdc);
                     fdc.Show();
                 }
             }
         }
+        /// <summary>
+        /// Remove the tab from the tabControl
+        /// <para>Check whether the tab is already opened</para>
+        /// </summary>
         private void removeTab()
         {
             if (tabPageDictionnary.ContainsKey(client))
@@ -395,13 +409,22 @@ namespace ABI.UI
                 TabPage tabPage = tabPageDictionnary[client];
                 if (tabPage != null)
                 {
+                    //Remove the tab from the tab Control
                     tabControlClientDetail.TabPages.Remove(tabPage);
+                    //Remove the tab from the dictionnary
                     tabPageDictionnary.Remove(client);
+                    //Remove the form from the dictionnary
                     frmDspClientDictionnary.Remove(tabPage);
+                    //Display the ListClient tab (Main tab)
                     tabControlClientDetail.SelectTab(0);
                 }
             }
         }
+        /// <summary>
+        /// Called when the frmDspClient is closing and close the tab if opened
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void displayForm_Closing(object sender, FormClosingEventArgs e)
         {
             frmDspClient f = sender as frmDspClient;
@@ -410,18 +433,27 @@ namespace ABI.UI
                 removeTab();
             }
         }
+        /// <summary>
+        /// Everytime the tabControl index changes, the client gets a new value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControlClientDetail.TabCount > 0)
             {
+                //if the ListClient tab is selected
                 if (tabControlClientDetail.SelectedIndex == 0)
                 {
+                    //The client takes the value of the datagridview selection
                     grdClient_SelectionChanged(sender, e);
                 }
                 else
                 {
+                    //Get the tabpage selected 
                     tabPage = tabControlClientDetail.TabPages[tabControlClientDetail.SelectedIndex];
 
+                    //find the reference in the dictionnary to get the client
                     foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
                     {
                         if (kvp.Value == tabPage)
@@ -430,6 +462,7 @@ namespace ABI.UI
                         }
                     }
 
+                    //find the reference in dictionnary to get the frmDspClient
                     if (frmDspClientDictionnary.ContainsKey(tabPage))
                     {
                         formClient = frmDspClientDictionnary[tabPage];
@@ -445,7 +478,8 @@ namespace ABI.UI
 
         ///////////////////////////////////////////////////Button Click Left Panel
         /// <summary>
-        /// Button Add Click
+        /// Open a new frmNewClient Dialog and register an event when saving the client 
+        /// <para>Add a tab with the new client upon creation</para>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -459,6 +493,11 @@ namespace ABI.UI
                 AddClientTab(client);
             }
         }
+        /// <summary>
+        /// Delete a client upon confirmation calls the method deletingClient(Client client)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
             if (client != null)
@@ -470,6 +509,11 @@ namespace ABI.UI
                 }
             }
         }
+        /// <summary>
+        /// Add a client the tab, calls the method AddClientTab(Client client)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAfficher_Click(object sender, EventArgs e)
         {
             if (client != null)
@@ -478,6 +522,11 @@ namespace ABI.UI
             }
             
         }
+        /// <summary>
+        /// Allow to close all opened tabs and come back to the first tab ListClient
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFermerOnglets_Click(object sender, EventArgs e)
         {
             for(Int32 i=0; i<tabPageDictionnary.Count; i++)
@@ -497,6 +546,12 @@ namespace ABI.UI
             frmDspClientDictionnary.Clear(); ;
             tabPageDictionnary.Clear();
         }
+        /// <summary>
+        /// Close the ListClient Tab of the application
+        /// <para>clear all dictionnary, </para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFermer_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Voulez-vous vraiment fermer la partie Commerciale ?", "Fermeture", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -506,6 +561,7 @@ namespace ABI.UI
                 frmDspClientDictionnary.Clear();
                 tabControlClientDetail.TabPages.Clear();
                 tabPageDictionnary.Clear();
+                //Todo to delete when finished !
                 Data.listClient.Clear();
                 Close();
             }
@@ -515,8 +571,8 @@ namespace ABI.UI
 
 
 
-
-        /////////////////////////////////////////////////Right Click Tab
+        //TODO to implement sometimes the right click on the tabs , not finished !  
+        /////////////////////////////////////////////////Right Click Tab (Contextuel Menu)
         private void tabControlClientDetail_MouseUp(object sender, MouseEventArgs e)
         {
             //if(e.Button == MouseButtons.Right)
@@ -539,12 +595,11 @@ namespace ABI.UI
         {
             this.removeTab();
         }
-
         private void fermerTousToolStripMenuItem_Click(object sender, EventArgs e)
         {
             btnFermerOnglets_Click(sender, e);
         }
-        ////////////////////////////////////////////////End Right Click Tab (Contextuel Menu)
+        ////////////////////////////////////////////////End Right Click Tab 
 
 
 
@@ -552,20 +607,21 @@ namespace ABI.UI
 
 
         ////////////////////////////////////////////////Search Panel Button & Textbox Click 
-        private void btnSearchClient_Click(object sender, EventArgs e)
-        {
-           if(client != null)
-            {
-                AddClientTab(client);
-            }
-        }
-
+        /// <summary>
+        /// Display the complete list clients upon the button click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnToutAfficher_Click(object sender, EventArgs e)
         {
             txtSearchClient.Text = null;
             ((DataView)grdClient.DataSource).RowFilter = null;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtSearchClient_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && txtSearchClient.Text != String.Empty)
