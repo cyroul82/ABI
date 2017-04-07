@@ -39,6 +39,7 @@
             this.errorProviderEffectif = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderCA = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbClientInformation = new System.Windows.Forms.GroupBox();
+            this.txtTelephone = new System.Windows.Forms.MaskedTextBox();
             this.mTxtCodePostal = new System.Windows.Forms.MaskedTextBox();
             this.lblTelephone = new System.Windows.Forms.Label();
             this.txtVille = new System.Windows.Forms.TextBox();
@@ -54,15 +55,14 @@
             this.lblChiffreAffaire = new System.Windows.Forms.Label();
             this.cbxNature = new System.Windows.Forms.ComboBox();
             this.lblNature = new System.Windows.Forms.Label();
-            this.cbxActivity = new System.Windows.Forms.ComboBox();
+            this.cbxActivite = new System.Windows.Forms.ComboBox();
             this.lblDomaine = new System.Windows.Forms.Label();
             this.txtRaisonSocial = new System.Windows.Forms.TextBox();
             this.cbxType = new System.Windows.Forms.ComboBox();
-            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.txtIdClient = new System.Windows.Forms.TextBox();
             this.lblType = new System.Windows.Forms.Label();
             this.lblRaisonSocial = new System.Windows.Forms.Label();
             this.lblClientNumber = new System.Windows.Forms.Label();
-            this.txtTelephone = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
@@ -132,11 +132,11 @@
             this.gpbClientInformation.Controls.Add(this.lblChiffreAffaire);
             this.gpbClientInformation.Controls.Add(this.cbxNature);
             this.gpbClientInformation.Controls.Add(this.lblNature);
-            this.gpbClientInformation.Controls.Add(this.cbxActivity);
+            this.gpbClientInformation.Controls.Add(this.cbxActivite);
             this.gpbClientInformation.Controls.Add(this.lblDomaine);
             this.gpbClientInformation.Controls.Add(this.txtRaisonSocial);
             this.gpbClientInformation.Controls.Add(this.cbxType);
-            this.gpbClientInformation.Controls.Add(this.txtNumero);
+            this.gpbClientInformation.Controls.Add(this.txtIdClient);
             this.gpbClientInformation.Controls.Add(this.lblType);
             this.gpbClientInformation.Controls.Add(this.lblRaisonSocial);
             this.gpbClientInformation.Controls.Add(this.lblClientNumber);
@@ -147,6 +147,15 @@
             this.gpbClientInformation.TabIndex = 0;
             this.gpbClientInformation.TabStop = false;
             this.gpbClientInformation.Text = "Information Client";
+            // 
+            // txtTelephone
+            // 
+            this.txtTelephone.Location = new System.Drawing.Point(138, 202);
+            this.txtTelephone.Mask = "00 00 00 00 00 00";
+            this.txtTelephone.Name = "txtTelephone";
+            this.txtTelephone.Size = new System.Drawing.Size(120, 20);
+            this.txtTelephone.TabIndex = 29;
+            this.txtTelephone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // mTxtCodePostal
             // 
@@ -285,17 +294,17 @@
             this.lblNature.TabIndex = 8;
             this.lblNature.Text = "Nature : ";
             // 
-            // cbxActivity
+            // cbxActivite
             // 
-            this.cbxActivity.FormattingEnabled = true;
-            this.cbxActivity.Items.AddRange(new object[] {
+            this.cbxActivite.FormattingEnabled = true;
+            this.cbxActivite.Items.AddRange(new object[] {
             "Agro",
             "Industrie"});
-            this.cbxActivity.Location = new System.Drawing.Point(137, 92);
-            this.cbxActivity.Name = "cbxActivity";
-            this.cbxActivity.Size = new System.Drawing.Size(121, 21);
-            this.cbxActivity.TabIndex = 2;
-            this.cbxActivity.Validated += new System.EventHandler(this.cbxActivity_Validated);
+            this.cbxActivite.Location = new System.Drawing.Point(137, 92);
+            this.cbxActivite.Name = "cbxActivite";
+            this.cbxActivite.Size = new System.Drawing.Size(121, 21);
+            this.cbxActivite.TabIndex = 2;
+            this.cbxActivite.Validated += new System.EventHandler(this.cbxActivity_Validated);
             // 
             // lblDomaine
             // 
@@ -327,14 +336,14 @@
             this.cbxType.TabIndex = 3;
             this.cbxType.Validated += new System.EventHandler(this.cbxType_Validated);
             // 
-            // txtNumero
+            // txtIdClient
             // 
-            this.txtNumero.Enabled = false;
-            this.txtNumero.Location = new System.Drawing.Point(138, 26);
-            this.txtNumero.Name = "txtNumero";
-            this.txtNumero.ReadOnly = true;
-            this.txtNumero.Size = new System.Drawing.Size(121, 20);
-            this.txtNumero.TabIndex = 3;
+            this.txtIdClient.Enabled = false;
+            this.txtIdClient.Location = new System.Drawing.Point(138, 26);
+            this.txtIdClient.Name = "txtIdClient";
+            this.txtIdClient.ReadOnly = true;
+            this.txtIdClient.Size = new System.Drawing.Size(121, 20);
+            this.txtIdClient.TabIndex = 3;
             // 
             // lblType
             // 
@@ -362,15 +371,6 @@
             this.lblClientNumber.Size = new System.Drawing.Size(78, 13);
             this.lblClientNumber.TabIndex = 0;
             this.lblClientNumber.Text = "Numéro client :";
-            // 
-            // txtTelephone
-            // 
-            this.txtTelephone.Location = new System.Drawing.Point(138, 202);
-            this.txtTelephone.Mask = "00 00 00 00 00 00";
-            this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(120, 20);
-            this.txtTelephone.TabIndex = 29;
-            this.txtTelephone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FormClient
             // 
@@ -420,11 +420,11 @@
         private System.Windows.Forms.Label lblChiffreAffaire;
         protected System.Windows.Forms.ComboBox cbxNature;
         private System.Windows.Forms.Label lblNature;
-        protected System.Windows.Forms.ComboBox cbxActivity;
+        protected System.Windows.Forms.ComboBox cbxActivite;
         private System.Windows.Forms.Label lblDomaine;
         protected System.Windows.Forms.TextBox txtRaisonSocial;
         protected System.Windows.Forms.ComboBox cbxType;
-        protected System.Windows.Forms.TextBox txtNumero;
+        protected System.Windows.Forms.TextBox txtIdClient;
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.Label lblRaisonSocial;
         protected System.Windows.Forms.Label lblClientNumber;

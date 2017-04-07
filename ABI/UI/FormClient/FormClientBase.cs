@@ -106,14 +106,14 @@ namespace ABI
 
         protected Boolean isActiviteValid()
         {
-            if(cbxActivity.SelectedIndex == -1)
+            if(cbxActivite.SelectedIndex == -1)
             {
-                errorProviderActivite.SetError(cbxActivity, REQUIS);
+                errorProviderActivite.SetError(cbxActivite, REQUIS);
                 return false;
             }
             else
             {
-                errorProviderActivite.SetError(cbxActivity, String.Empty);
+                errorProviderActivite.SetError(cbxActivite, String.Empty);
                 return true;
             }
         }
@@ -215,7 +215,7 @@ namespace ABI
             {
                 String raisonSocial = txtRaisonSocial.Text.Trim();
                 String type = cbxType.SelectedItem.ToString();
-                String activity = cbxActivity.SelectedItem.ToString();
+                String activity = cbxActivite.SelectedItem.ToString();
                 String nature = cbxNature.SelectedItem.ToString();
                 Int32 effectif = 0;
                 Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
@@ -255,7 +255,7 @@ namespace ABI
                         c.Comment = txtComment.Text.Trim();
                         c.RaisonSocial = txtRaisonSocial.Text.Trim();
                         c.TypeSociete = cbxType.SelectedItem.ToString();
-                        c.Activite = cbxActivity.SelectedItem.ToString();
+                        c.Activite = cbxActivite.SelectedItem.ToString();
                         c.Nature = cbxNature.SelectedItem.ToString();
                         Int32 effectif = 0;
                         Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);

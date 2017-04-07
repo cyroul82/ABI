@@ -97,7 +97,7 @@
             // 
             // cbxActivity
             // 
-            this.cbxActivity.Enabled = false;
+            this.cbxActivite.Enabled = false;
             // 
             // txtRaisonSocial
             // 
@@ -116,10 +116,10 @@
             this.gpbClientInformation.Location = new System.Drawing.Point(20, 22);
             this.gpbClientInformation.Size = new System.Drawing.Size(484, 449);
             this.gpbClientInformation.Controls.SetChildIndex(this.lblClientNumber, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.txtNumero, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.txtIdClient, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.cbxType, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtRaisonSocial, 0);
-            this.gpbClientInformation.Controls.SetChildIndex(this.cbxActivity, 0);
+            this.gpbClientInformation.Controls.SetChildIndex(this.cbxActivite, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.cbxNature, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtCA, 0);
             this.gpbClientInformation.Controls.SetChildIndex(this.txtEffectif, 0);

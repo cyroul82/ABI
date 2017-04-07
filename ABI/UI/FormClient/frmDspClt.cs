@@ -67,7 +67,7 @@ namespace ABI
 
         private void fillUpForm()
         {
-            txtNumero.Text = client.IdClient.ToString();
+            txtIdClient.Text = client.IdClient.ToString();
             txtRaisonSocial.Text = client.RaisonSocial;
             txtEffectif.Text = client.Effectifs.ToString();
             txtCA.Text = client.ChiffreAffaires.ToString();
@@ -76,7 +76,7 @@ namespace ABI
             txtVille.Text = client.Adresse.Ville;
             txtRue.Text = client.Adresse.Rue;
             txtComment.Text = client.Comment;
-            cbxActivity.SelectedItem = client.Activite;
+            cbxActivite.SelectedItem = client.Activite;
             cbxNature.SelectedItem = client.Nature;
             cbxType.SelectedItem = client.TypeSociete;
         }
@@ -108,7 +108,7 @@ namespace ABI
             txtRue.Enabled = true;
             txtTelephone.Enabled = true;
             txtVille.Enabled = true;
-            cbxActivity.Enabled = true;
+            cbxActivite.Enabled = true;
             cbxNature.Enabled = true;
             cbxType.Enabled = true;
             btnModifierClient.Text = Tools.ENREGISTRER;
@@ -127,7 +127,7 @@ namespace ABI
             txtRue.Enabled = false;
             txtTelephone.Enabled = false;
             txtVille.Enabled = false;
-            cbxActivity.Enabled = false;
+            cbxActivite.Enabled = false;
             cbxNature.Enabled = false;
             cbxType.Enabled = false;
             btnModifierClient.Text = Tools.MODIFIER;
