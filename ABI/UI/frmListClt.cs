@@ -230,6 +230,7 @@ namespace ABI.UI
                 row[Tools.TELEPHONE] = client.Telephone;
                 row[Tools.COMMENTAIRE] = client.Comment;
                 table.Rows.Add(row);
+                
 
             }
             catch (ConstraintException e)
@@ -305,23 +306,21 @@ namespace ABI.UI
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in grdClient.SelectedRows)
+            if (grdClient.CurrentRow != null)
             {
-                if (row != null)
-                {
-                    Int32 id = (Int32)row.Cells[0].Value;
+                Int32 id = (Int32)grdClient.CurrentRow.Cells[0].Value;
 
-                    foreach (Client c in Data.listClient)
+                foreach (Client c in Data.listClient)
+                {
+                    if (c.IdClient == id)
                     {
-                        if (c.IdClient == id)
-                        {
-                            client = c;
-                            for (int i = 0; i < client.ListContacts.Count ; i++){
-                                Console.WriteLine(client.ListContacts[i].ToString());
-                            }
-                        }
+                        client = c;
                     }
+
                 }
+            }else
+            {
+                client = null;
             }
         }
 
@@ -333,7 +332,6 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void grdClient_DoubleClick(object sender, EventArgs e)
         {
-            
             if (client != null && !isHitGridNoWhere)
             {
                 AddClientTab(client);
@@ -489,12 +487,17 @@ namespace ABI.UI
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             frmNewClient fnc = new frmNewClient();
-            fnc.saveNewClient += new SaveNewClient(this.addClientDataTable);
+            fnc.saveNewClient += new SaveNewClient(this.addClient);
             DialogResult result = fnc.ShowDialog();
             if (result == DialogResult.Yes)
             {
                 AddClientTab(client);
             }
+        }
+        private void addClient(Client client)
+        {
+            addClientDataTable(client);
+            grdClient.Rows[grdClient.Rows.Count-1].Selected = true;
         }
         /// <summary>
         /// Delete a client upon confirmation calls the method deletingClient(Client client)
@@ -509,6 +512,11 @@ namespace ABI.UI
                 if (result == DialogResult.Yes)
                 {
                     deletingClient(client);
+
+                    if (grdClient.CurrentRow != null)
+                    {
+                        grdClient.Rows[grdClient.CurrentRow.Index].Selected = true;
+                    }
                 }
             }
         }

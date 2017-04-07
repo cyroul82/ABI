@@ -153,8 +153,6 @@ namespace ABI
             {
                 Close();
             }
-            
-            
         }
 
 
@@ -187,25 +185,30 @@ namespace ABI
             this.contact = contact;
             dataView.AddContact(contact);
             client.ListContacts.Add(contact);
+            grdContact.Rows[grdContact.Rows.Count - 1].Selected = true;
+           
         }
         private void btnSupprimerContact_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Voulez-vous supprimer le contact " + contact.Nom, "Supprimer un contact", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            if (contact != null)
             {
-                for (Int32 i = 0; i < table.Rows.Count; i++)
+                if (MessageBox.Show("Voulez-vous supprimer le contact " + contact.Nom, "Supprimer un contact", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
-                    Int32 idContact = (Int32)table.Rows[i][0];
-                    if (contact != null)
+                    for (Int32 i = 0; i < table.Rows.Count; i++)
                     {
-                        if (idContact == contact.IdContact)
+                        Int32 idContact = (Int32)table.Rows[i][0];
+                        if (contact != null)
                         {
-                            table.Rows[i].Delete();
+                            if (idContact == contact.IdContact)
+                            {
+                                table.Rows[i].Delete();
+                            }
                         }
                     }
+                    // dataView.Removecontact(contact);
+                    client.ListContacts.Remove(contact);
+                    contact = null;
                 }
-                // dataView.Removecontact(contact);
-                client.ListContacts.Remove(contact);
-                contact = null;
             }
         }
         private void btnModifierContact_Click(object sender, EventArgs e)
@@ -270,7 +273,6 @@ namespace ABI
             column = new DataColumn();
             column.DataType = typeof(System.Int32);
             column.ColumnName = Tools.IDCLIENT;
-            column.ReadOnly = true;
             column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
@@ -279,7 +281,6 @@ namespace ABI
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = Tools.NOM;
-            column.ReadOnly = true;
             column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
@@ -288,7 +289,6 @@ namespace ABI
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = Tools.FONCTION;
-            column.ReadOnly = true;
             column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
@@ -297,7 +297,6 @@ namespace ABI
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = Tools.EMAIL;
-            column.ReadOnly = true;
             column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
@@ -306,7 +305,6 @@ namespace ABI
             column = new DataColumn();
             column.DataType = typeof(System.String);
             column.ColumnName = Tools.TELEPHONE;
-            column.ReadOnly = true;
             column.Unique = false;
             column.AutoIncrement = false;
             Columns.Add(column);
