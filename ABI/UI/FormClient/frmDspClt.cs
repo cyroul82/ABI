@@ -72,9 +72,9 @@ namespace ABI
             txtEffectif.Text = client.Effectifs.ToString();
             txtCA.Text = client.ChiffreAffaires.ToString();
             txtTelephone.Text = client.Telephone;
-            mTxtCodePostal.Text = client.Adresse.CodePostal;
-            txtVille.Text = client.Adresse.Ville;
-            txtRue.Text = client.Adresse.Rue;
+            mTxtCodePostal.Text = client.CodePostal;
+            txtVille.Text = client.Ville;
+            txtRue.Text = client.Rue;
             txtComment.Text = client.Comment;
             cbxActivite.SelectedItem = client.Activite;
             cbxNature.SelectedItem = client.Nature;

@@ -9,7 +9,6 @@ namespace ABI
 {
     public class Client
     {
-        private Adresse adresse;
         private Int32 idClient;
         private String raisonSocial;
         private String typeSociete;
@@ -19,22 +18,12 @@ namespace ABI
         private Decimal chiffreAffaires;
         private String comment;
         private String telephone;
+        private String rue;
+        private String ville;
+        private String codePostal;
         private Int32 contactsCount;
         private Int32 compteurContacts = 0;
         private List<Contact> listContacts;
-
-        public Adresse Adresse
-        {
-            get
-            {
-                return adresse;
-            }
-
-            set
-            {
-                adresse = value;
-            }
-        }
 
         public Int32 IdClient
         {
@@ -192,9 +181,48 @@ namespace ABI
             }
         }
 
+        public string Rue
+        {
+            get
+            {
+                return rue;
+            }
+
+            set
+            {
+                rue = value;
+            }
+        }
+
+        public string Ville
+        {
+            get
+            {
+                return ville;
+            }
+
+            set
+            {
+                ville = value;
+            }
+        }
+
+        public string CodePostal
+        {
+            get
+            {
+                return codePostal;
+            }
+
+            set
+            {
+                codePostal = value;
+            }
+        }
+
         public Client(Int32 idClient, String raisonSocial, String typeSociete,
                         String activite, String nature, Int32 effectifs,
-                        Decimal chiffreAffaires, Adresse adresse, String comment, String telephone)
+                        Decimal chiffreAffaires, String rue, String codePostal, String ville, String comment, String telephone)
         {
             this.IdClient = idClient;
             this.RaisonSocial = raisonSocial;
@@ -203,7 +231,9 @@ namespace ABI
             this.Nature = nature;
             this.Effectifs = effectifs;
             this.chiffreAffaires = chiffreAffaires;
-            this.Adresse = adresse;
+            this.rue = rue;
+            this.codePostal = codePostal;
+            this.ville = ville;
             this.Comment = comment;
             this.telephone = telephone;
             ListContacts = new List<Contact>();

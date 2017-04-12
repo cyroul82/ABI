@@ -36,11 +36,11 @@ namespace ABI.UI
             InitializeComponent();
             txtSearchClient.Select();
             //Dummy data
-            Data.listClient.Add(new Client(++Data.clientNumber, "AGM", "Public", "Industrie", "Secondaire", 3, 1000, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "oui mais non", "0645248403"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "alors bon", "5646897453"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, new Adresse(Data.clientNumber,  "verdun", "83700", "st raph"), "oki doki", "45678564"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "c parti", "21456731"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, new Adresse(Data.clientNumber, "verdun", "83700", "st raph"), "comment ca", "54564654"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "AGM", "Public", "Industrie", "Secondaire", 3, 1000,  "verdun", "83700", "st raph", "oui mais non", "0645248403"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500,  "verdun", "83700", "st raph", "alors bon", "5646897453"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, "verdun", "83700", "st raph", "oki doki", "45678564"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870,  "verdun", "83700", "st raph", "c parti", "21456731"));
+            Data.listClient.Add(new Client(++Data.clientNumber, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, "verdun", "83700", "st raph", "comment ca", "54564654"));
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace ABI.UI
                 row[Tools.NATURE] = client.Nature;
                 row[Tools.EFFECTIF] = client.Effectifs.ToString();
                 row[Tools.CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
-                row[Tools.VILLE] = client.Adresse.Ville;
+                row[Tools.VILLE] = client.Ville;
                 row[Tools.TELEPHONE] = client.Telephone;
                 row[Tools.COMMENTAIRE] = client.Comment;
                 table.Rows.Add(row);
@@ -265,7 +265,7 @@ namespace ABI.UI
                     table.Rows[i][Tools.NATURE] = client.Nature;
                     table.Rows[i][Tools.EFFECTIF] = client.Effectifs.ToString();
                     table.Rows[i][Tools.CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
-                    table.Rows[i][Tools.VILLE] = client.Adresse.Ville;
+                    table.Rows[i][Tools.VILLE] = client.Ville;
                     table.Rows[i][Tools.TELEPHONE] = client.Telephone;
                     table.Rows[i][Tools.COMMENTAIRE] = client.Comment;
                 }

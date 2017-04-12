@@ -45,7 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClasseMetier\Adresse.cs" />
     <Compile Include="ClasseMetier\Client.cs" />
     <Compile Include="ClasseMetier\Contact.cs" />
     <Compile Include="Data.cs" />

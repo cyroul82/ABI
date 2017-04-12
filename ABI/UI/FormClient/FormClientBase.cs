@@ -229,9 +229,8 @@ namespace ABI
                 
                 String comment = txtComment.Text.Trim();
                 Int32 idClient = ++Data.clientNumber;
-                Adresse adresse = new Adresse(idClient, rue, codePostal, ville);
 
-                client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, adresse, comment, telephone);
+                client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, rue, codePostal, ville, comment, telephone);
                 Data.listClient.Add(client);
                 return true;
             }
@@ -265,9 +264,9 @@ namespace ABI
                         c.ChiffreAffaires = chiffreAffaires;
                         c.Telephone = txtTelephone.Text.Trim();
                         //Create the address
-                        c.Adresse.Ville = txtVille.Text.Trim();
-                        c.Adresse.CodePostal = mTxtCodePostal.Text.Trim();
-                        c.Adresse.Rue = txtRue.Text.Trim();
+                        c.Ville = txtVille.Text.Trim();
+                        c.CodePostal = mTxtCodePostal.Text.Trim();
+                        c.Rue = txtRue.Text.Trim();
                     }
                 }
                 return true;
