@@ -12,10 +12,10 @@ namespace ABI
     
     public partial class frmNewContact : ABI.FormContact
     {
-        private Contact contact;
-        private Client client;
+        private ContactDB contact;
+        private ClientDB client;
         public event ContactHandler saveNewContact;
-        public frmNewContact(Client client)
+        public frmNewContact(ClientDB client)
         {
             InitializeComponent();
             this.client = client;
@@ -45,9 +45,9 @@ namespace ABI
             String fonction = txtContactFonction.Text;
             String email = txtContactEmail.Text;
             String telephone = txtContactTelephone.Text;
-            client.CompteurContacts++;
+            //client.CompteurContacts++;
 
-            contact = new Contact(client.IdClient, client.CompteurContacts, nom, fonction, email, telephone);
+            contact = new Contact(client.idClient, nom, fonction, email, telephone);
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

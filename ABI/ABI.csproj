@@ -32,8 +32,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,7 +58,29 @@
   <ItemGroup>
     <Compile Include="ClasseMetier\Client.cs" />
     <Compile Include="ClasseMetier\Contact.cs" />
+    <Compile Include="ClientDB.cs">
+      <DependentUpon>ModelABI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactDB.cs">
+      <DependentUpon>ModelABI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data.cs" />
+    <Compile Include="ModelABI.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelABI.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelABI.cs" />
+    <Compile Include="ModelABI.Designer.cs">
+      <DependentUpon>ModelABI.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="ModelABI1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelABI.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tools.cs" />
     <Compile Include="UI\FormClient\FormClientBase.cs">
       <SubType>Form</SubType>
@@ -132,6 +165,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EntityDeploy Include="ModelABI.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelABI.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ModelABI.edmx.diagram">
+      <DependentUpon>ModelABI.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,6 +186,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="ModelABI.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelABI.Context.cs</LastGenOutput>
+      <DependentUpon>ModelABI.edmx</DependentUpon>
+    </Content>
+    <Content Include="ModelABI.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelABI.edmx</DependentUpon>
+      <LastGenOutput>ModelABI1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

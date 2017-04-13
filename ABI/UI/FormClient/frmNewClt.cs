@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace ABI
 {
 
-    public delegate void SaveNewClient(Client client);
+    public delegate void SaveNewClient(ClientDB client);
     public partial class frmNewClient : ABI.FormClient
     {
 

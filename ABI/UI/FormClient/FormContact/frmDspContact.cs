@@ -11,9 +11,9 @@ namespace ABI.UI.FormClient.FormContact
 {
     public partial class frmDspContact : ABI.FormContact
     {
-        private Contact contact;
+        private ContactDB contact;
         public ContactHandler updatingContact;
-        public frmDspContact(ref Contact contact)
+        public frmDspContact(ref ContactDB contact)
         {
             InitializeComponent();
             this.contact = contact;
@@ -26,19 +26,19 @@ namespace ABI.UI.FormClient.FormContact
 
         private void setContact()
         {
-            txtContactEmail.Text = contact.Email;
-            txtContactIdClient.Text = contact.IdContact.ToString();
-            txtContactName.Text = contact.Nom;
-            txtContactTelephone.Text = contact.Telephone;
-            txtContactFonction.Text = contact.Fonction;
+            txtContactEmail.Text = contact.email;
+            txtContactIdClient.Text = contact.idContact.ToString();
+            txtContactName.Text = contact.nom;
+            txtContactTelephone.Text = contact.telephone;
+            txtContactFonction.Text = contact.fonction;
         }
 
         private void getContact()
         {
-            contact.Email = txtContactEmail.Text;
-            contact.Nom = txtContactName.Text;
-            contact.Telephone = txtContactTelephone.Text;
-            contact.Fonction = txtContactFonction.Text;
+            contact.email = txtContactEmail.Text;
+            contact.nom = txtContactName.Text;
+            contact.telephone = txtContactTelephone.Text;
+            contact.fonction = txtContactFonction.Text;
         }
 
         private void btnEnregistrerContact_Click(object sender, EventArgs e)

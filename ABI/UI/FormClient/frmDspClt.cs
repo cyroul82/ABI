@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    public delegate void ClientHandler(Client client);
+    public delegate void ClientHandler(ClientDB client);
 
     public partial class frmDspClient : ABI.FormClient
     {
         private MyDataTable table;
         private MyDataView dataView;
-        private Contact contact;
+        private ContactDB contact;
         public ClientHandler UpdatingClient;
         public ClientHandler DeletingClient;
 
         public Boolean IsModifed { get; private set; } = false;
-        public frmDspClient(Client client): base(client)
+        public frmDspClient(ClientDB client): base(client)
         {
             InitializeComponent();
         }
@@ -59,7 +59,7 @@ namespace ABI
             grdContact.Columns[Tools.IDCLIENT].Visible = false;
             grdContact.Columns[Tools.IDCONTACT].Visible = false;
 
-            foreach(Contact contact in client.ListContacts)
+            foreach(ContactDB contact in client.ContactDB)
             {
                 dataView.AddContact(contact);
             }
@@ -67,18 +67,18 @@ namespace ABI
 
         private void fillUpForm()
         {
-            txtIdClient.Text = client.IdClient.ToString();
-            txtRaisonSocial.Text = client.RaisonSocial;
-            txtEffectif.Text = client.Effectifs.ToString();
-            txtCA.Text = client.ChiffreAffaires.ToString();
-            txtTelephone.Text = client.Telephone;
-            mTxtCodePostal.Text = client.CodePostal;
-            txtVille.Text = client.Ville;
-            txtRue.Text = client.Rue;
-            txtComment.Text = client.Comment;
-            cbxActivite.SelectedItem = client.Activite;
-            cbxNature.SelectedItem = client.Nature;
-            cbxType.SelectedItem = client.TypeSociete;
+            txtIdClient.Text = client.idClient.ToString();
+            txtRaisonSocial.Text = client.raisonSocial;
+            txtEffectif.Text = client.effectifs.ToString();
+            txtCA.Text = client.ca.ToString();
+            txtTelephone.Text = client.telephone;
+            mTxtCodePostal.Text = client.codePostal;
+            txtVille.Text = client.ville;
+            txtRue.Text = client.rue;
+            txtComment.Text = client.comment;
+            cbxActivite.SelectedItem = client.activite;
+            cbxNature.SelectedItem = client.nature;
+            cbxType.SelectedItem = client.type;
         }
 
         private void btnModifierClient_Click(object sender, EventArgs e)
@@ -89,7 +89,7 @@ namespace ABI
             }
             else
             {
-                if (updateClient(client.IdClient))
+                if (updateClient(client.idClient))
                 {
                     UpdatingClient?.Invoke(client);
                     disableClient();
@@ -164,9 +164,9 @@ namespace ABI
                 if(row != null)
                 {
                     Int32 id = (Int32)row.Cells[0].Value;
-                    foreach(Contact c in client.ListContacts)
+                    foreach(ContactDB c in client.ContactDB)
                     {
-                        if(c.IdContact == id)
+                        if(c.idContact == id)
                         {
                             contact = c;
                         }
@@ -180,11 +180,11 @@ namespace ABI
             fnc.saveNewContact += new ContactHandler(this.savingContact);
             fnc.ShowDialog();
         }
-        private void savingContact(Contact contact)
+        private void savingContact(ContactDB contact)
         {
             this.contact = contact;
             dataView.AddContact(contact);
-            client.ListContacts.Add(contact);
+            client.ContactDB.Add(contact);
             grdContact.Rows[grdContact.Rows.Count - 1].Selected = true;
            
         }
@@ -192,21 +192,21 @@ namespace ABI
         {
             if (contact != null)
             {
-                if (MessageBox.Show("Voulez-vous supprimer le contact " + contact.Nom, "Supprimer un contact", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                if (MessageBox.Show("Voulez-vous supprimer le contact " + contact.nom, "Supprimer un contact", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     for (Int32 i = 0; i < table.Rows.Count; i++)
                     {
                         Int32 idContact = (Int32)table.Rows[i][0];
                         if (contact != null)
                         {
-                            if (idContact == contact.IdContact)
+                            if (idContact == contact.idContact)
                             {
                                 table.Rows[i].Delete();
                             }
                         }
                     }
                     // dataView.Removecontact(contact);
-                    client.ListContacts.Remove(contact);
+                    client.ContactDB.Remove(contact);
                     contact = null;
                 }
             }
@@ -336,10 +336,6 @@ namespace ABI
                 MessageBox.Show("ConstraintException : " + e.Message);
             }
         }
-
-
-        
-
 
     }
 }

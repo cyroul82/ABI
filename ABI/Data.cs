@@ -8,7 +8,8 @@ namespace ABI
 {
     public class Data
     {
-        public static List<Client> listClient = new List<Client>() ;
+        //public static List<Client> listClient = new List<Client>();
+        public static ABIDBEntities db = new ABIDBEntities();
         public static Int32 clientNumber = 0;
     }
 }

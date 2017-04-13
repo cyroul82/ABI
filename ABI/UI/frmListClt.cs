@@ -13,7 +13,7 @@ namespace ABI.UI
 {
     public partial class frmListClt : Form
     {
-        private Client client;
+        private ClientDB client;
         private TabPage tabPage;
         private frmDspClient formClient;
         private DataTable table;
@@ -24,7 +24,7 @@ namespace ABI.UI
         private Boolean isHitGridNoWhere = false;
 
         //Dictionnary to keep the reference of the TabPage opened associated with a client as Key
-        private Dictionary<Client, TabPage> tabPageDictionnary = new Dictionary<Client, TabPage>();
+        private Dictionary<ClientDB, TabPage> tabPageDictionnary = new Dictionary<ClientDB, TabPage>();
         //Dictionnary to keep the reference of the frmDspClient created associated with a tabPage as Key
         private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
 
@@ -35,12 +35,6 @@ namespace ABI.UI
         {
             InitializeComponent();
             txtSearchClient.Select();
-            //Dummy data
-            Data.listClient.Add(new Client(++Data.clientNumber, "AGM", "Public", "Industrie", "Secondaire", 3, 1000,  "verdun", "83700", "st raph", "oui mais non", "0645248403"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "Made in Mode", "Privé", "Agro", "Principale", 5, 1500,  "verdun", "83700", "st raph", "alors bon", "5646897453"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "Milk Import", "Public", "Industrie", "Secondaire", 3, 56800, "verdun", "83700", "st raph", "oki doki", "45678564"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "Agro SARL", "Privé", "Agro", "Ancienne", 3, 145870,  "verdun", "83700", "st raph", "c parti", "21456731"));
-            Data.listClient.Add(new Client(++Data.clientNumber, "CALM", "Public", "Industrie", "Secondaire", 3, 12365, "verdun", "83700", "st raph", "comment ca", "54564654"));
         }
 
         /// <summary>
@@ -72,9 +66,9 @@ namespace ABI.UI
             column = new DataColumn();
             buildTableColumn();
 
-            for (Int32 i = 0; i < Data.listClient.Count; i++)
+            for (Int32 i = 0; i < Data.db.ClientDB.ToList().Count; i++)
             {
-                addClientDataTable(Data.listClient[i]);
+                addClientDataTable(Data.db.ClientDB.ToList()[i]);
                 
             }
             grdClient.DataSource = table.DefaultView;
@@ -213,22 +207,22 @@ namespace ABI.UI
         /// Add a Client
         /// </summary>
         /// <param name="client"></param>
-        private void addClientDataTable(Client client)
+        private void addClientDataTable(ClientDB client)
         {
             this.client = client;
             try
             {
                 row = table.NewRow();
-                row[Tools.IDCLIENT] = client.IdClient;
-                row[Tools.RAISONSOCIALE] = client.RaisonSocial;
-                row[Tools.TYPE] = client.TypeSociete;
-                row[Tools.ACTIVITE] = client.Activite;
-                row[Tools.NATURE] = client.Nature;
-                row[Tools.EFFECTIF] = client.Effectifs.ToString();
-                row[Tools.CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
-                row[Tools.VILLE] = client.Ville;
-                row[Tools.TELEPHONE] = client.Telephone;
-                row[Tools.COMMENTAIRE] = client.Comment;
+                row[Tools.IDCLIENT] = client.idClient;
+                row[Tools.RAISONSOCIALE] = client.raisonSocial;
+                row[Tools.TYPE] = client.type;
+                row[Tools.ACTIVITE] = client.activite;
+                row[Tools.NATURE] = client.nature;
+                row[Tools.EFFECTIF] = client.effectifs.ToString();
+                row[Tools.CHIFFREAFFAIRES] = client.ca.ToString();
+                row[Tools.VILLE] = client.ville;
+                row[Tools.TELEPHONE] = client.telephone;
+                row[Tools.COMMENTAIRE] = client.comment;
                 table.Rows.Add(row);
                 
 
@@ -243,60 +237,60 @@ namespace ABI.UI
         /// Update a Client
         /// </summary>
         /// <param name="client"></param>
-        private void updateClientDataTable(Client client)
+        private void updateClientDataTable(ClientDB client)
         {
             this.client = client;
             //Update tabPage.Text
             if (tabPageDictionnary.ContainsKey(client))
             {
                 TabPage tabPage = tabPageDictionnary[client];
-                tabPage.Text = client.RaisonSocial;
+                tabPage.Text = client.raisonSocial;
             }
 
             //Update the listClient in DataView
             for (Int32 i = 0; i < table.Rows.Count; i++)
             {
                 Int32 idClient = (Int32)table.Rows[i][0];
-                if (idClient == client.IdClient)
+                if (idClient == client.idClient)
                 {
-                    table.Rows[i][Tools.RAISONSOCIALE] = client.RaisonSocial;
-                    table.Rows[i][Tools.TYPE] = client.TypeSociete;
-                    table.Rows[i][Tools.ACTIVITE] = client.Activite;
-                    table.Rows[i][Tools.NATURE] = client.Nature;
-                    table.Rows[i][Tools.EFFECTIF] = client.Effectifs.ToString();
-                    table.Rows[i][Tools.CHIFFREAFFAIRES] = client.ChiffreAffaires.ToString();
-                    table.Rows[i][Tools.VILLE] = client.Ville;
-                    table.Rows[i][Tools.TELEPHONE] = client.Telephone;
-                    table.Rows[i][Tools.COMMENTAIRE] = client.Comment;
+                    table.Rows[i][Tools.RAISONSOCIALE] = client.raisonSocial;
+                    table.Rows[i][Tools.TYPE] = client.type;
+                    table.Rows[i][Tools.ACTIVITE] = client.activite;
+                    table.Rows[i][Tools.NATURE] = client.nature;
+                    table.Rows[i][Tools.EFFECTIF] = client.effectifs.ToString();
+                    table.Rows[i][Tools.CHIFFREAFFAIRES] = client.ca.ToString();
+                    table.Rows[i][Tools.VILLE] = client.ville;
+                    table.Rows[i][Tools.TELEPHONE] = client.telephone;
+                    table.Rows[i][Tools.COMMENTAIRE] = client.comment;
                 }
             }
         }
 
-        private void deletingClient(Client client)
+        private void deletingClient(ClientDB client)
         {
             removeTab();
             foreach (DataGridViewRow row in grdClient.SelectedRows)
             {
                 Int32 id = (Int32)row.Cells[0].Value;
 
-                foreach (Client c in Data.listClient)
+                foreach (ClientDB c in Data.db.ClientDB.ToList())
                 {
-                    if (c.IdClient == id)
+                    if (c.idClient == id)
                     {
                         client = c;
                     }
                 }
             }
-            Data.listClient.Remove(client);
+            Data.db.ClientDB.Remove(client);
             deleteClientDataTable(client);
         }
 
-        private void deleteClientDataTable(Client client)
+        private void deleteClientDataTable(ClientDB client)
         {
             for (Int32 i = 0; i < table.Rows.Count; i++)
             {
                 Int32 idClient = (Int32)table.Rows[i][0];
-                if (idClient == client.IdClient)
+                if (idClient == client.idClient)
                 {
                     table.Rows[i].Delete();
                 }
@@ -310,9 +304,9 @@ namespace ABI.UI
             {
                 Int32 id = (Int32)grdClient.CurrentRow.Cells[0].Value;
 
-                foreach (Client c in Data.listClient)
+                foreach (ClientDB c in Data.db.ClientDB.ToList())
                 {
-                    if (c.IdClient == id)
+                    if (c.idClient == id)
                     {
                         client = c;
                     }
@@ -363,7 +357,7 @@ namespace ABI.UI
         /// Add a client to the TabControl, check whether the form display Client isn't already opened 
         /// </summary>
         /// <param name="client">Used to link the tab with the client</param>
-        private void AddClientTab(Client client)
+        private void AddClientTab(ClientDB client)
         {
             if (client != null)
             {
@@ -384,7 +378,7 @@ namespace ABI.UI
                     fdc.TopLevel = false;
                     fdc.Dock = DockStyle.Fill;
 
-                    TabPage tabPage = new TabPage(client.RaisonSocial);
+                    TabPage tabPage = new TabPage(client.raisonSocial);
                     tabPage.Controls.Add(fdc);
                     //Add the tab to the tab control
                     tabControlClients.Controls.Add(tabPage);
@@ -454,7 +448,7 @@ namespace ABI.UI
                     tabPage = tabControlClients.TabPages[tabControlClients.SelectedIndex];
 
                     //find the reference in the dictionnary to get the client
-                    foreach (KeyValuePair<Client, TabPage> kvp in tabPageDictionnary)
+                    foreach (KeyValuePair<ClientDB, TabPage> kvp in tabPageDictionnary)
                     {
                         if (kvp.Value == tabPage)
                         {
@@ -494,7 +488,7 @@ namespace ABI.UI
                 AddClientTab(client);
             }
         }
-        private void addClient(Client client)
+        private void addClient(ClientDB client)
         {
             addClientDataTable(client);
             grdClient.Rows[grdClient.Rows.Count-1].Selected = true;
@@ -508,7 +502,7 @@ namespace ABI.UI
         {
             if (client != null)
             {
-                DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.RaisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.raisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     deletingClient(client);
@@ -542,7 +536,7 @@ namespace ABI.UI
         {
             for(Int32 i=0; i<tabPageDictionnary.Count; i++)
             {
-                KeyValuePair<Client,TabPage> k = tabPageDictionnary.ElementAt(i);
+                KeyValuePair<ClientDB ,TabPage> k = tabPageDictionnary.ElementAt(i);
                 tabControlClients.TabPages.Remove(k.Value);
 
                 frmDspClient f = frmDspClientDictionnary[k.Value] as frmDspClient;
@@ -573,7 +567,7 @@ namespace ABI.UI
                 tabControlClients.TabPages.Clear();
                 tabPageDictionnary.Clear();
                 //Todo to delete when finished !
-                Data.listClient.Clear();
+                //Data.listClient.Clear();
                 Close();
             }
         }

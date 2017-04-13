@@ -12,14 +12,14 @@ namespace ABI
 {
     public partial class FormClient : Form
     {
-        protected Client client;
+        protected ClientDB client;
         private const String REQUIS = "Requis";
         public FormClient()
         {
             InitializeComponent();
         }
 
-        public FormClient(Client client)
+        public FormClient(ClientDB client)
         {
             InitializeComponent();
             this.client = client;
@@ -230,8 +230,21 @@ namespace ABI
                 String comment = txtComment.Text.Trim();
                 Int32 idClient = ++Data.clientNumber;
 
-                client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, rue, codePostal, ville, comment, telephone);
-                Data.listClient.Add(client);
+                //client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, rue, codePostal, ville, comment, telephone);
+                ClientDB clientDB = new ClientDB();
+                clientDB.raisonSocial = raisonSocial;
+                clientDB.type = type;
+                clientDB.activite = activity;
+                clientDB.nature = nature;
+                clientDB.ca = chiffreAffaires;
+                clientDB.rue = rue;
+                clientDB.codePostal = codePostal;
+                clientDB.ville = ville;
+                clientDB.comment = comment;
+                clientDB.telephone = telephone;
+                Data.db.ClientDB.Add(clientDB);
+                Data.db.SaveChanges();
+
                 return true;
             }
             else       
@@ -246,27 +259,27 @@ namespace ABI
                    & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
             {
 
-                for (Int32 i = 0; i < Data.listClient.Count; i++)
+                for (Int32 i = 0; i < Data.db.ClientDB.ToList().Count; i++)
                 {
-                    Client c = Data.listClient[i];
-                    if (c.IdClient == idClient)
+                    ClientDB c = Data.db.ClientDB.ToList()[i];
+                    if (c.idClient == idClient)
                     {
-                        c.Comment = txtComment.Text.Trim();
-                        c.RaisonSocial = txtRaisonSocial.Text.Trim();
-                        c.TypeSociete = cbxType.SelectedItem.ToString();
-                        c.Activite = cbxActivite.SelectedItem.ToString();
-                        c.Nature = cbxNature.SelectedItem.ToString();
-                        Int32 effectif = 0;
-                        Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
-                        c.Effectifs = effectif;
+                        c.comment = txtComment.Text.Trim();
+                        c.raisonSocial = txtRaisonSocial.Text.Trim();
+                        c.type = cbxType.SelectedItem.ToString();
+                        c.activite = cbxActivite.SelectedItem.ToString();
+                        c.nature = cbxNature.SelectedItem.ToString();
+                        Int16 effectif = 0;
+                        Boolean isEffectifInt = Int16.TryParse(txtEffectif.Text.Trim(), out effectif);
+                        c.effectifs = effectif;
                         Decimal chiffreAffaires = 0;
                         Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
-                        c.ChiffreAffaires = chiffreAffaires;
-                        c.Telephone = txtTelephone.Text.Trim();
+                        c.ca = chiffreAffaires;
+                        c.telephone = txtTelephone.Text.Trim();
                         //Create the address
-                        c.Ville = txtVille.Text.Trim();
-                        c.CodePostal = mTxtCodePostal.Text.Trim();
-                        c.Rue = txtRue.Text.Trim();
+                        c.ville = txtVille.Text.Trim();
+                        c.codePostal = mTxtCodePostal.Text.Trim();
+                        c.rue = txtRue.Text.Trim();
                     }
                 }
                 return true;
