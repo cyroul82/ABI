@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -243,7 +244,16 @@ namespace ABI
                 clientDB.comment = comment;
                 clientDB.telephone = telephone;
                 Data.db.ClientDB.Add(clientDB);
-                Data.db.SaveChanges();
+                try
+                {
+                    Data.db.SaveChanges();
+                    int id = clientDB.idClient;
+                    Console.WriteLine("Id client last inserted : " + id);
+                }
+                catch(DbEntityValidationException e)
+                {
+                    Console.WriteLine("exception in formClientBase Data.db.SaveChanges: " + e.Message );
+                }
 
                 return true;
             }

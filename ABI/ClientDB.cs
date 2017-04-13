@@ -25,8 +25,8 @@ namespace ABI
         public string type { get; set; }
         public string activite { get; set; }
         public string nature { get; set; }
-        public Nullable<short> effectifs { get; set; }
-        public Nullable<decimal> ca { get; set; }
+        public int effectifs { get; set; }
+        public decimal ca { get; set; }
         public string comment { get; set; }
         public string telephone { get; set; }
         public string rue { get; set; }

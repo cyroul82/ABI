@@ -70,15 +70,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelABI.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelABI.Designer.cs">
-      <DependentUpon>ModelABI.edmx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="ModelABI1.cs">
+    <Compile Include="ModelABI.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelABI.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ModelABI.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelABI.edmx</DependentUpon>
     </Compile>
     <Compile Include="Tools.cs" />
     <Compile Include="UI\FormClient\FormClientBase.cs">
@@ -186,19 +186,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelABI.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelABI.Context.cs</LastGenOutput>
       <DependentUpon>ModelABI.edmx</DependentUpon>
+      <LastGenOutput>ModelABI.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ModelABI.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelABI.edmx</DependentUpon>
-      <LastGenOutput>ModelABI1.cs</LastGenOutput>
+      <LastGenOutput>ModelABI.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

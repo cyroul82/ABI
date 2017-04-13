@@ -224,8 +224,6 @@ namespace ABI.UI
                 row[Tools.TELEPHONE] = client.telephone;
                 row[Tools.COMMENTAIRE] = client.comment;
                 table.Rows.Add(row);
-                
-
             }
             catch (ConstraintException e)
             {
