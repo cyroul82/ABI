@@ -285,7 +285,9 @@ namespace ABI.UI
                         client = c;
                         if(client.ContactDB.Count > 0)
                         {
-                            DialogResult result = MessageBox.Show(client.raisonSocial + " à des contacts, voulez-vous supprimer ces contacts ?", "Erreur contacts", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            DialogResult result = MessageBox.Show("La suppression de " +client.raisonSocial + 
+                                                                " entraîne la suppression de tous ses contacts \n" +
+                                                                "voulez-vous continuer ?", "Supprimer Contacts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             if(result == DialogResult.Yes)
                             {
                                 for(Int32 j = 0; j<client.ContactDB.Count; id++)
@@ -535,6 +537,10 @@ namespace ABI.UI
                     if (grdClient.CurrentRow != null)
                     {
                         grdClient.Rows[grdClient.CurrentRow.Index].Selected = true;
+                    }
+                    else
+                    {
+                        client = null;
                     }
                 }
             }

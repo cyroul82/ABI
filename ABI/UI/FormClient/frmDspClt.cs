@@ -207,6 +207,9 @@ namespace ABI
                             if (idContact == contact.idContact)
                             {
                                 table.Rows[i].Delete();
+                                if (table.Rows.Count > 0) {
+                                    //grdContact.Rows.
+                                }
                             }
                         }
                     }
