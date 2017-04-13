@@ -27,14 +27,14 @@
             <PropertyRef Name="idContact" />
           </Key>
           <Property Name="idContact" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idClient" Type="int" />
-          <Property Name="nom" Type="varchar" MaxLength="50" />
-          <Property Name="fonction" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="telephone" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="idClient" Type="int" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fonction" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="telephone" Type="char" MaxLength="10" />
         </EntityType>
         <Association Name="FK_Contact_Client2">
-          <End Role="ClientDB" Type="Self.ClientDB" Multiplicity="0..1" />
+          <End Role="ClientDB" Type="Self.ClientDB" Multiplicity="1" />
           <End Role="ContactDB" Type="Self.ContactDB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClientDB">
@@ -81,15 +81,15 @@
             <PropertyRef Name="idContact" />
           </Key>
           <Property Name="idContact" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idClient" Type="Int32" />
-          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="fonction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="telephone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="idClient" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fonction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="telephone" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="ClientDB" Relationship="Self.FK_Contact_Client2" FromRole="ContactDB" ToRole="ClientDB" />
         </EntityType>
         <Association Name="FK_Contact_Client2">
-          <End Role="ClientDB" Type="Self.ClientDB" Multiplicity="0..1" />
+          <End Role="ClientDB" Type="Self.ClientDB" Multiplicity="1" />
           <End Role="ContactDB" Type="Self.ContactDB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClientDB">

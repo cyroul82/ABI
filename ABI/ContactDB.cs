@@ -15,7 +15,7 @@ namespace ABI
     public partial class ContactDB
     {
         public int idContact { get; set; }
-        public Nullable<int> idClient { get; set; }
+        public int idClient { get; set; }
         public string nom { get; set; }
         public string fonction { get; set; }
         public string email { get; set; }

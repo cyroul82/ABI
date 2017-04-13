@@ -49,10 +49,15 @@ namespace ABI
 
             //contact = new Contact(client.idClient, nom, fonction, email, telephone);
             contact = new ContactDB();
+            contact.ClientDB = client;
             contact.nom = nom;
             contact.fonction = fonction;
             contact.email = email;
             contact.telephone = telephone;
+            contact.idClient = client.idClient;
+
+            Data.db.ContactDB.Add(contact);
+            Data.db.SaveChanges();
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

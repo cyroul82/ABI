@@ -232,28 +232,33 @@ namespace ABI
                 Int32 idClient = ++Data.clientNumber;
 
                 //client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, rue, codePostal, ville, comment, telephone);
-                ClientDB clientDB = new ClientDB();
-                clientDB.raisonSocial = raisonSocial;
-                clientDB.type = type;
-                clientDB.activite = activity;
-                clientDB.nature = nature;
-                clientDB.ca = chiffreAffaires;
-                clientDB.rue = rue;
-                clientDB.codePostal = codePostal;
-                clientDB.ville = ville;
-                clientDB.comment = comment;
-                clientDB.telephone = telephone;
-                Data.db.ClientDB.Add(clientDB);
+                client = new ClientDB();
+                client.raisonSocial = raisonSocial;
+                client.type = type;
+                client.activite = activity;
+                client.nature = nature;
+                client.ca = chiffreAffaires;
+                client.rue = rue;
+                client.codePostal = codePostal;
+                client.ville = ville;
+                client.effectifs = effectif;
+                client.comment = comment;
+                client.telephone = telephone;
+                Data.db.ClientDB.Add(client);
+           
+                    
                 try
                 {
                     Data.db.SaveChanges();
-                    int id = clientDB.idClient;
+                    int id = client.idClient;
+
                     Console.WriteLine("Id client last inserted : " + id);
                 }
-                catch(DbEntityValidationException e)
+                catch (DbEntityValidationException e)
                 {
-                    Console.WriteLine("exception in formClientBase Data.db.SaveChanges: " + e.Message );
+                    Console.WriteLine("validation exception : " + e.Message);
                 }
+
 
                 return true;
             }
@@ -290,6 +295,7 @@ namespace ABI
                         c.ville = txtVille.Text.Trim();
                         c.codePostal = mTxtCodePostal.Text.Trim();
                         c.rue = txtRue.Text.Trim();
+                        Data.db.SaveChanges();
                     }
                 }
                 return true;
