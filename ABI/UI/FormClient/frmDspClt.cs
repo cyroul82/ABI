@@ -235,6 +235,7 @@ namespace ABI
                         table.Rows[i][Tools.FONCTION] = contact.fonction;
                         table.Rows[i][Tools.EMAIL] = contact.email;
                         table.Rows[i][Tools.TELEPHONE] = contact.telephone;
+                        Data.db.SaveChanges();
                     }
                 }
             }

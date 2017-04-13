@@ -34,7 +34,6 @@ namespace ABI
                 else
                 {
                     lblError.Visible = true;
-                    //MessageBox.Show("Le contact doit avoir un nom", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
             }
         }
@@ -45,9 +44,7 @@ namespace ABI
             String fonction = txtContactFonction.Text;
             String email = txtContactEmail.Text;
             String telephone = txtContactTelephone.Text;
-            //client.CompteurContacts++;
 
-            //contact = new Contact(client.idClient, nom, fonction, email, telephone);
             contact = new ContactDB();
             contact.ClientDB = client;
             contact.nom = nom;
