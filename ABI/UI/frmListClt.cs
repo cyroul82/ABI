@@ -283,12 +283,32 @@ namespace ABI.UI
                     if (c.idClient == id)
                     {
                         client = c;
+                        if(client.ContactDB.Count > 0)
+                        {
+                            DialogResult result = MessageBox.Show(client.raisonSocial + " à des contacts, voulez-vous supprimer ces contacts ?", "Erreur contacts", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if(result == DialogResult.Yes)
+                            {
+                                for(Int32 j = 0; j<client.ContactDB.Count; id++)
+                                {
+                                    ContactDB contact = client.ContactDB.ElementAt(j);
+                                    Data.db.ContactDB.Remove(contact);
+                                }
+                                Data.db.ClientDB.Remove(client);
+                                deleteClientDataTable(client);
+                                Data.db.SaveChanges();
+                            }
+                        }
+                        else
+                        {
+                            Data.db.ClientDB.Remove(client);
+                            deleteClientDataTable(client);
+                            Data.db.SaveChanges();
+                        }
+                        
                     }
                 }
             }
-            Data.db.ClientDB.Remove(client);
-            deleteClientDataTable(client);
-            Data.db.SaveChanges();
+            
         }
 
         private void deleteClientDataTable(ClientDB client)
