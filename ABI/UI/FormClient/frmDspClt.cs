@@ -194,6 +194,11 @@ namespace ABI
             {
                 if (MessageBox.Show("Voulez-vous supprimer le contact " + contact.nom, "Supprimer un contact", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
+                    //Delete from the DB
+                    Data.db.ContactDB.Remove(contact);
+                    Data.db.SaveChanges();
+                    
+                    //Delete from the datatable
                     for (Int32 i = 0; i < table.Rows.Count; i++)
                     {
                         Int32 idContact = (Int32)table.Rows[i][0];
@@ -205,12 +210,8 @@ namespace ABI
                             }
                         }
                     }
-
-                    //client.ContactDB.Remove(contact);
-                    Data.db.ContactDB.Remove(contact);
-                    Data.db.SaveChanges();
-                    contact = null;
                 }
+                contact = null;
             }
         }
         private void btnModifierContact_Click(object sender, EventArgs e)
