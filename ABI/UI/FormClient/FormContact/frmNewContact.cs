@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace ABI
 {
     
-    public partial class frmNewContact : ABI.FormContact
+    public partial class frmNewContact : FormContact
     {
         private ContactDB contact;
         private ClientDB client;

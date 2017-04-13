@@ -70,7 +70,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelABI.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelABI.cs" />
     <Compile Include="ModelABI.Designer.cs">
       <DependentUpon>ModelABI.edmx</DependentUpon>
       <AutoGen>True</AutoGen>

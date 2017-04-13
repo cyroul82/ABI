@@ -10,7 +10,7 @@ namespace ABI
 {
 
     public delegate void SaveNewClient(ClientDB client);
-    public partial class frmNewClient : ABI.FormClient
+    public partial class frmNewClient : FormClient
     {
 
         public SaveNewClient saveNewClient;
