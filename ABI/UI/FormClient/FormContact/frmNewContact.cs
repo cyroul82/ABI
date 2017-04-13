@@ -47,7 +47,12 @@ namespace ABI
             String telephone = txtContactTelephone.Text;
             //client.CompteurContacts++;
 
-            contact = new Contact(client.idClient, nom, fonction, email, telephone);
+            //contact = new Contact(client.idClient, nom, fonction, email, telephone);
+            contact = new ContactDB();
+            contact.nom = nom;
+            contact.fonction = fonction;
+            contact.email = email;
+            contact.telephone = telephone;
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
