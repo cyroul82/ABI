@@ -316,7 +316,6 @@ namespace ABI.UI
                     {
                         client = c;
                     }
-
                 }
             }else
             {

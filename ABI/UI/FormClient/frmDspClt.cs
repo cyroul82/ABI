@@ -205,8 +205,10 @@ namespace ABI
                             }
                         }
                     }
-                    // dataView.Removecontact(contact);
-                    client.ContactDB.Remove(contact);
+
+                    //client.ContactDB.Remove(contact);
+                    Data.db.ContactDB.Remove(contact);
+                    Data.db.SaveChanges();
                     contact = null;
                 }
             }
