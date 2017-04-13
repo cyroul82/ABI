@@ -220,19 +220,19 @@ namespace ABI
             }
         }
 
-        private void UpdatingContact(Contact contact)
+        private void UpdatingContact(ContactDB contact)
         {
             for (Int32 i = 0; i < table.Rows.Count; i++)
             {
                 Int32 idContact = (Int32)table.Rows[i][0];
                 if (contact != null)
                 {
-                    if (idContact == contact.IdContact)
+                    if (idContact == contact.idContact)
                     {
-                        table.Rows[i][Tools.NOM] = contact.Nom;
-                        table.Rows[i][Tools.FONCTION] = contact.Fonction;
-                        table.Rows[i][Tools.EMAIL] = contact.Email;
-                        table.Rows[i][Tools.TELEPHONE] = contact.Telephone;
+                        table.Rows[i][Tools.NOM] = contact.nom;
+                        table.Rows[i][Tools.FONCTION] = contact.fonction;
+                        table.Rows[i][Tools.EMAIL] = contact.email;
+                        table.Rows[i][Tools.TELEPHONE] = contact.telephone;
                     }
                 }
             }
@@ -318,17 +318,17 @@ namespace ABI
 
         }
 
-        public void AddContact(Contact contact)
+        public void AddContact(ContactDB contact)
         {
             try
             {
                 DataRowView newRow = AddNew();
-                newRow[Tools.IDCLIENT] = contact.IdClient;
-                newRow[Tools.IDCONTACT] = contact.IdContact;
-                newRow[Tools.NOM] = contact.Nom;
-                newRow[Tools.FONCTION] = contact.Fonction;
-                newRow[Tools.EMAIL] = contact.Email;
-                newRow[Tools.TELEPHONE] = contact.Telephone;
+                newRow[Tools.IDCLIENT] = contact.idClient;
+                newRow[Tools.IDCONTACT] = contact.idContact;
+                newRow[Tools.NOM] = contact.nom;
+                newRow[Tools.FONCTION] = contact.fonction;
+                newRow[Tools.EMAIL] = contact.email;
+                newRow[Tools.TELEPHONE] = contact.telephone;
                 newRow.EndEdit();
             }
             catch (ConstraintException e)
