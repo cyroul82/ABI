@@ -212,13 +212,6 @@ namespace ABI.UI
             this.client = client;
             try
             {
-                if (client == null) { 
-                    Console.WriteLine("Client db id : " + "null");
-                }
-                else
-                {
-                    Console.WriteLine("Client db id : " + "not null");
-                }
                 row = table.NewRow();
                 row[Tools.IDCLIENT] = client.idClient;
                 row[Tools.RAISONSOCIALE] = client.raisonSocial;

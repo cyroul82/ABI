@@ -244,15 +244,11 @@ namespace ABI
                 client.effectifs = effectif;
                 client.comment = comment;
                 client.telephone = telephone;
-                Data.db.ClientDB.Add(client);
-           
-                    
+
                 try
                 {
+                    Data.db.ClientDB.Add(client);
                     Data.db.SaveChanges();
-                    int id = client.idClient;
-
-                    Console.WriteLine("Id client last inserted : " + id);
                 }
                 catch (DbEntityValidationException e)
                 {
