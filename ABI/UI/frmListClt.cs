@@ -290,31 +290,29 @@ namespace ABI.UI
                                                                 "voulez-vous continuer ?", "Supprimer Contacts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                             if(result == DialogResult.Yes)
                             {
-                                for(Int32 j = 0; j<client.ContactDB.Count; id++)
+                                for(Int32 j = 0; j<client.ContactDB.Count; j++)
                                 {
-                                    ContactDB contact = client.ContactDB.ElementAt(j);
-                                    Data.db.ContactDB.Remove(contact);
+                                    Data.db.ContactDB.Remove(client.ContactDB.ElementAt(j));
                                 }
-                                Data.db.ClientDB.Remove(client);
-                                deleteClientDataTable(client);
-                                Data.db.SaveChanges();
+                                removeClientFromDbAndSaveChanges(client);
                             }
                         }
                         else
                         {
-                            Data.db.ClientDB.Remove(client);
-                            deleteClientDataTable(client);
-                            Data.db.SaveChanges();
+                            removeClientFromDbAndSaveChanges(client);
                         }
                         
                     }
                 }
             }
-            
         }
 
-        private void deleteClientDataTable(ClientDB client)
+        private void removeClientFromDbAndSaveChanges(ClientDB client)
         {
+            Data.db.ClientDB.Remove(client);
+            Data.db.SaveChanges();
+
+            //Remove the row 
             for (Int32 i = 0; i < table.Rows.Count; i++)
             {
                 Int32 idClient = (Int32)table.Rows[i][0];
@@ -326,20 +324,16 @@ namespace ABI.UI
             client = null;
         }
 
+
         private void grdClient_SelectionChanged(object sender, EventArgs e)
         {
             if (grdClient.CurrentRow != null)
             {
                 Int32 id = (Int32)grdClient.CurrentRow.Cells[0].Value;
 
-                foreach (ClientDB c in Data.db.ClientDB.ToList())
-                {
-                    if (c.idClient == id)
-                    {
-                        client = c;
-                    }
-                }
-            }else
+                client = Data.db.ClientDB.Find(id);
+            }
+            else
             {
                 client = null;
             }
@@ -392,7 +386,7 @@ namespace ABI.UI
                 if (tabPageDictionnary.ContainsKey(client))
                 {
                     TabPage tabPage = tabPageDictionnary[client];
-                        tabControlClients.SelectTab(tabPage);
+                    tabControlClients.SelectTab(tabPage);
                     
                 }
                 //If the client isn't open yet, create the form frmDspClient with the client and display the tab
@@ -534,9 +528,8 @@ namespace ABI.UI
                 {
                     deletingClient(client);
 
-                    if (grdClient.CurrentRow != null)
-                    {
-                        grdClient.Rows[grdClient.CurrentRow.Index].Selected = true;
+                    if(grdClient.Rows.Count > 0){
+                        grdClient.Rows[0].Selected = true;
                     }
                     else
                     {
@@ -597,8 +590,7 @@ namespace ABI.UI
                 frmDspClientDictionnary.Clear();
                 tabControlClients.TabPages.Clear();
                 tabPageDictionnary.Clear();
-                //Todo to delete when finished !
-                //Data.listClient.Clear();
+
                 Close();
             }
         }

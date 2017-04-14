@@ -164,13 +164,8 @@ namespace ABI
                 if(row != null)
                 {
                     Int32 id = (Int32)row.Cells[0].Value;
-                    foreach(ContactDB c in client.ContactDB)
-                    {
-                        if(c.idContact == id)
-                        {
-                            contact = c;
-                        }
-                    }
+
+                    contact = Data.db.ContactDB.Find(id);
                 }
             }
         }
@@ -208,13 +203,16 @@ namespace ABI
                             {
                                 table.Rows[i].Delete();
                                 if (table.Rows.Count > 0) {
-                                    //grdContact.Rows.
+                                    grdContact.Rows[0].Selected = true;
+                                }
+                                else
+                                {
+                                    contact = null;
                                 }
                             }
                         }
                     }
                 }
-                contact = null;
             }
         }
         private void btnModifierContact_Click(object sender, EventArgs e)
