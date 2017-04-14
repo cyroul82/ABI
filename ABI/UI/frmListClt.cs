@@ -63,7 +63,7 @@ namespace ABI.UI
         private void loadListClient()
         {
             table = new DataTable();
-            column = new DataColumn();
+            
             buildTableColumn();
 
             for (Int32 i = 0; i < Data.db.ClientDB.ToList().Count; i++)
@@ -119,6 +119,7 @@ namespace ABI.UI
             column.ColumnName = Tools.IDCLIENT;
             column.ReadOnly = true;
             column.Unique = true;
+            column.AutoIncrement = true;
             table.Columns.Add(column);
 
             //Column RAISON SOCIALE
@@ -224,6 +225,7 @@ namespace ABI.UI
                 row[Tools.TELEPHONE] = client.telephone;
                 row[Tools.COMMENTAIRE] = client.comment;
                 table.Rows.Add(row);
+                
             }
             catch (ConstraintException e)
             {
@@ -342,7 +344,7 @@ namespace ABI.UI
         {
             if (client != null && !isHitGridNoWhere)
             {
-                AddClientTab(client);
+                addClientTab(client);
             }
         }
 
@@ -371,10 +373,11 @@ namespace ABI.UI
         /// Add a client to the TabControl, check whether the form display Client isn't already opened 
         /// </summary>
         /// <param name="client">Used to link the tab with the client</param>
-        private void AddClientTab(ClientDB client)
+        private void addClientTab(ClientDB client)
         {
             if (client != null)
             {
+                this.client = client;
                 //If the client already opened then display it in the TabControl
                 if (tabPageDictionnary.ContainsKey(client))
                 {
@@ -496,16 +499,22 @@ namespace ABI.UI
         {
             frmNewClient fnc = new frmNewClient();
             fnc.saveNewClient += new SaveNewClient(this.addClient);
+            fnc.saveAndOpenClient += new SaveNewClient(this.addClientAndOpen);
             DialogResult result = fnc.ShowDialog();
-            if (result == DialogResult.Yes)
-            {
-                AddClientTab(client);
-            }
+            
+        }
+
+        private void addClientAndOpen(ClientDB client)
+        {
+            addClientTab(client);
+            addClient(client);
+            
         }
         private void addClient(ClientDB client)
         {
             addClientDataTable(client);
             grdClient.Rows[grdClient.Rows.Count-1].Selected = true;
+            
         }
         /// <summary>
         /// Delete a client upon confirmation calls the method deletingClient(Client client)
@@ -532,7 +541,7 @@ namespace ABI.UI
             }
         }
         /// <summary>
-        /// Add a client the tab, calls the method AddClientTab(Client client)
+        /// Add a client the tab, calls the method addClientTab(Client client)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -540,7 +549,7 @@ namespace ABI.UI
         {
             if (client != null)
             {
-                AddClientTab(client);
+                addClientTab(client);
             }
             
         }
@@ -652,7 +661,7 @@ namespace ABI.UI
             {
                 if (client != null)
                 {
-                    AddClientTab(client);
+                    addClientTab(client);
                 }
             }
             //if raisonsociale is selected, filter the list by raison sociale
