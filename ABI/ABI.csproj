@@ -82,6 +82,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelABI.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ObservableListSource.cs" />
     <Compile Include="Tools.cs" />
     <Compile Include="UI\FormClient\FormClient.cs">
       <SubType>Form</SubType>
