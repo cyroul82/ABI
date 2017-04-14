@@ -12,8 +12,8 @@ namespace ABI
     public delegate void SaveNewClient(ClientDB client);
     public partial class frmNewClient : FormClient
     {
-
         public SaveNewClient saveNewClient;
+        public SaveNewClient saveAndOpenClient;
         public frmNewClient()
         {
             InitializeComponent();
@@ -40,11 +40,11 @@ namespace ABI
         {
             if (saveClient())
             {
-                if (saveNewClient != null)
+                if (saveAndOpenClient != null)
                 {
-                    this.saveNewClient(client);
+                    this.saveAndOpenClient(client);
                 }
-                DialogResult = DialogResult.Yes;
+                DialogResult = DialogResult.OK;
             }
         }
     }

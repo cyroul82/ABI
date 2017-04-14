@@ -24,7 +24,7 @@ namespace ABI.UI
         private Boolean isHitGridNoWhere = false;
 
         //Dictionnary to keep the reference of the TabPage opened associated with a client as Key
-        private Dictionary<ClientDB, TabPage> tabPageDictionnary = new Dictionary<ClientDB, TabPage>();
+        private Dictionary<Int32, TabPage> tabPageDictionnary = new Dictionary<Int32, TabPage>();
         //Dictionnary to keep the reference of the frmDspClient created associated with a tabPage as Key
         private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
 
@@ -231,6 +231,7 @@ namespace ABI.UI
                 row[Tools.TELEPHONE] = client.telephone;
                 row[Tools.COMMENTAIRE] = client.comment;
                 table.Rows.Add(row);
+                
             }
             catch (ConstraintException e)
             {
@@ -246,9 +247,9 @@ namespace ABI.UI
         {
             this.client = client;
             //Update tabPage.Text
-            if (tabPageDictionnary.ContainsKey(client))
+            if (tabPageDictionnary.ContainsKey(client.idClient))
             {
-                TabPage tabPage = tabPageDictionnary[client];
+                TabPage tabPage = tabPageDictionnary[client.idClient];
                 tabPage.Text = client.raisonSocial;
             }
 
@@ -349,7 +350,7 @@ namespace ABI.UI
         {
             if (client != null && !isHitGridNoWhere)
             {
-                AddClientTab(client);
+                addClientTab(client);
             }
         }
 
@@ -378,14 +379,14 @@ namespace ABI.UI
         /// Add a client to the TabControl, check whether the form display Client isn't already opened 
         /// </summary>
         /// <param name="client">Used to link the tab with the client</param>
-        private void AddClientTab(ClientDB client)
+        private void addClientTab(ClientDB client)
         {
             if (client != null)
             {
                 //If the client already opened then display it in the TabControl
-                if (tabPageDictionnary.ContainsKey(client))
+                if (tabPageDictionnary.ContainsKey(client.idClient))
                 {
-                    TabPage tabPage = tabPageDictionnary[client];
+                    TabPage tabPage = tabPageDictionnary[client.idClient];
                     tabControlClients.SelectTab(tabPage);
                     
                 }
@@ -406,7 +407,7 @@ namespace ABI.UI
                     //Set the actual display
                     tabControlClients.SelectTab(tabPage);
                     //Add the tab to the dictionnary
-                    tabPageDictionnary.Add(client, tabPage);
+                    tabPageDictionnary.Add(client.idClient, tabPage);
                     //Add the form to the dictionnary
                     frmDspClientDictionnary.Add(tabPage, fdc);
                     fdc.Show();
@@ -419,15 +420,15 @@ namespace ABI.UI
         /// </summary>
         private void removeTab()
         {
-            if (tabPageDictionnary.ContainsKey(client))
+            if (tabPageDictionnary.ContainsKey(client.idClient))
             {
-                TabPage tabPage = tabPageDictionnary[client];
+                TabPage tabPage = tabPageDictionnary[client.idClient];
                 if (tabPage != null)
                 {
                     //Remove the tab from the tab Control
                     tabControlClients.TabPages.Remove(tabPage);
                     //Remove the tab from the dictionnary
-                    tabPageDictionnary.Remove(client);
+                    tabPageDictionnary.Remove(client.idClient);
                     //Remove the form from the dictionnary
                     frmDspClientDictionnary.Remove(tabPage);
                     //Display the ListClient tab (Main tab)
@@ -469,11 +470,11 @@ namespace ABI.UI
                     tabPage = tabControlClients.TabPages[tabControlClients.SelectedIndex];
 
                     //find the reference in the dictionnary to get the client
-                    foreach (KeyValuePair<ClientDB, TabPage> kvp in tabPageDictionnary)
+                    foreach (KeyValuePair<Int32, TabPage> kvp in tabPageDictionnary)
                     {
                         if (kvp.Value == tabPage)
                         {
-                            client = kvp.Key;
+                            client = Data.db.ClientDB.Find(kvp.Key);
                         }
                     }
 
@@ -503,11 +504,16 @@ namespace ABI.UI
         {
             frmNewClient fnc = new frmNewClient();
             fnc.saveNewClient += new SaveNewClient(this.addClient);
+            fnc.saveAndOpenClient += new SaveNewClient(this.addClientAndOpen);
             DialogResult result = fnc.ShowDialog();
-            if (result == DialogResult.Yes)
-            {
-                AddClientTab(client);
-            }
+            
+        }
+
+        private void addClientAndOpen(ClientDB client)
+        {
+            addClientTab(client);
+            addClient(client);
+            
         }
         private void addClient(ClientDB client)
         {
@@ -539,7 +545,7 @@ namespace ABI.UI
             }
         }
         /// <summary>
-        /// Add a client the tab, calls the method AddClientTab(Client client)
+        /// Add a client the tab, calls the method addClientTab(Client client)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -547,7 +553,7 @@ namespace ABI.UI
         {
             if (client != null)
             {
-                AddClientTab(client);
+                addClientTab(client);
             }
             
         }
@@ -560,7 +566,7 @@ namespace ABI.UI
         {
             for(Int32 i=0; i<tabPageDictionnary.Count; i++)
             {
-                KeyValuePair<ClientDB ,TabPage> k = tabPageDictionnary.ElementAt(i);
+                KeyValuePair<Int32 ,TabPage> k = tabPageDictionnary.ElementAt(i);
                 tabControlClients.TabPages.Remove(k.Value);
 
                 frmDspClient f = frmDspClientDictionnary[k.Value] as frmDspClient;
@@ -659,7 +665,7 @@ namespace ABI.UI
             {
                 if (client != null)
                 {
-                    AddClientTab(client);
+                    addClientTab(client);
                 }
             }
             //if raisonsociale is selected, filter the list by raison sociale
