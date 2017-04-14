@@ -69,8 +69,8 @@ namespace ABI.UI
             for (Int32 i = 0; i < Data.db.ClientDB.ToList().Count; i++)
             {
                 addClientDataTable(Data.db.ClientDB.ToList()[i]);
-                
             }
+
             grdClient.DataSource = table.DefaultView;
 
             grdClient.Columns[Tools.IDCLIENT].Visible = false;
