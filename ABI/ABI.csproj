@@ -81,17 +81,17 @@
       <DependentUpon>ModelABI.edmx</DependentUpon>
     </Compile>
     <Compile Include="Tools.cs" />
-    <Compile Include="UI\FormClient\FormClientBase.cs">
+    <Compile Include="UI\FormClient\FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormClient\FormClientBase.Designer.cs">
-      <DependentUpon>FormClientBase.cs</DependentUpon>
+    <Compile Include="UI\FormClient\FormClient.Designer.cs">
+      <DependentUpon>FormClient.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormClient\FormContact\FormContactBase.cs">
+    <Compile Include="UI\FormClient\FormContact\FormContact.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormClient\FormContact\FormContactBase.Designer.cs">
-      <DependentUpon>FormContactBase.cs</DependentUpon>
+    <Compile Include="UI\FormClient\FormContact\FormContact.Designer.cs">
+      <DependentUpon>FormContact.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormClient\FormContact\frmDspContact.cs">
       <SubType>Form</SubType>
@@ -131,11 +131,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\FormClient\FormClientBase.resx">
-      <DependentUpon>FormClientBase.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormClient\FormClient.resx">
+      <DependentUpon>FormClient.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormClient\FormContact\FormContactBase.resx">
-      <DependentUpon>FormContactBase.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormClient\FormContact\FormContact.resx">
+      <DependentUpon>FormContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormClient\FormContact\frmDspContact.resx">
       <DependentUpon>frmDspContact.cs</DependentUpon>
