@@ -24,7 +24,7 @@ namespace ABI.UI
         private Boolean isHitGridNoWhere = false;
 
         //Dictionnary to keep the reference of the TabPage opened associated with a client as Key
-        private Dictionary<Int32, TabPage> tabPageDictionnary = new Dictionary<Int32, TabPage>();
+        private Dictionary<ClientDB, TabPage> tabPageDictionnary = new Dictionary<ClientDB, TabPage>();
         //Dictionnary to keep the reference of the frmDspClient created associated with a tabPage as Key
         private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
 
@@ -247,9 +247,9 @@ namespace ABI.UI
         {
             this.client = client;
             //Update tabPage.Text
-            if (tabPageDictionnary.ContainsKey(client.idClient))
+            if (tabPageDictionnary.ContainsKey(client))
             {
-                TabPage tabPage = tabPageDictionnary[client.idClient];
+                TabPage tabPage = tabPageDictionnary[client];
                 tabPage.Text = client.raisonSocial;
             }
 
@@ -383,10 +383,11 @@ namespace ABI.UI
         {
             if (client != null)
             {
+                this.client = client;
                 //If the client already opened then display it in the TabControl
-                if (tabPageDictionnary.ContainsKey(client.idClient))
+                if (tabPageDictionnary.ContainsKey(client))
                 {
-                    TabPage tabPage = tabPageDictionnary[client.idClient];
+                    TabPage tabPage = tabPageDictionnary[client];
                     tabControlClients.SelectTab(tabPage);
                     
                 }
@@ -407,7 +408,7 @@ namespace ABI.UI
                     //Set the actual display
                     tabControlClients.SelectTab(tabPage);
                     //Add the tab to the dictionnary
-                    tabPageDictionnary.Add(client.idClient, tabPage);
+                    tabPageDictionnary.Add(client, tabPage);
                     //Add the form to the dictionnary
                     frmDspClientDictionnary.Add(tabPage, fdc);
                     fdc.Show();
@@ -420,15 +421,15 @@ namespace ABI.UI
         /// </summary>
         private void removeTab()
         {
-            if (tabPageDictionnary.ContainsKey(client.idClient))
+            if (tabPageDictionnary.ContainsKey(client))
             {
-                TabPage tabPage = tabPageDictionnary[client.idClient];
+                TabPage tabPage = tabPageDictionnary[client];
                 if (tabPage != null)
                 {
                     //Remove the tab from the tab Control
                     tabControlClients.TabPages.Remove(tabPage);
                     //Remove the tab from the dictionnary
-                    tabPageDictionnary.Remove(client.idClient);
+                    tabPageDictionnary.Remove(client);
                     //Remove the form from the dictionnary
                     frmDspClientDictionnary.Remove(tabPage);
                     //Display the ListClient tab (Main tab)
@@ -470,11 +471,11 @@ namespace ABI.UI
                     tabPage = tabControlClients.TabPages[tabControlClients.SelectedIndex];
 
                     //find the reference in the dictionnary to get the client
-                    foreach (KeyValuePair<Int32, TabPage> kvp in tabPageDictionnary)
+                    foreach (KeyValuePair<ClientDB, TabPage> kvp in tabPageDictionnary)
                     {
                         if (kvp.Value == tabPage)
                         {
-                            client = Data.db.ClientDB.Find(kvp.Key);
+                            client = kvp.Key;
                         }
                     }
 
@@ -519,6 +520,7 @@ namespace ABI.UI
         {
             addClientDataTable(client);
             grdClient.Rows[grdClient.Rows.Count-1].Selected = true;
+            
         }
         /// <summary>
         /// Delete a client upon confirmation calls the method deletingClient(Client client)
@@ -566,7 +568,7 @@ namespace ABI.UI
         {
             for(Int32 i=0; i<tabPageDictionnary.Count; i++)
             {
-                KeyValuePair<Int32 ,TabPage> k = tabPageDictionnary.ElementAt(i);
+                KeyValuePair<ClientDB ,TabPage> k = tabPageDictionnary.ElementAt(i);
                 tabControlClients.TabPages.Remove(k.Value);
 
                 frmDspClient f = frmDspClientDictionnary[k.Value] as frmDspClient;
