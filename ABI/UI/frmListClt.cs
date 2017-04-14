@@ -63,7 +63,7 @@ namespace ABI.UI
         private void loadListClient()
         {
             table = new DataTable();
-            column = new DataColumn();
+            
             buildTableColumn();
 
             for (Int32 i = 0; i < Data.db.ClientDB.ToList().Count; i++)
@@ -119,6 +119,7 @@ namespace ABI.UI
             column.ColumnName = Tools.IDCLIENT;
             column.ReadOnly = true;
             column.Unique = true;
+            column.AutoIncrement = true;
             table.Columns.Add(column);
 
             //Column RAISON SOCIALE
