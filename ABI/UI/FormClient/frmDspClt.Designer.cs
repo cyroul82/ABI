@@ -34,6 +34,14 @@
             this.btnModifier = new System.Windows.Forms.Button();
             this.gpxContact = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listContactsDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.listContactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnModifierContact = new System.Windows.Forms.Button();
@@ -47,27 +55,19 @@
             this.btnModifierClient = new System.Windows.Forms.Button();
             this.btnAnnulerModifClient = new System.Windows.Forms.Button();
             this.btnDeleteClient = new System.Windows.Forms.Button();
-            this.listContactsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.listContactsBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.listContactsBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.listContactsDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
@@ -79,16 +79,16 @@
             this.gpbClientInformation.SuspendLayout();
             this.gpxContact.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listContactsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listContactsBindingSource)).BeginInit();
             this.panel3.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listContactsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listContactsBindingNavigator)).BeginInit();
             this.listContactsBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listContactsDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // mTxtCodePostal
@@ -196,6 +196,7 @@
             // 
             this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.listContactsDataGridView);
+            this.panel2.Controls.Add(this.listContactsBindingNavigator);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.flowLayoutPanel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -203,6 +204,69 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(417, 222);
             this.panel2.TabIndex = 1;
+            // 
+            // listContactsDataGridView
+            // 
+            this.listContactsDataGridView.AllowUserToAddRows = false;
+            this.listContactsDataGridView.AllowUserToDeleteRows = false;
+            this.listContactsDataGridView.AutoGenerateColumns = false;
+            this.listContactsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.listContactsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listContactsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6});
+            this.listContactsDataGridView.DataSource = this.listContactsBindingSource;
+            this.listContactsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listContactsDataGridView.Location = new System.Drawing.Point(112, 51);
+            this.listContactsDataGridView.Name = "listContactsDataGridView";
+            this.listContactsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listContactsDataGridView.Size = new System.Drawing.Size(305, 171);
+            this.listContactsDataGridView.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdContact";
+            this.dataGridViewTextBoxColumn1.HeaderText = "IdContact";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Nom";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Nom";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "Fonction";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Fonction";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Email";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Email";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "Telephone";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Telephone";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "IdClient";
+            this.dataGridViewTextBoxColumn6.HeaderText = "IdClient";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // listContactsBindingSource
+            // 
+            this.listContactsBindingSource.DataSource = typeof(ABI.ClasseMetier.Contact);
             // 
             // panel3
             // 
@@ -348,10 +412,6 @@
             this.btnDeleteClient.UseVisualStyleBackColor = true;
             this.btnDeleteClient.Click += new System.EventHandler(this.btnSupprimerClient_Click);
             // 
-            // listContactsBindingSource
-            // 
-            this.listContactsBindingSource.DataSource = typeof(ABI.ClasseMetier.Contact);
-            // 
             // listContactsBindingNavigator
             // 
             this.listContactsBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -371,16 +431,41 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.listContactsBindingNavigatorSaveItem});
-            this.listContactsBindingNavigator.Location = new System.Drawing.Point(20, 20);
+            this.listContactsBindingNavigator.Location = new System.Drawing.Point(112, 26);
             this.listContactsBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.listContactsBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.listContactsBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.listContactsBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.listContactsBindingNavigator.Name = "listContactsBindingNavigator";
             this.listContactsBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.listContactsBindingNavigator.Size = new System.Drawing.Size(936, 25);
+            this.listContactsBindingNavigator.Size = new System.Drawing.Size(305, 25);
             this.listContactsBindingNavigator.TabIndex = 6;
             this.listContactsBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -414,16 +499,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -446,26 +524,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // listContactsBindingNavigatorSaveItem
             // 
@@ -476,70 +536,10 @@
             this.listContactsBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.listContactsBindingNavigatorSaveItem.Text = "Save Data";
             // 
-            // listContactsDataGridView
-            // 
-            this.listContactsDataGridView.AllowUserToAddRows = false;
-            this.listContactsDataGridView.AllowUserToDeleteRows = false;
-            this.listContactsDataGridView.AutoGenerateColumns = false;
-            this.listContactsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.listContactsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listContactsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.listContactsDataGridView.DataSource = this.listContactsBindingSource;
-            this.listContactsDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.listContactsDataGridView.Location = new System.Drawing.Point(112, 26);
-            this.listContactsDataGridView.Name = "listContactsDataGridView";
-            this.listContactsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listContactsDataGridView.Size = new System.Drawing.Size(305, 196);
-            this.listContactsDataGridView.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "IdContact";
-            this.dataGridViewTextBoxColumn1.HeaderText = "IdContact";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Nom";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Nom";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Fonction";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Fonction";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Email";
-            this.dataGridViewTextBoxColumn4.HeaderText = "Email";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "Telephone";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Telephone";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "IdClient";
-            this.dataGridViewTextBoxColumn6.HeaderText = "IdClient";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
             // frmDspClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(976, 600);
-            this.Controls.Add(this.listContactsBindingNavigator);
             this.Controls.Add(this.btnDeleteClient);
             this.Controls.Add(this.btnFermer);
             this.Controls.Add(this.splitContainer1);
@@ -552,7 +552,6 @@
             this.Controls.SetChildIndex(this.splitContainer1, 0);
             this.Controls.SetChildIndex(this.btnFermer, 0);
             this.Controls.SetChildIndex(this.btnDeleteClient, 0);
-            this.Controls.SetChildIndex(this.listContactsBindingNavigator, 0);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).EndInit();
@@ -566,6 +565,8 @@
             this.gpxContact.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listContactsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listContactsBindingSource)).EndInit();
             this.panel3.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
@@ -573,11 +574,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.listContactsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listContactsBindingNavigator)).EndInit();
             this.listContactsBindingNavigator.ResumeLayout(false);
             this.listContactsBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listContactsDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

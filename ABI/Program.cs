@@ -20,7 +20,7 @@ namespace ABI
 
             //ClientDB client = Data.db.ClientDB.Include("ContactDB").First(c => c.idClient == 7);
             //client.raisonSocial = "TOTO";
-            Data.db.SaveChanges();
+            //Data.db.SaveChanges();
             //Console.WriteLine("Client 7 : " + client.raisonSocial) ;
             
         }

@@ -245,15 +245,15 @@ namespace ABI
                 client.comment = comment;
                 client.telephone = telephone;
 
-                try
-                {
-                    Data.db.ClientDB.Add(client);
-                    Data.db.SaveChanges();
-                }
-                catch (DbEntityValidationException e)
-                {
-                    Console.WriteLine("validation exception : " + e.Message);
-                }
+                //try
+                //{
+                //    Data.db.ClientDB.Add(client);
+                //    Data.db.SaveChanges();
+                //}
+                //catch (DbEntityValidationException e)
+                //{
+                //    Console.WriteLine("validation exception : " + e.Message);
+                //}
 
                 return true;
             }
@@ -274,23 +274,24 @@ namespace ABI
                     ClientDB c = Data.db.ClientDB.ToList()[i];
                     if (c.idClient == idClient)
                     {
-                        c.comment = txtComment.Text.Trim();
-                        c.raisonSocial = txtRaisonSocial.Text.Trim();
-                        c.type = cbxType.SelectedItem.ToString();
-                        c.activite = cbxActivite.SelectedItem.ToString();
-                        c.nature = cbxNature.SelectedItem.ToString();
+                        client = c;
+                        client.comment = txtComment.Text.Trim();
+                        client.raisonSocial = txtRaisonSocial.Text.Trim();
+                        client.type = cbxType.SelectedItem.ToString();
+                        client.activite = cbxActivite.SelectedItem.ToString();
+                        client.nature = cbxNature.SelectedItem.ToString();
                         Int16 effectif = 0;
                         Boolean isEffectifInt = Int16.TryParse(txtEffectif.Text.Trim(), out effectif);
-                        c.effectifs = effectif;
+                        client.effectifs = effectif;
                         Decimal chiffreAffaires = 0;
                         Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
-                        c.ca = chiffreAffaires;
-                        c.telephone = txtTelephone.Text.Trim();
+                        client.ca = chiffreAffaires;
+                        client.telephone = txtTelephone.Text.Trim();
                         //Create the address
-                        c.ville = txtVille.Text.Trim();
-                        c.codePostal = mTxtCodePostal.Text.Trim();
-                        c.rue = txtRue.Text.Trim();
-                        Data.db.SaveChanges();
+                        client.ville = txtVille.Text.Trim();
+                        client.codePostal = mTxtCodePostal.Text.Trim();
+                        client.rue = txtRue.Text.Trim();
+                        //Data.db.SaveChanges();
                     }
                 }
                 return true;

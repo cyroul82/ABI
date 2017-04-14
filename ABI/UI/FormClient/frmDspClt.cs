@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -14,8 +15,7 @@ namespace ABI
 
     public partial class frmDspClient : ABI.FormClient
     {
-        private MyDataTable table;
-        private MyDataView dataView;
+
         private ContactDB contact;
         public ClientHandler UpdatingClient;
         public ClientHandler DeletingClient;
@@ -51,18 +51,8 @@ namespace ABI
         {
             fillUpForm();
 
-            table = new MyDataTable("ContactTable");
-            
-            grdContact.DataSource = table;
-            
-            dataView = new MyDataView(table);
-            grdContact.Columns[Tools.IDCLIENT].Visible = false;
-            grdContact.Columns[Tools.IDCONTACT].Visible = false;
+            this.listContactsBindingSource.DataSource = Data.db.ClientDB.Local.ToBindingList();
 
-            foreach(ContactDB contact in client.ContactDB)
-            {
-                dataView.AddContact(contact);
-            }
         }
 
         private void fillUpForm()
@@ -159,15 +149,15 @@ namespace ABI
         //Contact
         private void grdContact_SelectionChanged(object sender, EventArgs e)
         {
-            foreach(DataGridViewRow row in grdContact.SelectedRows)
-            {
-                if(row != null)
-                {
-                    Int32 id = (Int32)row.Cells[0].Value;
+            //foreach(DataGridViewRow row in grdContact.SelectedRows)
+            //{
+            //    if(row != null)
+            //    {
+            //        Int32 id = (Int32)row.Cells[0].Value;
 
-                    contact = Data.db.ContactDB.Find(id);
-                }
-            }
+            //        contact = Data.db.ContactDB.Find(id);
+            //    }
+            //}
         }
         private void btnAjouterContact_Click(object sender, EventArgs e)
         {
@@ -177,43 +167,43 @@ namespace ABI
         }
         private void savingContact(ContactDB contact)
         {
-            this.contact = contact;
-            dataView.AddContact(contact);
-            client.ContactDB.Add(contact);
-            grdContact.Rows[grdContact.Rows.Count - 1].Selected = true;
+            //this.contact = contact;
+            //dataView.AddContact(contact);
+            //client.ContactDB.Add(contact);
+            //grdContact.Rows[grdContact.Rows.Count - 1].Selected = true;
            
         }
         private void btnSupprimerContact_Click(object sender, EventArgs e)
         {
-            if (contact != null)
-            {
-                if (MessageBox.Show("Voulez-vous supprimer le contact " + contact.nom, "Supprimer un contact", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-                {
-                    //Delete from the DB
-                    Data.db.ContactDB.Remove(contact);
-                    Data.db.SaveChanges();
+            //if (contact != null)
+            //{
+            //    if (MessageBox.Show("Voulez-vous supprimer le contact " + contact.nom, "Supprimer un contact", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+            //    {
+            //        //Delete from the DB
+            //        Data.db.ContactDB.Remove(contact);
+            //        Data.db.SaveChanges();
                     
-                    //Delete from the datatable
-                    for (Int32 i = 0; i < table.Rows.Count; i++)
-                    {
-                        Int32 idContact = (Int32)table.Rows[i][0];
-                        if (contact != null)
-                        {
-                            if (idContact == contact.idContact)
-                            {
-                                table.Rows[i].Delete();
-                                if (table.Rows.Count > 0) {
-                                    grdContact.Rows[0].Selected = true;
-                                }
-                                else
-                                {
-                                    contact = null;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            //        //Delete from the datatable
+            //        for (Int32 i = 0; i < table.Rows.Count; i++)
+            //        {
+            //            Int32 idContact = (Int32)table.Rows[i][0];
+            //            if (contact != null)
+            //            {
+            //                if (idContact == contact.idContact)
+            //                {
+            //                    table.Rows[i].Delete();
+            //                    if (table.Rows.Count > 0) {
+            //                        grdContact.Rows[0].Selected = true;
+            //                    }
+            //                    else
+            //                    {
+            //                        contact = null;
+            //                    }
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
         }
         private void btnModifierContact_Click(object sender, EventArgs e)
         {
@@ -226,121 +216,121 @@ namespace ABI
 
         private void UpdatingContact(ContactDB contact)
         {
-            for (Int32 i = 0; i < table.Rows.Count; i++)
-            {
-                Int32 idContact = (Int32)table.Rows[i][0];
-                if (contact != null)
-                {
-                    if (idContact == contact.idContact)
-                    {
-                        table.Rows[i][Tools.NOM] = contact.nom;
-                        table.Rows[i][Tools.FONCTION] = contact.fonction;
-                        table.Rows[i][Tools.EMAIL] = contact.email;
-                        table.Rows[i][Tools.TELEPHONE] = contact.telephone;
-                        Data.db.SaveChanges();
-                    }
-                }
-            }
+            //for (Int32 i = 0; i < table.Rows.Count; i++)
+            //{
+            //    Int32 idContact = (Int32)table.Rows[i][0];
+            //    if (contact != null)
+            //    {
+            //        if (idContact == contact.idContact)
+            //        {
+            //            table.Rows[i][Tools.NOM] = contact.nom;
+            //            table.Rows[i][Tools.FONCTION] = contact.fonction;
+            //            table.Rows[i][Tools.EMAIL] = contact.email;
+            //            table.Rows[i][Tools.TELEPHONE] = contact.telephone;
+            //            Data.db.SaveChanges();
+            //        }
+            //    }
+            //}
         }
 
         private void txtSearchContact_KeyUp(object sender, KeyEventArgs e)
         {
             if (txtSearchContact.Text != String.Empty)
             {
-               dataView.RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
+               ((DataView)listContactsDataGridView.DataSource).RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
            }
         }
 
     }
 
-    class MyDataTable : DataTable
-    {
-        private DataColumn column;
-        public MyDataTable(string tableName) : base(tableName)
-        {
-            buildTableColumn();
-        }
+    //class MyDataTable : DataTable
+    //{
+    //    private DataColumn column;
+    //    public MyDataTable(string tableName) : base(tableName)
+    //    {
+    //        buildTableColumn();
+    //    }
 
-        /// <summary>
-        /// Build the Table Column with DataColumn
-        /// </summary>
-        private void buildTableColumn()
-        {
+    //    /// <summary>
+    //    /// Build the Table Column with DataColumn
+    //    /// </summary>
+    //    private void buildTableColumn()
+    //    {
             
-            column = new DataColumn();
-            column.DataType = typeof(System.Int32);
-            column.ColumnName = Tools.IDCONTACT;
-            column.ReadOnly = true;
-            column.AutoIncrement = true;
-            column.Unique = true;
-            Columns.Add(column);
+    //        column = new DataColumn();
+    //        column.DataType = typeof(System.Int32);
+    //        column.ColumnName = Tools.IDCONTACT;
+    //        column.ReadOnly = true;
+    //        column.AutoIncrement = true;
+    //        column.Unique = true;
+    //        Columns.Add(column);
 
-            column = new DataColumn();
-            column.DataType = typeof(System.Int32);
-            column.ColumnName = Tools.IDCLIENT;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
+    //        column = new DataColumn();
+    //        column.DataType = typeof(System.Int32);
+    //        column.ColumnName = Tools.IDCLIENT;
+    //        column.Unique = false;
+    //        column.AutoIncrement = false;
+    //        Columns.Add(column);
 
-            //Column RAISON SOCIALE
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.NOM;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
+    //        //Column RAISON SOCIALE
+    //        column = new DataColumn();
+    //        column.DataType = typeof(System.String);
+    //        column.ColumnName = Tools.NOM;
+    //        column.Unique = false;
+    //        column.AutoIncrement = false;
+    //        Columns.Add(column);
 
-            //Column FONCTION
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.FONCTION;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
+    //        //Column FONCTION
+    //        column = new DataColumn();
+    //        column.DataType = typeof(System.String);
+    //        column.ColumnName = Tools.FONCTION;
+    //        column.Unique = false;
+    //        column.AutoIncrement = false;
+    //        Columns.Add(column);
 
-            //Column EMAIL
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.EMAIL;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
+    //        //Column EMAIL
+    //        column = new DataColumn();
+    //        column.DataType = typeof(System.String);
+    //        column.ColumnName = Tools.EMAIL;
+    //        column.Unique = false;
+    //        column.AutoIncrement = false;
+    //        Columns.Add(column);
 
-            //Column TELEPHONE
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.TELEPHONE;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
-        }
-    }
+    //        //Column TELEPHONE
+    //        column = new DataColumn();
+    //        column.DataType = typeof(System.String);
+    //        column.ColumnName = Tools.TELEPHONE;
+    //        column.Unique = false;
+    //        column.AutoIncrement = false;
+    //        Columns.Add(column);
+    //    }
+    //}
 
-    class MyDataView : DataView
-    {
-        public MyDataView(DataTable table) : base(table)
-        {
+    //class MyDataView : DataView
+    //{
+    //    public MyDataView(DataTable table) : base(table)
+    //    {
 
-        }
+    //    }
 
-        public void AddContact(ContactDB contact)
-        {
-            try
-            {
-                DataRowView newRow = AddNew();
-                newRow[Tools.IDCLIENT] = contact.idClient;
-                newRow[Tools.IDCONTACT] = contact.idContact;
-                newRow[Tools.NOM] = contact.nom;
-                newRow[Tools.FONCTION] = contact.fonction;
-                newRow[Tools.EMAIL] = contact.email;
-                newRow[Tools.TELEPHONE] = contact.telephone;
-                newRow.EndEdit();
-            }
-            catch (ConstraintException e)
-            {
-                MessageBox.Show("ConstraintException : " + e.Message);
-            }
-        }
+    //    public void AddContact(ContactDB contact)
+    //    {
+    //        try
+    //        {
+    //            DataRowView newRow = AddNew();
+    //            newRow[Tools.IDCLIENT] = contact.idClient;
+    //            newRow[Tools.IDCONTACT] = contact.idContact;
+    //            newRow[Tools.NOM] = contact.nom;
+    //            newRow[Tools.FONCTION] = contact.fonction;
+    //            newRow[Tools.EMAIL] = contact.email;
+    //            newRow[Tools.TELEPHONE] = contact.telephone;
+    //            newRow.EndEdit();
+    //        }
+    //        catch (ConstraintException e)
+    //        {
+    //            MessageBox.Show("ConstraintException : " + e.Message);
+    //        }
+    //    }
 
-    }
+    //}
 }

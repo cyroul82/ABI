@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListClt));
             this.panelListClient = new System.Windows.Forms.Panel();
+            this.clientDataGridView = new System.Windows.Forms.DataGridView();
             this.panelControlClient = new System.Windows.Forms.Panel();
             this.btnCloseTabs = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -52,21 +53,20 @@
             this.contextMenuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fermerTousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clientBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.clientBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
-            this.clientDataGridView = new System.Windows.Forms.DataGridView();
+            this.clientBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,20 +82,21 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelListClient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
             this.panelControlClient.SuspendLayout();
             this.flowLayoutPanelSearchClient.SuspendLayout();
             this.tabControlClients.SuspendLayout();
             this.ClientListTab.SuspendLayout();
             this.contextMenuStripTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingNavigator)).BeginInit();
             this.clientBindingNavigator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panelListClient
             // 
             this.panelListClient.Controls.Add(this.clientDataGridView);
+            this.panelListClient.Controls.Add(this.clientBindingNavigator);
             this.panelListClient.Controls.Add(this.panelControlClient);
             this.panelListClient.Controls.Add(this.flowLayoutPanelSearchClient);
             this.panelListClient.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -103,6 +104,39 @@
             this.panelListClient.Name = "panelListClient";
             this.panelListClient.Size = new System.Drawing.Size(952, 574);
             this.panelListClient.TabIndex = 0;
+            // 
+            // clientDataGridView
+            // 
+            this.clientDataGridView.AllowUserToAddRows = false;
+            this.clientDataGridView.AllowUserToDeleteRows = false;
+            this.clientDataGridView.AutoGenerateColumns = false;
+            this.clientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.clientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.clientDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14});
+            this.clientDataGridView.DataSource = this.clientBindingSource;
+            this.clientDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clientDataGridView.Location = new System.Drawing.Point(113, 87);
+            this.clientDataGridView.MultiSelect = false;
+            this.clientDataGridView.Name = "clientDataGridView";
+            this.clientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.clientDataGridView.Size = new System.Drawing.Size(839, 487);
+            this.clientDataGridView.TabIndex = 2;
+            this.clientDataGridView.SelectionChanged += new System.EventHandler(this.clientDataGridView_SelectionChanged);
+            this.clientDataGridView.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.clientDataGridView_MouseDoubleClick);
             // 
             // panelControlClient
             // 
@@ -328,10 +362,6 @@
             this.fermerTousToolStripMenuItem.Text = "Fermer Tous";
             this.fermerTousToolStripMenuItem.Click += new System.EventHandler(this.fermerTousToolStripMenuItem_Click);
             // 
-            // clientBindingSource
-            // 
-            this.clientBindingSource.DataSource = typeof(ABI.Client);
-            // 
             // clientBindingNavigator
             // 
             this.clientBindingNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -351,16 +381,42 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.clientBindingNavigatorSaveItem});
-            this.clientBindingNavigator.Location = new System.Drawing.Point(0, 0);
+            this.clientBindingNavigator.Location = new System.Drawing.Point(113, 62);
             this.clientBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.clientBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.clientBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.clientBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.clientBindingNavigator.Name = "clientBindingNavigator";
             this.clientBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.clientBindingNavigator.Size = new System.Drawing.Size(960, 25);
+            this.clientBindingNavigator.Size = new System.Drawing.Size(839, 25);
             this.clientBindingNavigator.TabIndex = 4;
             this.clientBindingNavigator.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -394,16 +450,9 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -426,65 +475,20 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // clientBindingNavigatorSaveItem
             // 
             this.clientBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.clientBindingNavigatorSaveItem.Enabled = false;
             this.clientBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("clientBindingNavigatorSaveItem.Image")));
             this.clientBindingNavigatorSaveItem.Name = "clientBindingNavigatorSaveItem";
             this.clientBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.clientBindingNavigatorSaveItem.Text = "Save Data";
             // 
-            // clientDataGridView
+            // clientBindingSource
             // 
-            this.clientDataGridView.AllowUserToAddRows = false;
-            this.clientDataGridView.AllowUserToDeleteRows = false;
-            this.clientDataGridView.AutoGenerateColumns = false;
-            this.clientDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.clientDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.clientDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14});
-            this.clientDataGridView.DataSource = this.clientBindingSource;
-            this.clientDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.clientDataGridView.Location = new System.Drawing.Point(113, 62);
-            this.clientDataGridView.Name = "clientDataGridView";
-            this.clientDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.clientDataGridView.Size = new System.Drawing.Size(839, 512);
-            this.clientDataGridView.TabIndex = 2;
+            this.clientBindingSource.DataSource = typeof(ABI.Client);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -576,7 +580,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(960, 600);
-            this.Controls.Add(this.clientBindingNavigator);
             this.Controls.Add(this.tabControlClients);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;
@@ -586,19 +589,18 @@
             this.Load += new System.EventHandler(this.frmClient_Load);
             this.panelListClient.ResumeLayout(false);
             this.panelListClient.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).EndInit();
             this.panelControlClient.ResumeLayout(false);
             this.flowLayoutPanelSearchClient.ResumeLayout(false);
             this.flowLayoutPanelSearchClient.PerformLayout();
             this.tabControlClients.ResumeLayout(false);
             this.ClientListTab.ResumeLayout(false);
             this.contextMenuStripTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientBindingNavigator)).EndInit();
             this.clientBindingNavigator.ResumeLayout(false);
             this.clientBindingNavigator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientBindingSource)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
