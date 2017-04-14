@@ -210,7 +210,6 @@ namespace ABI.UI
         /// <param name="client"></param>
         private void addClientDataTable(ClientDB client)
         {
-            this.client = client;
             try
             {
                 row = table.NewRow();
@@ -326,7 +325,16 @@ namespace ABI.UI
             {
                 Int32 id = (Int32)grdClient.CurrentRow.Cells[0].Value;
 
-                client = Data.db.ClientDB.Find(id);
+                ICollection<ClientDB> ic = Data.db.ClientDB.ToList();
+                for (Int32 i=0; i < ic.Count; i++)
+                {
+                    ClientDB c = ic.ElementAt(i);
+                    if(id == c.idClient)
+                    {
+                        client = c;
+                    }
+                }
+                //client = Data.db.ClientDB.Find(id);
             }
             else
             {

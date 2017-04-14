@@ -255,7 +255,6 @@ namespace ABI
                     Console.WriteLine("validation exception : " + e.Message);
                 }
 
-
                 return true;
             }
             else       
