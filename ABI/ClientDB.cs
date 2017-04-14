@@ -17,7 +17,7 @@ namespace ABI
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ClientDB()
         {
-            this.ContactDB = new HashSet<ContactDB>();
+            this.ContactDB = new ObservableListSource<ContactDB>();
         }
     
         public int idClient { get; set; }
@@ -34,6 +34,6 @@ namespace ABI
         public string ville { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContactDB> ContactDB { get; set; }
+        public virtual ObservableListSource<ContactDB> ContactDB { get; set; }
     }
 }
