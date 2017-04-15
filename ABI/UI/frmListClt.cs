@@ -52,8 +52,6 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void frmClient_Load(object sender, EventArgs e)
         {
-            ABIDBEntities context = new ABIDBEntities();
-            
             clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
             grdClient.Columns[0].Visible = false;
             grdClient.Columns[1].HeaderText = "Raison Sociale";
@@ -94,6 +92,8 @@ namespace ABI.UI
             //grdClient.Columns[Tools.IDCLIENT].DefaultCellStyle = idClient;
         }
 
+
+
         private void addClientAndOpen(ClientDB client)
         {
             addClientTab(client);
@@ -102,6 +102,8 @@ namespace ABI.UI
         }
         private void addClient(ClientDB client)
         {
+            Data.db.ClientDB.Add(client);
+            Data.db.SaveChanges();
             grdClient.DataSource = Data.db.ClientDB.ToList();
         }
 
@@ -188,19 +190,6 @@ namespace ABI.UI
             }
         }
 
-        /// <summary>
-        /// Double click on the gridDataView
-        /// <para>Check first that the client isn't null and isHitGridNoWhere isn't true</para>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void grdClient_DoubleClick(object sender, EventArgs e)
-        {
-            if (client != null && !isHitGridNoWhere)
-            {
-                addClientTab(client);
-            }
-        }
 
         /// <summary>
         /// Check whether a click is within the dataGridView or outside
@@ -467,7 +456,9 @@ namespace ABI.UI
         private void btnToutAfficher_Click(object sender, EventArgs e)
         {
             txtSearchClient.Text = null;
-            ((DataView)grdClient.DataSource).RowFilter = null;
+            //((DataView)grdClient.DataSource).RowFilter = null;
+            grdClient.DataSource = Data.db.ClientDB.ToList();
+
         }
         /// <summary>
         /// Called upon each key up on the search box
@@ -488,12 +479,15 @@ namespace ABI.UI
             //if raisonsociale is selected, filter the list by raison sociale
             else if (txtSearchClient.Text != null && searchCriteria == Tools.RAISONSOCIALE)
             {
-                ((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
+                //((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
+                //grdClient.DataSource = Data.db.ClientDB.ToList().Where(c => c.raisonSocial ==txtSearchClient.Text);
+                grdClient.DataSource = Data.db.ClientDB.Where(c => c.raisonSocial.Contains(txtSearchClient.Text.Trim())).ToList();
             }
             //if raisonsociale is selected, filter the list by ville
             else if (txtSearchClient.Text != null && searchCriteria == Tools.VILLE)
             {
-                ((DataView)grdClient.DataSource).RowFilter = "Ville like '%" + txtSearchClient.Text + "%'";
+                //((DataView)grdClient.DataSource).RowFilter = "Ville like '%" + txtSearchClient.Text + "%'";
+                grdClient.DataSource = Data.db.ClientDB.ToList().Where(c => c.ville.Contains(txtSearchClient.Text.Trim()));
             }
 
         }
@@ -602,6 +596,20 @@ namespace ABI.UI
                 {
                     ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " >= " + Decimal.Parse(txtSearchClient.Text);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Double click on the gridDataView
+        /// <para>Check first that the client isn't null and isHitGridNoWhere isn't true</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void grdClient_DoubleClick(object sender, MouseEventArgs e)
+        {
+            if (client != null && !isHitGridNoWhere)
+            {
+                addClientTab(client);
             }
         }
 

@@ -245,15 +245,15 @@ namespace ABI
                 client.comment = comment;
                 client.telephone = telephone;
 
-                try
-                {
-                    Data.db.ClientDB.Add(client);
-                    Data.db.SaveChanges();
-                }
-                catch (DbEntityValidationException e)
-                {
-                    Console.WriteLine("validation exception : " + e.Message);
-                }
+                //try
+                //{
+                //    Data.db.ClientDB.Add(client);
+                //    Data.db.SaveChanges();
+                //}
+                //catch (DbEntityValidationException e)
+                //{
+                //    Console.WriteLine("validation exception : " + e.Message);
+                //}
 
                 return true;
             }

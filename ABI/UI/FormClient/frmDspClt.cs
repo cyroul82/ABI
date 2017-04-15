@@ -14,8 +14,6 @@ namespace ABI
 
     public partial class frmDspClient : ABI.FormClient
     {
-        private MyDataTable table;
-        private MyDataView dataView;
         private ContactDB contact;
         public ClientHandler UpdatingClient;
         public ClientHandler DeletingClient;
@@ -51,18 +49,7 @@ namespace ABI
         {
             fillUpForm();
 
-            table = new MyDataTable("ContactTable");
-            
-            grdContact.DataSource = table;
-            
-            dataView = new MyDataView(table);
-            grdContact.Columns[Tools.IDCLIENT].Visible = false;
-            grdContact.Columns[Tools.IDCONTACT].Visible = false;
-
-            foreach(ContactDB contact in client.ContactDB)
-            {
-                dataView.AddContact(contact);
-            }
+            grdContact.DataSource = client.ContactDB.GetList();
         }
 
         private void fillUpForm()
@@ -178,7 +165,6 @@ namespace ABI
         private void savingContact(ContactDB contact)
         {
             this.contact = contact;
-            dataView.AddContact(contact);
             client.ContactDB.Add(contact);
             grdContact.Rows[grdContact.Rows.Count - 1].Selected = true;
            
@@ -192,26 +178,6 @@ namespace ABI
                     //Delete from the DB
                     Data.db.ContactDB.Remove(contact);
                     Data.db.SaveChanges();
-                    
-                    //Delete from the datatable
-                    for (Int32 i = 0; i < table.Rows.Count; i++)
-                    {
-                        Int32 idContact = (Int32)table.Rows[i][0];
-                        if (contact != null)
-                        {
-                            if (idContact == contact.idContact)
-                            {
-                                table.Rows[i].Delete();
-                                if (table.Rows.Count > 0) {
-                                    grdContact.Rows[0].Selected = true;
-                                }
-                                else
-                                {
-                                    contact = null;
-                                }
-                            }
-                        }
-                    }
                 }
             }
         }
@@ -226,121 +192,15 @@ namespace ABI
 
         private void UpdatingContact(ContactDB contact)
         {
-            for (Int32 i = 0; i < table.Rows.Count; i++)
-            {
-                Int32 idContact = (Int32)table.Rows[i][0];
-                if (contact != null)
-                {
-                    if (idContact == contact.idContact)
-                    {
-                        table.Rows[i][Tools.NOM] = contact.nom;
-                        table.Rows[i][Tools.FONCTION] = contact.fonction;
-                        table.Rows[i][Tools.EMAIL] = contact.email;
-                        table.Rows[i][Tools.TELEPHONE] = contact.telephone;
-                        Data.db.SaveChanges();
-                    }
-                }
-            }
+            Data.db.SaveChanges();
         }
 
         private void txtSearchContact_KeyUp(object sender, KeyEventArgs e)
         {
             if (txtSearchContact.Text != String.Empty)
             {
-               dataView.RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
+               ((DataView)grdContact.DataSource).RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
            }
         }
-
-    }
-
-    class MyDataTable : DataTable
-    {
-        private DataColumn column;
-        public MyDataTable(string tableName) : base(tableName)
-        {
-            buildTableColumn();
-        }
-
-        /// <summary>
-        /// Build the Table Column with DataColumn
-        /// </summary>
-        private void buildTableColumn()
-        {
-            
-            column = new DataColumn();
-            column.DataType = typeof(System.Int32);
-            column.ColumnName = Tools.IDCONTACT;
-            column.ReadOnly = true;
-            column.AutoIncrement = true;
-            column.Unique = true;
-            Columns.Add(column);
-
-            column = new DataColumn();
-            column.DataType = typeof(System.Int32);
-            column.ColumnName = Tools.IDCLIENT;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
-
-            //Column RAISON SOCIALE
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.NOM;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
-
-            //Column FONCTION
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.FONCTION;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
-
-            //Column EMAIL
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.EMAIL;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
-
-            //Column TELEPHONE
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.TELEPHONE;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            Columns.Add(column);
-        }
-    }
-
-    class MyDataView : DataView
-    {
-        public MyDataView(DataTable table) : base(table)
-        {
-
-        }
-
-        public void AddContact(ContactDB contact)
-        {
-            try
-            {
-                DataRowView newRow = AddNew();
-                newRow[Tools.IDCLIENT] = contact.idClient;
-                newRow[Tools.IDCONTACT] = contact.idContact;
-                newRow[Tools.NOM] = contact.nom;
-                newRow[Tools.FONCTION] = contact.fonction;
-                newRow[Tools.EMAIL] = contact.email;
-                newRow[Tools.TELEPHONE] = contact.telephone;
-                newRow.EndEdit();
-            }
-            catch (ConstraintException e)
-            {
-                MessageBox.Show("ConstraintException : " + e.Message);
-            }
-        }
-
     }
 }

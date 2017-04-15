@@ -58,6 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ABIDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ABIDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ClasseMetier\Client.cs" />
     <Compile Include="ClasseMetier\Contact.cs" />
     <Compile Include="ClientDB.cs">
@@ -171,6 +176,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelABI.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ABIDBDataSet.xsc">
+      <DependentUpon>ABIDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ABIDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ABIDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ABIDBDataSet.xss">
+      <DependentUpon>ABIDBDataSet.xsd</DependentUpon>
+    </None>
     <None Include="ModelABI.edmx.diagram">
       <DependentUpon>ModelABI.edmx</DependentUpon>
     </None>
