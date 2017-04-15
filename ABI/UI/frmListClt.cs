@@ -16,9 +16,6 @@ namespace ABI.UI
         private ClientDB client;
         private TabPage tabPage;
         private frmDspClient formClient;
-        private DataTable table;
-        private DataColumn column;
-        private DataRow row;
         private String searchCriteria;
         //Variable used to control the click on the dataGridView, within itself = false, outside the dataGridView = true
         private Boolean isHitGridNoWhere = false;
@@ -34,17 +31,6 @@ namespace ABI.UI
         public frmListClt()
         {
             InitializeComponent();
-            txtSearchClient.Select();
-        }
-
-        /// <summary>
-        /// Call to initialize the Class
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void frmClient_Load(object sender, EventArgs e)
-        {
-            loadListClient();
             cbxSearch.Items.Add(Tools.RAISONSOCIALE);
             cbxSearch.Items.Add(Tools.VILLE);
             cbxSearch.Items.Add(Tools.CHIFFREAFFAIRES);
@@ -56,29 +42,29 @@ namespace ABI.UI
 
             cbxType.Items.Add(Tools.PUBLIC);
             cbxType.Items.Add(Tools.PRIVE);
+            txtSearchClient.Select();
         }
+
         /// <summary>
-        /// Loads the list of client form Donnee.listClient and styles the dataGridView grdClient
+        /// Call to initialize the Class
         /// </summary>
-        private void loadListClient()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmClient_Load(object sender, EventArgs e)
         {
-            table = new DataTable();
+            ABIDBEntities context = new ABIDBEntities();
             
-            buildTableColumn();
-
-            for (Int32 i = 0; i < Data.db.ClientDB.ToList().Count; i++)
-            {
-                addClientDataTable(Data.db.ClientDB.ToList()[i]);
-            }
-
-            grdClient.DataSource = table.DefaultView;
-
-            grdClient.Columns[Tools.IDCLIENT].Visible = false;
+            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
+            grdClient.Columns[0].Visible = false;
+            grdClient.Columns[1].HeaderText = "Raison Sociale";
+            grdClient.Columns[2].HeaderText = "Type";
+            grdClient.Columns[3].HeaderText = "Activité";
+            grdClient.Columns[4].HeaderText = "Nature";
 
             // Set the row and column header styles.
 
             grdClient.RowHeadersDefaultCellStyle.BackColor = Color.Black;
-            
+
             // Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default
             // value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
             grdClient.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
@@ -101,142 +87,29 @@ namespace ABI.UI
             DataGridViewCellStyle raisonSocialStyle = new DataGridViewCellStyle();
             raisonSocialStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
             raisonSocialStyle.ForeColor = Color.DarkBlue;
-            grdClient.Columns[Tools.RAISONSOCIALE].DefaultCellStyle = raisonSocialStyle;
+            //grdClient.Columns[Tools.RAISONSOCIALE].DefaultCellStyle = raisonSocialStyle;
 
             DataGridViewCellStyle idClient = new DataGridViewCellStyle();
             idClient.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            grdClient.Columns[Tools.IDCLIENT].DefaultCellStyle = idClient;
+            //grdClient.Columns[Tools.IDCLIENT].DefaultCellStyle = idClient;
         }
 
-        /// <summary>
-        /// Build the Table Column with DataColumn
-        /// </summary>
-        private void buildTableColumn()
+        private void addClientAndOpen(ClientDB client)
         {
-            //Column IDCLIENT Unique and ReadOnly
-            column = new DataColumn();
-            column.DataType = typeof(System.Int32);
-            column.ColumnName = Tools.IDCLIENT;
-            column.ReadOnly = true;
-            column.Unique = true;
-            column.AutoIncrement = true;
-            table.Columns.Add(column);
+            addClientTab(client);
+            addClient(client);
 
-            //Column RAISON SOCIALE
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.RAISONSOCIALE;
-            column.ReadOnly = false;
-            column.Unique = true;
-            column.AutoIncrement = false;
-            table.Columns.Add(column);
-
-            //Column FONCTION
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.TYPE;
-            column.ReadOnly = false;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            table.Columns.Add(column);
-
-            //Column EMAIL
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.ACTIVITE;
-            column.ReadOnly = false;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            table.Columns.Add(column);
-
-            //Column TELEPHONE
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.NATURE;
-            column.ReadOnly = false;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            table.Columns.Add(column);
-
-            //Column EFFECTIF
-            column = new DataColumn();
-            column.DataType = typeof(System.Int32);
-            column.ColumnName = Tools.EFFECTIF;
-            column.ReadOnly = false;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            table.Columns.Add(column);
-
-            //Column CHIFFRE AFFAIRES
-            column = new DataColumn();
-            column.DataType = typeof(System.Decimal);
-            column.ColumnName = Tools.CHIFFREAFFAIRES;
-            column.ReadOnly = false;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            table.Columns.Add(column);
-
-            //Column VILLE
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.VILLE;
-            column.ReadOnly = false;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            table.Columns.Add(column);
-
-            //Column TELEPHONE
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.TELEPHONE;
-            column.ReadOnly = false;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            table.Columns.Add(column);
-
-            //Column COMMENTAIRES
-            column = new DataColumn();
-            column.DataType = typeof(System.String);
-            column.ColumnName = Tools.COMMENTAIRE;
-            column.ReadOnly = false;
-            column.Unique = false;
-            column.AutoIncrement = false;
-            table.Columns.Add(column);
         }
-
-        /// <summary>
-        /// Add a Client
-        /// </summary>
-        /// <param name="client"></param>
-        private void addClientDataTable(ClientDB client)
+        private void addClient(ClientDB client)
         {
-            try
-            {
-                row = table.NewRow();
-                row[Tools.IDCLIENT] = client.idClient;
-                row[Tools.RAISONSOCIALE] = client.raisonSocial;
-                row[Tools.TYPE] = client.type;
-                row[Tools.ACTIVITE] = client.activite;
-                row[Tools.NATURE] = client.nature;
-                row[Tools.EFFECTIF] = client.effectifs.ToString();
-                row[Tools.CHIFFREAFFAIRES] = client.ca.ToString();
-                row[Tools.VILLE] = client.ville;
-                row[Tools.TELEPHONE] = client.telephone;
-                row[Tools.COMMENTAIRE] = client.comment;
-                table.Rows.Add(row);
-                
-            }
-            catch (ConstraintException e)
-            {
-                MessageBox.Show("Impossible d'ajouter ce client : " + e.Message, "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            grdClient.DataSource = Data.db.ClientDB.ToList();
         }
-        
+
         /// <summary>
         /// Update a Client
         /// </summary>
         /// <param name="client"></param>
-        private void updateClientDataTable(ClientDB client)
+        private void updateClient(ClientDB client)
         {
             this.client = client;
             //Update tabPage.Text
@@ -245,27 +118,9 @@ namespace ABI.UI
                 TabPage tabPage = tabPageDictionnary[client];
                 tabPage.Text = client.raisonSocial;
             }
-
-            //Update the listClient in DataView
-            for (Int32 i = 0; i < table.Rows.Count; i++)
-            {
-                Int32 idClient = (Int32)table.Rows[i][0];
-                if (idClient == client.idClient)
-                {
-                    table.Rows[i][Tools.RAISONSOCIALE] = client.raisonSocial;
-                    table.Rows[i][Tools.TYPE] = client.type;
-                    table.Rows[i][Tools.ACTIVITE] = client.activite;
-                    table.Rows[i][Tools.NATURE] = client.nature;
-                    table.Rows[i][Tools.EFFECTIF] = client.effectifs.ToString();
-                    table.Rows[i][Tools.CHIFFREAFFAIRES] = client.ca.ToString();
-                    table.Rows[i][Tools.VILLE] = client.ville;
-                    table.Rows[i][Tools.TELEPHONE] = client.telephone;
-                    table.Rows[i][Tools.COMMENTAIRE] = client.comment;
-                }
-            }
         }
 
-        private void deletingClient(ClientDB client)
+        private void deleteClient(ClientDB client)
         {
             removeTab();
             foreach (DataGridViewRow row in grdClient.SelectedRows)
@@ -305,16 +160,7 @@ namespace ABI.UI
         {
             Data.db.ClientDB.Remove(client);
             Data.db.SaveChanges();
-
-            //Remove the row 
-            for (Int32 i = 0; i < table.Rows.Count; i++)
-            {
-                Int32 idClient = (Int32)table.Rows[i][0];
-                if (idClient == client.idClient)
-                {
-                    table.Rows[i].Delete();
-                }
-            }
+            grdClient.DataSource = Data.db.ClientDB.ToList();
             client = null;
         }
 
@@ -398,8 +244,8 @@ namespace ABI.UI
                 {
                     frmDspClient fdc = new frmDspClient(client);
                     fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
-                    fdc.UpdatingClient += new ClientHandler(this.updateClientDataTable);
-                    fdc.DeletingClient += new ClientHandler(this.deletingClient);
+                    fdc.UpdatingClient += new ClientHandler(this.updateClient);
+                    fdc.DeletingClient += new ClientHandler(this.deleteClient);
                     fdc.TopLevel = false;
                     fdc.Dock = DockStyle.Fill;
 
@@ -512,20 +358,9 @@ namespace ABI.UI
             
         }
 
-        private void addClientAndOpen(ClientDB client)
-        {
-            addClientTab(client);
-            addClient(client);
-            
-        }
-        private void addClient(ClientDB client)
-        {
-            addClientDataTable(client);
-            grdClient.Rows[grdClient.Rows.Count-1].Selected = true;
-            
-        }
+        
         /// <summary>
-        /// Delete a client upon confirmation calls the method deletingClient(Client client)
+        /// Delete a client upon confirmation calls the method deleteClient(Client client)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -536,7 +371,7 @@ namespace ABI.UI
                 DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.raisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    deletingClient(client);
+                    deleteClient(client);
 
                     if(grdClient.Rows.Count > 0){
                         grdClient.Rows[0].Selected = true;
@@ -607,28 +442,6 @@ namespace ABI.UI
         //////////////////////////////////////////////////End Button Click Left Panel
 
 
-
-
-        //TODO to implement sometimes the right click on the tabs , not finished !  
-        /////////////////////////////////////////////////Right Click Tab (Contextuel Menu)
-        private void tabControlClientDetail_MouseUp(object sender, MouseEventArgs e)
-        {
-            //if(e.Button == MouseButtons.Right)
-            //{
-            //    for (Int32 i = 0; i < tabControlClientDetail.TabCount; i++)
-            //    {
-            //        // get their rectangle area and check if it contains the mouse cursor
-            //        Rectangle r = tabControlClientDetail.GetTabRect(i);
-
-            //        if (r.Contains(e.Location))
-            //        {
-            //            // show the context menu here
-            //            tabControlClientDetail.SelectTab(i);
-            //            contextMenuStripTab.Show(Cursor.Position.X, Cursor.Position.Y);
-            //        }
-            //    }
-            //}
-        }
         private void fermerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.removeTab();
