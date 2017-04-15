@@ -49,7 +49,7 @@ namespace ABI
         {
             fillUpForm();
 
-            grdContact.DataSource = client.ContactDB.GetList();
+            contactDBBindingSource.DataSource = client.ContactDB.GetList();
         }
 
         private void fillUpForm()
@@ -148,11 +148,14 @@ namespace ABI
         {
             foreach(DataGridViewRow row in grdContact.SelectedRows)
             {
-                if(row != null)
+                if(row != null && row.Cells[0].Value != null)
                 {
-                    Int32 id = (Int32)row.Cells[0].Value;
-
-                    contact = Data.db.ContactDB.Find(id);
+                    Int32 id;
+                    Boolean b = Int32.TryParse(row.Cells[0].Value.ToString(), out id);
+                    if (b)
+                    {
+                        contact = Data.db.ContactDB.Find(id);
+                    }
                 }
             }
         }
@@ -165,7 +168,6 @@ namespace ABI
         private void savingContact(ContactDB contact)
         {
             this.contact = contact;
-            client.ContactDB.Add(contact);
             grdContact.Rows[grdContact.Rows.Count - 1].Selected = true;
            
         }

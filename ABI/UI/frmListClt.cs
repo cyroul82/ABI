@@ -104,7 +104,8 @@ namespace ABI.UI
         {
             Data.db.ClientDB.Add(client);
             Data.db.SaveChanges();
-            grdClient.DataSource = Data.db.ClientDB.ToList();
+
+            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
         }
 
         /// <summary>
@@ -144,6 +145,7 @@ namespace ABI.UI
                                 for(Int32 j = 0; j<client.ContactDB.Count; j++)
                                 {
                                     Data.db.ContactDB.Remove(client.ContactDB.ElementAt(j));
+                                    //Data.db.SaveChanges();
                                 }
                                 removeClientFromDbAndSaveChanges(client);
                             }
@@ -160,9 +162,11 @@ namespace ABI.UI
 
         private void removeClientFromDbAndSaveChanges(ClientDB client)
         {
+
             Data.db.ClientDB.Remove(client);
             Data.db.SaveChanges();
-            grdClient.DataSource = Data.db.ClientDB.ToList();
+            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
+            
             client = null;
         }
 
@@ -173,16 +177,17 @@ namespace ABI.UI
             {
                 Int32 id = (Int32)grdClient.CurrentRow.Cells[0].Value;
 
-                ICollection<ClientDB> ic = Data.db.ClientDB.ToList();
-                for (Int32 i=0; i < ic.Count; i++)
-                {
-                    ClientDB c = ic.ElementAt(i);
-                    if(id == c.idClient)
-                    {
-                        client = c;
-                    }
-                }
-                //client = Data.db.ClientDB.Find(id);
+                //ICollection<ClientDB> ic = Data.db.ClientDB.ToList();
+                //for (Int32 i=0; i < ic.Count; i++)
+                //{
+                //    ClientDB c = ic.ElementAt(i);
+                //    if(id == c.idClient)
+                //    {
+                //        client = c;
+                        
+                //    }
+                //}
+                client = Data.db.ClientDB.Find(id);
             }
             else
             {
@@ -208,6 +213,8 @@ namespace ABI.UI
                 }
                 else isHitGridNoWhere = false;
             }
+
+            
         }
 
 
@@ -340,11 +347,16 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void btnAjouter_Click(object sender, EventArgs e)
         {
+            newClient();
+            
+        }
+
+        private void newClient()
+        {
             frmNewClient fnc = new frmNewClient();
             fnc.saveNewClient += new SaveNewClient(this.addClient);
             fnc.saveAndOpenClient += new SaveNewClient(this.addClientAndOpen);
             DialogResult result = fnc.ShowDialog();
-            
         }
 
         
@@ -481,13 +493,13 @@ namespace ABI.UI
             {
                 //((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
                 //grdClient.DataSource = Data.db.ClientDB.ToList().Where(c => c.raisonSocial ==txtSearchClient.Text);
-                grdClient.DataSource = Data.db.ClientDB.Where(c => c.raisonSocial.Contains(txtSearchClient.Text.Trim())).ToList();
+                clientDBBindingSource.DataSource = Data.db.ClientDB.Where(c => c.raisonSocial.Contains(txtSearchClient.Text)).ToList();
             }
             //if raisonsociale is selected, filter the list by ville
             else if (txtSearchClient.Text != null && searchCriteria == Tools.VILLE)
             {
                 //((DataView)grdClient.DataSource).RowFilter = "Ville like '%" + txtSearchClient.Text + "%'";
-                grdClient.DataSource = Data.db.ClientDB.ToList().Where(c => c.ville.Contains(txtSearchClient.Text.Trim()));
+                clientDBBindingSource.DataSource = Data.db.ClientDB.ToList().Where(c => c.ville.Contains(txtSearchClient.Text));
             }
 
         }
@@ -611,6 +623,16 @@ namespace ABI.UI
             {
                 addClientTab(client);
             }
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            newClient();
+        }
+
+        private void grdClient_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
         }
 
         ////////////////////////////////////////////////End Search Panel Button & Textbox Click
