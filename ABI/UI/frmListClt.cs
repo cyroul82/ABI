@@ -94,19 +94,7 @@ namespace ABI.UI
 
 
 
-        private void addClientAndOpen(ClientDB client)
-        {
-            addClientTab(client);
-            addClient(client);
-
-        }
-        private void addClient(ClientDB client)
-        {
-            Data.db.ClientDB.Add(client);
-            Data.db.SaveChanges();
-
-            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
-        }
+       
 
         /// <summary>
         /// Update a Client
@@ -123,53 +111,88 @@ namespace ABI.UI
             }
         }
 
-        private void deleteClient(ClientDB client)
+        /// <summary>
+        /// Delete a client upon confirmation calls the method deleteClient(Client client)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            removeTab();
-            foreach (DataGridViewRow row in grdClient.SelectedRows)
+            if (client != null)
             {
-                Int32 id = (Int32)row.Cells[0].Value;
-
-                foreach (ClientDB c in Data.db.ClientDB.ToList())
+                DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.raisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
                 {
-                    if (c.idClient == id)
+                    deleteClient(client);
+
+                    if (grdClient.Rows.Count > 0)
                     {
-                        client = c;
-                        if(client.ContactDB.Count > 0)
-                        {
-                            DialogResult result = MessageBox.Show("La suppression de " +client.raisonSocial + 
-                                                                " entraîne la suppression de tous ses contacts \n" +
-                                                                "voulez-vous continuer ?", "Supprimer Contacts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                            if(result == DialogResult.Yes)
-                            {
-                                for(Int32 j = 0; j<client.ContactDB.Count; j++)
-                                {
-                                    Data.db.ContactDB.Remove(client.ContactDB.ElementAt(j));
-                                    //Data.db.SaveChanges();
-                                }
-                                removeClientFromDbAndSaveChanges(client);
-                            }
-                        }
-                        else
-                        {
-                            removeClientFromDbAndSaveChanges(client);
-                        }
-                        
+                        grdClient.Rows[0].Selected = true;
+                    }
+                    else
+                    {
+                        client = null;
                     }
                 }
             }
         }
 
-        private void removeClientFromDbAndSaveChanges(ClientDB client)
+        /// <summary>
+        /// Delete a client from the Tab and from the DB, if the client has Contacts, removes all his contacts too.
+        /// </summary>
+        /// <param name="client">Take a client as Parameter</param>
+        private void deleteClient(ClientDB client)
         {
-
-            Data.db.ClientDB.Remove(client);
-            Data.db.SaveChanges();
-            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
-            
-            client = null;
+            Boolean canRemove = true;
+            //Remove the tab from the TabControl
+            removeTab();
+            //get the row of the selection to retrieve the client selected
+            foreach (DataGridViewRow row in grdClient.SelectedRows)
+            {
+                //Get the id from the DataGridView
+                Int32 id = (Int32)row.Cells[0].Value;
+                //Find the client with the id from the DataGridView
+                ClientDB c = Data.db.ClientDB.Find(id);
+                //if client found
+                if (c != null)
+                {
+                    client = c;
+                    //Check whether the client has contacts
+                    if (client.ContactDB.Count > 0)
+                    {
+                        //confirmation to delete the client and all his contacts
+                        DialogResult result = MessageBox.Show("La suppression de " + client.raisonSocial +
+                                                            " entraîne la suppression de tous ses contacts \n" +
+                                                            "voulez-vous continuer ?", "Supprimer Contacts", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        //if confirmed
+                        if (result == DialogResult.Yes)
+                        {
+                            //list all the contacts form the client
+                            for (Int32 j = 0; j < client.ContactDB.Count; j++)
+                            {
+                                //Remove each contact from the DB
+                                Data.db.ContactDB.Remove(client.ContactDB.ElementAt(j));
+                            }
+                        }
+                        else
+                        {
+                            canRemove = false;
+                        }
+                    }
+                    if (canRemove)
+                    {
+                        //Remove the client
+                        Data.db.ClientDB.Remove(client);
+                        //Save all changes
+                        Data.db.SaveChanges();
+                        //delete the reference of this client
+                        client = null;
+                        //update the datasource with the new list
+                        clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
+                    }
+                }
+            }
         }
-
 
         private void grdClient_SelectionChanged(object sender, EventArgs e)
         {
@@ -359,31 +382,22 @@ namespace ABI.UI
             DialogResult result = fnc.ShowDialog();
         }
 
-        
-        /// <summary>
-        /// Delete a client upon confirmation calls the method deleteClient(Client client)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSupprimer_Click(object sender, EventArgs e)
+        private void addClientAndOpen(ClientDB client)
         {
-            if (client != null)
-            {
-                DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.raisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    deleteClient(client);
+            addClientTab(client);
+            addClient(client);
 
-                    if(grdClient.Rows.Count > 0){
-                        grdClient.Rows[0].Selected = true;
-                    }
-                    else
-                    {
-                        client = null;
-                    }
-                }
-            }
         }
+        private void addClient(ClientDB client)
+        {
+            Data.db.ClientDB.Add(client);
+            Data.db.SaveChanges();
+
+            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
+        }
+
+
+        
         /// <summary>
         /// Add a client the tab, calls the method addClientTab(Client client)
         /// </summary>
