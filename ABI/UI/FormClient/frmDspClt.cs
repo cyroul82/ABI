@@ -200,8 +200,8 @@ namespace ABI
         {
             if (txtSearchContact.Text != String.Empty)
             {
-                var query = from item in client.ContactDB
-                            group item by new { item} into g select g.toList();
+                //var query = from item in client.ContactDB
+                //            group item by new { item} into g select g.toList();
                 //((DataView)grdContact.DataSource).RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
                 contactDBBindingSource.DataSource = client.ContactDB.GetList();
             }

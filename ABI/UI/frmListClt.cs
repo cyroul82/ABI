@@ -168,10 +168,13 @@ namespace ABI.UI
                         if (result == DialogResult.Yes)
                         {
                             //list all the contacts form the client
-                            for (Int32 j = 0; j < client.ContactDB.Count; j++)
+                            var L2EQuery = Data.db.ContactDB.Where(s => s.idClient == client.idClient);
+                            List<ContactDB> listContact = L2EQuery.ToList<ContactDB>();
+                            for (Int32 j = 0; j < listContact.Count; j++)
                             {
                                 //Remove each contact from the DB
-                                Data.db.ContactDB.Remove(client.ContactDB.ElementAt(j));
+                                ContactDB contact = listContact[j];
+                                Data.db.ContactDB.Remove(contact);
                             }
                         }
                         else
