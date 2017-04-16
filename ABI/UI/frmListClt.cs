@@ -118,19 +118,24 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
+            //Check whether the client isn't null
             if (client != null)
             {
+                //Show dialog to confirm before deleting
                 DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.raisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
+                    //Deleting the client
                     deleteClient(client);
-
+                    //check if the grdclient isn't empty
                     if (grdClient.Rows.Count > 0)
                     {
+                        //set the selected row to the first one
                         grdClient.Rows[0].Selected = true;
                     }
                     else
                     {
+                        //if no more row in the gridView then set the client to null after deleting the last client
                         client = null;
                     }
                 }
