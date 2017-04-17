@@ -18,6 +18,7 @@ namespace ABI
         private ContactDB contact;
         public ClientHandler UpdatingClient;
         public ClientHandler DeletingClient;
+        public ClientHandler ClosingTab;
         private Boolean isHitGridNoWhere;
         public Boolean IsModifed { get; private set; } = false;
         public frmDspClient(ClientDB client): base(client)
@@ -42,6 +43,7 @@ namespace ABI
             } 
             else
             {
+                ClosingTab?.Invoke(Client);
                 Close();
             }
         }

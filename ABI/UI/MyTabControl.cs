@@ -17,26 +17,15 @@ namespace ABI.UI
         /// </summary>
         public void removeTab(ClientDB client)
         {
-            for (Int32 i = 0; i < openedTabs.Count; i++)
+            if (openedTabs.ContainsKey(client.idClient))
             {
-                KeyValuePair<Int32, MyTabPage> kvp = openedTabs.ElementAt(i);
-                if (kvp.Value.Fdc.Client.idClient == client.idClient)
+                MyTabPage tabPage = (MyTabPage)openedTabs[client.idClient];
+                if (tabPage != null)
                 {
-                    this.TabPages.Remove(kvp.Value);
+                    this.TabPages.Remove(tabPage);
                     openedTabs.Remove(client.idClient);
                 }
             }
-
-            //if (openedTabs.ContainsKey(client.idClient))
-            //{
-            //    MyTabPage tabPage = (MyTabPage)openedTabs[client.idClient];
-            //    if(tabPage != null)
-            //    {
-            //        this.TabPages.Remove(tabPage);
-                    
-                   
-            //    }
-            //}
         }
 
         public void updateTab(ClientDB client)

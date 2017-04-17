@@ -132,10 +132,16 @@ namespace ABI.UI
             fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
             fdc.UpdatingClient += new ClientHandler(this.updateClient);
             fdc.DeletingClient += new ClientHandler(this.deleteClient);
+            fdc.ClosingTab += new ClientHandler(this.closingTab);
             fdc.TopLevel = false;
             fdc.Dock = DockStyle.Fill;
             fdc.Show();
             return fdc;
+        }
+
+        private void closingTab(ClientDB client)
+        {
+            tabControlClients.removeTab(client);
         }
 
         /// <summary>
