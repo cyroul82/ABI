@@ -52,6 +52,8 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void frmClient_Load(object sender, EventArgs e)
         {
+
+          
             clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
             grdClient.Columns[0].Visible = false;
             grdClient.Columns[1].HeaderText = "Raison Sociale";
