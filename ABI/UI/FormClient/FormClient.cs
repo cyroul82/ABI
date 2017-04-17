@@ -223,15 +223,12 @@ namespace ABI
                 Decimal chiffreAffaires = 0;
                 Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
                 String telephone = txtTelephone.Text.Trim();
-                //Create the address
                 String ville = txtVille.Text.Trim();
                 String codePostal = mTxtCodePostal.Text.Trim();
                 String rue = txtRue.Text.Trim();
-                
                 String comment = txtComment.Text.Trim();
                 Int32 idClient = ++Data.clientNumber;
 
-                //client = new Client(idClient, raisonSocial, type, activity, nature, effectif, chiffreAffaires, rue, codePostal, ville, comment, telephone);
                 client = new ClientDB();
                 client.raisonSocial = raisonSocial;
                 client.type = type;
@@ -244,16 +241,6 @@ namespace ABI
                 client.effectifs = effectif;
                 client.comment = comment;
                 client.telephone = telephone;
-
-                //try
-                //{
-                //    Data.db.ClientDB.Add(client);
-                //    Data.db.SaveChanges();
-                //}
-                //catch (DbEntityValidationException e)
-                //{
-                //    Console.WriteLine("validation exception : " + e.Message);
-                //}
 
                 return true;
             }
@@ -286,11 +273,9 @@ namespace ABI
                         Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
                         c.ca = chiffreAffaires;
                         c.telephone = txtTelephone.Text.Trim();
-                        //Create the address
                         c.ville = txtVille.Text.Trim();
                         c.codePostal = mTxtCodePostal.Text.Trim();
                         c.rue = txtRue.Text.Trim();
-                        Data.db.SaveChanges();
                     }
                 }
                 return true;

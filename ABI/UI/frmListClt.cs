@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace ABI.UI
         private String searchCriteria;
         //Variable used to control the click on the dataGridView, within itself = false, outside the dataGridView = true
         private Boolean isHitGridNoWhere = false;
+        BindingList<ClientDB> listClients = Data.db.ClientDB.Local.ToBindingList();
 
         //Dictionnary to keep the reference of the TabPage opened associated with a client as Key
         private Dictionary<ClientDB, TabPage> tabPageDictionnary = new Dictionary<ClientDB, TabPage>();
@@ -53,8 +55,8 @@ namespace ABI.UI
         private void frmClient_Load(object sender, EventArgs e)
         {
 
-          
-            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
+            Data.db.ClientDB.Load();
+            clientDBBindingSource.DataSource = listClients;
             grdClient.Columns[0].Visible = false;
             grdClient.Columns[1].HeaderText = "Raison Sociale";
             grdClient.Columns[2].HeaderText = "Type";
@@ -112,6 +114,7 @@ namespace ABI.UI
         private void updateClient(ClientDB client)
         {
             this.client = client;
+            Data.db.SaveChanges();
             //Update tabPage.Text
             if (tabPageDictionnary.ContainsKey(client))
             {
@@ -204,8 +207,6 @@ namespace ABI.UI
                         Data.db.SaveChanges();
                         //delete the reference of this client
                         client = null;
-                        //update the datasource with the new list
-                        clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
                     }
                 }
             }
@@ -397,8 +398,6 @@ namespace ABI.UI
         {
             Data.db.ClientDB.Add(client);
             Data.db.SaveChanges();
-
-            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
             
         }
 
@@ -513,13 +512,13 @@ namespace ABI.UI
             {
                 //((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
                 //grdClient.DataSource = Data.db.ClientDB.ToList().Where(c => c.raisonSocial ==txtSearchClient.Text);
-                clientDBBindingSource.DataSource = Data.db.ClientDB.Where(c => c.raisonSocial.Contains(txtSearchClient.Text)).ToList();
+                clientDBBindingSource.DataSource = listClients.Where(c => c.raisonSocial.ToLower().Contains(txtSearchClient.Text.ToLower())).ToList();
             }
             //if raisonsociale is selected, filter the list by ville
             else if (txtSearchClient.Text != null && searchCriteria == Tools.VILLE)
             {
                 //((DataView)grdClient.DataSource).RowFilter = "Ville like '%" + txtSearchClient.Text + "%'";
-                clientDBBindingSource.DataSource = Data.db.ClientDB.ToList().Where(c => c.ville.Contains(txtSearchClient.Text)).ToList();
+                clientDBBindingSource.DataSource = listClients.Where(c => c.ville.ToLower().Contains(txtSearchClient.Text.ToLower())).ToList();
             }
 
         }
