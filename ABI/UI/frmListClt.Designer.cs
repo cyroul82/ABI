@@ -47,9 +47,8 @@
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientDBBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorClientDataGrid = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
@@ -59,6 +58,7 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.panelControlClient = new System.Windows.Forms.Panel();
             this.btnCloseTabs = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
@@ -75,20 +75,15 @@
             this.cbxType = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnDspAll = new System.Windows.Forms.Button();
-            this.contextMenuStripTab = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.fermerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fermerTousToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStripDeleteClient = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabControlClients.SuspendLayout();
             this.ClientListTab.SuspendLayout();
             this.panelListClient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientDBBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
-            this.bindingNavigator1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorClientDataGrid)).BeginInit();
+            this.bindingNavigatorClientDataGrid.SuspendLayout();
             this.panelControlClient.SuspendLayout();
             this.flowLayoutPanelSearchClient.SuspendLayout();
-            this.contextMenuStripTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlClients
@@ -100,7 +95,6 @@
             this.tabControlClients.SelectedIndex = 0;
             this.tabControlClients.Size = new System.Drawing.Size(960, 600);
             this.tabControlClients.TabIndex = 3;
-            this.tabControlClients.SelectedIndexChanged += new System.EventHandler(tabControlClients.tabControlClientDetail_SelectedIndexChanged);
             // 
             // ClientListTab
             // 
@@ -115,7 +109,7 @@
             // panelListClient
             // 
             this.panelListClient.Controls.Add(this.grdClient);
-            this.panelListClient.Controls.Add(this.bindingNavigator1);
+            this.panelListClient.Controls.Add(this.bindingNavigatorClientDataGrid);
             this.panelListClient.Controls.Add(this.panelControlClient);
             this.panelListClient.Controls.Add(this.flowLayoutPanelSearchClient);
             this.panelListClient.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -153,7 +147,6 @@
             this.grdClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdClient.Size = new System.Drawing.Size(839, 487);
             this.grdClient.TabIndex = 2;
-            this.grdClient.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.grdClient_CellMouseUp);
             this.grdClient.SelectionChanged += new System.EventHandler(this.grdClient_SelectionChanged);
             this.grdClient.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdClient_DoubleClick);
             this.grdClient.MouseUp += new System.Windows.Forms.MouseEventHandler(this.grdClient_MouseUp);
@@ -244,15 +237,15 @@
             // 
             // clientDBBindingSource
             // 
-            this.clientDBBindingSource.DataSource = typeof(ClientDB);
+            this.clientDBBindingSource.DataSource = typeof(ABI.ClientDB);
             // 
-            // bindingNavigator1
+            // bindingNavigatorClientDataGrid
             // 
-            this.bindingNavigator1.AddNewItem = null;
-            this.bindingNavigator1.BindingSource = this.clientDBBindingSource;
-            this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
-            this.bindingNavigator1.DeleteItem = null;
-            this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bindingNavigatorClientDataGrid.AddNewItem = null;
+            this.bindingNavigatorClientDataGrid.BindingSource = this.clientDBBindingSource;
+            this.bindingNavigatorClientDataGrid.CountItem = this.bindingNavigatorCountItem;
+            this.bindingNavigatorClientDataGrid.DeleteItem = null;
+            this.bindingNavigatorClientDataGrid.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
             this.bindingNavigatorSeparator,
@@ -264,16 +257,16 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigator1.Location = new System.Drawing.Point(113, 62);
-            this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bindingNavigator1.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bindingNavigator1.Name = "bindingNavigator1";
-            this.bindingNavigator1.PositionItem = this.bindingNavigatorPositionItem;
-            this.bindingNavigator1.Size = new System.Drawing.Size(839, 25);
-            this.bindingNavigator1.TabIndex = 3;
-            this.bindingNavigator1.Text = "bindingNavigator1";
+            this.bindingNavigatorClientDataGrid.Location = new System.Drawing.Point(113, 62);
+            this.bindingNavigatorClientDataGrid.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bindingNavigatorClientDataGrid.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bindingNavigatorClientDataGrid.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bindingNavigatorClientDataGrid.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bindingNavigatorClientDataGrid.Name = "bindingNavigatorClientDataGrid";
+            this.bindingNavigatorClientDataGrid.PositionItem = this.bindingNavigatorPositionItem;
+            this.bindingNavigatorClientDataGrid.Size = new System.Drawing.Size(839, 25);
+            this.bindingNavigatorClientDataGrid.TabIndex = 3;
+            this.bindingNavigatorClientDataGrid.Text = "bindingNavigator1";
             // 
             // bindingNavigatorCountItem
             // 
@@ -281,16 +274,6 @@
             this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
             this.bindingNavigatorCountItem.Text = "of {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
-            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -362,6 +345,16 @@
             this.bindingNavigatorAddNewItem.Text = "Add new";
             this.bindingNavigatorAddNewItem.Click += new System.EventHandler(this.bindingNavigatorAddNewItem_Click);
             // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorDeleteItem.Click += new System.EventHandler(this.bindingNavigatorDeleteItem_Click);
+            // 
             // panelControlClient
             // 
             this.panelControlClient.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -384,7 +377,7 @@
             this.btnCloseTabs.TabIndex = 6;
             this.btnCloseTabs.Text = "Fermer tous les onglets";
             this.btnCloseTabs.UseVisualStyleBackColor = true;
-            this.btnCloseTabs.Click += new System.EventHandler(this.btnFermerOnglets_Click);
+            this.btnCloseTabs.Click += new System.EventHandler(this.btnCloseAllTabs_Click);
             // 
             // btnClose
             // 
@@ -395,7 +388,7 @@
             this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Fermer";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnFermer_Click);
+            this.btnClose.Click += new System.EventHandler(this.btnCloseCommercial_Click);
             // 
             // btnAdd
             // 
@@ -540,35 +533,7 @@
             this.btnDspAll.TabIndex = 4;
             this.btnDspAll.Text = "Réinitialiser";
             this.btnDspAll.UseVisualStyleBackColor = true;
-            this.btnDspAll.Click += new System.EventHandler(this.btnToutAfficher_Click);
-            // 
-            // contextMenuStripTab
-            // 
-            this.contextMenuStripTab.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fermerToolStripMenuItem,
-            this.fermerTousToolStripMenuItem});
-            this.contextMenuStripTab.Name = "contextMenuStripTab";
-            this.contextMenuStripTab.Size = new System.Drawing.Size(140, 48);
-            // 
-            // fermerToolStripMenuItem
-            // 
-            this.fermerToolStripMenuItem.Name = "fermerToolStripMenuItem";
-            this.fermerToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.fermerToolStripMenuItem.Text = "Fermer";
-            this.fermerToolStripMenuItem.Click += new System.EventHandler(this.fermerToolStripMenuItem_Click);
-            // 
-            // fermerTousToolStripMenuItem
-            // 
-            this.fermerTousToolStripMenuItem.Name = "fermerTousToolStripMenuItem";
-            this.fermerTousToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.fermerTousToolStripMenuItem.Text = "Fermer Tous";
-            this.fermerTousToolStripMenuItem.Click += new System.EventHandler(this.fermerTousToolStripMenuItem_Click);
-            // 
-            // contextMenuStripDeleteClient
-            // 
-            this.contextMenuStripDeleteClient.Name = "contextMenuStripDeleteClient";
-            this.contextMenuStripDeleteClient.Size = new System.Drawing.Size(61, 4);
-            this.contextMenuStripDeleteClient.Text = "Supprimer";
+            this.btnDspAll.Click += new System.EventHandler(this.btnReinitializeSearch_Click);
             // 
             // frmListClt
             // 
@@ -588,13 +553,12 @@
             this.panelListClient.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdClient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientDBBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
-            this.bindingNavigator1.ResumeLayout(false);
-            this.bindingNavigator1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingNavigatorClientDataGrid)).EndInit();
+            this.bindingNavigatorClientDataGrid.ResumeLayout(false);
+            this.bindingNavigatorClientDataGrid.PerformLayout();
             this.panelControlClient.ResumeLayout(false);
             this.flowLayoutPanelSearchClient.ResumeLayout(false);
             this.flowLayoutPanelSearchClient.PerformLayout();
-            this.contextMenuStripTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -602,9 +566,6 @@
         #endregion
         private ABI.UI.MyTabControl tabControlClients;
         private System.Windows.Forms.TabPage ClientListTab;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripTab;
-        private System.Windows.Forms.ToolStripMenuItem fermerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fermerTousToolStripMenuItem;
         private System.Windows.Forms.BindingSource clientDBBindingSource;
         private System.Windows.Forms.Panel panelListClient;
         private System.Windows.Forms.Panel panelControlClient;
@@ -636,7 +597,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.BindingNavigator bindingNavigatorClientDataGrid;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
@@ -648,6 +609,5 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStripDeleteClient;
     }
 }

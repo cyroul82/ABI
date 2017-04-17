@@ -9,7 +9,7 @@ namespace ABI.UI
 {
     public class MyTabControl : TabControl
     {
-        private Dictionary<Int32, MyTabPage> TabPageCollection = new Dictionary<Int32, MyTabPage>();
+        private Dictionary<Int32, MyTabPage> openedTabs = new Dictionary<Int32, MyTabPage>();
        
         /// <summary>
         /// Remove the tab from the tabControl 
@@ -17,13 +17,13 @@ namespace ABI.UI
         /// </summary>
         public void removeTab(ClientDB client)
         {
-            if (TabPageCollection.ContainsKey(client.idClient))
+            if (openedTabs.ContainsKey(client.idClient))
             {
-                MyTabPage tabPage = (MyTabPage)TabPageCollection[client.idClient];
+                MyTabPage tabPage = (MyTabPage)openedTabs[client.idClient];
                 if(tabPage != null)
                 {
                     this.TabPages.Remove(tabPage);
-                    TabPageCollection.Remove(client.idClient);
+                    openedTabs.Remove(client.idClient);
                 }
             }
         }
@@ -41,9 +41,9 @@ namespace ABI.UI
         {
             Boolean tabExist = false;
 
-            if (TabPageCollection.ContainsKey(client.idClient))
+            if (openedTabs.ContainsKey(client.idClient))
             {
-                MyTabPage tabPage = (MyTabPage)TabPageCollection[client.idClient];
+                MyTabPage tabPage = (MyTabPage)openedTabs[client.idClient];
                 this.SelectTab(tabPage);
                 tabExist = true;
             }
@@ -63,7 +63,7 @@ namespace ABI.UI
             this.Controls.Add(tabPage);
             //Set the actual display
             this.SelectTab(tabPage);
-            TabPageCollection.Add(fdc.Client.idClient, tabPage);
+            openedTabs.Add(fdc.Client.idClient, tabPage);
         }
 
         /// <summary>
@@ -78,12 +78,12 @@ namespace ABI.UI
 
         public void closeTabs()
         {
-            for (Int32 i = 0; i < TabPageCollection.Count; i++)
+            for (Int32 i = 0; i < openedTabs.Count; i++)
             {
-                KeyValuePair<Int32, MyTabPage> kvp = TabPageCollection.ElementAt(i);
+                KeyValuePair<Int32, MyTabPage> kvp = openedTabs.ElementAt(i);
                 this.TabPages.Remove(kvp.Value);
             }
-            TabPageCollection.Clear();
+            openedTabs.Clear();
         }
     }
 }

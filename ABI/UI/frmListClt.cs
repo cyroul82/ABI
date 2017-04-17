@@ -17,10 +17,9 @@ namespace ABI.UI
         private ClientDB client;
         private String searchCriteria;
         //Variable used to control the click on the dataGridView, within itself = false, outside the dataGridView = true
-        private Boolean isHitGridNoWhere = false;
+        private Boolean isGridHitNoWhere = false;
         BindingList<ClientDB> listClients = Data.db.ClientDB.Local.ToBindingList();
-
-        
+                
         /// <summary>
         /// Constructor with no arguments
         /// </summary>
@@ -63,8 +62,12 @@ namespace ABI.UI
             grdClient.Columns[10].HeaderText = "Code Postal";
             grdClient.Columns[11].HeaderText = "Ville";
 
-            // Set the row and column header styles.
+            setVisualDataGridView();
+        }
 
+        private void setVisualDataGridView()
+        {
+            // Set the row and column header styles.
             grdClient.RowHeadersDefaultCellStyle.BackColor = Color.Black;
 
             // Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default
@@ -96,15 +99,50 @@ namespace ABI.UI
             //grdClient.Columns[Tools.IDCLIENT].DefaultCellStyle = idClient;
         }
 
+        //---------Action NewClient, AddClient, detailClient, updateClient and deleteClient-------//
+        /// <summary>
+        /// Display the frmNewClt to create a new Client
+        /// </summary>
+        private void newClient()
+        {
+            frmNewClient fnc = new frmNewClient();
+            fnc.saveNewClient += new SaveNewClient(this.addClient);
+            fnc.ShowDialog();
+        }
 
+        private void addClient(ClientDB client, Boolean toShow)
+        {
+            if (client != null)
+            {
+                if (toShow)
+                {
+                    if (!tabControlClients.displayTab(client))
+                    {
+                        tabControlClients.addTab(detailClient(client));
+                    }
+                }
+                Data.db.ClientDB.Add(client);
+                Data.db.SaveChanges();
+            }
+        }
 
-       
+        private frmDspClient detailClient(ClientDB client)
+        {
+            frmDspClient fdc = new frmDspClient(client);
+            fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
+            fdc.UpdatingClient += new ClientHandler(this.updateClient);
+            fdc.DeletingClient += new ClientHandler(this.deleteClient);
+            fdc.TopLevel = false;
+            fdc.Dock = DockStyle.Fill;
+            fdc.Show();
+            return fdc;
+        }
 
         /// <summary>
         /// Update a Client
         /// </summary>
         /// <param name="client"></param>
-        public void updateClient(ClientDB client)
+        private void updateClient(ClientDB client)
         {
             this.client = client;
             Data.db.SaveChanges();
@@ -114,41 +152,10 @@ namespace ABI.UI
         }
 
         /// <summary>
-        /// Delete a client upon confirmation calls the method deleteClient(Client client)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSupprimer_Click(object sender, EventArgs e)
-        {
-            //Check whether the client isn't null
-            if (client != null)
-            {
-                //Show dialog to confirm before deleting
-                DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.raisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    //Deleting the client
-                    deleteClient(client);
-                    //check if the grdclient isn't empty
-                    if (grdClient.Rows.Count > 0)
-                    {
-                        //set the selected row to the first one
-                        grdClient.Rows[0].Selected = true;
-                    }
-                    else
-                    {
-                        //if no more row in the gridView then set the client to null after deleting the last client
-                        client = null;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Delete a client from the Tab and from the DB, if the client has Contacts, removes all his contacts too.
         /// </summary>
         /// <param name="client">Take a client as Parameter</param>
-        public void deleteClient(ClientDB client)
+        private void deleteClient(ClientDB client)
         {
             Boolean canRemove = true;
             //Remove the tab from the TabControl
@@ -201,65 +208,8 @@ namespace ABI.UI
                 }
             }
         }
-
-        private void grdClient_SelectionChanged(object sender, EventArgs e)
-        {
-            if (grdClient.CurrentRow != null)
-            {
-                client = Data.db.ClientDB.Find((Int32)grdClient.CurrentRow.Cells[0].Value);
-            }
-            else
-            {
-                client = null;
-            }
-        }
-
-
-        /// <summary>
-        /// Check whether a click is within the dataGridView or outside
-        /// <para>If outside, the variable isHitGridNoWhere = true</para>
-        /// <para>If inside, the variable isHitGridNoWhere = false</para>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void grdClient_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                if (grdClient.HitTest(e.X, e.Y) == HitTestInfo.Nowhere)
-                {
-                    isHitGridNoWhere = true;
-                }
-                else isHitGridNoWhere = false;
-            }
-
-            
-        }
-
-
-        
-
-        /// <summary>
-        /// Called when the frmDspClient is closing and close the tab if opened
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void displayForm_Closing(object sender, FormClosingEventArgs e)
-        {
-            frmDspClient f = sender as frmDspClient;
-            if (f != null)
-            {
-                tabControlClients.removeTab(client);
-            }
-        }
-        
-        ///////////////////////////////////////////////////End TabControl
-
-
-
-
-
-        ///////////////////////////////////////////////////Button Click Left Panel
+       
+        //-----------Buttons Left Panel ( Ajouter / Supprimer / Afficher / Fermer Tabs / Fermer App ----------------
 
         /// <summary>
         /// Open a new frmNewClient Dialog and register an event when saving the client 
@@ -270,48 +220,39 @@ namespace ABI.UI
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             newClient();
-            
         }
 
-        private void newClient()
+        /// <summary>
+        /// Delete a client upon confirmation calls the method deleteClient(Client client)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            frmNewClient fnc = new frmNewClient();
-            fnc.saveNewClient += new SaveNewClient(this.addClient);
-            fnc.saveAndOpenClient += new SaveNewClient(this.addClientAndOpen);
-            DialogResult result = fnc.ShowDialog();
-        }
-
-        private void addClientAndOpen(ClientDB client)
-        {
-            if (!tabControlClients.displayTab(client))
+            //Check whether the client isn't null
+            if (client != null)
             {
-                tabControlClients.addTab(detailClient(client));
+                //Show dialog to confirm before deleting
+                DialogResult result = MessageBox.Show("Voulez-vous supprimer le client " + client.raisonSocial, "Supprimer", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    //Deleting the client
+                    deleteClient(client);
+                    //check if the grdclient isn't empty
+                    if (grdClient.Rows.Count > 0)
+                    {
+                        //set the selected row to the first one
+                        grdClient.Rows[0].Selected = true;
+                    }
+                    else
+                    {
+                        //if no more row in the gridView then set the client to null after deleting the last client
+                        client = null;
+                    }
+                }
             }
-            
-            addClient(client);
-
         }
 
-        private frmDspClient detailClient(ClientDB client)
-        {
-            frmDspClient fdc = new frmDspClient(client);
-            fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
-            fdc.UpdatingClient += new ClientHandler(this.updateClient);
-            fdc.DeletingClient += new ClientHandler(this.deleteClient);
-            fdc.TopLevel = false;
-            fdc.Dock = DockStyle.Fill;
-            fdc.Show();
-            return fdc;
-        }
-        private void addClient(ClientDB client)
-        {
-            Data.db.ClientDB.Add(client);
-            Data.db.SaveChanges();
-            
-        }
-
-
-        
         /// <summary>
         /// Add a client the tab, calls the method addClientTab(Client client)
         /// </summary>
@@ -327,56 +268,87 @@ namespace ABI.UI
                 }
             }
         }
+
         /// <summary>
         /// Allow to close all opened tabs and come back to the first tab ListClient
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnFermerOnglets_Click(object sender, EventArgs e)
+        private void btnCloseAllTabs_Click(object sender, EventArgs e)
         {
             tabControlClients.closeTabs();
         }
+
         /// <summary>
         /// Close the ListClient Tab of the application
         /// <para>clear all dictionnary, </para>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnFermer_Click(object sender, EventArgs e)
+        private void btnCloseCommercial_Click(object sender, EventArgs e)
         {
             tabControlClients.closeTabs();
         }
 
-
-        private void fermerToolStripMenuItem_Click(object sender, EventArgs e)
+        //------------Events-----------------------------
+        private void grdClient_SelectionChanged(object sender, EventArgs e)
         {
-            tabControlClients.removeTab(client);
+            if (grdClient.CurrentRow != null)
+            {
+                client = Data.db.ClientDB.Find((Int32)grdClient.CurrentRow.Cells[0].Value);
+            }
+            else
+            {
+                client = null;
+            }
         }
-        private void fermerTousToolStripMenuItem_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// Check whether a click is within the dataGridView or outside
+        /// <para>If outside, the variable isGridHitNoWhere = true</para>
+        /// <para>If inside, the variable isGridHitNoWhere = false</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void grdClient_MouseUp(object sender, MouseEventArgs e)
         {
-            btnFermerOnglets_Click(sender, e);
+            if (e.Button == MouseButtons.Left)
+            {
+                if (grdClient.HitTest(e.X, e.Y) == HitTestInfo.Nowhere)
+                {
+                    isGridHitNoWhere = true;
+                }
+                else isGridHitNoWhere = false;
+            }
         }
-        ////////////////////////////////////////////////End Right Click Tab 
 
-
-
-
-
-
-        ////////////////////////////////////////////////Search Panel Button & Textbox Click 
+        /// <summary>
+        /// Called when the frmDspClient is closing and close the tab if opened
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void displayForm_Closing(object sender, FormClosingEventArgs e)
+        {
+            frmDspClient f = sender as frmDspClient;
+            if (f != null)
+            {
+                tabControlClients.removeTab(client);
+            }
+        }
 
         /// <summary>
         /// Display the complete list clients upon the button click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnToutAfficher_Click(object sender, EventArgs e)
+        private void btnReinitializeSearch_Click(object sender, EventArgs e)
         {
             txtSearchClient.Text = null;
             //((DataView)grdClient.DataSource).RowFilter = null;
             grdClient.DataSource = Data.db.ClientDB.ToList();
 
         }
+
         /// <summary>
         /// Called upon each key up on the search box
         /// <para>used when raisonsociale or ville is selected or when press enter with a seleted client</para>
@@ -405,6 +377,7 @@ namespace ABI.UI
             }
 
         }
+
         /// <summary>
         /// Display or hide the appropriate controls upon the search criteria selection
         /// <para>sets up the variable searchCriteria with the selected item</para>
@@ -439,6 +412,7 @@ namespace ABI.UI
                 showControlType();
             }
         }
+
         /// <summary>
         /// Hide controls used for chiffreAffaire and Effectifs
         /// </summary>
@@ -449,6 +423,7 @@ namespace ABI.UI
             rbSupEgal.Visible = false;
             btnSearch.Visible = false;
         }
+
         /// <summary>
         /// Show controls used for chiffreAffaire and Effectifs
         /// </summary>
@@ -459,6 +434,7 @@ namespace ABI.UI
             rbSupEgal.Visible = true;
             btnSearch.Visible = true;
         }
+
         /// <summary>
         /// Hide controls used for Type
         /// </summary>
@@ -466,6 +442,7 @@ namespace ABI.UI
         {
             cbxType.Visible = false;
         }
+
         /// <summary>
         /// Show controls used for Type
         /// </summary>
@@ -473,6 +450,7 @@ namespace ABI.UI
         {
             cbxType.Visible = true;
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -515,13 +493,13 @@ namespace ABI.UI
 
         /// <summary>
         /// Double click on the gridDataView
-        /// <para>Check first that the client isn't null and isHitGridNoWhere isn't true</para>
+        /// <para>Check first that the client isn't null and isGridHitNoWhere isn't true</para>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void grdClient_DoubleClick(object sender, MouseEventArgs e)
         {
-            if (client != null && !isHitGridNoWhere)
+            if (client != null && !isGridHitNoWhere)
             {
                 if (!tabControlClients.displayTab(client))
                 {
@@ -535,16 +513,10 @@ namespace ABI.UI
             newClient();
         }
 
-        private void grdClient_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-        }
-
         private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
         {
             btnSupprimer_Click(sender, e);
         }
 
-        ////////////////////////////////////////////////End Search Panel Button & Textbox Click
     }
 }

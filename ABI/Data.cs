@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ABI
 {
-    public class Data
+    public static class Data
     {
-        //public static List<Client> listClients = new List<Client>();
         public static ABIDBEntities db = new ABIDBEntities();
-        public static Int32 clientNumber = 0;
     }
 }

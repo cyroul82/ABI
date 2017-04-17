@@ -28,16 +28,16 @@ namespace ABI
                 client = value;
             }
         }
-
         public FormClient()
         {
+            Client = new ClientDB();
             InitializeComponent();
         }
 
         public FormClient(ClientDB client)
         {
+            this.Client = client;
             InitializeComponent();
-            this.client = client;
         }
 
         private void mTxtCodePostal_MaskInputRejetected(object sender, MaskInputRejectedEventArgs e)
@@ -227,21 +227,19 @@ namespace ABI
                 String codePostal = mTxtCodePostal.Text.Trim();
                 String rue = txtRue.Text.Trim();
                 String comment = txtComment.Text.Trim();
-                Int32 idClient = ++Data.clientNumber;
 
-                client = new ClientDB();
-                client.raisonSocial = raisonSocial;
-                client.type = type;
-                client.activite = activity;
-                client.nature = nature;
-                client.ca = chiffreAffaires;
-                client.rue = rue;
-                client.codePostal = codePostal;
-                client.ville = ville;
-                client.effectifs = effectif;
-                client.comment = comment;
-                client.telephone = telephone;
-
+                Client.raisonSocial = raisonSocial;
+                Client.type = type;
+                Client.activite = activity;
+                Client.nature = nature;
+                Client.effectifs = effectif;
+                Client.ca = chiffreAffaires;
+                Client.comment = comment;
+                Client.telephone = telephone;
+                Client.rue = rue;
+                Client.codePostal = codePostal;
+                Client.ville = ville;
+                
                 return true;
             }
             else       
