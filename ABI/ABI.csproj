@@ -134,7 +134,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\MyTabControl.cs" />
+    <Compile Include="UI\MyTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\MyTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="UI\FormClient\FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
     </EmbeddedResource>

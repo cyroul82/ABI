@@ -15,18 +15,12 @@ namespace ABI.UI
     public partial class frmListClt : Form
     {
         private ClientDB client;
-        private TabPage tabPage;
-        private frmDspClient formClient;
         private String searchCriteria;
         //Variable used to control the click on the dataGridView, within itself = false, outside the dataGridView = true
         private Boolean isHitGridNoWhere = false;
         BindingList<ClientDB> listClients = Data.db.ClientDB.Local.ToBindingList();
 
-        //Dictionnary to keep the reference of the TabPage opened associated with a client as Key
-        private Dictionary<ClientDB, TabPage> tabPageDictionnary = new Dictionary<ClientDB, TabPage>();
-        //Dictionnary to keep the reference of the frmDspClient created associated with a tabPage as Key
-        private Dictionary<TabPage, frmDspClient> frmDspClientDictionnary = new Dictionary<TabPage, frmDspClient>();
-
+        
         /// <summary>
         /// Constructor with no arguments
         /// </summary>
@@ -41,7 +35,6 @@ namespace ABI.UI
             cbxSearch.Items.Add(Tools.NATURE);
             cbxSearch.Items.Add(Tools.TYPE);
             cbxSearch.SelectedItem = Tools.RAISONSOCIALE;
-
             cbxType.Items.Add(Tools.PUBLIC);
             cbxType.Items.Add(Tools.PRIVE);
             txtSearchClient.Select();
@@ -111,16 +104,13 @@ namespace ABI.UI
         /// Update a Client
         /// </summary>
         /// <param name="client"></param>
-        private void updateClient(ClientDB client)
+        public void updateClient(ClientDB client)
         {
             this.client = client;
             Data.db.SaveChanges();
-            //Update tabPage.Text
-            if (tabPageDictionnary.ContainsKey(client))
-            {
-                TabPage tabPage = tabPageDictionnary[client];
-                tabPage.Text = client.raisonSocial;
-            }
+            //Update tabPage
+            tabControlClients.updateTab(client);
+            
         }
 
         /// <summary>
@@ -158,11 +148,11 @@ namespace ABI.UI
         /// Delete a client from the Tab and from the DB, if the client has Contacts, removes all his contacts too.
         /// </summary>
         /// <param name="client">Take a client as Parameter</param>
-        private void deleteClient(ClientDB client)
+        public void deleteClient(ClientDB client)
         {
             Boolean canRemove = true;
             //Remove the tab from the TabControl
-            removeTab();
+            tabControlClients.removeTab(client);
             //get the row of the selection to retrieve the client selected
             foreach (DataGridViewRow row in grdClient.SelectedRows)
             {
@@ -247,119 +237,22 @@ namespace ABI.UI
         }
 
 
-        ///////////////////////////////////////////////////TabControl
-        /// <summary>
-        /// Add a client to the TabControl, check whether the form display Client isn't already opened 
-        /// </summary>
-        /// <param name="client">Used to link the tab with the client</param>
-        private void addClientTab(ClientDB client)
-        {
-            if (client != null)
-            {
-                this.client = client;
-                //If the client already opened then display it in the TabControl
-                if (tabPageDictionnary.ContainsKey(client))
-                {
-                    TabPage tabPage = tabPageDictionnary[client];
-                    tabControlClients.SelectTab(tabPage);
-                    
-                }
-                //If the client isn't open yet, create the form frmDspClient with the client and display the tab
-                else
-                {
-                    frmDspClient fdc = new frmDspClient(client);
-                    fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
-                    fdc.UpdatingClient += new ClientHandler(this.updateClient);
-                    fdc.DeletingClient += new ClientHandler(this.deleteClient);
-                    fdc.TopLevel = false;
-                    fdc.Dock = DockStyle.Fill;
+        
 
-                    TabPage tabPage = new TabPage(client.raisonSocial);
-                    tabPage.Controls.Add(fdc);
-                    //Add the tab to the tab control
-                    tabControlClients.Controls.Add(tabPage);
-                    //Set the actual display
-                    tabControlClients.SelectTab(tabPage);
-                    //Add the tab to the dictionnary
-                    tabPageDictionnary.Add(client, tabPage);
-                    //Add the form to the dictionnary
-                    frmDspClientDictionnary.Add(tabPage, fdc);
-                    fdc.Show();
-                }
-            }
-        }
-        /// <summary>
-        /// Remove the tab from the tabControl
-        /// <para>Check whether the tab is already opened</para>
-        /// </summary>
-        private void removeTab()
-        {
-            if (tabPageDictionnary.ContainsKey(client))
-            {
-                TabPage tabPage = tabPageDictionnary[client];
-                if (tabPage != null)
-                {
-                    //Remove the tab from the tab Control
-                    tabControlClients.TabPages.Remove(tabPage);
-                    //Remove the tab from the dictionnary
-                    tabPageDictionnary.Remove(client);
-                    //Remove the form from the dictionnary
-                    frmDspClientDictionnary.Remove(tabPage);
-                    //Display the ListClient tab (Main tab)
-                    tabControlClients.SelectTab(0);
-                }
-            }
-        }
         /// <summary>
         /// Called when the frmDspClient is closing and close the tab if opened
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void displayForm_Closing(object sender, FormClosingEventArgs e)
+        public void displayForm_Closing(object sender, FormClosingEventArgs e)
         {
             frmDspClient f = sender as frmDspClient;
             if (f != null)
             {
-                removeTab();
+                tabControlClients.removeTab(client);
             }
         }
-        /// <summary>
-        /// Everytime the tabControl index changes, the client gets a new value
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (tabControlClients.TabCount > 0)
-            {
-                //if the ListClient tab is selected
-                if (tabControlClients.SelectedIndex == 0)
-                {
-                    //The client takes the value of the datagridview selection
-                    grdClient_SelectionChanged(sender, e);
-                }
-                else
-                {
-                    //Get the tabpage selected 
-                    tabPage = tabControlClients.TabPages[tabControlClients.SelectedIndex];
-
-                    //find the reference in the dictionnary to get the client
-                    foreach (KeyValuePair<ClientDB, TabPage> kvp in tabPageDictionnary)
-                    {
-                        if (kvp.Value == tabPage)
-                        {
-                            client = kvp.Key;
-                        }
-                    }
-
-                    //find the reference in dictionnary to get the frmDspClient
-                    if (frmDspClientDictionnary.ContainsKey(tabPage))
-                    {
-                        formClient = frmDspClientDictionnary[tabPage];
-                    }
-                }
-            }
-        }
+        
         ///////////////////////////////////////////////////End TabControl
 
 
@@ -390,9 +283,25 @@ namespace ABI.UI
 
         private void addClientAndOpen(ClientDB client)
         {
-            addClientTab(client);
+            if (!tabControlClients.displayTab(client))
+            {
+                tabControlClients.addTab(detailClient(client));
+            }
+            
             addClient(client);
 
+        }
+
+        private frmDspClient detailClient(ClientDB client)
+        {
+            frmDspClient fdc = new frmDspClient(client);
+            fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
+            fdc.UpdatingClient += new ClientHandler(this.updateClient);
+            fdc.DeletingClient += new ClientHandler(this.deleteClient);
+            fdc.TopLevel = false;
+            fdc.Dock = DockStyle.Fill;
+            fdc.Show();
+            return fdc;
         }
         private void addClient(ClientDB client)
         {
@@ -412,9 +321,11 @@ namespace ABI.UI
         {
             if (client != null)
             {
-                addClientTab(client);
+                if (!tabControlClients.displayTab(client))
+                {
+                    tabControlClients.addTab(detailClient(client));
+                }
             }
-            
         }
         /// <summary>
         /// Allow to close all opened tabs and come back to the first tab ListClient
@@ -423,22 +334,7 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void btnFermerOnglets_Click(object sender, EventArgs e)
         {
-            for(Int32 i=0; i<tabPageDictionnary.Count; i++)
-            {
-                KeyValuePair<ClientDB ,TabPage> k = tabPageDictionnary.ElementAt(i);
-                tabControlClients.TabPages.Remove(k.Value);
-
-                frmDspClient f = frmDspClientDictionnary[k.Value] as frmDspClient;
-                if (f != null)
-                {
-                    //if (f.IsModifed)
-                    //{
-                    //    tabControlClientDetail.SelectTab(k.Value);
-                    //}
-                }
-            }
-            frmDspClientDictionnary.Clear(); ;
-            tabPageDictionnary.Clear();
+            tabControlClients.closeTabs();
         }
         /// <summary>
         /// Close the ListClient Tab of the application
@@ -448,23 +344,13 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void btnFermer_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Voulez-vous vraiment fermer la partie Commerciale ?", "Fermeture", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(result == DialogResult.Yes)
-            {
-                btnFermerOnglets_Click(sender, e);
-                frmDspClientDictionnary.Clear();
-                tabControlClients.TabPages.Clear();
-                tabPageDictionnary.Clear();
-
-                Close();
-            }
+            tabControlClients.closeTabs();
         }
-        //////////////////////////////////////////////////End Button Click Left Panel
 
 
         private void fermerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.removeTab();
+            tabControlClients.removeTab(client);
         }
         private void fermerTousToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -504,7 +390,7 @@ namespace ABI.UI
             {
                 if (client != null)
                 {
-                    addClientTab(client);
+                    //tabControlClients.addTab(this, client);
                 }
             }
             //if raisonsociale is selected, filter the list by raison sociale
@@ -637,7 +523,10 @@ namespace ABI.UI
         {
             if (client != null && !isHitGridNoWhere)
             {
-                addClientTab(client);
+                if (!tabControlClients.displayTab(client))
+                {
+                    tabControlClients.addTab(detailClient(client));
+                }
             }
         }
 

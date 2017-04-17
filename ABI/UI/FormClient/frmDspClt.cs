@@ -19,7 +19,6 @@ namespace ABI
         public ClientHandler UpdatingClient;
         public ClientHandler DeletingClient;
         private Boolean isHitGridNoWhere;
-
         public Boolean IsModifed { get; private set; } = false;
         public frmDspClient(ClientDB client): base(client)
         {
@@ -51,23 +50,23 @@ namespace ABI
         {
             fillUpForm();
 
-            contactDBBindingSource.DataSource = client.ContactDB.GetList();
+            contactDBBindingSource.DataSource = Client.ContactDB.GetList();
         }
 
         private void fillUpForm()
         {
-            txtIdClient.Text = client.idClient.ToString();
-            txtRaisonSocial.Text = client.raisonSocial;
-            txtEffectif.Text = client.effectifs.ToString();
-            txtCA.Text = client.ca.ToString();
-            txtTelephone.Text = client.telephone;
-            mTxtCodePostal.Text = client.codePostal;
-            txtVille.Text = client.ville;
-            txtRue.Text = client.rue;
-            txtComment.Text = client.comment;
-            cbxActivite.SelectedItem = client.activite;
-            cbxNature.SelectedItem = client.nature;
-            cbxType.SelectedItem = client.type;
+            txtIdClient.Text = Client.idClient.ToString();
+            txtRaisonSocial.Text = Client.raisonSocial;
+            txtEffectif.Text = Client.effectifs.ToString();
+            txtCA.Text = Client.ca.ToString();
+            txtTelephone.Text = Client.telephone;
+            mTxtCodePostal.Text = Client.codePostal;
+            txtVille.Text = Client.ville;
+            txtRue.Text = Client.rue;
+            txtComment.Text = Client.comment;
+            cbxActivite.SelectedItem = Client.activite;
+            cbxNature.SelectedItem = Client.nature;
+            cbxType.SelectedItem = Client.type;
         }
 
         private void btnModifierClient_Click(object sender, EventArgs e)
@@ -78,9 +77,9 @@ namespace ABI
             }
             else
             {
-                if (updateClient(client.idClient))
+                if (updateClient(Client.idClient))
                 {
-                    UpdatingClient?.Invoke(client);
+                    UpdatingClient?.Invoke(Client);
                     disableClient();
                 }
             }
@@ -135,7 +134,7 @@ namespace ABI
             DialogResult result = MessageBox.Show("Voulez-vous supprimer ce client ?", "Suppression de Client", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                DeletingClient?.Invoke(client);
+                DeletingClient?.Invoke(Client);
                 Close();
             }
             else if (result == DialogResult.No)
@@ -162,7 +161,7 @@ namespace ABI
         }
         private void btnAjouterContact_Click(object sender, EventArgs e)
         {
-            frmNewContact fnc = new frmNewContact(client);
+            frmNewContact fnc = new frmNewContact(Client);
             fnc.saveNewContact += new ContactHandler(this.savingContact);
             fnc.ShowDialog();
         }
@@ -217,7 +216,7 @@ namespace ABI
                 //var query = from item in client.ContactDB
                 //            group item by new { item} into g select g.toList();
                 //((DataView)grdContact.DataSource).RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
-                contactDBBindingSource.DataSource = client.ContactDB.GetList();
+                contactDBBindingSource.DataSource = Client.ContactDB.GetList();
             }
         }
 

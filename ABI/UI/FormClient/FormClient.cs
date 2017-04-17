@@ -13,8 +13,22 @@ namespace ABI
 {
     public partial class FormClient : Form
     {
-        protected ClientDB client;
+        private ClientDB client;
         private const String REQUIS = "Requis";
+
+        public ClientDB Client
+        {
+            get
+            {
+                return client;
+            }
+
+            protected set
+            {
+                client = value;
+            }
+        }
+
         public FormClient()
         {
             InitializeComponent();

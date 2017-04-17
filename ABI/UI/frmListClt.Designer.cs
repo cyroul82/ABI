@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListClt));
-            this.tabControlClients = new System.Windows.Forms.TabControl();
+            this.tabControlClients = new ABI.UI.MyTabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
             this.panelListClient = new System.Windows.Forms.Panel();
             this.grdClient = new System.Windows.Forms.DataGridView();
@@ -100,7 +100,7 @@
             this.tabControlClients.SelectedIndex = 0;
             this.tabControlClients.Size = new System.Drawing.Size(960, 600);
             this.tabControlClients.TabIndex = 3;
-            this.tabControlClients.SelectedIndexChanged += new System.EventHandler(this.tabControlClientDetail_SelectedIndexChanged);
+            this.tabControlClients.SelectedIndexChanged += new System.EventHandler(tabControlClients.tabControlClientDetail_SelectedIndexChanged);
             // 
             // ClientListTab
             // 
@@ -244,7 +244,7 @@
             // 
             // clientDBBindingSource
             // 
-            this.clientDBBindingSource.DataSource = typeof(ABI.ClientDB);
+            this.clientDBBindingSource.DataSource = typeof(ClientDB);
             // 
             // bindingNavigator1
             // 
@@ -600,7 +600,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.TabControl tabControlClients;
+        private ABI.UI.MyTabControl tabControlClients;
         private System.Windows.Forms.TabPage ClientListTab;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripTab;
         private System.Windows.Forms.ToolStripMenuItem fermerToolStripMenuItem;

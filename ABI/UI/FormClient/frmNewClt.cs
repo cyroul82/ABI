@@ -25,7 +25,7 @@ namespace ABI
             {
                 if(saveNewClient != null)
                 {
-                    this.saveNewClient(client);
+                    this.saveNewClient(Client);
                 }
                 DialogResult = DialogResult.OK;
             }
@@ -41,7 +41,7 @@ namespace ABI
             {
                 if (saveAndOpenClient != null)
                 {
-                    this.saveAndOpenClient(client);
+                    this.saveAndOpenClient(Client);
                 }
                 DialogResult = DialogResult.OK;
             }
