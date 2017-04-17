@@ -254,7 +254,7 @@ namespace ABI.UI
         }
 
         /// <summary>
-        /// Add a client the tab, calls the method addClientTab(Client client)
+        /// Add a client to the tab, calls the method addClientTab(Client client)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
