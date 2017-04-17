@@ -61,7 +61,6 @@ namespace ABI
             }
         }
 
-
         protected Boolean isVilleValid()
         {
             if(txtVille.Text.Trim().Length > 0)
@@ -80,7 +79,6 @@ namespace ABI
         {
             isVilleValid();
         }
-
 
         protected Boolean isRaisonSocialValid()
         {
@@ -101,10 +99,6 @@ namespace ABI
             isRaisonSocialValid();
         }
 
-
-
-
-
         protected Boolean isActiviteValid()
         {
             if(cbxActivite.SelectedIndex == -1)
@@ -123,10 +117,6 @@ namespace ABI
             isActiviteValid();
         }
 
-
-
-
-
         protected Boolean isTypeValid()
         {
             if(cbxType.SelectedIndex == -1)
@@ -144,11 +134,7 @@ namespace ABI
         {
             isTypeValid();
         }
-
-
-
-
-
+        
         protected Boolean isNatureValid()
         {
             if (cbxNature.SelectedIndex == -1)
@@ -281,10 +267,6 @@ namespace ABI
                 return true;
             }
             else return false;
-
         }
-
-
-
     }
 }

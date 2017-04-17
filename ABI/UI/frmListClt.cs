@@ -510,14 +510,11 @@ namespace ABI.UI
             //if raisonsociale is selected, filter the list by raison sociale
             else if (txtSearchClient.Text != null && searchCriteria == Tools.RAISONSOCIALE)
             {
-                //((DataView)grdClient.DataSource).RowFilter = "RaisonSociale like '%" + txtSearchClient.Text + "%'";
-                //grdClient.DataSource = Data.db.ClientDB.ToList().Where(c => c.raisonSocial ==txtSearchClient.Text);
                 clientDBBindingSource.DataSource = listClients.Where(c => c.raisonSocial.ToLower().Contains(txtSearchClient.Text.ToLower())).ToList();
             }
             //if raisonsociale is selected, filter the list by ville
             else if (txtSearchClient.Text != null && searchCriteria == Tools.VILLE)
             {
-                //((DataView)grdClient.DataSource).RowFilter = "Ville like '%" + txtSearchClient.Text + "%'";
                 clientDBBindingSource.DataSource = listClients.Where(c => c.ville.ToLower().Contains(txtSearchClient.Text.ToLower())).ToList();
             }
 

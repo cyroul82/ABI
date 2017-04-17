@@ -30,7 +30,6 @@ namespace ABI
                 DialogResult = DialogResult.OK;
             }
         }
-
         private void btnAnnulerClient_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
