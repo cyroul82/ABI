@@ -58,6 +58,13 @@ namespace ABI.UI
             grdClient.Columns[2].HeaderText = "Type";
             grdClient.Columns[3].HeaderText = "Activité";
             grdClient.Columns[4].HeaderText = "Nature";
+            grdClient.Columns[5].HeaderText = "Effectifs";
+            grdClient.Columns[6].HeaderText = "Chiffre d'Affaires";
+            grdClient.Columns[7].HeaderText = "Commentaires";
+            grdClient.Columns[8].HeaderText = "Téléphone";
+            grdClient.Columns[9].HeaderText = "Adresse";
+            grdClient.Columns[10].HeaderText = "Code Postal";
+            grdClient.Columns[11].HeaderText = "Ville";
 
             // Set the row and column header styles.
 
@@ -206,19 +213,7 @@ namespace ABI.UI
         {
             if (grdClient.CurrentRow != null)
             {
-                Int32 id = (Int32)grdClient.CurrentRow.Cells[0].Value;
-
-                //ICollection<ClientDB> ic = Data.db.ClientDB.ToList();
-                //for (Int32 i=0; i < ic.Count; i++)
-                //{
-                //    ClientDB c = ic.ElementAt(i);
-                //    if(id == c.idClient)
-                //    {
-                //        client = c;
-                        
-                //    }
-                //}
-                client = Data.db.ClientDB.Find(id);
+                client = Data.db.ClientDB.Find((Int32)grdClient.CurrentRow.Cells[0].Value);
             }
             else
             {
@@ -402,6 +397,7 @@ namespace ABI.UI
             Data.db.SaveChanges();
 
             clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
+            
         }
 
 
@@ -521,7 +517,7 @@ namespace ABI.UI
             else if (txtSearchClient.Text != null && searchCriteria == Tools.VILLE)
             {
                 //((DataView)grdClient.DataSource).RowFilter = "Ville like '%" + txtSearchClient.Text + "%'";
-                clientDBBindingSource.DataSource = Data.db.ClientDB.ToList().Where(c => c.ville.Contains(txtSearchClient.Text));
+                clientDBBindingSource.DataSource = Data.db.ClientDB.ToList().Where(c => c.ville.Contains(txtSearchClient.Text)).ToList();
             }
 
         }
@@ -655,6 +651,11 @@ namespace ABI.UI
         private void grdClient_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
 
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            btnSupprimer_Click(sender, e);
         }
 
         ////////////////////////////////////////////////End Search Panel Button & Textbox Click

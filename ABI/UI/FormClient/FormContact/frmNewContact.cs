@@ -52,9 +52,7 @@ namespace ABI
             contact.email = email;
             contact.telephone = telephone;
             contact.idClient = client.idClient;
-
-            Data.db.ContactDB.Add(contact);
-            Data.db.SaveChanges();
+            
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)

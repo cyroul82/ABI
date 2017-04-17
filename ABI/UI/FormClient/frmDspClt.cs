@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.DataGridView;
 
 namespace ABI
 {
@@ -17,6 +18,7 @@ namespace ABI
         private ContactDB contact;
         public ClientHandler UpdatingClient;
         public ClientHandler DeletingClient;
+        private Boolean isHitGridNoWhere;
 
         public Boolean IsModifed { get; private set; } = false;
         public frmDspClient(ClientDB client): base(client)
@@ -167,8 +169,8 @@ namespace ABI
         private void savingContact(ContactDB contact)
         {
             this.contact = contact;
-            grdContact.Rows[grdContact.Rows.Count - 1].Selected = true;
-           
+            Data.db.ContactDB.Add(contact);
+            Data.db.SaveChanges();
         }
         private void btnSupprimerContact_Click(object sender, EventArgs e)
         {
@@ -179,6 +181,17 @@ namespace ABI
                     //Delete from the DB
                     Data.db.ContactDB.Remove(contact);
                     Data.db.SaveChanges();
+                    //check if the grdContact isn't empty
+                    if (grdContact.Rows.Count > 0)
+                    {
+                        //set the selected row to the first one
+                        grdContact.Rows[0].Selected = true;
+                    }
+                    else
+                    {
+                        //if no more row in the gridView then set the client to null after deleting the last client
+                        contact = null;
+                    }
                 }
             }
         }
@@ -194,6 +207,7 @@ namespace ABI
         private void UpdatingContact(ContactDB contact)
         {
             Data.db.SaveChanges();
+            contactDBBindingSource.ResetBindings(false);
         }
 
         private void txtSearchContact_KeyUp(object sender, KeyEventArgs e)
@@ -204,6 +218,26 @@ namespace ABI
                 //            group item by new { item} into g select g.toList();
                 //((DataView)grdContact.DataSource).RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
                 contactDBBindingSource.DataSource = client.ContactDB.GetList();
+            }
+        }
+
+        private void grdContact_DoubleClick(object sender, EventArgs e)
+        {
+            if (contact != null && !isHitGridNoWhere)
+            {
+                btnModifierContact_Click(sender, e);
+            }
+        }
+
+        private void grdContact_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                if (grdContact.HitTest(e.X, e.Y) == HitTestInfo.Nowhere)
+                {
+                    isHitGridNoWhere = true;
+                }
+                else isHitGridNoWhere = false;
             }
         }
     }

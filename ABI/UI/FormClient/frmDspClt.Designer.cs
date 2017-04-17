@@ -231,6 +231,8 @@
             this.grdContact.Size = new System.Drawing.Size(305, 171);
             this.grdContact.TabIndex = 2;
             this.grdContact.SelectionChanged += new System.EventHandler(this.grdContact_SelectionChanged);
+            this.grdContact.DoubleClick += new System.EventHandler(this.grdContact_DoubleClick);
+            this.grdContact.MouseUp += new System.Windows.Forms.MouseEventHandler(this.grdContact_MouseUp);
             // 
             // dataGridViewTextBoxColumn1
             // 
