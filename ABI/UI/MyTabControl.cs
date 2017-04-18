@@ -30,11 +30,11 @@ namespace ABI.UI
 
         public void updateTab(ClientDB client)
         {
-            //if (tabPageDictionnary.ContainsKey(client))
-            //{
-            //    TabPage tabPage = tabPageDictionnary[client];
-            //    tabPage.Text = client.raisonSocial;
-            //}
+            if (openedTabs.ContainsKey(client.idClient))
+            {
+                MyTabPage tabPage = openedTabs[client.idClient];
+                tabPage.Text = client.raisonSocial;
+            }
         }
 
         public Boolean displayTab(ClientDB client)
