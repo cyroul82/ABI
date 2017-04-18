@@ -9,11 +9,11 @@ using System.Windows.Forms;
 namespace ABI
 {
 
-    public delegate void SaveNewClient(ClientDB client, Boolean toShow);
+    public delegate void NewClientHandler(ClientDB client, Boolean toShow);
     public partial class frmNewClt : FormClient
     {
         private ClientDB client;
-        public SaveNewClient saveNewClient;
+        public NewClientHandler newClient;
         public frmNewClt()
         {
             client = new ABI.ClientDB();
@@ -24,10 +24,8 @@ namespace ABI
         {
             if (saveClient())
             {
-                if(saveNewClient != null)
-                {
-                    this.saveNewClient(client, false);
-                }
+                newClient?.Invoke(client, false);
+
                 DialogResult = DialogResult.OK;
             }
         }
@@ -40,9 +38,9 @@ namespace ABI
         {
             if (saveClient())
             {
-                if (saveNewClient != null)
+                if (newClient != null)
                 {
-                    this.saveNewClient(client, true);
+                    this.newClient(client, true);
                 }
                 DialogResult = DialogResult.OK;
             }
