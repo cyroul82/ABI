@@ -129,7 +129,6 @@ namespace ABI.UI
         private frmDspClient detailClient(ClientDB client)
         {
             frmDspClient fdc = new frmDspClient(client);
-            fdc.FormClosing += new FormClosingEventHandler(this.displayForm_Closing);
             fdc.UpdatingClient += new ClientHandler(this.updateClient);
             fdc.DeletingClient += new ClientHandler(this.deleteClient);
             fdc.ClosingTab += new ClientHandler(this.closingTab);
@@ -141,7 +140,10 @@ namespace ABI.UI
 
         private void closingTab(ClientDB client)
         {
-            tabControlClients.removeTab(client);
+            if (client != null)
+            {
+                tabControlClients.removeTab(client);
+            }
         }
 
         /// <summary>
@@ -325,20 +327,6 @@ namespace ABI.UI
                     isGridHitNoWhere = true;
                 }
                 else isGridHitNoWhere = false;
-            }
-        }
-
-        /// <summary>
-        /// Called when the frmDspClient is closing and close the tab if opened
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void displayForm_Closing(object sender, FormClosingEventArgs e)
-        {
-            frmDspClient f = sender as frmDspClient;
-            if (f != null)
-            {
-                tabControlClients.removeTab(client);
             }
         }
 
