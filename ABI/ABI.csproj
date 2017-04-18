@@ -84,12 +84,6 @@
     </Compile>
     <Compile Include="ObservableListSource.cs" />
     <Compile Include="Tools.cs" />
-    <Compile Include="UI\FormClient\ContactUserControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\FormClient\ContactUserControl.Designer.cs">
-      <DependentUpon>ContactUserControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\FormClient\FormClient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,9 +140,6 @@
     <Compile Include="UI\MyTabPage.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="UI\FormClient\ContactUserControl.resx">
-      <DependentUpon>ContactUserControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormClient\FormClient.resx">
       <DependentUpon>FormClient.cs</DependentUpon>
     </EmbeddedResource>
