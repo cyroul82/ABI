@@ -35,6 +35,49 @@ namespace ABI
         {
             this.client = client;
             InitializeComponent();
+            setVisualDataGridView();
+        }
+
+        private void setVisualDataGridView()
+        {
+            grdContact.Columns[0].Visible = false;
+            grdContact.Columns[5].Visible = false;
+
+            grdContact.Columns[1].HeaderText = Tools.NOM;
+            grdContact.Columns[2].HeaderText = Tools.FONCTION;
+            grdContact.Columns[3].HeaderText = Tools.EMAIL;
+            grdContact.Columns[4].HeaderText = Tools.TELEPHONE;
+
+            // Set the row and column header styles.
+            grdContact.RowHeadersDefaultCellStyle.BackColor = Color.Black;
+
+            // Set RowHeadersDefaultCellStyle.SelectionBackColor so that its default
+            // value won't override DataGridView.DefaultCellStyle.SelectionBackColor.
+            grdContact.RowHeadersDefaultCellStyle.SelectionBackColor = Color.Empty;
+
+            grdContact.RowsDefaultCellStyle.BackColor = Color.LightGray;
+            grdContact.AlternatingRowsDefaultCellStyle.BackColor = Color.DarkGray;
+
+            DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
+            columnHeaderStyle.ForeColor = Color.White;
+            columnHeaderStyle.BackColor = Color.Black;
+            columnHeaderStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
+            columnHeaderStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            grdContact.ColumnHeadersDefaultCellStyle = columnHeaderStyle;
+
+            DataGridViewCellStyle defaultStyle = new DataGridViewCellStyle();
+            defaultStyle.SelectionBackColor = Color.White;
+            defaultStyle.SelectionForeColor = Color.Black;
+            grdContact.DefaultCellStyle = defaultStyle;
+
+            DataGridViewCellStyle raisonSocialStyle = new DataGridViewCellStyle();
+            raisonSocialStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
+            raisonSocialStyle.ForeColor = Color.DarkBlue;
+            //grdContact.Columns[Tools.RAISONSOCIALE].DefaultCellStyle = raisonSocialStyle;
+
+            DataGridViewCellStyle idClient = new DataGridViewCellStyle();
+            idClient.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //grdContact.Columns[Tools.IDCLIENT].DefaultCellStyle = idClient;
         }
 
         public void btnFermerClient_Click(object sender, EventArgs e)
@@ -206,7 +249,7 @@ namespace ABI
         }
         private void savingContact(ContactDB contact)
         {
-            this.contact = contact;
+            //this.contact = contact;
             Data.db.ContactDB.Add(contact);
             Data.db.SaveChanges();
         }
