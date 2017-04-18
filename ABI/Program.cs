@@ -16,13 +16,7 @@ namespace ABI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());
-
-            //ClientDB client = Data.db.ClientDB.Include("ContactDB").First(c => c.idClient == 7);
-            //client.raisonSocial = "TOTO";
-            Data.db.SaveChanges();
-            //Console.WriteLine("Client 7 : " + client.raisonSocial) ;
-            
+            Application.Run(new FormMain());            
         }
     }
 }
