@@ -79,7 +79,7 @@ namespace ABI
             }
             else
             {
-                if (updateClient(Client.idClient))
+                if (updateClient())
                 {
                     UpdatingClient?.Invoke(Client);
                     disableClient();
@@ -87,28 +87,27 @@ namespace ABI
             }
         }
 
-        private Boolean updateClient(Int32 idClient)
+        private Boolean updateClient()
         {
             if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
                    & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
             {
 
-                ClientDB c = Data.db.ClientDB.Find(idClient);
-                c.comment = txtComment.Text.Trim();
-                c.raisonSocial = txtRaisonSocial.Text.Trim();
-                c.type = cbxType.SelectedItem.ToString();
-                c.activite = cbxActivite.SelectedItem.ToString();
-                c.nature = cbxNature.SelectedItem.ToString();
-                Int16 effectif = 0;
-                Boolean isEffectifInt = Int16.TryParse(txtEffectif.Text.Trim(), out effectif);
-                c.effectifs = effectif;
+                Client.comment = txtComment.Text.Trim();
+                Client.raisonSocial = txtRaisonSocial.Text.Trim();
+                Client.type = cbxType.SelectedItem.ToString();
+                Client.activite = cbxActivite.SelectedItem.ToString();
+                Client.nature = cbxNature.SelectedItem.ToString();
+                Int32 effectif = 0;
+                Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
+                Client.effectifs = effectif;
                 Decimal chiffreAffaires = 0;
                 Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
-                c.ca = chiffreAffaires;
-                c.telephone = txtTelephone.Text.Trim();
-                c.ville = txtVille.Text.Trim();
-                c.codePostal = mTxtCodePostal.Text.Trim();
-                c.rue = txtRue.Text.Trim();
+                Client.ca = chiffreAffaires;
+                Client.telephone = txtTelephone.Text.Trim();
+                Client.ville = txtVille.Text.Trim();
+                Client.codePostal = mTxtCodePostal.Text.Trim();
+                Client.rue = txtRue.Text.Trim();
 
                 return true;
             }
