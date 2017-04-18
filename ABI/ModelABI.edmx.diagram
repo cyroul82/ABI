@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9650d7b8ec7043c882c6e60d1d9d5877" Name="Diagram1">
-        <EntityTypeShape EntityType="ABIDBModel.ClientDB" Width="1.5" PointX="3.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ABIDBModel.ContactDB" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABIDBModel.ClientDB" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ABIDBModel.ContactDB" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
         <AssociationConnector Association="ABIDBModel.FK_Contact_Client2" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

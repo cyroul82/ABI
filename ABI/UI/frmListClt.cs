@@ -108,11 +108,11 @@ namespace ABI.UI
         private void newClient()
         {
             frmNewClt fnc = new frmNewClt();
-            fnc.newClient += new NewClientHandler(this.saveClient);
+            fnc.saveNewClient += new SaveNewClient(this.addClient);
             fnc.ShowDialog();
         }
 
-        private void saveClient(ClientDB client, Boolean toShow)
+        private void addClient(ClientDB client, Boolean toShow)
         {
             if (client != null)
             {
