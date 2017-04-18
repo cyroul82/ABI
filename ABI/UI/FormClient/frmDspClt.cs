@@ -22,6 +22,15 @@ namespace ABI
         public ClientHandler ClosingTab;
         private Boolean isHitGridNoWhere;
         public Boolean IsModifed { get; private set; } = false;
+
+        public ClientDB Client
+        {
+            get
+            {
+                return client;
+            }
+        }
+
         public frmDspClient(ClientDB client)
         {
             this.client = client;

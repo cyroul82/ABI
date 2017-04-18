@@ -16,6 +16,7 @@ namespace ABI
         public SaveNewClient saveNewClient;
         public frmNewClt()
         {
+            client = new ABI.ClientDB();
             InitializeComponent();
         }
 
