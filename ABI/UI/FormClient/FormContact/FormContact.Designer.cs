@@ -70,7 +70,6 @@
             this.txtContactTelephone.Size = new System.Drawing.Size(119, 20);
             this.txtContactTelephone.TabIndex = 4;
             this.txtContactTelephone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtContactTelephone.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtContactTelephone_MaskInputRejected);
             // 
             // txtContactIdClient
             // 

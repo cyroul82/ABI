@@ -12,8 +12,9 @@ namespace ABI
     public delegate void SaveNewClient(ClientDB client, Boolean toShow);
     public partial class frmNewClt : FormClient
     {
+        private ClientDB client;
         public SaveNewClient saveNewClient;
-        public frmNewClt():base()
+        public frmNewClt()
         {
             InitializeComponent();
         }
@@ -24,7 +25,7 @@ namespace ABI
             {
                 if(saveNewClient != null)
                 {
-                    this.saveNewClient(Client, false);
+                    this.saveNewClient(client, false);
                 }
                 DialogResult = DialogResult.OK;
             }
@@ -40,7 +41,7 @@ namespace ABI
             {
                 if (saveNewClient != null)
                 {
-                    this.saveNewClient(Client, true);
+                    this.saveNewClient(client, true);
                 }
                 DialogResult = DialogResult.OK;
             }
@@ -65,17 +66,17 @@ namespace ABI
                 String rue = txtRue.Text.Trim();
                 String comment = txtComment.Text.Trim();
 
-                Client.raisonSocial = raisonSocial;
-                Client.type = type;
-                Client.activite = activity;
-                Client.nature = nature;
-                Client.effectifs = effectif;
-                Client.ca = chiffreAffaires;
-                Client.comment = comment;
-                Client.telephone = telephone;
-                Client.rue = rue;
-                Client.codePostal = codePostal;
-                Client.ville = ville;
+                client.raisonSocial = raisonSocial;
+                client.type = type;
+                client.activite = activity;
+                client.nature = nature;
+                client.effectifs = effectif;
+                client.ca = chiffreAffaires;
+                client.comment = comment;
+                client.telephone = telephone;
+                client.rue = rue;
+                client.codePostal = codePostal;
+                client.ville = ville;
 
                 return true;
             }

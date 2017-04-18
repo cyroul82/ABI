@@ -19,11 +19,6 @@ namespace ABI
             InitializeComponent();
         }
 
-        private void txtContactTelephone_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-            
-        } 
-
         public Boolean isNameValid()
         {
             if (txtContactName.Text.Trim() != "") return true;

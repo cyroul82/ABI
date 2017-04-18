@@ -16,13 +16,15 @@ namespace ABI
     public partial class frmDspClient : ABI.FormClient
     {
         private ContactDB contact;
+        private ClientDB client;
         public ClientHandler UpdatingClient;
         public ClientHandler DeletingClient;
         public ClientHandler ClosingTab;
         private Boolean isHitGridNoWhere;
         public Boolean IsModifed { get; private set; } = false;
-        public frmDspClient(ClientDB client): base(client)
+        public frmDspClient(ClientDB client)
         {
+            this.client = client;
             InitializeComponent();
         }
 
@@ -43,7 +45,7 @@ namespace ABI
             } 
             else
             {
-                ClosingTab?.Invoke(Client);
+                ClosingTab?.Invoke(client);
                 Close();
             }
         }
@@ -52,23 +54,23 @@ namespace ABI
         {
             fillUpForm();
 
-            contactDBBindingSource.DataSource = Client.ContactDB.GetList();
+            contactDBBindingSource.DataSource = client.ContactDB.GetList();
         }
 
         private void fillUpForm()
         {
-            txtIdClient.Text = Client.idClient.ToString();
-            txtRaisonSocial.Text = Client.raisonSocial;
-            txtEffectif.Text = Client.effectifs.ToString();
-            txtCA.Text = Client.ca.ToString();
-            txtTelephone.Text = Client.telephone;
-            mTxtCodePostal.Text = Client.codePostal;
-            txtVille.Text = Client.ville;
-            txtRue.Text = Client.rue;
-            txtComment.Text = Client.comment;
-            cbxActivite.SelectedItem = Client.activite;
-            cbxNature.SelectedItem = Client.nature;
-            cbxType.SelectedItem = Client.type;
+            txtIdClient.Text = client.idClient.ToString();
+            txtRaisonSocial.Text = client.raisonSocial;
+            txtEffectif.Text = client.effectifs.ToString();
+            txtCA.Text = client.ca.ToString();
+            txtTelephone.Text = client.telephone;
+            mTxtCodePostal.Text = client.codePostal;
+            txtVille.Text = client.ville;
+            txtRue.Text = client.rue;
+            txtComment.Text = client.comment;
+            cbxActivite.SelectedItem = client.activite;
+            cbxNature.SelectedItem = client.nature;
+            cbxType.SelectedItem = client.type;
         }
 
         private void btnModifierClient_Click(object sender, EventArgs e)
@@ -81,7 +83,7 @@ namespace ABI
             {
                 if (updateClient())
                 {
-                    UpdatingClient?.Invoke(Client);
+                    UpdatingClient?.Invoke(client);
                     disableClient();
                 }
             }
@@ -93,21 +95,21 @@ namespace ABI
                    & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
             {
 
-                Client.comment = txtComment.Text.Trim();
-                Client.raisonSocial = txtRaisonSocial.Text.Trim();
-                Client.type = cbxType.SelectedItem.ToString();
-                Client.activite = cbxActivite.SelectedItem.ToString();
-                Client.nature = cbxNature.SelectedItem.ToString();
+                client.comment = txtComment.Text.Trim();
+                client.raisonSocial = txtRaisonSocial.Text.Trim();
+                client.type = cbxType.SelectedItem.ToString();
+                client.activite = cbxActivite.SelectedItem.ToString();
+                client.nature = cbxNature.SelectedItem.ToString();
                 Int32 effectif = 0;
                 Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
-                Client.effectifs = effectif;
+                client.effectifs = effectif;
                 Decimal chiffreAffaires = 0;
                 Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
-                Client.ca = chiffreAffaires;
-                Client.telephone = txtTelephone.Text.Trim();
-                Client.ville = txtVille.Text.Trim();
-                Client.codePostal = mTxtCodePostal.Text.Trim();
-                Client.rue = txtRue.Text.Trim();
+                client.ca = chiffreAffaires;
+                client.telephone = txtTelephone.Text.Trim();
+                client.ville = txtVille.Text.Trim();
+                client.codePostal = mTxtCodePostal.Text.Trim();
+                client.rue = txtRue.Text.Trim();
 
                 return true;
             }
@@ -163,7 +165,7 @@ namespace ABI
             DialogResult result = MessageBox.Show("Voulez-vous supprimer ce client ?", "Suppression de Client", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                DeletingClient?.Invoke(Client);
+                DeletingClient?.Invoke(client);
                 Close();
             }
             else if (result == DialogResult.No)
@@ -190,7 +192,7 @@ namespace ABI
         }
         private void btnAjouterContact_Click(object sender, EventArgs e)
         {
-            frmNewContact fnc = new frmNewContact(Client);
+            frmNewContact fnc = new frmNewContact(client);
             fnc.saveNewContact += new ContactHandler(this.savingContact);
             fnc.ShowDialog();
         }
@@ -245,7 +247,7 @@ namespace ABI
                 //var query = from item in client.ContactDB
                 //            group item by new { item} into g select g.toList();
                 //((DataView)grdContact.DataSource).RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
-                contactDBBindingSource.DataSource = Client.ContactDB.GetList();
+                contactDBBindingSource.DataSource = client.ContactDB.GetList();
             }
         }
 
