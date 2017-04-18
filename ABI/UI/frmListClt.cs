@@ -50,24 +50,25 @@ namespace ABI.UI
             Data.db.ClientDB.Load();
             clientDBBindingSource.DataSource = listClients;
 
-            grdClient.Columns[0].Visible = false;
-            grdClient.Columns[1].HeaderText = "Raison Sociale";
-            grdClient.Columns[2].HeaderText = "Type";
-            grdClient.Columns[3].HeaderText = "Activité";
-            grdClient.Columns[4].HeaderText = "Nature";
-            grdClient.Columns[5].HeaderText = "Effectifs";
-            grdClient.Columns[6].HeaderText = "Chiffre d'Affaires";
-            grdClient.Columns[7].HeaderText = "Commentaires";
-            grdClient.Columns[8].HeaderText = "Téléphone";
-            grdClient.Columns[9].HeaderText = "Adresse";
-            grdClient.Columns[10].HeaderText = "Code Postal";
-            grdClient.Columns[11].HeaderText = "Ville";
-
             setVisualDataGridView();
         }
 
         private void setVisualDataGridView()
         {
+            grdClient.Columns[0].Visible = false;
+
+            grdClient.Columns[1].HeaderText = Tools.RAISONSOCIALE;
+            grdClient.Columns[2].HeaderText = Tools.TYPE;
+            grdClient.Columns[3].HeaderText = Tools.ACTIVITE;
+            grdClient.Columns[4].HeaderText = Tools.NATURE;
+            grdClient.Columns[5].HeaderText = Tools.EFFECTIF;
+            grdClient.Columns[6].HeaderText = Tools.CHIFFREAFFAIRES;
+            grdClient.Columns[7].HeaderText = Tools.COMMENTAIRE;
+            grdClient.Columns[8].HeaderText = Tools.TELEPHONE;
+            grdClient.Columns[9].HeaderText = Tools.ADRESSE;
+            grdClient.Columns[10].HeaderText = Tools.CODE_POSTAL;
+            grdClient.Columns[11].HeaderText = Tools.VILLE;
+
             // Set the row and column header styles.
             grdClient.RowHeadersDefaultCellStyle.BackColor = Color.Black;
 
