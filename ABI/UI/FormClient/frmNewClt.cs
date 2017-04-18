@@ -9,28 +9,17 @@ using System.Windows.Forms;
 namespace ABI
 {
 
-    public delegate void SaveNewClient(ClientDB client, Boolean toShow);
+    public delegate void NewClientHandler(ClientDB client, Boolean toShow);
     public partial class frmNewClt : FormClient
     {
         private ClientDB client;
-        public SaveNewClient saveNewClient;
+        public NewClientHandler newClient;
         public frmNewClt()
         {
             client = new ABI.ClientDB();
             InitializeComponent();
         }
-
-        private void btnAjouterClient_Click(object sender, EventArgs e)
-        {
-            if (saveClient())
-            {
-                if(saveNewClient != null)
-                {
-                    this.saveNewClient(client, false);
-                }
-                DialogResult = DialogResult.OK;
-            }
-        }
+        
         private void btnAnnulerClient_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -38,17 +27,38 @@ namespace ABI
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            if (saveClient())
+            if (isClientValid())
             {
-                if (saveNewClient != null)
+                if (newClient != null)
                 {
-                    this.saveNewClient(client, true);
+                    this.newClient(client, true);
                 }
                 DialogResult = DialogResult.OK;
             }
         }
 
-        private Boolean saveClient()
+        /// <summary>
+        /// Ajouter Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAjouterClient_Click(object sender, EventArgs e)
+        {
+            if (isClientValid())
+            {
+                if (newClient != null)
+                {
+                    this.newClient(client, false);
+                }
+                DialogResult = DialogResult.OK;
+            }
+        }
+
+        /// <summary>
+        /// Check that all the required parameters are filled in and do not have mistakes
+        /// </summary>
+        /// <returns>Return true if the client can be saved, false otherwise</returns>
+        private Boolean isClientValid()
         {
             if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
                    & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())

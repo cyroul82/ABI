@@ -67,16 +67,6 @@
       <DependentUpon>ModelABI.tt</DependentUpon>
     </Compile>
     <Compile Include="Data.cs" />
-    <Compile Include="ModelABI.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelABI.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelABI.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelABI.tt</DependentUpon>
-    </Compile>
     <Compile Include="ModelABI.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -211,12 +201,10 @@
     <Content Include="ModelABI.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelABI.edmx</DependentUpon>
-      <LastGenOutput>ModelABI.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ModelABI.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelABI.edmx</DependentUpon>
-      <LastGenOutput>ModelABI.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
