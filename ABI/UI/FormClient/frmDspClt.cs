@@ -87,6 +87,34 @@ namespace ABI
             }
         }
 
+        private Boolean updateClient(Int32 idClient)
+        {
+            if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
+                   & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
+            {
+
+                ClientDB c = Data.db.ClientDB.Find(idClient);
+                c.comment = txtComment.Text.Trim();
+                c.raisonSocial = txtRaisonSocial.Text.Trim();
+                c.type = cbxType.SelectedItem.ToString();
+                c.activite = cbxActivite.SelectedItem.ToString();
+                c.nature = cbxNature.SelectedItem.ToString();
+                Int16 effectif = 0;
+                Boolean isEffectifInt = Int16.TryParse(txtEffectif.Text.Trim(), out effectif);
+                c.effectifs = effectif;
+                Decimal chiffreAffaires = 0;
+                Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
+                c.ca = chiffreAffaires;
+                c.telephone = txtTelephone.Text.Trim();
+                c.ville = txtVille.Text.Trim();
+                c.codePostal = mTxtCodePostal.Text.Trim();
+                c.rue = txtRue.Text.Trim();
+
+                return true;
+            }
+            else return false;
+        }
+
         private void enableClient()
         {
             mTxtCodePostal.Enabled = true;

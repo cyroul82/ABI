@@ -45,5 +45,44 @@ namespace ABI
                 DialogResult = DialogResult.OK;
             }
         }
+
+        private Boolean saveClient()
+        {
+            if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
+                   & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
+            {
+                String raisonSocial = txtRaisonSocial.Text.Trim();
+                String type = cbxType.SelectedItem.ToString();
+                String activity = cbxActivite.SelectedItem.ToString();
+                String nature = cbxNature.SelectedItem.ToString();
+                Int32 effectif = 0;
+                Boolean isEffectifInt = Int32.TryParse(txtEffectif.Text.Trim(), out effectif);
+                Decimal chiffreAffaires = 0;
+                Boolean isChiffreAffaireDecimal = Decimal.TryParse(txtCA.Text.Trim(), out chiffreAffaires);
+                String telephone = txtTelephone.Text.Trim();
+                String ville = txtVille.Text.Trim();
+                String codePostal = mTxtCodePostal.Text.Trim();
+                String rue = txtRue.Text.Trim();
+                String comment = txtComment.Text.Trim();
+
+                Client.raisonSocial = raisonSocial;
+                Client.type = type;
+                Client.activite = activity;
+                Client.nature = nature;
+                Client.effectifs = effectif;
+                Client.ca = chiffreAffaires;
+                Client.comment = comment;
+                Client.telephone = telephone;
+                Client.rue = rue;
+                Client.codePostal = codePostal;
+                Client.ville = ville;
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
