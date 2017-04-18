@@ -106,7 +106,7 @@ namespace ABI.UI
         /// </summary>
         private void newClient()
         {
-            frmNewClient fnc = new frmNewClient();
+            frmNewClt fnc = new frmNewClt();
             fnc.saveNewClient += new SaveNewClient(this.addClient);
             fnc.ShowDialog();
         }
@@ -221,7 +221,7 @@ namespace ABI.UI
         //-----------Buttons Left Panel ( Ajouter / Supprimer / Afficher / Fermer Tabs / Fermer App ----------------
 
         /// <summary>
-        /// Open a new frmNewClient Dialog and register an event when saving the client 
+        /// Open a new frmNewClt Dialog and register an event when saving the client 
         /// <para>Add a tab with the new client upon creation</para>
         /// </summary>
         /// <param name="sender"></param>

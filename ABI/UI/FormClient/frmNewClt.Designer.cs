@@ -1,6 +1,6 @@
 ﻿namespace ABI
 {
-    partial class frmNewClient
+    partial class frmNewClt
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -90,7 +90,7 @@
             this.btnAjouterClient.UseVisualStyleBackColor = true;
             this.btnAjouterClient.Click += new System.EventHandler(this.btnAjouterClient_Click);
             // 
-            // frmNewClient
+            // frmNewClt
             // 
             this.AcceptButton = this.btnAjouterClient;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -98,7 +98,7 @@
             this.ClientSize = new System.Drawing.Size(533, 531);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmNewClient";
+            this.Name = "frmNewClt";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gpbClientInformation, 0);

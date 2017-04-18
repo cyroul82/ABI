@@ -10,10 +10,10 @@ namespace ABI
 {
 
     public delegate void SaveNewClient(ClientDB client, Boolean toShow);
-    public partial class frmNewClient : FormClient
+    public partial class frmNewClt : FormClient
     {
         public SaveNewClient saveNewClient;
-        public frmNewClient():base()
+        public frmNewClt():base()
         {
             InitializeComponent();
         }
