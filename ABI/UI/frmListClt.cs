@@ -49,6 +49,7 @@ namespace ABI.UI
 
             Data.db.ClientDB.Load();
             clientDBBindingSource.DataSource = listClients;
+
             grdClient.Columns[0].Visible = false;
             grdClient.Columns[1].HeaderText = "Raison Sociale";
             grdClient.Columns[2].HeaderText = "Type";
