@@ -41,12 +41,13 @@ namespace ABI
         private void setVisualDataGridView()
         {
             grdContact.Columns[0].Visible = false;
-            grdContact.Columns[5].Visible = false;
-
-            grdContact.Columns[1].HeaderText = Tools.NOM;
-            grdContact.Columns[2].HeaderText = Tools.FONCTION;
-            grdContact.Columns[3].HeaderText = Tools.EMAIL;
-            grdContact.Columns[4].HeaderText = Tools.TELEPHONE;
+            grdContact.Columns[1].Visible = false;
+            grdContact.Columns[6].Visible = false;
+            
+            grdContact.Columns[2].HeaderText = Tools.NOM;
+            grdContact.Columns[3].HeaderText = Tools.FONCTION;
+            grdContact.Columns[4].HeaderText = Tools.EMAIL;
+            grdContact.Columns[5].HeaderText = Tools.TELEPHONE;
 
             // Set the row and column header styles.
             grdContact.RowHeadersDefaultCellStyle.BackColor = Color.Black;
