@@ -103,7 +103,6 @@ namespace ABI
             if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
                    & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())
             {
-
                 client.comment = txtComment.Text.Trim();
                 client.raisonSocial = txtRaisonSocial.Text.Trim();
                 client.type = cbxType.SelectedItem.ToString();
@@ -183,7 +182,6 @@ namespace ABI
             }
         }
         
-        //Contact
         private void grdContact_SelectionChanged(object sender, EventArgs e)
         {
             foreach(DataGridViewRow row in grdContact.SelectedRows)
@@ -199,6 +197,7 @@ namespace ABI
                 }
             }
         }
+
         private void btnAjouterContact_Click(object sender, EventArgs e)
         {
             frmNewContact fnc = new frmNewContact(client);
@@ -211,6 +210,7 @@ namespace ABI
             Data.db.ContactDB.Add(contact);
             Data.db.SaveChanges();
         }
+
         private void btnSupprimerContact_Click(object sender, EventArgs e)
         {
             if (contact != null)
@@ -234,6 +234,7 @@ namespace ABI
                 }
             }
         }
+
         private void btnModifierContact_Click(object sender, EventArgs e)
         {
             if(contact != null) { 
@@ -253,9 +254,6 @@ namespace ABI
         {
             if (txtSearchContact.Text != String.Empty)
             {
-                //var query = from item in client.ContactDB
-                //            group item by new { item} into g select g.toList();
-                //((DataView)grdContact.DataSource).RowFilter = "Nom like '%" + txtSearchContact.Text + "%'";
                 contactDBBindingSource.DataSource = client.ContactDB.GetList();
             }
         }
