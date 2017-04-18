@@ -19,24 +19,39 @@ namespace ABI
             client = new ABI.ClientDB();
             InitializeComponent();
         }
-
-        private void btnAjouterClient_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Click on Ajouter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSaveClient_Click(object sender, EventArgs e)
         {
-            if (saveClient())
+            if (isClientValid())
             {
                 newClient?.Invoke(client, false);
 
                 DialogResult = DialogResult.OK;
             }
         }
-        private void btnAnnulerClient_Click(object sender, EventArgs e)
+
+        /// <summary>
+        /// Click on Annuler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCancelClient_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
-        private void btnPreview_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSavePreview_Click(object sender, EventArgs e)
         {
-            if (saveClient())
+            if (isClientValid())
             {
                 if (newClient != null)
                 {
@@ -46,7 +61,11 @@ namespace ABI
             }
         }
 
-        private Boolean saveClient()
+        /// <summary>
+        /// Check all the required parameters
+        /// </summary>
+        /// <returns></returns>
+        private Boolean isClientValid()
         {
             if (isRaisonSocialValid() & isActiviteValid() & isTypeValid() & isNatureValid() & isEffectifValid()
                    & isVilleValid() & isEffectifValid() & isCodePostalValid() & isCAValid())

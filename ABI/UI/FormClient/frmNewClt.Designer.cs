@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.btnAnnulerClient = new System.Windows.Forms.Button();
-            this.btnAjouterClient = new System.Windows.Forms.Button();
+            this.btnSavePreview = new System.Windows.Forms.Button();
+            this.btnCancelClient = new System.Windows.Forms.Button();
+            this.btnSaveClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderCodePostal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderRaisonSocial)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderActivite)).BeginInit();
@@ -50,51 +50,51 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnPreview);
-            this.panel1.Controls.Add(this.btnAnnulerClient);
-            this.panel1.Controls.Add(this.btnAjouterClient);
+            this.panel1.Controls.Add(this.btnSavePreview);
+            this.panel1.Controls.Add(this.btnCancelClient);
+            this.panel1.Controls.Add(this.btnSaveClient);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(20, 468);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(493, 43);
             this.panel1.TabIndex = 1;
             // 
-            // btnPreview
+            // btnSavePreview
             // 
-            this.btnPreview.Location = new System.Drawing.Point(177, 17);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(142, 23);
-            this.btnPreview.TabIndex = 2;
-            this.btnPreview.Text = "Enregistrer et Visualiser";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            this.btnSavePreview.Location = new System.Drawing.Point(177, 17);
+            this.btnSavePreview.Name = "btnSavePreview";
+            this.btnSavePreview.Size = new System.Drawing.Size(142, 23);
+            this.btnSavePreview.TabIndex = 2;
+            this.btnSavePreview.Text = "Enregistrer et Visualiser";
+            this.btnSavePreview.UseVisualStyleBackColor = true;
+            this.btnSavePreview.Click += new System.EventHandler(this.btnSavePreview_Click);
             // 
-            // btnAnnulerClient
+            // btnCancelClient
             // 
-            this.btnAnnulerClient.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAnnulerClient.Location = new System.Drawing.Point(328, 17);
-            this.btnAnnulerClient.Name = "btnAnnulerClient";
-            this.btnAnnulerClient.Size = new System.Drawing.Size(75, 23);
-            this.btnAnnulerClient.TabIndex = 1;
-            this.btnAnnulerClient.Text = "Annuler";
-            this.btnAnnulerClient.UseVisualStyleBackColor = true;
-            this.btnAnnulerClient.Click += new System.EventHandler(this.btnAnnulerClient_Click);
+            this.btnCancelClient.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelClient.Location = new System.Drawing.Point(328, 17);
+            this.btnCancelClient.Name = "btnCancelClient";
+            this.btnCancelClient.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelClient.TabIndex = 1;
+            this.btnCancelClient.Text = "Annuler";
+            this.btnCancelClient.UseVisualStyleBackColor = true;
+            this.btnCancelClient.Click += new System.EventHandler(this.btnCancelClient_Click);
             // 
-            // btnAjouterClient
+            // btnSaveClient
             // 
-            this.btnAjouterClient.Location = new System.Drawing.Point(93, 17);
-            this.btnAjouterClient.Name = "btnAjouterClient";
-            this.btnAjouterClient.Size = new System.Drawing.Size(75, 23);
-            this.btnAjouterClient.TabIndex = 0;
-            this.btnAjouterClient.Text = "Enregistrer";
-            this.btnAjouterClient.UseVisualStyleBackColor = true;
-            this.btnAjouterClient.Click += new System.EventHandler(this.btnAjouterClient_Click);
+            this.btnSaveClient.Location = new System.Drawing.Point(93, 17);
+            this.btnSaveClient.Name = "btnSaveClient";
+            this.btnSaveClient.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveClient.TabIndex = 0;
+            this.btnSaveClient.Text = "Enregistrer";
+            this.btnSaveClient.UseVisualStyleBackColor = true;
+            this.btnSaveClient.Click += new System.EventHandler(this.btnSaveClient_Click);
             // 
             // frmNewClt
             // 
-            this.AcceptButton = this.btnAjouterClient;
+            this.AcceptButton = this.btnSaveClient;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.CancelButton = this.btnAnnulerClient;
+            this.CancelButton = this.btnCancelClient;
             this.ClientSize = new System.Drawing.Size(533, 531);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -120,8 +120,8 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnAnnulerClient;
-        private System.Windows.Forms.Button btnAjouterClient;
-        private System.Windows.Forms.Button btnPreview;
+        private System.Windows.Forms.Button btnCancelClient;
+        private System.Windows.Forms.Button btnSaveClient;
+        private System.Windows.Forms.Button btnSavePreview;
     }
 }

@@ -38,6 +38,9 @@ namespace ABI
             setVisualDataGridView();
         }
 
+        /// <summary>
+        /// Set the style on the DataGridView Contact
+        /// </summary>
         private void setVisualDataGridView()
         {
             grdContact.Columns[0].Visible = false;
@@ -81,6 +84,11 @@ namespace ABI
             //grdContact.Columns[Tools.IDCLIENT].DefaultCellStyle = idClient;
         }
 
+        /// <summary>
+        /// Close Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void btnFermerClient_Click(object sender, EventArgs e)
         {
             if (IsModifed)

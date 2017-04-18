@@ -111,7 +111,11 @@ namespace ABI.UI
             fnc.newClient += new NewClientHandler(this.saveClient);
             fnc.ShowDialog();
         }
-
+        /// <summary>
+        /// Save the client to the DB 
+        /// </summary>
+        /// <param name="client"></param>
+        /// <param name="toShow">To display the client TRUE otherwise FALSE</param>
         private void saveClient(ClientDB client, Boolean toShow)
         {
             if (client != null)
