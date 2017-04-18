@@ -10,15 +10,10 @@ namespace ABI.UI
     public class MyTabPage : TabPage
     {
         private frmDspClient fdc;
-        public MyTabPage(frmDspClient fdc): base(fdc.Client.raisonSocial)
+        public MyTabPage(frmDspClient fdc): base(fdc.Client.raisonSocial.ToUpper().Trim())
         {
             this.fdc = fdc;
             this.Controls.Add(fdc);
-        }
-
-        public void addForm()
-        {
-
         }
 
         public frmDspClient Fdc
