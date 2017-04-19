@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ABI.frmNewClt">
+    <Position X="3.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAABCAAAAAAAACAAACCAAAACAAAABAABUAEAAA=</HashCode>
+      <FileName>UI\FormClient\frmNewClt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABI.frmDspClient">
+    <Position X="6.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADEQCIAAkDAMBgOBIAGUIAoaBaQZEWQoAAA8PwEBgIU=</HashCode>
+      <FileName>UI\FormClient\frmDspClt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABI.FormClient">
+    <Position X="5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gzgAqACD9CAhVBBAAEKAAICOBAABIGRGAAgA4CAACII=</HashCode>
+      <FileName>UI\FormClient\FormClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABI.FormContact" Collapsed="true">
+    <Position X="18.25" Y="4.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEASEABQACAEAAAAAAGAAAACgAAAQAAAAAACAAAQAAQ=</HashCode>
+      <FileName>UI\FormClient\FormContact\FormContact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABI.UI.FormClient.FormContact.frmDspContact" Collapsed="true">
+    <Position X="19.75" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACkBAAAAAACAgAgCAACAAAAAAAACQAABAAA=</HashCode>
+      <FileName>UI\FormClient\FormContact\frmDspContact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABI.frmNewContact" Collapsed="true">
+    <Position X="16.5" Y="6.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACABAAAACADAgAgCEAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>UI\FormClient\FormContact\frmNewContact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABI.UI.frmListClt" Collapsed="true">
+    <Position X="28" Y="1.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>QCKUAICggDAoBgOBKSCF4QAyCAQIgZJqCoAIJBwRGCY=</HashCode>
+      <FileName>UI\frmListClt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Delegate Name="ABI.NewClientHandler" Collapsed="true">
+    <Position X="3.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\FormClient\frmNewClt.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="ABI.ClientHandler" Collapsed="true">
+    <Position X="6.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\FormClient\frmDspClt.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="ABI.ContactHandler" Collapsed="true">
+    <Position X="18.25" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>UI\FormClient\FormContact\FormContact.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

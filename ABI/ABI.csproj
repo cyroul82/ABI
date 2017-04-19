@@ -177,7 +177,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelABI.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagramABI.cd" />
     <None Include="ModelABI.edmx.diagram">
       <DependentUpon>ModelABI.edmx</DependentUpon>
     </None>

@@ -12,7 +12,6 @@ using static System.Windows.Forms.DataGridView;
 namespace ABI
 {
     public delegate void ClientHandler(ClientDB client);
-
     public partial class frmDspClient : ABI.FormClient
     {
         private ContactDB contact;
