@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    
+    public delegate void ContactHandler(ContactDB contact);
     public partial class FormContact : Form
     {
         public FormContact()

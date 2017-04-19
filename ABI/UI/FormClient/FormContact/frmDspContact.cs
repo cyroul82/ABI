@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ABI.UI.FormClient.FormContact
 {
-    public delegate void ContactHandler(ContactDB contact);
+    
     public partial class frmDspContact : ABI.FormContact
     {
         private ContactDB contact;
