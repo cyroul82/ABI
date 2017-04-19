@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ABI.UI.frmListClt" Collapsed="true">
+    <Position X="1.25" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>QCKUAICggDAoBgOBKSCF4QAyCAQIgZJqCoAIJBwRGCY=</HashCode>
+      <FileName>UI\frmListClt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABI.frmNewClt" Collapsed="true">
+    <Position X="7.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAABCAAAAAAAACAAACCAAAACAAAABAABUAEAAA=</HashCode>
+      <FileName>UI\FormClient\frmNewClt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABI.frmDspClient" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADEQCIAAkDAMBgOBIAGUIAoaBaQZEWQoAAA8PwEBgIU=</HashCode>
+      <FileName>UI\FormClient\frmDspClt.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ABI.FormClient" Collapsed="true">
+    <Position X="8.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gzgAqACD9CAhVBBAAEKAAICOBAABIGRGAAgA4CAACII=</HashCode>
+      <FileName>UI\FormClient\FormClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Delegate Name="ABI.NewClientHandler" Collapsed="true">
+    <Position X="7.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\FormClient\frmNewClt.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="ABI.ClientHandler" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UI\FormClient\frmDspClt.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
