@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -20,11 +21,6 @@ namespace ABI
         public IList GetList()
         {
             return _bindingList ?? (_bindingList = this.ToBindingList());
-        }
-
-        public IList GetListByName()
-        {
-            return _bindingList ?? (_bindingList = this.ToBindingList().Where())
         }
 
     }

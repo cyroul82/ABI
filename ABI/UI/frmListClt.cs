@@ -30,9 +30,6 @@ namespace ABI.UI
             cbxSearch.Items.Add(Tools.VILLE);
             cbxSearch.Items.Add(Tools.CHIFFREAFFAIRES);
             cbxSearch.Items.Add(Tools.EFFECTIF);
-            cbxSearch.Items.Add(Tools.ACTIVITE);
-            cbxSearch.Items.Add(Tools.NATURE);
-            cbxSearch.Items.Add(Tools.TYPE);
             cbxSearch.SelectedItem = Tools.RAISONSOCIALE;
             cbxType.Items.Add(Tools.PUBLIC);
             cbxType.Items.Add(Tools.PRIVE);
@@ -334,7 +331,7 @@ namespace ABI.UI
         private void btnReinitializeSearch_Click(object sender, EventArgs e)
         {
             txtSearchClient.Text = null;
-            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
+            clientDBBindingSource.DataSource = listClients;
         }
 
         /// <summary>
@@ -345,15 +342,7 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void txtSearchClient_KeyUp(object sender, KeyEventArgs e)
         {
-            //if the key is enter and text isn't null, then if the client isn't null open the client tab 
-            if (e.KeyCode == Keys.Enter && txtSearchClient.Text != String.Empty)
-            {
-                if (client != null)
-                {
-                    //tabControlClients.addTab(this, client);
-                }
-            }
-            else if (txtSearchClient.Text != String.Empty)
+           if (txtSearchClient.Text != String.Empty)
             {
                 //if raisonsociale is selected, filter the list by raison sociale
                 if (searchCriteria == Tools.RAISONSOCIALE)
@@ -392,20 +381,20 @@ namespace ABI.UI
                 }
                 if (searchCriteria == Tools.EFFECTIF)
                 {
-                    Decimal d;
-                    if (Decimal.TryParse(txtSearchClient.Text, out d))
+                    Int32 d;
+                    if (Int32.TryParse(txtSearchClient.Text, out d))
                     {
                         if (rbEgal.Checked)
                         {
-                            clientDBBindingSource.DataSource = listClients.Where(c => c.ca == d).ToList();
+                            clientDBBindingSource.DataSource = listClients.Where(c => c.effectifs == d).ToList();
                         }
                         if (rbInfEgal.Checked)
                         {
-                            clientDBBindingSource.DataSource = listClients.Where(c => c.ca <= d).ToList();
+                            clientDBBindingSource.DataSource = listClients.Where(c => c.effectifs <= d).ToList();
                         }
                         if (rbSupEgal.Checked)
                         {
-                            clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= d).ToList();
+                            clientDBBindingSource.DataSource = listClients.Where(c => c.effectifs >= d).ToList();
                         }
                     }
                     else
@@ -419,8 +408,6 @@ namespace ABI.UI
             {
                 btnReinitializeSearch_Click(sender, e);
             }
-
-
         }
 
         /// <summary>
@@ -433,7 +420,7 @@ namespace ABI.UI
         {
             txtSearchClient.Text = String.Empty;
             searchCriteria = cbxSearch.SelectedItem.ToString();
-            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
+            clientDBBindingSource.DataSource = listClients;
             if (searchCriteria == Tools.CHIFFREAFFAIRES || searchCriteria == Tools.EFFECTIF)
             {
                 showControlChiffreAffairesAndEffectif();
