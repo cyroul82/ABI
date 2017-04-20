@@ -66,7 +66,6 @@ namespace ABI.UI
             openedTabs.Add(fdc.Client.idClient, tabPage);
         }
 
-
         public void closeTabs()
         {
             for (Int32 i = 0; i < openedTabs.Count; i++)
