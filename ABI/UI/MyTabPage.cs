@@ -15,18 +15,5 @@ namespace ABI.UI
             this.fdc = fdc;
             this.Controls.Add(fdc);
         }
-
-        public frmDspClient Fdc
-        {
-            get
-            {
-                return fdc;
-            }
-
-            set
-            {
-                fdc = value;
-            }
-        }
     }
 }

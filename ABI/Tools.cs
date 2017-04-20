@@ -19,12 +19,12 @@ namespace ABI
         public const String EMAIL = "Email";
         public const String TELEPHONE = "Téléphone";
 
-        public const String RAISONSOCIALE = "RaisonSociale";
+        public const String RAISONSOCIALE = "Raison Sociale";
         public const String TYPE = "Type";
-        public const String ACTIVITE = "Activite";
+        public const String ACTIVITE = "Activité";
         public const String NATURE = "Nature";
         public const String EFFECTIF = "Effectif";
-        public const String CHIFFREAFFAIRES = "ChiffreAffaires";
+        public const String CHIFFREAFFAIRES = "Chiffre d'Affaires";
         public const String VILLE = "Ville";
         public const String COMMENTAIRE = "Commentaires";
         public const String ADRESSE = "Adresse";

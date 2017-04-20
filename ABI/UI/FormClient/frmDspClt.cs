@@ -73,14 +73,6 @@ namespace ABI
             defaultStyle.SelectionForeColor = Color.Black;
             grdContact.DefaultCellStyle = defaultStyle;
 
-            DataGridViewCellStyle raisonSocialStyle = new DataGridViewCellStyle();
-            raisonSocialStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
-            raisonSocialStyle.ForeColor = Color.DarkBlue;
-            //grdContact.Columns[Tools.RAISONSOCIALE].DefaultCellStyle = raisonSocialStyle;
-
-            DataGridViewCellStyle idClient = new DataGridViewCellStyle();
-            idClient.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //grdContact.Columns[Tools.IDCLIENT].DefaultCellStyle = idClient;
         }
 
         /// <summary>

@@ -66,15 +66,6 @@ namespace ABI.UI
             openedTabs.Add(fdc.Client.idClient, tabPage);
         }
 
-        /// <summary>
-        /// Everytime the tabControl index changes, the client gets a new value
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        public void tabControlClientDetail_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         public void closeTabs()
         {
