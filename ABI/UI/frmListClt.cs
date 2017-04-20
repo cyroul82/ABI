@@ -462,15 +462,15 @@ namespace ABI.UI
             {
                 if (rbEgal.Checked)
                 {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " = " + Decimal.Parse(txtSearchClient.Text);
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca == Decimal.Parse(txtSearchClient.Text)).ToList();
                 }
                 if (rbInfEgal.Checked)
                 {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " <= " + Decimal.Parse(txtSearchClient.Text) ;
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca <= Decimal.Parse(txtSearchClient.Text)).ToList();
                 }
                 if (rbSupEgal.Checked)
                 {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " >= " + Decimal.Parse(txtSearchClient.Text);
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= Decimal.Parse(txtSearchClient.Text)).ToList();
                 }
             }
 
@@ -478,15 +478,15 @@ namespace ABI.UI
             {
                 if (rbEgal.Checked)
                 {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " = " + Decimal.Parse(txtSearchClient.Text);
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.effectifs == Decimal.Parse(txtSearchClient.Text)).ToList();
                 }
                 if (rbInfEgal.Checked)
                 {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " <= " + Decimal.Parse(txtSearchClient.Text);
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.effectifs <= Decimal.Parse(txtSearchClient.Text)).ToList();
                 }
                 if (rbSupEgal.Checked)
                 {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " >= " + Decimal.Parse(txtSearchClient.Text);
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= Decimal.Parse(txtSearchClient.Text)).ToList();
                 }
             }
         }
