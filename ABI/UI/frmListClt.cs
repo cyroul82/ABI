@@ -462,15 +462,15 @@ namespace ABI.UI
             {
                 if (rbEgal.Checked)
                 {
-                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca == Decimal.Parse(txtSearchClient.Text)).ToList();
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " = " + Decimal.Parse(txtSearchClient.Text);
                 }
                 if (rbInfEgal.Checked)
                 {
-                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca <= Decimal.Parse(txtSearchClient.Text)).ToList();
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " <= " + Decimal.Parse(txtSearchClient.Text) ;
                 }
                 if (rbSupEgal.Checked)
                 {
-                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= Decimal.Parse(txtSearchClient.Text)).ToList();
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " >= " + Decimal.Parse(txtSearchClient.Text);
                 }
             }
 
@@ -478,15 +478,15 @@ namespace ABI.UI
             {
                 if (rbEgal.Checked)
                 {
-                    clientDBBindingSource.DataSource = listClients.Where(c => c.effectifs == Decimal.Parse(txtSearchClient.Text)).ToList();
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " = " + Decimal.Parse(txtSearchClient.Text);
                 }
                 if (rbInfEgal.Checked)
                 {
-                    clientDBBindingSource.DataSource = listClients.Where(c => c.effectifs <= Decimal.Parse(txtSearchClient.Text)).ToList();
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " <= " + Decimal.Parse(txtSearchClient.Text);
                 }
                 if (rbSupEgal.Checked)
                 {
-                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= Decimal.Parse(txtSearchClient.Text)).ToList();
+                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " >= " + Decimal.Parse(txtSearchClient.Text);
                 }
             }
         }
