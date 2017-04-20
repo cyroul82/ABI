@@ -1,6 +1,7 @@
 ﻿using ABI.ClasseMetier;
 using ABI.UI.FormClient.FormContact;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -105,7 +106,7 @@ namespace ABI
         private void frmDspClient_Load(object sender, EventArgs e)
         {
             fillUpForm();
-            contactDBBindingSource.DataSource = client.ContactDB.GetList();
+            contactDBBindingSource.DataSource = client.ContactDB.ToDataTable();
         }
 
         private void fillUpForm()
@@ -294,7 +295,11 @@ namespace ABI
         {
             if (txtSearchContact.Text != String.Empty)
             {
-                contactDBBindingSource.DataSource = client.ContactDB.GetList();
+                //contactDBBindingSource.DataSource = client.ContactDB.GetList();
+                for(Int32 i = 0; i < client.ContactDB.Count; i++){
+
+                }
+                contactDBBindingSource.DataSource = client.ContactDB.GetList() ;
             }
         }
 

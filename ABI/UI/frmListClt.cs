@@ -46,17 +46,14 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void frmClient_Load(object sender, EventArgs e)
         {
-
             Data.db.ClientDB.Load();
             clientDBBindingSource.DataSource = listClients;
-
             setVisualDataGridView();
         }
 
         private void setVisualDataGridView()
         {
             grdClient.Columns[0].Visible = false;
-
             grdClient.Columns[1].HeaderText = Tools.RAISONSOCIALE;
             grdClient.Columns[2].HeaderText = Tools.TYPE;
             grdClient.Columns[3].HeaderText = Tools.ACTIVITE;
@@ -90,15 +87,6 @@ namespace ABI.UI
             defaultStyle.SelectionBackColor = Color.White;
             defaultStyle.SelectionForeColor = Color.Black;
             grdClient.DefaultCellStyle = defaultStyle;
-
-            DataGridViewCellStyle raisonSocialStyle = new DataGridViewCellStyle();
-            raisonSocialStyle.Font = new Font("Verdana", 10, FontStyle.Bold);
-            raisonSocialStyle.ForeColor = Color.DarkBlue;
-            //grdClient.Columns[Tools.RAISONSOCIALE].DefaultCellStyle = raisonSocialStyle;
-
-            DataGridViewCellStyle idClient = new DataGridViewCellStyle();
-            idClient.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            //grdClient.Columns[Tools.IDCLIENT].DefaultCellStyle = idClient;
         }
 
         //---------Action NewClient, AddClient, detailClient, updateClient and deleteClient-------//
@@ -195,15 +183,16 @@ namespace ABI.UI
                         //if confirmed
                         if (result == DialogResult.Yes)
                         {
-                            //list all the contacts form the client
-                            var L2EQuery = Data.db.ContactDB.Where(s => s.idClient == client.idClient);
-                            List<ContactDB> listContact = L2EQuery.ToList<ContactDB>();
-                            for (Int32 j = 0; j < listContact.Count; j++)
-                            {
-                                //Remove each contact from the DB
-                                ContactDB contact = listContact[j];
-                                Data.db.ContactDB.Remove(contact);
-                            }
+                            ////list all the contacts form the client
+                            //var L2EQuery = Data.db.ContactDB.Where(s => s.idClient == client.idClient);
+                            //List<ContactDB> listContact = L2EQuery.ToList<ContactDB>();
+                            //for (Int32 j = 0; j < listContact.Count; j++)
+                            //{
+                            //    //Remove each contact from the DB
+                            //    ContactDB contact = listContact[j];
+                            //    Data.db.ContactDB.Remove(contact);
+                            canRemove = true;
+                            //}
                         }
                         else
                         {
@@ -346,7 +335,6 @@ namespace ABI.UI
         {
             txtSearchClient.Text = null;
             clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
-
         }
 
         /// <summary>
@@ -402,27 +390,37 @@ namespace ABI.UI
                         toolTipSearch.Show("Entrez seulement des chiffres", txtSearchClient, 1000);
                     }
                 }
+                if (searchCriteria == Tools.EFFECTIF)
+                {
+                    Decimal d;
+                    if (Decimal.TryParse(txtSearchClient.Text, out d))
+                    {
+                        if (rbEgal.Checked)
+                        {
+                            clientDBBindingSource.DataSource = listClients.Where(c => c.ca == d).ToList();
+                        }
+                        if (rbInfEgal.Checked)
+                        {
+                            clientDBBindingSource.DataSource = listClients.Where(c => c.ca <= d).ToList();
+                        }
+                        if (rbSupEgal.Checked)
+                        {
+                            clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= d).ToList();
+                        }
+                    }
+                    else
+                    {
+                        toolTipSearch.ToolTipTitle = "Erreur";
+                        toolTipSearch.Show("Entrez seulement des chiffres", txtSearchClient, 1000);
+                    }
+                }
             }
             else if(txtSearchClient.Text == String.Empty)
             {
                 btnReinitializeSearch_Click(sender, e);
             }
 
-            //if (txtSearchClient.Text != null && searchCriteria == Tools.EFFECTIF)
-            //{
-            //    if (rbEgal.Checked)
-            //    {
-            //        ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " = " + Decimal.Parse(txtSearchClient.Text);
-            //    }
-            //    if (rbInfEgal.Checked)
-            //    {
-            //        ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " <= " + Decimal.Parse(txtSearchClient.Text);
-            //    }
-            //    if (rbSupEgal.Checked)
-            //    {
-            //        ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " >= " + Decimal.Parse(txtSearchClient.Text);
-            //    }
-            //}
+
         }
 
         /// <summary>

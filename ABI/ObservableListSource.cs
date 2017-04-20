@@ -22,5 +22,10 @@ namespace ABI
             return _bindingList ?? (_bindingList = this.ToBindingList());
         }
 
+        public IList GetListByName()
+        {
+            return _bindingList ?? (_bindingList = this.ToBindingList().Where())
+        }
+
     }
 }
