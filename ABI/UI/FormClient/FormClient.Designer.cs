@@ -359,9 +359,9 @@
             this.lblRaisonSocial.AutoSize = true;
             this.lblRaisonSocial.Location = new System.Drawing.Point(12, 61);
             this.lblRaisonSocial.Name = "lblRaisonSocial";
-            this.lblRaisonSocial.Size = new System.Drawing.Size(81, 13);
+            this.lblRaisonSocial.Size = new System.Drawing.Size(87, 13);
             this.lblRaisonSocial.TabIndex = 1;
-            this.lblRaisonSocial.Text = "Raison Social : ";
+            this.lblRaisonSocial.Text = "Raison Sociale : ";
             // 
             // lblClientNumber
             // 

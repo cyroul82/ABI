@@ -345,8 +345,7 @@ namespace ABI.UI
         private void btnReinitializeSearch_Click(object sender, EventArgs e)
         {
             txtSearchClient.Text = null;
-            //((DataView)grdClient.DataSource).RowFilter = null;
-            grdClient.DataSource = Data.db.ClientDB.ToList();
+            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
 
         }
 
@@ -366,17 +365,64 @@ namespace ABI.UI
                     //tabControlClients.addTab(this, client);
                 }
             }
-            //if raisonsociale is selected, filter the list by raison sociale
-            else if (txtSearchClient.Text != null && searchCriteria == Tools.RAISONSOCIALE)
+            else if (txtSearchClient.Text != String.Empty)
             {
-                clientDBBindingSource.DataSource = listClients.Where(c => c.raisonSocial.ToLower().Contains(txtSearchClient.Text.ToLower())).ToList();
+                //if raisonsociale is selected, filter the list by raison sociale
+                if (searchCriteria == Tools.RAISONSOCIALE)
+                {
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.raisonSocial.ToLower().Contains(txtSearchClient.Text.ToLower())).ToList();
+                }
+                //if raisonsociale is selected, filter the list by ville
+                if (searchCriteria == Tools.VILLE)
+                {
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.ville.ToLower().Contains(txtSearchClient.Text.ToLower())).ToList();
+                }
+
+                if (searchCriteria == Tools.CHIFFREAFFAIRES)
+                {
+                    Decimal d;
+                    if (Decimal.TryParse(txtSearchClient.Text, out d))
+                    {
+                        if (rbEgal.Checked)
+                        {
+                            clientDBBindingSource.DataSource = listClients.Where(c => c.ca == d).ToList();
+                        }
+                        if (rbInfEgal.Checked)
+                        {
+                            clientDBBindingSource.DataSource = listClients.Where(c => c.ca <= d).ToList();
+                        }
+                        if (rbSupEgal.Checked)
+                        {
+                            clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= d).ToList();
+                        }
+                    }
+                    else
+                    {
+                        toolTipSearch.ToolTipTitle = "Erreur";
+                        toolTipSearch.Show("Entrez seulement des chiffres", txtSearchClient, 1000);
+                    }
+                }
             }
-            //if raisonsociale is selected, filter the list by ville
-            else if (txtSearchClient.Text != null && searchCriteria == Tools.VILLE)
+            else if(txtSearchClient.Text == String.Empty)
             {
-                clientDBBindingSource.DataSource = listClients.Where(c => c.ville.ToLower().Contains(txtSearchClient.Text.ToLower())).ToList();
+                btnReinitializeSearch_Click(sender, e);
             }
 
+            //if (txtSearchClient.Text != null && searchCriteria == Tools.EFFECTIF)
+            //{
+            //    if (rbEgal.Checked)
+            //    {
+            //        ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " = " + Decimal.Parse(txtSearchClient.Text);
+            //    }
+            //    if (rbInfEgal.Checked)
+            //    {
+            //        ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " <= " + Decimal.Parse(txtSearchClient.Text);
+            //    }
+            //    if (rbSupEgal.Checked)
+            //    {
+            //        ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " >= " + Decimal.Parse(txtSearchClient.Text);
+            //    }
+            //}
         }
 
         /// <summary>
@@ -387,7 +433,9 @@ namespace ABI.UI
         /// <param name="e"></param>
         private void cbxSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
+            txtSearchClient.Text = String.Empty;
             searchCriteria = cbxSearch.SelectedItem.ToString();
+            clientDBBindingSource.DataSource = Data.db.ClientDB.ToList();
             if (searchCriteria == Tools.CHIFFREAFFAIRES || searchCriteria == Tools.EFFECTIF)
             {
                 showControlChiffreAffairesAndEffectif();
@@ -422,7 +470,6 @@ namespace ABI.UI
             rbEgal.Visible = false;
             rbInfEgal.Visible = false;
             rbSupEgal.Visible = false;
-            btnSearch.Visible = false;
         }
 
         /// <summary>
@@ -433,7 +480,6 @@ namespace ABI.UI
             rbEgal.Visible = true;
             rbInfEgal.Visible = true;
             rbSupEgal.Visible = true;
-            btnSearch.Visible = true;
         }
 
         /// <summary>
@@ -450,58 +496,6 @@ namespace ABI.UI
         private void showControlType()
         {
             cbxType.Visible = true;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (txtSearchClient.Text != null && searchCriteria == Tools.CHIFFREAFFAIRES)
-            {
-                if (rbEgal.Checked)
-                {
-                    Decimal d;
-                    if(Decimal.TryParse(txtSearchClient.Text, out d))
-                    {
-                        clientDBBindingSource.DataSource = listClients.Where(c => c.ca == d).ToList();
-                    }
-                }
-                if (rbInfEgal.Checked)
-                {
-                    Decimal d;
-                    if (Decimal.TryParse(txtSearchClient.Text, out d))
-                    {
-                        clientDBBindingSource.DataSource = listClients.Where(c => c.ca <= d).ToList();
-                    }
-                }
-                if (rbSupEgal.Checked)
-                {
-                    Decimal d;
-                    if (Decimal.TryParse(txtSearchClient.Text, out d))
-                    {
-                        clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= d).ToList();
-                    }
-                }
-            }
-
-            if (txtSearchClient.Text != null && searchCriteria == Tools.EFFECTIF)
-            {
-                if (rbEgal.Checked)
-                {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " = " + Decimal.Parse(txtSearchClient.Text);
-                }
-                if (rbInfEgal.Checked)
-                {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " <= " + Decimal.Parse(txtSearchClient.Text);
-                }
-                if (rbSupEgal.Checked)
-                {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.EFFECTIF + " >= " + Decimal.Parse(txtSearchClient.Text);
-                }
-            }
         }
 
         /// <summary>
@@ -531,5 +525,42 @@ namespace ABI.UI
             btnSupprimer_Click(sender, e);
         }
 
+        private void rbEgal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbEgal.Checked == true)
+            {
+                Decimal d;
+                Boolean b = Decimal.TryParse(txtSearchClient.Text, out d);
+                if (txtSearchClient.Text != String.Empty || b)
+                {
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca == d).ToList();
+                }
+            }
+        }
+
+        private void rbInfEgal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbInfEgal.Checked == true)
+            {
+                Decimal d;
+                Boolean b = Decimal.TryParse(txtSearchClient.Text, out d);
+                if (txtSearchClient.Text != String.Empty || b )
+                {
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca <= d).ToList();
+                }
+            }
+        }
+
+        private void rbSupEgal_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbSupEgal.Checked == true)
+            {
+                Decimal d;
+                Boolean b = Decimal.TryParse(txtSearchClient.Text, out d);
+                if (txtSearchClient.Text != String.Empty || b){
+                    clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= d).ToList();
+                }
+            }  
+        }
     }
 }

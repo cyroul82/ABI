@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmListClt));
+            this.toolTipSearch = new System.Windows.Forms.ToolTip(this.components);
             this.tabControlClients = new ABI.UI.MyTabControl();
             this.ClientListTab = new System.Windows.Forms.TabPage();
             this.panelListClient = new System.Windows.Forms.Panel();
@@ -73,7 +74,6 @@
             this.rbInfEgal = new System.Windows.Forms.RadioButton();
             this.rbSupEgal = new System.Windows.Forms.RadioButton();
             this.cbxType = new System.Windows.Forms.ComboBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.btnDspAll = new System.Windows.Forms.Button();
             this.tabControlClients.SuspendLayout();
             this.ClientListTab.SuspendLayout();
@@ -85,6 +85,13 @@
             this.panelControlClient.SuspendLayout();
             this.flowLayoutPanelSearchClient.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // toolTipSearch
+            // 
+            this.toolTipSearch.AutomaticDelay = 1;
+            this.toolTipSearch.AutoPopDelay = 1000;
+            this.toolTipSearch.InitialDelay = 1;
+            this.toolTipSearch.ReshowDelay = 0;
             // 
             // tabControlClients
             // 
@@ -140,12 +147,12 @@
             this.dataGridViewTextBoxColumn12});
             this.grdClient.DataSource = this.clientDBBindingSource;
             this.grdClient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdClient.Location = new System.Drawing.Point(113, 87);
+            this.grdClient.Location = new System.Drawing.Point(113, 85);
             this.grdClient.MultiSelect = false;
             this.grdClient.Name = "grdClient";
             this.grdClient.ReadOnly = true;
             this.grdClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdClient.Size = new System.Drawing.Size(839, 487);
+            this.grdClient.Size = new System.Drawing.Size(839, 489);
             this.grdClient.TabIndex = 2;
             this.grdClient.SelectionChanged += new System.EventHandler(this.grdClient_SelectionChanged);
             this.grdClient.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdClient_DoubleClick);
@@ -257,7 +264,7 @@
             this.bindingNavigatorSeparator2,
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem});
-            this.bindingNavigatorClientDataGrid.Location = new System.Drawing.Point(113, 62);
+            this.bindingNavigatorClientDataGrid.Location = new System.Drawing.Point(113, 60);
             this.bindingNavigatorClientDataGrid.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigatorClientDataGrid.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigatorClientDataGrid.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -364,9 +371,9 @@
             this.panelControlClient.Controls.Add(this.btnDsp);
             this.panelControlClient.Controls.Add(this.btnDel);
             this.panelControlClient.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelControlClient.Location = new System.Drawing.Point(0, 62);
+            this.panelControlClient.Location = new System.Drawing.Point(0, 60);
             this.panelControlClient.Name = "panelControlClient";
-            this.panelControlClient.Size = new System.Drawing.Size(113, 512);
+            this.panelControlClient.Size = new System.Drawing.Size(113, 514);
             this.panelControlClient.TabIndex = 2;
             // 
             // btnCloseTabs
@@ -430,19 +437,18 @@
             this.flowLayoutPanelSearchClient.Controls.Add(this.rbInfEgal);
             this.flowLayoutPanelSearchClient.Controls.Add(this.rbSupEgal);
             this.flowLayoutPanelSearchClient.Controls.Add(this.cbxType);
-            this.flowLayoutPanelSearchClient.Controls.Add(this.btnSearch);
             this.flowLayoutPanelSearchClient.Controls.Add(this.btnDspAll);
             this.flowLayoutPanelSearchClient.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanelSearchClient.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanelSearchClient.Name = "flowLayoutPanelSearchClient";
-            this.flowLayoutPanelSearchClient.Size = new System.Drawing.Size(952, 62);
+            this.flowLayoutPanelSearchClient.Size = new System.Drawing.Size(952, 60);
             this.flowLayoutPanelSearchClient.TabIndex = 1;
             // 
             // lblSearchClient
             // 
             this.lblSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblSearchClient.AutoSize = true;
-            this.lblSearchClient.Location = new System.Drawing.Point(3, 8);
+            this.lblSearchClient.Location = new System.Drawing.Point(3, 7);
             this.lblSearchClient.Name = "lblSearchClient";
             this.lblSearchClient.Size = new System.Drawing.Size(69, 13);
             this.lblSearchClient.TabIndex = 3;
@@ -461,7 +467,7 @@
             // txtSearchClient
             // 
             this.txtSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSearchClient.Location = new System.Drawing.Point(205, 4);
+            this.txtSearchClient.Location = new System.Drawing.Point(205, 3);
             this.txtSearchClient.Name = "txtSearchClient";
             this.txtSearchClient.Size = new System.Drawing.Size(381, 20);
             this.txtSearchClient.TabIndex = 0;
@@ -469,64 +475,58 @@
             // 
             // rbEgal
             // 
+            this.rbEgal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbEgal.AutoSize = true;
-            this.rbEgal.Location = new System.Drawing.Point(592, 3);
+            this.rbEgal.Location = new System.Drawing.Point(592, 5);
             this.rbEgal.Name = "rbEgal";
-            this.rbEgal.Size = new System.Drawing.Size(31, 17);
+            this.rbEgal.Size = new System.Drawing.Size(46, 17);
             this.rbEgal.TabIndex = 8;
-            this.rbEgal.TabStop = true;
-            this.rbEgal.Text = "=";
+            this.rbEgal.Text = "Egal";
             this.rbEgal.UseVisualStyleBackColor = true;
             this.rbEgal.Visible = false;
+            this.rbEgal.CheckedChanged += new System.EventHandler(this.rbEgal_CheckedChanged);
             // 
             // rbInfEgal
             // 
+            this.rbInfEgal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbInfEgal.AutoSize = true;
-            this.rbInfEgal.Location = new System.Drawing.Point(629, 3);
+            this.rbInfEgal.Checked = true;
+            this.rbInfEgal.Location = new System.Drawing.Point(644, 5);
             this.rbInfEgal.Name = "rbInfEgal";
-            this.rbInfEgal.Size = new System.Drawing.Size(37, 17);
+            this.rbInfEgal.Size = new System.Drawing.Size(63, 17);
             this.rbInfEgal.TabIndex = 7;
             this.rbInfEgal.TabStop = true;
-            this.rbInfEgal.Text = "<=";
+            this.rbInfEgal.Text = "Inférieur";
             this.rbInfEgal.UseVisualStyleBackColor = true;
             this.rbInfEgal.Visible = false;
+            this.rbInfEgal.CheckedChanged += new System.EventHandler(this.rbInfEgal_CheckedChanged);
             // 
             // rbSupEgal
             // 
+            this.rbSupEgal.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.rbSupEgal.AutoSize = true;
-            this.rbSupEgal.Location = new System.Drawing.Point(672, 3);
+            this.rbSupEgal.Location = new System.Drawing.Point(713, 5);
             this.rbSupEgal.Name = "rbSupEgal";
-            this.rbSupEgal.Size = new System.Drawing.Size(37, 17);
+            this.rbSupEgal.Size = new System.Drawing.Size(70, 17);
             this.rbSupEgal.TabIndex = 6;
-            this.rbSupEgal.TabStop = true;
-            this.rbSupEgal.Text = ">=";
+            this.rbSupEgal.Text = "Supérieur";
             this.rbSupEgal.UseVisualStyleBackColor = true;
             this.rbSupEgal.Visible = false;
+            this.rbSupEgal.CheckedChanged += new System.EventHandler(this.rbSupEgal_CheckedChanged);
             // 
             // cbxType
             // 
             this.cbxType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxType.FormattingEnabled = true;
-            this.cbxType.Location = new System.Drawing.Point(715, 3);
+            this.cbxType.Location = new System.Drawing.Point(789, 3);
             this.cbxType.Name = "cbxType";
             this.cbxType.Size = new System.Drawing.Size(121, 21);
             this.cbxType.TabIndex = 10;
             this.cbxType.Visible = false;
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(842, 3);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(78, 23);
-            this.btnSearch.TabIndex = 9;
-            this.btnSearch.Text = "Recherche";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Visible = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
             // btnDspAll
             // 
-            this.btnDspAll.Location = new System.Drawing.Point(3, 32);
+            this.btnDspAll.Location = new System.Drawing.Point(3, 30);
             this.btnDspAll.Name = "btnDspAll";
             this.btnDspAll.Size = new System.Drawing.Size(75, 23);
             this.btnDspAll.TabIndex = 4;
@@ -581,7 +581,6 @@
         private System.Windows.Forms.RadioButton rbInfEgal;
         private System.Windows.Forms.RadioButton rbSupEgal;
         private System.Windows.Forms.ComboBox cbxType;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Button btnDspAll;
         private System.Windows.Forms.DataGridView grdClient;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
@@ -608,5 +607,6 @@
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolTip toolTipSearch;
     }
 }
