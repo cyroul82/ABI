@@ -34,7 +34,9 @@
           <Property Name="telephone" Type="varchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK_Contact_Client2">
-          <End Role="ClientDB" Type="Self.ClientDB" Multiplicity="1" />
+          <End Role="ClientDB" Type="Self.ClientDB" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ContactDB" Type="Self.ContactDB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClientDB">
@@ -89,7 +91,9 @@
           <NavigationProperty Name="ClientDB" Relationship="Self.FK_Contact_Client2" FromRole="ContactDB" ToRole="ClientDB" />
         </EntityType>
         <Association Name="FK_Contact_Client2">
-          <End Role="ClientDB" Type="Self.ClientDB" Multiplicity="1" />
+          <End Role="ClientDB" Type="Self.ClientDB" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ContactDB" Type="Self.ContactDB" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ClientDB">
@@ -161,7 +165,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

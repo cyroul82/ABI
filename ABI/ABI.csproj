@@ -173,11 +173,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagramABI.cd" />
     <EntityDeploy Include="ModelABI.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModelABI.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClassDiagramABI.cd" />
     <None Include="ModelABI.edmx.diagram">
       <DependentUpon>ModelABI.edmx</DependentUpon>
     </None>
