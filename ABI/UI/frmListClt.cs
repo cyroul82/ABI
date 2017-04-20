@@ -302,6 +302,7 @@ namespace ABI.UI
         private void btnCloseCommercial_Click(object sender, EventArgs e)
         {
             tabControlClients.closeTabs();
+            Close();
         }
 
         //------------Events-----------------------------
@@ -462,15 +463,27 @@ namespace ABI.UI
             {
                 if (rbEgal.Checked)
                 {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " = " + Decimal.Parse(txtSearchClient.Text);
+                    Decimal d;
+                    if(Decimal.TryParse(txtSearchClient.Text, out d))
+                    {
+                        clientDBBindingSource.DataSource = listClients.Where(c => c.ca == d).ToList();
+                    }
                 }
                 if (rbInfEgal.Checked)
                 {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " <= " + Decimal.Parse(txtSearchClient.Text) ;
+                    Decimal d;
+                    if (Decimal.TryParse(txtSearchClient.Text, out d))
+                    {
+                        clientDBBindingSource.DataSource = listClients.Where(c => c.ca <= d).ToList();
+                    }
                 }
                 if (rbSupEgal.Checked)
                 {
-                    ((DataView)grdClient.DataSource).RowFilter = Tools.CHIFFREAFFAIRES + " >= " + Decimal.Parse(txtSearchClient.Text);
+                    Decimal d;
+                    if (Decimal.TryParse(txtSearchClient.Text, out d))
+                    {
+                        clientDBBindingSource.DataSource = listClients.Where(c => c.ca >= d).ToList();
+                    }
                 }
             }
 

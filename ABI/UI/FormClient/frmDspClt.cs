@@ -113,7 +113,6 @@ namespace ABI
         private void frmDspClient_Load(object sender, EventArgs e)
         {
             fillUpForm();
-
             contactDBBindingSource.DataSource = client.ContactDB.GetList();
         }
 
@@ -169,7 +168,6 @@ namespace ABI
                 client.ville = txtVille.Text.Trim();
                 client.codePostal = mTxtCodePostal.Text.Trim();
                 client.rue = txtRue.Text.Trim();
-
                 return true;
             }
             else return false;
@@ -229,7 +227,6 @@ namespace ABI
             }
             else if (result == DialogResult.No)
             {
-                Close();
             }
         }
         
@@ -241,7 +238,7 @@ namespace ABI
                 {
                     Int32 id;
                     Boolean b = Int32.TryParse(row.Cells[0].Value.ToString(), out id);
-                    if (b)
+                    if (b && id !=0 )
                     {
                         contact = Data.db.ContactDB.Find(id);
                     }
@@ -327,6 +324,16 @@ namespace ABI
                 }
                 else isHitGridNoWhere = false;
             }
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            btnAjouterContact_Click(sender, e);
+        }
+
+        private void bindingNavigatorDeleteItem_Click(object sender, EventArgs e)
+        {
+            btnSupprimerContact_Click(sender, e);
         }
     }
 }
