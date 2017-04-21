@@ -61,8 +61,6 @@
             this.btnModifierContact = new System.Windows.Forms.Button();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.txtSearchContact = new System.Windows.Forms.TextBox();
-            this.lblSearchClient = new System.Windows.Forms.Label();
             this.btnAnnulerModif = new System.Windows.Forms.Button();
             this.gpxDocument = new System.Windows.Forms.GroupBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -85,7 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.contactDBBindingNavigator)).BeginInit();
             this.contactDBBindingNavigator.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -223,12 +220,12 @@
             this.dataGridViewTextBoxColumn7});
             this.grdContact.DataSource = this.contactDBBindingSource;
             this.grdContact.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdContact.Location = new System.Drawing.Point(112, 51);
+            this.grdContact.Location = new System.Drawing.Point(112, 25);
             this.grdContact.MultiSelect = false;
             this.grdContact.Name = "grdContact";
             this.grdContact.ReadOnly = true;
             this.grdContact.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdContact.Size = new System.Drawing.Size(305, 171);
+            this.grdContact.Size = new System.Drawing.Size(305, 197);
             this.grdContact.TabIndex = 2;
             this.grdContact.SelectionChanged += new System.EventHandler(this.grdContact_SelectionChanged);
             this.grdContact.DoubleClick += new System.EventHandler(this.grdContact_DoubleClick);
@@ -306,7 +303,7 @@
             this.bindingNavigatorAddNewItem,
             this.bindingNavigatorDeleteItem,
             this.contactDBBindingNavigatorSaveItem});
-            this.contactDBBindingNavigator.Location = new System.Drawing.Point(112, 26);
+            this.contactDBBindingNavigator.Location = new System.Drawing.Point(112, 0);
             this.contactDBBindingNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.contactDBBindingNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.contactDBBindingNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -419,9 +416,9 @@
             this.panel3.Controls.Add(this.btnModifierContact);
             this.panel3.Controls.Add(this.btnSupprimer);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel3.Location = new System.Drawing.Point(0, 26);
+            this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(112, 196);
+            this.panel3.Size = new System.Drawing.Size(112, 222);
             this.panel3.TabIndex = 2;
             // 
             // btnAjouter
@@ -457,33 +454,12 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.txtSearchContact);
-            this.flowLayoutPanel1.Controls.Add(this.lblSearchClient);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(417, 26);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(417, 0);
             this.flowLayoutPanel1.TabIndex = 0;
-            // 
-            // txtSearchContact
-            // 
-            this.txtSearchContact.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSearchContact.Location = new System.Drawing.Point(112, 3);
-            this.txtSearchContact.Name = "txtSearchContact";
-            this.txtSearchContact.Size = new System.Drawing.Size(302, 20);
-            this.txtSearchContact.TabIndex = 4;
-            this.txtSearchContact.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSearchContact_KeyUp);
-            // 
-            // lblSearchClient
-            // 
-            this.lblSearchClient.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblSearchClient.AutoSize = true;
-            this.lblSearchClient.Location = new System.Drawing.Point(37, 6);
-            this.lblSearchClient.Name = "lblSearchClient";
-            this.lblSearchClient.Size = new System.Drawing.Size(69, 13);
-            this.lblSearchClient.TabIndex = 3;
-            this.lblSearchClient.Text = "Recherche : ";
             // 
             // btnAnnulerModif
             // 
@@ -592,8 +568,6 @@
             this.contactDBBindingNavigator.ResumeLayout(false);
             this.contactDBBindingNavigator.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -613,8 +587,6 @@
         private System.Windows.Forms.Button btnModifierContact;
         private System.Windows.Forms.Button btnSupprimer;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.TextBox txtSearchContact;
-        private System.Windows.Forms.Label lblSearchClient;
         private System.Windows.Forms.Button btnAnnulerModif;
         private System.Windows.Forms.GroupBox gpxDocument;
         private System.Windows.Forms.SplitContainer splitContainer1;
