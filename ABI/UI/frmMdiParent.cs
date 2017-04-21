@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace ABI
 {
-    public partial class FormMain : Form
+    public partial class frmMdiParent : Form
     {
         ABI.UI.frmListClt commercial;
-        public FormMain()
+        public frmMdiParent()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;

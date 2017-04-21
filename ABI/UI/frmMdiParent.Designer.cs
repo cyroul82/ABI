@@ -1,6 +1,6 @@
 ﻿namespace ABI
 {
-    partial class FormMain
+    partial class frmMdiParent
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -59,7 +59,7 @@
             this.fenêtreToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.fenêtreToolStripMenuItem.Text = "Fenêtre";
             // 
-            // FormMain
+            // frmMdiParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,7 +68,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(960, 600);
-            this.Name = "FormMain";
+            this.Name = "frmMdiParent";
             this.Text = "ABI";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

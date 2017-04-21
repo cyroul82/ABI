@@ -16,7 +16,8 @@ namespace ABI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMain());            
+            //Application.Run(new frmMdiParent());
+            Application.Run(new AuthenticationForm());            
         }
     }
 }
