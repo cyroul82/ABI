@@ -91,28 +91,28 @@
             // 
             // mTxtCodePostal
             // 
-            this.mTxtCodePostal.Enabled = false;
+            this.mTxtCodePostal.ReadOnly = true;
             // 
             // txtVille
             // 
-            this.txtVille.Enabled = false;
+            this.txtVille.ReadOnly = true;
             // 
             // txtRue
             // 
-            this.txtRue.Enabled = false;
+            this.txtRue.ReadOnly = true;
             // 
             // txtComment
             // 
-            this.txtComment.Enabled = false;
+            this.txtComment.ReadOnly = true;
             this.txtComment.Size = new System.Drawing.Size(451, 105);
             // 
             // txtEffectif
             // 
-            this.txtEffectif.Enabled = false;
+            this.txtEffectif.ReadOnly = true;
             // 
             // txtCA
             // 
-            this.txtCA.Enabled = false;
+            this.txtCA.ReadOnly = true;
             // 
             // cbxNature
             // 
@@ -124,11 +124,18 @@
             // 
             // txtRaisonSocial
             // 
-            this.txtRaisonSocial.Enabled = false;
+            this.txtRaisonSocial.ReadOnly = true;
             // 
             // cbxType
             // 
             this.cbxType.Enabled = false;
+            // 
+            // txtIdClient
+            // 
+            this.txtIdClient.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtIdClient.Enabled = true;
+            this.txtIdClient.Location = new System.Drawing.Point(138, 30);
+            this.txtIdClient.Size = new System.Drawing.Size(121, 13);
             // 
             // gpbClientInformation
             // 
@@ -156,7 +163,7 @@
             // 
             // txtTelephone
             // 
-            this.txtTelephone.Enabled = false;
+            this.txtTelephone.ReadOnly = true;
             // 
             // btnFermer
             // 

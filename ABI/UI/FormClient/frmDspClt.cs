@@ -168,15 +168,15 @@ namespace ABI
 
         private void enableClient()
         {
-            mTxtCodePostal.Enabled = true;
-            txtCA.Enabled = true;
-            txtComment.Enabled = true;
-            txtComment.Enabled = true;
-            txtEffectif.Enabled = true;
-            txtRaisonSocial.Enabled = true;
-            txtRue.Enabled = true;
-            txtTelephone.Enabled = true;
-            txtVille.Enabled = true;
+            mTxtCodePostal.ReadOnly = true;
+            txtCA.ReadOnly = false;
+            txtComment.ReadOnly = false;
+            txtComment.ReadOnly = false;
+            txtEffectif.ReadOnly = false;
+            txtRaisonSocial.ReadOnly = false;
+            txtRue.ReadOnly = false;
+            txtTelephone.ReadOnly = false;
+            txtVille.ReadOnly = false;
             cbxActivite.Enabled = true;
             cbxNature.Enabled = true;
             cbxType.Enabled = true;
@@ -187,15 +187,14 @@ namespace ABI
 
         private void disableClient()
         {
-            mTxtCodePostal.Enabled = false;
-            txtCA.Enabled = false;
-            txtComment.Enabled = false;
-            txtComment.Enabled = false;
-            txtEffectif.Enabled = false;
-            txtRaisonSocial.Enabled = false;
-            txtRue.Enabled = false;
-            txtTelephone.Enabled = false;
-            txtVille.Enabled = false;
+            mTxtCodePostal.ReadOnly = true;
+            txtCA.ReadOnly = true;
+            txtComment.ReadOnly = true;
+            txtEffectif.ReadOnly = true;
+            txtRaisonSocial.ReadOnly = true;
+            txtRue.ReadOnly = true;
+            txtTelephone.ReadOnly = true;
+            txtVille.ReadOnly = true;
             cbxActivite.Enabled = false;
             cbxNature.Enabled = false;
             cbxType.Enabled = false;
@@ -289,18 +288,6 @@ namespace ABI
         {
             Data.db.SaveChanges();
             contactDBBindingSource.ResetBindings(false);
-        }
-
-        private void txtSearchContact_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (txtSearchContact.Text != String.Empty)
-            {
-                //contactDBBindingSource.DataSource = client.ContactDB.GetList();
-                for(Int32 i = 0; i < client.ContactDB.Count; i++){
-
-                }
-                contactDBBindingSource.DataSource = client.ContactDB.GetList() ;
-            }
         }
 
         private void grdContact_DoubleClick(object sender, EventArgs e)
