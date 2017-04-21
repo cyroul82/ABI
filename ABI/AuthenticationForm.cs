@@ -22,7 +22,7 @@ namespace ABI
         {
             SqlConnection conn = new SqlConnection("Data Source=.;Initial Catalog=ABIDB;Integrated Security=True");
             conn.Open();
-            SqlCommand cmd = new SqlCommand("select * from AbiUser where username='" + txtLogin.Text + "', and password = '" + txtPassword.Text + "'", conn);
+            SqlCommand cmd = new SqlCommand("select * from AbiUser where username='" + txtLogin.Text + "' and password = '" + txtPassword.Text + "'", conn);
             SqlDataReader dr;
             dr = cmd.ExecuteReader();
             Int32 count = 0;
