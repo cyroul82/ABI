@@ -147,7 +147,6 @@ namespace ABI.UI
             Data.db.SaveChanges();
             //Update tabPage
             tabControlClients.updateTab(client);
-            
         }
 
         /// <summary>
