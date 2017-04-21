@@ -44,9 +44,95 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // mTxtCodePostal
+            // 
+            this.mTxtCodePostal.Location = new System.Drawing.Point(138, 263);
+            // 
+            // txtVille
+            // 
+            this.txtVille.Location = new System.Drawing.Point(344, 263);
+            // 
+            // txtRue
+            // 
+            this.txtRue.Location = new System.Drawing.Point(137, 225);
+            // 
+            // txtComment
+            // 
+            this.txtComment.Location = new System.Drawing.Point(14, 311);
+            // 
+            // txtEffectif
+            // 
+            this.txtEffectif.Location = new System.Drawing.Point(345, 118);
+            // 
+            // txtCA
+            // 
+            this.txtCA.Location = new System.Drawing.Point(137, 157);
+            // 
+            // cbxNature
+            // 
+            this.cbxNature.Location = new System.Drawing.Point(138, 118);
+            // 
+            // cbxActivite
+            // 
+            this.cbxActivite.Location = new System.Drawing.Point(137, 82);
+            // 
+            // txtRaisonSocial
+            // 
+            this.txtRaisonSocial.Location = new System.Drawing.Point(138, 47);
+            // 
+            // cbxType
+            // 
+            this.cbxType.Location = new System.Drawing.Point(345, 82);
+            // 
+            // txtIdClient
+            // 
+            this.txtIdClient.Location = new System.Drawing.Point(353, 422);
+            this.txtIdClient.Visible = false;
+            // 
+            // lblClientNumber
+            // 
+            this.lblClientNumber.Location = new System.Drawing.Point(226, 426);
+            this.lblClientNumber.Visible = false;
+            // 
             // gpbClientInformation
             // 
             this.gpbClientInformation.Size = new System.Drawing.Size(493, 448);
+            // 
+            // txtTelephone
+            // 
+            this.txtTelephone.Location = new System.Drawing.Point(138, 192);
+            // 
+            // lblTelephone
+            // 
+            this.lblTelephone.Location = new System.Drawing.Point(13, 195);
+            // 
+            // lblCodePostal
+            // 
+            this.lblCodePostal.Location = new System.Drawing.Point(11, 262);
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.Location = new System.Drawing.Point(11, 229);
+            // 
+            // lblCommentaire
+            // 
+            this.lblCommentaire.Location = new System.Drawing.Point(12, 295);
+            // 
+            // lblChiffreAffaire
+            // 
+            this.lblChiffreAffaire.Location = new System.Drawing.Point(12, 161);
+            // 
+            // lblNature
+            // 
+            this.lblNature.Location = new System.Drawing.Point(12, 122);
+            // 
+            // lblDomaine
+            // 
+            this.lblDomaine.Location = new System.Drawing.Point(11, 86);
+            // 
+            // lblRaisonSocial
+            // 
+            this.lblRaisonSocial.Location = new System.Drawing.Point(12, 51);
             // 
             // panel1
             // 

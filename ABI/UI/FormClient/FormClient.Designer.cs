@@ -406,29 +406,29 @@
         protected System.Windows.Forms.ErrorProvider errorProviderEffectif;
         protected System.Windows.Forms.ErrorProvider errorProviderCA;
         protected System.Windows.Forms.MaskedTextBox mTxtCodePostal;
-        private System.Windows.Forms.Label lblTelephone;
         protected System.Windows.Forms.TextBox txtVille;
         private System.Windows.Forms.Label lblTown;
-        private System.Windows.Forms.Label lblCodePostal;
         protected System.Windows.Forms.TextBox txtRue;
-        private System.Windows.Forms.Label lblAddress;
         protected System.Windows.Forms.TextBox txtComment;
-        private System.Windows.Forms.Label lblCommentaire;
         protected System.Windows.Forms.TextBox txtEffectif;
         private System.Windows.Forms.Label lblEffectif;
         protected System.Windows.Forms.TextBox txtCA;
-        private System.Windows.Forms.Label lblChiffreAffaire;
         protected System.Windows.Forms.ComboBox cbxNature;
-        private System.Windows.Forms.Label lblNature;
         protected System.Windows.Forms.ComboBox cbxActivite;
-        private System.Windows.Forms.Label lblDomaine;
         protected System.Windows.Forms.TextBox txtRaisonSocial;
         protected System.Windows.Forms.ComboBox cbxType;
         protected System.Windows.Forms.TextBox txtIdClient;
         private System.Windows.Forms.Label lblType;
-        private System.Windows.Forms.Label lblRaisonSocial;
         protected System.Windows.Forms.Label lblClientNumber;
         protected internal System.Windows.Forms.GroupBox gpbClientInformation;
         public System.Windows.Forms.MaskedTextBox txtTelephone;
+        protected System.Windows.Forms.Label lblTelephone;
+        protected System.Windows.Forms.Label lblCodePostal;
+        protected System.Windows.Forms.Label lblAddress;
+        protected System.Windows.Forms.Label lblCommentaire;
+        protected System.Windows.Forms.Label lblChiffreAffaire;
+        protected System.Windows.Forms.Label lblNature;
+        protected System.Windows.Forms.Label lblDomaine;
+        protected System.Windows.Forms.Label lblRaisonSocial;
     }
 }
