@@ -1,5 +1,5 @@
 # ABI
-Projet ABI Gestion Commerciale
+Projet ABI Gestion Commerciale (Projet AFPA)
 
 Simple Application pour ajouter des clients(entreprise) et leurs contacts associés
 
