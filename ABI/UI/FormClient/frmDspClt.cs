@@ -247,8 +247,10 @@ namespace ABI
         private void savingContact(ContactDB contact)
         {
             //this.contact = contact;
-            Data.db.ContactDB.Add(contact);
+            client.ContactDB.Add(contact);
+            //Data.db.ContactDB.Add(contact);
             Data.db.SaveChanges();
+            contactDBBindingSource.ResetBindings(false);
         }
 
         private void btnSupprimerContact_Click(object sender, EventArgs e)
